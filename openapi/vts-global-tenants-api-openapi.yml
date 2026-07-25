@@ -1,0 +1,250 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Global Tenants API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Global Tenants
+paths:
+  /api/v1/global_tenants:
+    get:
+      summary: Fetches global tenants
+      description: Contains the cleansed tenant names associated with reported or inputted tenant names. Links to the ultimate parent global tenant ID
+      tags:
+      - Global Tenants
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[cap_iq_id][]
+        in: query
+        style: form
+        explode: true
+        description: Find Global Tenants by their S&P Capital IQ ID. If you want to filter by multiple IDs, specify this parameter multiple times
+        required: false
+        schema:
+          type: integer
+      - name: filter[q]
+        in: query
+        description: Find Global Tenants by using keywords
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of global tenants
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          description: Type of object returned
+                          example: global_tenants
+                        id:
+                          type: string
+                          description: This tenant's Ultimate Parent Global Tenant ID
+                          example: 19dbe413-442a-4fd1-afe4-9b12dc2c02ce
+                        attributes:
+                          type: object
+                          properties:
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this global tenant was created
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this global tenant was last updated
+                            name:
+                              type: string
+                              description: This is the Global Name of the tenant
+                            industry:
+                              type: string
+                              description: This is the Global Tenant’s industry. This may be different than the linked Reported Tenant’s industry
+                            address:
+                              type: string
+                              description: Location of Global Tenant
+                            cap_iq_id:
+                              type: integer
+                              description: ID of associated company from the S&P Capital IQ database
+                              nullable: true
+                        relationships:
+                          type: object
+                          properties:
+                            ultimate_parent:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - global_tenants
+                                      example: global_tenants
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-global-tenants
+  /api/v1/global_tenants/{id}:
+    get:
+      summary: Fetches specific global tenant
+      description: Contains the cleansed tenant names associated with reported or inputted tenant names. Links to the ultimate parent global tenant ID
+      tags:
+      - Global Tenants
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested global tenant
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        description: Type of object returned
+                        example: global_tenants
+                      id:
+                        type: string
+                        description: This tenant's Ultimate Parent Global Tenant ID
+                        example: 19dbe413-442a-4fd1-afe4-9b12dc2c02ce
+                      attributes:
+                        type: object
+                        properties:
+                          created_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this global tenant was created
+                          updated_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this global tenant was last updated
+                          name:
+                            type: string
+                            description: This is the Global Name of the tenant
+                          industry:
+                            type: string
+                            description: This is the Global Tenant’s industry. This may be different than the linked Reported Tenant’s industry
+                          address:
+                            type: string
+                            description: Location of Global Tenant
+                          cap_iq_id:
+                            type: integer
+                            description: ID of associated company from the S&P Capital IQ database
+                            nullable: true
+                      relationships:
+                        type: object
+                        properties:
+                          ultimate_parent:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - global_tenants
+                                    example: global_tenants
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-global-tenants-id
+components:
+  schemas:
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

@@ -1,0 +1,522 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Tenant Contacts API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Tenant Contacts
+paths:
+  /api/v1/tenant_contacts:
+    get:
+      summary: Fetches Tenant Contacts for a Specific Account
+      tags:
+      - Tenant Contacts
+      security:
+      - basic_auth: []
+      parameters:
+      - name: filter[lease_id]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns List of Tenant Contacts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: tenant_contacts
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            first_name:
+                              type: string
+                              example: John
+                              description: First name of the contact
+                            last_name:
+                              type: string
+                              example: Doe
+                              description: Last name of the contact
+                            phone:
+                              type: string
+                              nullable: true
+                              example: '1234567890'
+                              description: Phone number of the contact
+                            phone_extension:
+                              type: string
+                              nullable: true
+                              example: '1234'
+                              description: Phone extension of the contact
+                            email:
+                              type: string
+                              example: johndoe@example.com
+                              description: Email of the contact
+                            company_name:
+                              type: string
+                              nullable: true
+                              example: VTS
+                              description: Name of the company the contact belongs to
+                            title:
+                              type: string
+                              nullable: true
+                              example: Broker
+                              description: The title of the contact
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this tenant contact was created
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this tenant contact was last updated
+                            phone_type:
+                              type: string
+                              nullable: true
+                              description: The type of phone number
+                            type:
+                              type: string
+                              example: tenant
+                              enum:
+                              - tenant
+                              - tenant_rep
+                              - broker
+                              - personal
+                              - vendor
+                              - colleague
+                              - partner
+                              nullable: true
+                              description: The type of tenant contact
+                            role:
+                              type: string
+                              example: admin
+                              enum:
+                              - c_suite
+                              - leasing
+                              - facilities_operations
+                              - admin
+                              - construction
+                              - sustainability
+                              nullable: true
+                              description: The role of the tenant contact
+                            is_decision_maker:
+                              type: boolean
+                              description: Whether the contact is a decision maker
+                            note:
+                              type: string
+                              nullable: true
+                              description: A note about the contact
+                        relationships:
+                          type: object
+                          properties:
+                            tenant:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - tenants
+                                      example: tenants
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-tenant-contacts
+  /api/v1/tenant_contacts/{id}:
+    get:
+      summary: Retrieves specific tenant contacts
+      description: Contains the tenant contact from your account
+      tags:
+      - Tenant Contacts
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: returns requested account tenant contact if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: tenant_contacts
+                      id:
+                        type: string
+                        example: '1'
+                      attributes:
+                        type: object
+                        properties:
+                          first_name:
+                            type: string
+                            example: John
+                            description: First name of the contact
+                          last_name:
+                            type: string
+                            example: Doe
+                            description: Last name of the contact
+                          phone:
+                            type: string
+                            nullable: true
+                            example: '1234567890'
+                            description: Phone number of the contact
+                          phone_extension:
+                            type: string
+                            nullable: true
+                            example: '1234'
+                            description: Phone extension of the contact
+                          email:
+                            type: string
+                            example: johndoe@example.com
+                            description: Email of the contact
+                          company_name:
+                            type: string
+                            nullable: true
+                            example: VTS
+                            description: Name of the company the contact belongs to
+                          title:
+                            type: string
+                            nullable: true
+                            example: Broker
+                            description: The title of the contact
+                          created_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this tenant contact was created
+                          updated_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this tenant contact was last updated
+                          phone_type:
+                            type: string
+                            nullable: true
+                            description: The type of phone number
+                          type:
+                            type: string
+                            example: tenant
+                            enum:
+                            - tenant
+                            - tenant_rep
+                            - broker
+                            - personal
+                            - vendor
+                            - colleague
+                            - partner
+                            nullable: true
+                            description: The type of tenant contact
+                          role:
+                            type: string
+                            example: admin
+                            enum:
+                            - c_suite
+                            - leasing
+                            - facilities_operations
+                            - admin
+                            - construction
+                            - sustainability
+                            nullable: true
+                            description: The role of the tenant contact
+                          is_decision_maker:
+                            type: boolean
+                            description: Whether the contact is a decision maker
+                          note:
+                            type: string
+                            nullable: true
+                            description: A note about the contact
+                      relationships:
+                        type: object
+                        properties:
+                          tenant:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - tenants
+                                    example: tenants
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested tenant contact does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-tenant-contacts-id
+  /api/v1/tenants/{tenant_id}/contacts:
+    get:
+      summary: Fetches tenant contacts
+      tags:
+      - Tenant Contacts
+      security:
+      - basic_auth: []
+      parameters:
+      - name: tenant_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: filter[lease_id]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of contacts for the tenant
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: tenant_contacts
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            first_name:
+                              type: string
+                              example: John
+                              description: First name of the contact
+                            last_name:
+                              type: string
+                              example: Doe
+                              description: Last name of the contact
+                            phone:
+                              type: string
+                              nullable: true
+                              example: '1234567890'
+                              description: Phone number of the contact
+                            phone_extension:
+                              type: string
+                              nullable: true
+                              example: '1234'
+                              description: Phone extension of the contact
+                            email:
+                              type: string
+                              example: johndoe@example.com
+                              description: Email of the contact
+                            company_name:
+                              type: string
+                              nullable: true
+                              example: VTS
+                              description: Name of the company the contact belongs to
+                            title:
+                              type: string
+                              nullable: true
+                              example: Broker
+                              description: The title of the contact
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this tenant contact was created
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this tenant contact was last updated
+                            phone_type:
+                              type: string
+                              nullable: true
+                              description: The type of phone number
+                            type:
+                              type: string
+                              example: tenant
+                              enum:
+                              - tenant
+                              - tenant_rep
+                              - broker
+                              - personal
+                              - vendor
+                              - colleague
+                              - partner
+                              nullable: true
+                              description: The type of tenant contact
+                            role:
+                              type: string
+                              example: admin
+                              enum:
+                              - c_suite
+                              - leasing
+                              - facilities_operations
+                              - admin
+                              - construction
+                              - sustainability
+                              nullable: true
+                              description: The role of the tenant contact
+                            is_decision_maker:
+                              type: boolean
+                              description: Whether the contact is a decision maker
+                            note:
+                              type: string
+                              nullable: true
+                              description: A note about the contact
+                        relationships:
+                          type: object
+                          properties:
+                            tenant:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - tenants
+                                      example: tenants
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Referenced tenant not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-tenants-tenant-id-contacts
+components:
+  schemas:
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

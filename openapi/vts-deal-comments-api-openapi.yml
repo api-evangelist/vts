@@ -1,0 +1,499 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Deal Comments API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Deal Comments
+paths:
+  /api/v1/deal_comments:
+    get:
+      summary: Fetches Deal Comments for a Specific Account
+      description: Contains comments associated with a given deal
+      tags:
+      - Deal Comments
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Deal Comments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          pattern: deal_comments
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            latest:
+                              type: boolean
+                              description: Whether or not this is the latest comment of it's associated deal
+                            text:
+                              type: string
+                              nullable: true
+                              example: This is a comment.
+                              description: The content of the deal comment
+                            occurred_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when the comment was added to its associated deal
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this deal comment was created
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this deal comment was last updated
+                        relationships:
+                          type: object
+                          properties:
+                            deal:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deals
+                                      example: deals
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            iteration:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deal_iterations
+                                      example: deal_iterations
+                            user:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - users
+                                      example: users
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/comments?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/comments?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Deal Comments
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/comments?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Deal Comments
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deal-comments
+  /api/v1/deal_comments/{id}:
+    get:
+      summary: Retrieves specific Deal Comment
+      description: Contains the Deal Comment from your account
+      tags:
+      - Deal Comments
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested account deal comment if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        pattern: deal_comments
+                      id:
+                        type: string
+                        example: '1'
+                      attributes:
+                        type: object
+                        properties:
+                          latest:
+                            type: boolean
+                            description: Whether or not this is the latest comment of it's associated deal
+                          text:
+                            type: string
+                            nullable: true
+                            example: This is a comment.
+                            description: The content of the deal comment
+                          occurred_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when the comment was added to its associated deal
+                          created_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this deal comment was created
+                          updated_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this deal comment was last updated
+                      relationships:
+                        type: object
+                        properties:
+                          deal:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - deals
+                                    example: deals
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+                          iteration:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - deal_iterations
+                                    example: deal_iterations
+                          user:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - users
+                                    example: users
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested deal comment does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deal-comments-id
+  /api/v1/deals/{deal_id}/comments:
+    get:
+      summary: Fetches Deal Comments for a Specific Deal
+      tags:
+      - Deal Comments
+      security:
+      - basic_auth: []
+      parameters:
+      - name: deal_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Deal Comments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          pattern: deal_comments
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            latest:
+                              type: boolean
+                              description: Whether or not this is the latest comment of it's associated deal
+                            text:
+                              type: string
+                              nullable: true
+                              example: This is a comment.
+                              description: The content of the deal comment
+                            occurred_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when the comment was added to its associated deal
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this deal comment was created
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this deal comment was last updated
+                        relationships:
+                          type: object
+                          properties:
+                            deal:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deals
+                                      example: deals
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            iteration:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deal_iterations
+                                      example: deal_iterations
+                            user:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - users
+                                      example: users
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/comments?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/comments?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Deal Comments
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/comments?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Deal Comments
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deals-deal-id-comments
+components:
+  schemas:
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

@@ -1,0 +1,195 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Deal Snapshots API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Deal Snapshots
+paths:
+  /api/v1/deal_snapshots/{id}:
+    get:
+      summary: Retrieves specific deal snapshot
+      tags:
+      - Deal Snapshots
+      description: Refer to https://readme.vts.com/docs/deal-snapshot-documentation for a description of deal snapshots payload
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested deal snapshot if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: deal snapshot
+                      id:
+                        type: string
+                        example: '1'
+                        description: The ID of the deal snapshot
+                      attributes:
+                        type: object
+                        properties:
+                          account_id:
+                            type: integer
+                            example: 1
+                            description: The id the account who's user generated the deal snapshot
+                          user_id:
+                            type: integer
+                            example: 1
+                            description: The id of the user who's generated the deal snapshot
+                          metadata:
+                            type: object
+                            example:
+                              metadata_key: metadata_value
+                            description: Metadata that was attached to the deal snapshot via a PATCH request to the deal_snapshots endpoint.
+                      relationships:
+                        type: object
+                        properties:
+                          deal:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - deals
+                                    example: deals
+                          created_by:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - users
+                                    example: users
+                      includes:
+                        type: array
+                        items:
+                          type: object
+                          description: Refer to https://readme.vts.com/docs/deal-snapshot-documentation for a description of the resources returned here
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: https://api.vts.com/api/v1/deal_snapshots/1
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested deal snapshot does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deal-snapshots-id
+    patch:
+      summary: Updates deal snapshot
+      tags:
+      - Deal Snapshots
+      description: Updates a deal snapshot record
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Deal Snapshot successfully updated
+        '400':
+          description: Parameters are invalid
+        '403':
+          description: API not authorized for use
+        '404':
+          description: Referenced deal snapshot not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    attributes:
+                      type: object
+                      properties:
+                        metadata:
+                          type: object
+        required: true
+      operationId: patch_api-v1-deal-snapshots-id
+components:
+  schemas:
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

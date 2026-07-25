@@ -1,0 +1,882 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Assets API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Assets
+paths:
+  /api/v1/assets:
+    get:
+      summary: Fetches assets
+      description: Contains the assets in your portfolio. Assets are the top-level building or property component in VTS.
+      tags:
+      - Assets
+      security:
+      - basic_auth: []
+      parameters:
+      - name: filter[multi_building_asset_id]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Assets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: assets
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            address:
+                              type: object
+                              properties:
+                                street_address:
+                                  type: string
+                                  example: 114 W 41st St, Floor 11
+                                locality:
+                                  type: string
+                                  example: New York
+                                region:
+                                  type: string
+                                  example: NY
+                                country:
+                                  type: string
+                                  example: United States
+                                postal_code:
+                                  type: string
+                                  example: '10036'
+                                formatted:
+                                  type: string
+                                  example: 114 W 41st St, Floor 11, New York, NY 10036
+                            building_class:
+                              type: string
+                              example: A
+                            created_at:
+                              type: string
+                              format: date-time
+                            currency:
+                              type: string
+                              example: USD
+                            description:
+                              type: string
+                              example: Beautiful property with great views and park nearby.
+                            external_ids:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  system_id:
+                                    type: string
+                                    example: '12345'
+                                  system_name:
+                                    type: string
+                                    example: ExternalSystem
+                            has_industrial_space:
+                              type: boolean
+                            has_office_space:
+                              type: boolean
+                            has_retail_space:
+                              type: boolean
+                            lease_roll:
+                              type: integer
+                              example: 32999
+                            lease_vacant_area:
+                              $ref: '#/components/schemas/measure_size'
+                            leasing_company:
+                              type: string
+                              example: Leasing Company
+                            managing_company:
+                              type: string
+                              example: Managing Company
+                            name:
+                              type: string
+                              example: West 41st Tower
+                            notes:
+                              type: string
+                              nullable: true
+                            number_of_floors:
+                              type: integer
+                              minimum: 0
+                              example: 22
+                            photo_url:
+                              type: string
+                              nullable: true
+                              example: http://images.vts.com/image/upload/photo.jpg
+                            owner:
+                              type: string
+                              nullable: true
+                            owning_company:
+                              type: string
+                              nullable: true
+                              description: The owning company of the property
+                            rentable_building_area:
+                              $ref: '#/components/schemas/measure_size'
+                            sourceid:
+                              type: string
+                              nullable: true
+                              example: '000004353'
+                            space_available:
+                              $ref: '#/components/schemas/measure_size'
+                            submarket:
+                              type: string
+                            building_region:
+                              type: string
+                              example: New York
+                              nullable: true
+                              description: The region a building is located in. Specifically, this returns the free-form text field "Region" in the Location section of Buildings.
+                            updated_at:
+                              type: string
+                              format: date-time
+                            video_thumbnail:
+                              type: string
+                              nullable: true
+                              example: http://images.vts.com/image/upload/thumbnail.jpg
+                            year_built:
+                              type: integer
+                              minimum: 0
+                              example: 1915
+                            years_renovated:
+                              type: string
+                              example:
+                              - '2018'
+                              - 1984, 2001, 2012
+                              - ''
+                            property_funds:
+                              type: array
+                              items:
+                                type: string
+                                description: The name of the fund
+                              example:
+                              - Multi Tenant
+                              - Test Fund
+                              description: The property funds belonging to the employer of the account hitting the API
+                            market:
+                              type: string
+                              example: test market
+                            account:
+                              type: object
+                              properties:
+                                id:
+                                  type: number
+                                  example: 123
+                                name:
+                                  type: string
+                                  example: Monacan LLC
+                            size:
+                              $ref: '#/components/schemas/measure_area'
+                            legal_entity:
+                              type: string
+                              example: Avenue Holdings
+                              description: The name of legal entity belonging to the employer of the account hitting the API
+                              nullable: true
+                            asset_managers:
+                              type: array
+                              items:
+                                type: string
+                                description: The name of the asset manager
+                                nullable: true
+                              example:
+                              - John Stephens
+                              - Mary Smith
+                              description: The asset managers belonging to the employer of the account hitting the API
+                            jv_partners:
+                              type: array
+                              items:
+                                type: string
+                                description: The name of the jv partners
+                                nullable: true
+                              example:
+                              - XYZ Partners
+                              - ABC Global Development
+                              description: The JV partners belonging to the employer of the account hitting the API
+                            clients:
+                              type: array
+                              items:
+                                type: string
+                                description: The name of the clients
+                                nullable: true
+                              example:
+                              - ABC Partners
+                              - XYZ Partners
+                              description: The clients belonging to the employer of the account hitting the API
+                        relationships:
+                          type: object
+                          properties:
+                            multi_building_asset:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: 100
+                                    type:
+                                      type: string
+                                      example: multi_building_asset
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/assets
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/assets?page%5Bbefore%5D=MzE2NTI%253D
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/assets?page%5Bafter%5D=MzE2NjQ%253D
+                    required:
+                    - self
+                  included:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '1'
+                        type:
+                          type: string
+                          format: multi_building_assets
+                          example: multi_building_assets
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: VTS Office Park
+                            sourceid:
+                              type: string
+                              example: '000004353'
+                            external_ids:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  system_id:
+                                    type: string
+                                    example: '12345'
+                                  system_name:
+                                    type: string
+                                    nullable: true
+                                    example: ExternalSystem
+                                required:
+                                - system_id
+                                - system_name
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-assets
+  /api/v1/assets/{asset_id}/deal_settings:
+    get:
+      summary: Retrieves deal settings for given asset for specific account
+      tags:
+      - Assets
+      security:
+      - basic_auth: []
+      parameters:
+      - name: asset_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: returns requested account asset deal settings if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: assets
+                      id:
+                        type: string
+                        example: '1'
+                      attributes:
+                        type: object
+                        properties:
+                          terms:
+                            type: object
+                            properties:
+                              lease_type:
+                                type: string
+                                nullable: true
+                                example: triple net
+                              discount_rate:
+                                type: string
+                                nullable: true
+                                example: '5.0'
+                              periods:
+                                type: string
+                                nullable: true
+                                example: rsf/month
+                            nullable: true
+                          rent_schedule:
+                            type: object
+                            properties:
+                              rent_schedule_display_in_unit:
+                                type: string
+                                example: psf/mo
+                                nullable: true
+                            nullable: true
+                          expenses_and_recoveries:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  nullable: true
+                                  example: ReimbursableExpenseLandscaping
+                                expense_amount:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - description: The amount of the reimbursable expense
+                                  nullable: true
+                                recovery_amount:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - description: The amount of reimbursable expense that will be paid to landlord by the tenant with recovery type modified_gross
+                                  nullable: true
+                                expense_growth_rate:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_percentage'
+                                  - description: The expenses will grow by this rate every 12 months after the lease commencement date.
+                                  nullable: true
+                                recovery_method:
+                                  type: string
+                                  example: gross
+                                  description: The calculation method of the recovery amount for the reimbursable expense
+                                  nullable: true
+                            nullable: true
+                          commissions:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                broker:
+                                  type: string
+                                  example: VTS
+                                  description: Broker/Company name
+                                  nullable: true
+                                commission_type:
+                                  type: string
+                                  enum:
+                                  - landlord
+                                  - tenant_rep
+                                  example: landlord
+                                  description: Commissions Value paid to landlord or tenant brokers on the deal
+                                  nullable: true
+                                periods:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      amount:
+                                        allOf:
+                                        - $ref: '#/components/schemas/measure_money_area_period'
+                                        - description: Commission Amount for the new added commission
+                                        nullable: true
+                                      starts:
+                                        type: object
+                                        properties:
+                                          month:
+                                            type: number
+                                            example: 1
+                                            description: The start month when commissions will start counting for.
+                                free_rent:
+                                  type: string
+                                  example: amortize_over_term
+                                  description: How commission rent should handle free rent
+                                  nullable: true
+                                net_or_gross:
+                                  type: string
+                                  example: gross
+                                  description: The calculation method of the commission amount.
+                                  nullable: true
+                              nullable: true
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested asset does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-assets-asset-id-deal-settings
+  /api/v1/assets/{id}:
+    get:
+      summary: Retrieves specific asset
+      description: Contains the assets in your portfolio. Assets are the top-level building or property component in VTS.
+      tags:
+      - Assets
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested asset if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: assets
+                      id:
+                        type: string
+                        example: '1'
+                      attributes:
+                        type: object
+                        properties:
+                          address:
+                            type: object
+                            properties:
+                              street_address:
+                                type: string
+                                example: 114 W 41st St, Floor 11
+                              locality:
+                                type: string
+                                example: New York
+                              region:
+                                type: string
+                                example: NY
+                              country:
+                                type: string
+                                example: United States
+                              postal_code:
+                                type: string
+                                example: '10036'
+                              formatted:
+                                type: string
+                                example: 114 W 41st St, Floor 11, New York, NY 10036
+                          building_class:
+                            type: string
+                            example: A
+                          created_at:
+                            type: string
+                            format: date-time
+                          currency:
+                            type: string
+                            example: USD
+                          description:
+                            type: string
+                            example: Beautiful property with great views and park nearby.
+                          external_ids:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                system_id:
+                                  type: string
+                                  example: '12345'
+                                system_name:
+                                  type: string
+                                  example: ExternalSystem
+                          has_industrial_space:
+                            type: boolean
+                          has_office_space:
+                            type: boolean
+                          has_retail_space:
+                            type: boolean
+                          lease_roll:
+                            type: integer
+                            example: 32999
+                          lease_vacant_area:
+                            $ref: '#/components/schemas/measure_size'
+                          leasing_company:
+                            type: string
+                            example: Leasing Company
+                          managing_company:
+                            type: string
+                            example: Managing Company
+                          name:
+                            type: string
+                            example: West 41st Tower
+                          notes:
+                            type: string
+                            nullable: true
+                          number_of_floors:
+                            type: integer
+                            minimum: 0
+                            example: 22
+                          photo_url:
+                            type: string
+                            nullable: true
+                            example: http://images.vts.com/image/upload/photo.jpg
+                          owner:
+                            type: string
+                            nullable: true
+                          owning_company:
+                            type: string
+                            nullable: true
+                            description: The owning company of the property
+                          rentable_building_area:
+                            $ref: '#/components/schemas/measure_size'
+                          sourceid:
+                            type: string
+                            nullable: true
+                            example: '000004353'
+                          space_available:
+                            $ref: '#/components/schemas/measure_size'
+                          submarket:
+                            type: string
+                          building_region:
+                            type: string
+                            example: New York
+                            nullable: true
+                            description: The region a building is located in. Specifically, this returns the free-form text field "Region" in the Location section of Buildings.
+                          updated_at:
+                            type: string
+                            format: date-time
+                          video_thumbnail:
+                            type: string
+                            nullable: true
+                            example: http://images.vts.com/image/upload/thumbnail.jpg
+                          year_built:
+                            type: integer
+                            minimum: 0
+                            example: 1915
+                          years_renovated:
+                            type: string
+                            example:
+                            - '2018'
+                            - 1984, 2001, 2012
+                            - ''
+                          property_funds:
+                            type: array
+                            items:
+                              type: string
+                              description: The name of the fund
+                            example:
+                            - Multi Tenant
+                            - Test Fund
+                            description: The property funds belonging to the employer of the account hitting the API
+                          market:
+                            type: string
+                            example: test market
+                          account:
+                            type: object
+                            properties:
+                              id:
+                                type: number
+                                example: 123
+                              name:
+                                type: string
+                                example: Monacan LLC
+                          size:
+                            $ref: '#/components/schemas/measure_area'
+                          legal_entity:
+                            type: string
+                            example: Avenue Holdings
+                            description: The name of legal entity belonging to the employer of the account hitting the API
+                            nullable: true
+                          asset_managers:
+                            type: array
+                            items:
+                              type: string
+                              description: The name of the asset manager
+                              nullable: true
+                            example:
+                            - John Stephens
+                            - Mary Smith
+                            description: The asset managers belonging to the employer of the account hitting the API
+                          jv_partners:
+                            type: array
+                            items:
+                              type: string
+                              description: The name of the jv partners
+                              nullable: true
+                            example:
+                            - XYZ Partners
+                            - ABC Global Development
+                            description: The JV partners belonging to the employer of the account hitting the API
+                          clients:
+                            type: array
+                            items:
+                              type: string
+                              description: The name of the clients
+                              nullable: true
+                            example:
+                            - ABC Partners
+                            - XYZ Partners
+                            description: The clients belonging to the employer of the account hitting the API
+                      relationships:
+                        type: object
+                        properties:
+                          multi_building_asset:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: 100
+                                  type:
+                                    type: string
+                                    example: multi_building_asset
+                  included:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '1'
+                        type:
+                          type: string
+                          format: multi_building_assets
+                          example: multi_building_assets
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: VTS Office Park
+                            sourceid:
+                              type: string
+                              example: '000004353'
+                            external_ids:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  system_id:
+                                    type: string
+                                    example: '12345'
+                                  system_name:
+                                    type: string
+                                    nullable: true
+                                    example: ExternalSystem
+                                required:
+                                - system_id
+                                - system_name
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested asset does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-assets-id
+components:
+  schemas:
+    measure_money_area_period:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/area/period
+          example: money/area/period
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+    measure_percentage:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '%'
+          example: '%'
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              pattern: '%'
+              example: '%'
+        type:
+          type: string
+          pattern: percentage
+          example: percentage
+    measure_size:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
+    measure_area:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+          example: sf
+          description: 'Possible values: ''sf'' for square feet, ''sm'' for square meters'
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

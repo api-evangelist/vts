@@ -1,0 +1,2650 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Financials API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Financials
+paths:
+  /api/v1/deal_terms/{deal_term_id}/financials:
+    get:
+      summary: Fetches Financials for a given deal term
+      description: Contains the corresponding financials for a lease or deal term
+      tags:
+      - Financials
+      security:
+      - basic_auth: []
+      parameters:
+      - name: deal_term_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Financials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: base_rents
+                            example: base_rents
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this base rent was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this base rent was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: free_rents
+                            example: free_rents
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this free rent was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this free rent was last updated
+                              structure:
+                                type: string
+                                nullable: true
+                                enum:
+                                - net
+                                - gross
+                                - null
+                                example: net
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: other_revenues
+                            example: other_revenues
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other revenue was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other revenue was last updated
+                              revenue_type:
+                                type: string
+                                nullable: true
+                                example: other
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: reimbursable_expenses
+                            example: reimbursable_expenses
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this reimbursable expense was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this reimbursable expense was last updated
+                              base_year:
+                                type: object
+                                properties:
+                                  start:
+                                    type: integer
+                                    nullable: true
+                                    example: 2009
+                                  end:
+                                    type: integer
+                                    nullable: true
+                                    example: 2010
+                              description:
+                                type: string
+                                nullable: true
+                                example: real estate tax
+                              recovery_amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              recovery_type:
+                                type: string
+                                enum:
+                                - Opex
+                                - Real Estate Taxes
+                                - CAM
+                                - Cleaning
+                                - Electric
+                                - Insurance
+                                - Landscaping
+                                - Repairs and Maintenance
+                                - Management Fee
+                                - Marketing
+                                - Other
+                                - Security
+                                - Utilities
+                              reimbursed:
+                                type: boolean
+                                nullable: true
+                              stop_amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              structure:
+                                type: string
+                                nullable: true
+                                enum:
+                                - gross
+                                - net
+                                - amount
+                                - modified_gross
+                                - null
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: commissions
+                            example: commissions
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              structure:
+                                type: string
+                                nullable: true
+                                example: gross
+                              broker:
+                                type: string
+                                nullable: true
+                                example: Ensemble
+                              commission_date:
+                                type: string
+                                nullable: true
+                                example: '2020-01-01'
+                              commission_type:
+                                type: string
+                                nullable: true
+                                example: Tenant
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this commission was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this commission was last updated
+                              periods:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    amount:
+                                      oneOf:
+                                      - $ref: '#/components/schemas/measure_money_period'
+                                      - $ref: '#/components/schemas/measure_money'
+                                      - $ref: '#/components/schemas/measure_period'
+                                      - $ref: '#/components/schemas/measure_percentage'
+                                    starts:
+                                      type: object
+                                      properties:
+                                        date:
+                                          type: string
+                                          nullable: true
+                                          format: date
+                                          example: '2020-01-01'
+                                        month:
+                                          type: integer
+                                          nullable: true
+                                          example: 1
+                                          minimum: 1
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            pattern: rent_escalations
+                            example: rent_escalations
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                                - $ref: '#/components/schemas/measure_percentage'
+                              frequency:
+                                allOf:
+                                - $ref: '#/components/schemas/measure_period'
+                                - type: object
+                                  properties:
+                                    interval:
+                                      type: string
+                                      enum:
+                                      - Annual
+                                      - One Time
+                                      example: Annual
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                    example: '2020-01-01'
+                                  month:
+                                    type: integer
+                                    minimum: 1
+                                    example: 1
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this rent escalation was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this rent escalation was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            pattern: remaining_lease_obligations
+                            example: remaining_lease_obligations
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            properties:
+                              ends:
+                                allOf:
+                                - type: object
+                                  properties:
+                                    date:
+                                      type: string
+                                      nullable: true
+                                - type: object
+                                  properties:
+                                    duration:
+                                      $ref: '#/components/schemas/measure_period'
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                    example: '2020-01-01'
+                                  month:
+                                    type: integer
+                                    minimum: 1
+                                    example: 13
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this remaining lease obligation was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this remaining lease obligation was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - improvements
+                            example: improvements
+                            pattern: improvements
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_area'
+                                - $ref: '#/components/schemas/measure_money'
+                              occurrence_month:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              improvement_type:
+                                type: string
+                                enum:
+                                - tenant
+                                - building
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this improvement was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this improvement was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - lease_incentives
+                            - other_credits
+                            example: lease_incentives
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_area'
+                                - $ref: '#/components/schemas/measure_money'
+                              occurrence_month:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              improvement_type:
+                                type: string
+                                enum:
+                                - tenant
+                                - building
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this lease incentive was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this lease incentive was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: other_credits
+                            example: other_credits
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              occurrence_month:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other credit was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other credit was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                      prev:
+                        type: string
+                      next:
+                        type: string
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deal-terms-deal-term-id-financials
+  /api/v1/financials:
+    get:
+      summary: Fetches Financials for lease terms and/or lease terms
+      description: Contains the corresponding financials for a lease or deal term
+      tags:
+      - Financials
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      - name: filter[term_type]
+        in: query
+        schema:
+          type: string
+          enum:
+          - deal_term
+          - lease_term
+        required: false
+        description: Only display financials belonging to the specific parent object
+        example: deal_term
+      responses:
+        '200':
+          description: Returns list of Financials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: base_rents
+                            example: base_rents
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this base rent was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this base rent was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: free_rents
+                            example: free_rents
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this free rent was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this free rent was last updated
+                              structure:
+                                type: string
+                                nullable: true
+                                enum:
+                                - net
+                                - gross
+                                - null
+                                example: net
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: percentage_rents
+                            example: percentage_rents
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this base rent was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this base rent was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                          created_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this percentage rent was created
+                          updated_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this percentage rent was last updated
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: other_revenues
+                            example: other_revenues
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other revenue was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other revenue was last updated
+                              revenue_type:
+                                type: string
+                                nullable: true
+                                example: other
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - improvements
+                            example: improvements
+                            pattern: improvements
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_area'
+                                - $ref: '#/components/schemas/measure_money'
+                              occurrence_month:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              improvement_type:
+                                type: string
+                                enum:
+                                - tenant
+                                - building
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this improvement was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this improvement was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - lease_incentives
+                            - other_credits
+                            example: lease_incentives
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_area'
+                                - $ref: '#/components/schemas/measure_money'
+                              occurrence_month:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              improvement_type:
+                                type: string
+                                enum:
+                                - tenant
+                                - building
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this lease incentive was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this lease incentive was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: other_credits
+                            example: other_credits
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              occurrence_month:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other credit was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other credit was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: reimbursable_expenses
+                            example: reimbursable_expenses
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this reimbursable expense was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this reimbursable expense was last updated
+                              base_year:
+                                type: object
+                                properties:
+                                  start:
+                                    type: integer
+                                    nullable: true
+                                    example: 2009
+                                  end:
+                                    type: integer
+                                    nullable: true
+                                    example: 2010
+                              description:
+                                type: string
+                                nullable: true
+                                example: real estate tax
+                              recovery_amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              recovery_type:
+                                type: string
+                                enum:
+                                - Opex
+                                - Real Estate Taxes
+                                - CAM
+                                - Cleaning
+                                - Electric
+                                - Insurance
+                                - Landscaping
+                                - Repairs and Maintenance
+                                - Management Fee
+                                - Marketing
+                                - Other
+                                - Security
+                                - Utilities
+                              reimbursed:
+                                type: boolean
+                                nullable: true
+                              stop_amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              structure:
+                                type: string
+                                nullable: true
+                                enum:
+                                - gross
+                                - net
+                                - amount
+                                - modified_gross
+                                - null
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: commissions
+                            example: commissions
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              structure:
+                                type: string
+                                nullable: true
+                                example: gross
+                              broker:
+                                type: string
+                                nullable: true
+                                example: Ensemble
+                              commission_date:
+                                type: string
+                                nullable: true
+                                example: '2020-01-01'
+                              commission_type:
+                                type: string
+                                nullable: true
+                                example: Tenant
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this commission was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this commission was last updated
+                              periods:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    amount:
+                                      oneOf:
+                                      - $ref: '#/components/schemas/measure_money_period'
+                                      - $ref: '#/components/schemas/measure_money'
+                                      - $ref: '#/components/schemas/measure_period'
+                                      - $ref: '#/components/schemas/measure_percentage'
+                                    starts:
+                                      type: object
+                                      properties:
+                                        date:
+                                          type: string
+                                          nullable: true
+                                          format: date
+                                          example: '2020-01-01'
+                                        month:
+                                          type: integer
+                                          nullable: true
+                                          example: 1
+                                          minimum: 1
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            pattern: rent_escalations
+                            example: rent_escalations
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                                - $ref: '#/components/schemas/measure_percentage'
+                              frequency:
+                                allOf:
+                                - $ref: '#/components/schemas/measure_period'
+                                - type: object
+                                  properties:
+                                    interval:
+                                      type: string
+                                      enum:
+                                      - Annual
+                                      - One Time
+                                      example: Annual
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                    example: '2020-01-01'
+                                  month:
+                                    type: integer
+                                    minimum: 1
+                                    example: 1
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this rent escalation was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this rent escalation was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            pattern: remaining_lease_obligations
+                            example: remaining_lease_obligations
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            properties:
+                              ends:
+                                allOf:
+                                - type: object
+                                  properties:
+                                    date:
+                                      type: string
+                                      nullable: true
+                                - type: object
+                                  properties:
+                                    duration:
+                                      $ref: '#/components/schemas/measure_period'
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                    example: '2020-01-01'
+                                  month:
+                                    type: integer
+                                    minimum: 1
+                                    example: 13
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this remaining lease obligation was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this remaining lease obligation was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              deal_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: deal_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                      prev:
+                        type: string
+                      next:
+                        type: string
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-financials
+  /api/v1/lease_terms/{lease_term_id}/financials:
+    get:
+      summary: Fetches Financials for a given lease term
+      description: Contains the corresponding financials for a lease or deal term
+      tags:
+      - Financials
+      security:
+      - basic_auth: []
+      parameters:
+      - name: lease_term_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Financials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: base_rents
+                            example: base_rents
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this base rent was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this base rent was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              lease_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: lease_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: free_rents
+                            example: free_rents
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this free rent was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this free rent was last updated
+                              structure:
+                                type: string
+                                nullable: true
+                                enum:
+                                - net
+                                - gross
+                                - null
+                                example: net
+                          relationships:
+                            type: object
+                            properties:
+                              lease_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: lease_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: percentage_rents
+                            example: percentage_rents
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this base rent was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this base rent was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              lease_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: lease_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                          created_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this percentage rent was created
+                          updated_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this percentage rent was last updated
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: other_revenues
+                            example: other_revenues
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other revenue was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other revenue was last updated
+                              revenue_type:
+                                type: string
+                                nullable: true
+                                example: other
+                          relationships:
+                            type: object
+                            properties:
+                              lease_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: lease_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: reimbursable_expenses
+                            example: reimbursable_expenses
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              ends:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  duration:
+                                    allOf:
+                                    - $ref: '#/components/schemas/measure_period'
+                                    - description: The number of months that this revenue / expense is applicable for
+                                      properties:
+                                        unit:
+                                          enum:
+                                          - mo
+                                        unit_components:
+                                          properties:
+                                            period:
+                                              enum:
+                                              - mo
+                                        iso8601:
+                                          example: P2M
+                              starts:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    format: date
+                                  month:
+                                    $ref: '#/components/schemas/month'
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this reimbursable expense was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this reimbursable expense was last updated
+                              base_year:
+                                type: object
+                                properties:
+                                  start:
+                                    type: integer
+                                    nullable: true
+                                    example: 2009
+                                  end:
+                                    type: integer
+                                    nullable: true
+                                    example: 2010
+                              description:
+                                type: string
+                                nullable: true
+                                example: real estate tax
+                              recovery_amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              recovery_type:
+                                type: string
+                                enum:
+                                - Opex
+                                - Real Estate Taxes
+                                - CAM
+                                - Cleaning
+                                - Electric
+                                - Insurance
+                                - Landscaping
+                                - Repairs and Maintenance
+                                - Management Fee
+                                - Marketing
+                                - Other
+                                - Security
+                                - Utilities
+                              reimbursed:
+                                type: boolean
+                                nullable: true
+                              stop_amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              structure:
+                                type: string
+                                nullable: true
+                                enum:
+                                - gross
+                                - net
+                                - amount
+                                - modified_gross
+                                - null
+                          relationships:
+                            type: object
+                            properties:
+                              lease_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: lease_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - lease_incentives
+                            - other_credits
+                            example: lease_incentives
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_area'
+                                - $ref: '#/components/schemas/measure_money'
+                              occurrence_month:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              improvement_type:
+                                type: string
+                                enum:
+                                - tenant
+                                - building
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this lease incentive was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this lease incentive was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              lease_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: lease_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - improvements
+                            example: improvements
+                            pattern: improvements
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_area'
+                                - $ref: '#/components/schemas/measure_money'
+                              occurrence_month:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              improvement_type:
+                                type: string
+                                enum:
+                                - tenant
+                                - building
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this improvement was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this improvement was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              lease_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: lease_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: commissions
+                            example: commissions
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              structure:
+                                type: string
+                                nullable: true
+                                example: gross
+                              broker:
+                                type: string
+                                nullable: true
+                                example: Ensemble
+                              commission_date:
+                                type: string
+                                nullable: true
+                                example: '2020-01-01'
+                              commission_type:
+                                type: string
+                                nullable: true
+                                example: Tenant
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this commission was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this commission was last updated
+                              periods:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    amount:
+                                      oneOf:
+                                      - $ref: '#/components/schemas/measure_money_period'
+                                      - $ref: '#/components/schemas/measure_money'
+                                      - $ref: '#/components/schemas/measure_period'
+                                      - $ref: '#/components/schemas/measure_percentage'
+                                    starts:
+                                      type: object
+                                      properties:
+                                        date:
+                                          type: string
+                                          nullable: true
+                                          format: date
+                                          example: '2020-01-01'
+                                        month:
+                                          type: integer
+                                          nullable: true
+                                          example: 1
+                                          minimum: 1
+                          relationships:
+                            type: object
+                            properties:
+                              lease_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: lease_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            pattern: other_credits
+                            example: other_credits
+                          id:
+                            type: string
+                            example: '1'
+                          attributes:
+                            type: object
+                            properties:
+                              amount:
+                                anyOf:
+                                - $ref: '#/components/schemas/measure_money_period'
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                              occurrence_month:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other credit was created
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this other credit was last updated
+                          relationships:
+                            type: object
+                            properties:
+                              lease_term:
+                                type: object
+                                properties:
+                                  data:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      type:
+                                        type: string
+                                        pattern: lease_terms
+                                  links:
+                                    type: object
+                                    properties:
+                                      related:
+                                        type: string
+                                        format: uri
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                      prev:
+                        type: string
+                      next:
+                        type: string
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-lease-terms-lease-term-id-financials
+components:
+  schemas:
+    measure_money_area_period:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/area/period
+          example: money/area/period
+    measure_money:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+    measure_percentage:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '%'
+          example: '%'
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              pattern: '%'
+              example: '%'
+        type:
+          type: string
+          pattern: percentage
+          example: percentage
+    measure_money_period:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/period
+          example: money/period
+    measure_money_area:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: money/area
+          example: money/area
+    measure_period:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 2
+        unit:
+          type: string
+          enum:
+          - yr
+          - mo
+          - day
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: period
+          example: period
+        iso8601:
+          type: string
+          example: P2Y
+          description: Period represented by ISO8601 format
+          nullable: true
+    month:
+      type: integer
+      minimum: 1
+      maximum: 12
+      example: 3
+      nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

@@ -1,0 +1,881 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Proposals API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Proposals
+paths:
+  /api/v1/deals/{deal_id}/proposals:
+    get:
+      summary: Fetches proposals
+      description: Contains details of a given proposal, including discount rate, proposal type, and description
+      tags:
+      - Proposals
+      security:
+      - basic_auth: []
+      parameters:
+      - name: deal_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[latest]
+        in: query
+        required: false
+        description: Only show the latest Proposal
+        schema:
+          type: boolean
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Proposals
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: proposals
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            proposal_label:
+                              type: string
+                              example: Proposal Name
+                              nullable: true
+                              description: The name of the proposal
+                            calculated_metrics:
+                              type: object
+                              properties:
+                                net_effective_rent:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - properties:
+                                      magnitude:
+                                        example: 35
+                                      unit:
+                                        example: USD/sf/mo
+                                      unit_components:
+                                        properties:
+                                          period:
+                                            enum:
+                                            - mo
+                                            description: 'Possible values: ''mo'''
+                                    description: "The normalized value a tenant will pay per period to the landlord over the length of a\n                                lease considering Net Present Value. Returned in money/area/month units"
+                                ner_to_termination:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - properties:
+                                      magnitude:
+                                        example: 35
+                                      unit:
+                                        example: USD/sf/mo
+                                      unit_components:
+                                        properties:
+                                          period:
+                                            enum:
+                                            - mo
+                                            description: 'Possible values: ''mo'''
+                                    description: The NER in light of a termination right added to the proposal. Returned in money/area/month units
+                                ner_with_downtime:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - properties:
+                                      magnitude:
+                                        example: 35
+                                      unit:
+                                        example: USD/sf/mo
+                                      unit_components:
+                                        properties:
+                                          period:
+                                            enum:
+                                            - mo
+                                            description: 'Possible values: ''mo'''
+                                    description: The NER in light of a downtime included in the proposal. Returned in money/area/month units
+                                ner_vs_budget:
+                                  type: number
+                                  nullable: true
+                                  example: 1
+                                  description: Net Effective Rent as a percent of NER of budget
+                                ner_to_termination_vs_budget:
+                                  type: number
+                                  nullable: true
+                                  example: 1
+                                  description: '"NER to termination" as a percent of NER of the budget'
+                                net_present_value:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money'
+                                  - description: The present value of the net cash flow given the time value of money
+                                net_rent:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - properties:
+                                      magnitude:
+                                        example: 35
+                                      unit:
+                                        example: USD/sf/yr
+                                      unit_components:
+                                        properties:
+                                          period:
+                                            enum:
+                                            - yr
+                                            description: 'Possible values: ''yr'''
+                                    description: Total cash received from base rent + escalation - free rent. Returned in money/area/year units
+                                total_capital:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money'
+                                  - description: Total cash being paid out as part of costs associated with TI + BI + Other Fees + Commissions
+                                total_net_cash_flow:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money'
+                                  - description: Total cash inflows minus outflows per the terms over the lifetime of the lease
+                                total_base_rent:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money'
+                                  - description: Total base rent over the lifetime of the lease
+                                  deprecated: true
+                                total_escalated_rent_before_abatement:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money'
+                                  - description: Total base rent before abatement over the lifetime of the lease which includes the sum of base_rent + rent_escalation
+                            created_at:
+                              type: string
+                              format: date-time
+                            updated_at:
+                              type: string
+                              format: date-time
+                            entered_date:
+                              type: string
+                              format: date
+                            latest:
+                              type: boolean
+                            discount_rate:
+                              type: number
+                              nullable: true
+                              example: 0.08
+                            description:
+                              type: string
+                              nullable: true
+                              example: This is a proposal.
+                            proposal_date:
+                              type: string
+                              format: date
+                            proposal_type:
+                              type: string
+                              example: final
+                        relationships:
+                          type: object
+                          properties:
+                            deal:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deals
+                                      example: deals
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            deal_terms:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - deal_terms
+                                        example: deal_terms
+                            options:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - options_miscellaneous
+                                        - options_co_tenancy
+                                        - options_contraction
+                                        - options_encumberance
+                                        - options_exclusive_use
+                                        - options_purchase
+                                        - options_rent_review
+                                        - options_renewal
+                                        - options_expansion
+                                        - options_termination
+                                        example: options_miscellaneous
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/1/proposals
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/12345/proposals?page%5Bbefore%5D=MzE2NTI%253D
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/12345/proposals?page%5Bafter%5D=MzE2NjQ%253D
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deals-deal-id-proposals
+  /api/v1/proposals:
+    get:
+      summary: Fetches proposals
+      description: Contains details of a given proposal, including discount rate, proposal type, and description
+      tags:
+      - Proposals
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns list of Proposals
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: proposals
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            proposal_label:
+                              type: string
+                              example: Proposal Name
+                              nullable: true
+                              description: The name of the proposal
+                            calculated_metrics:
+                              type: object
+                              properties:
+                                net_effective_rent:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - properties:
+                                      magnitude:
+                                        example: 35
+                                      unit:
+                                        example: USD/sf/mo
+                                      unit_components:
+                                        properties:
+                                          period:
+                                            enum:
+                                            - mo
+                                            description: 'Possible values: ''mo'''
+                                    description: "The normalized value a tenant will pay per period to the landlord over the length of a\n                                lease considering Net Present Value. Returned in money/area/month units"
+                                ner_to_termination:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - properties:
+                                      magnitude:
+                                        example: 35
+                                      unit:
+                                        example: USD/sf/mo
+                                      unit_components:
+                                        properties:
+                                          period:
+                                            enum:
+                                            - mo
+                                            description: 'Possible values: ''mo'''
+                                    description: The NER in light of a termination right added to the proposal. Returned in money/area/month units
+                                ner_with_downtime:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - properties:
+                                      magnitude:
+                                        example: 35
+                                      unit:
+                                        example: USD/sf/mo
+                                      unit_components:
+                                        properties:
+                                          period:
+                                            enum:
+                                            - mo
+                                            description: 'Possible values: ''mo'''
+                                    description: The NER in light of a downtime included in the proposal. Returned in money/area/month units
+                                ner_vs_budget:
+                                  type: number
+                                  nullable: true
+                                  example: 1
+                                  description: Net Effective Rent as a percent of NER of budget
+                                ner_to_termination_vs_budget:
+                                  type: number
+                                  nullable: true
+                                  example: 1
+                                  description: '"NER to termination" as a percent of NER of the budget'
+                                net_present_value:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money'
+                                  - description: The present value of the net cash flow given the time value of money
+                                net_rent:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - properties:
+                                      magnitude:
+                                        example: 35
+                                      unit:
+                                        example: USD/sf/yr
+                                      unit_components:
+                                        properties:
+                                          period:
+                                            enum:
+                                            - yr
+                                            description: 'Possible values: ''yr'''
+                                    description: Total cash received from base rent + escalation - free rent. Returned in money/area/year units
+                                total_capital:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money'
+                                  - description: Total cash being paid out as part of costs associated with TI + BI + Other Fees + Commissions
+                                total_net_cash_flow:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money'
+                                  - description: Total cash inflows minus outflows per the terms over the lifetime of the lease
+                                total_base_rent:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money'
+                                  - description: Total base rent over the lifetime of the lease
+                                  deprecated: true
+                                total_escalated_rent_before_abatement:
+                                  allOf:
+                                  - $ref: '#/components/schemas/measure_money'
+                                  - description: Total base rent before abatement over the lifetime of the lease which includes the sum of base_rent + rent_escalation
+                            created_at:
+                              type: string
+                              format: date-time
+                            updated_at:
+                              type: string
+                              format: date-time
+                            entered_date:
+                              type: string
+                              format: date
+                            latest:
+                              type: boolean
+                            discount_rate:
+                              type: number
+                              nullable: true
+                              example: 0.08
+                            description:
+                              type: string
+                              nullable: true
+                              example: This is a proposal.
+                            proposal_date:
+                              type: string
+                              format: date
+                            proposal_type:
+                              type: string
+                              example: final
+                        relationships:
+                          type: object
+                          properties:
+                            deal:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deals
+                                      example: deals
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            deal_terms:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - deal_terms
+                                        example: deal_terms
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            options:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - options_miscellaneous
+                                        - options_co_tenancy
+                                        - options_contraction
+                                        - options_encumberance
+                                        - options_exclusive_use
+                                        - options_purchase
+                                        - options_rent_review
+                                        - options_renewal
+                                        - options_expansion
+                                        - options_termination
+                                        example: options_miscellaneous
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-proposals
+  /api/v1/proposals/{id}:
+    get:
+      summary: Retrieves specific proposal
+      description: Contains details of a given proposal, including discount rate, proposal type, and description
+      tags:
+      - Proposals
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested proposal if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: proposals
+                      id:
+                        type: string
+                        example: '1'
+                      attributes:
+                        type: object
+                        properties:
+                          proposal_label:
+                            type: string
+                            example: Proposal Name
+                            nullable: true
+                            description: The name of the proposal
+                          calculated_metrics:
+                            type: object
+                            properties:
+                              net_effective_rent:
+                                allOf:
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                                - properties:
+                                    magnitude:
+                                      example: 35
+                                    unit:
+                                      example: USD/sf/mo
+                                    unit_components:
+                                      properties:
+                                        period:
+                                          enum:
+                                          - mo
+                                          description: 'Possible values: ''mo'''
+                                  description: "The normalized value a tenant will pay per period to the landlord over the length of a\n                                lease considering Net Present Value. Returned in money/area/month units"
+                              ner_to_termination:
+                                allOf:
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                                - properties:
+                                    magnitude:
+                                      example: 35
+                                    unit:
+                                      example: USD/sf/mo
+                                    unit_components:
+                                      properties:
+                                        period:
+                                          enum:
+                                          - mo
+                                          description: 'Possible values: ''mo'''
+                                  description: The NER in light of a termination right added to the proposal. Returned in money/area/month units
+                              ner_with_downtime:
+                                allOf:
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                                - properties:
+                                    magnitude:
+                                      example: 35
+                                    unit:
+                                      example: USD/sf/mo
+                                    unit_components:
+                                      properties:
+                                        period:
+                                          enum:
+                                          - mo
+                                          description: 'Possible values: ''mo'''
+                                  description: The NER in light of a downtime included in the proposal. Returned in money/area/month units
+                              ner_vs_budget:
+                                type: number
+                                nullable: true
+                                example: 1
+                                description: Net Effective Rent as a percent of NER of budget
+                              ner_to_termination_vs_budget:
+                                type: number
+                                nullable: true
+                                example: 1
+                                description: '"NER to termination" as a percent of NER of the budget'
+                              net_present_value:
+                                allOf:
+                                - $ref: '#/components/schemas/measure_money'
+                                - description: The present value of the net cash flow given the time value of money
+                              net_rent:
+                                allOf:
+                                - $ref: '#/components/schemas/measure_money_area_period'
+                                - properties:
+                                    magnitude:
+                                      example: 35
+                                    unit:
+                                      example: USD/sf/yr
+                                    unit_components:
+                                      properties:
+                                        period:
+                                          enum:
+                                          - yr
+                                          description: 'Possible values: ''yr'''
+                                  description: Total cash received from base rent + escalation - free rent. Returned in money/area/year units
+                              total_capital:
+                                allOf:
+                                - $ref: '#/components/schemas/measure_money'
+                                - description: Total cash being paid out as part of costs associated with TI + BI + Other Fees + Commissions
+                              total_net_cash_flow:
+                                allOf:
+                                - $ref: '#/components/schemas/measure_money'
+                                - description: Total cash inflows minus outflows per the terms over the lifetime of the lease
+                              total_base_rent:
+                                allOf:
+                                - $ref: '#/components/schemas/measure_money'
+                                - description: Total base rent over the lifetime of the lease
+                                deprecated: true
+                              total_escalated_rent_before_abatement:
+                                allOf:
+                                - $ref: '#/components/schemas/measure_money'
+                                - description: Total base rent before abatement over the lifetime of the lease which includes the sum of base_rent + rent_escalation
+                          created_at:
+                            type: string
+                            format: date-time
+                          updated_at:
+                            type: string
+                            format: date-time
+                          entered_date:
+                            type: string
+                            format: date
+                          latest:
+                            type: boolean
+                          discount_rate:
+                            type: number
+                            nullable: true
+                            example: 0.08
+                          description:
+                            type: string
+                            nullable: true
+                            example: This is a proposal.
+                          proposal_date:
+                            type: string
+                            format: date
+                          proposal_type:
+                            type: string
+                            example: final
+                      relationships:
+                        type: object
+                        properties:
+                          deal:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - deals
+                                    example: deals
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+                          deal_terms:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deal_terms
+                                      example: deal_terms
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+                          options:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - options_miscellaneous
+                                      - options_co_tenancy
+                                      - options_contraction
+                                      - options_encumberance
+                                      - options_exclusive_use
+                                      - options_purchase
+                                      - options_rent_review
+                                      - options_renewal
+                                      - options_expansion
+                                      - options_termination
+                                      example: options_miscellaneous
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested proposal does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-proposals-id
+components:
+  schemas:
+    measure_money_area_period:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/area/period
+          example: money/area/period
+    measure_money:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

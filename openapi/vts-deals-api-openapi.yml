@@ -1,0 +1,1165 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Deals API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Deals
+paths:
+  /api/v1/deals:
+    get:
+      summary: Fetches deals
+      description: Contains an overview of a given deal, including requirements, stage, and deal type
+      tags:
+      - Deals
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Deals
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: deals
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            comment:
+                              type: string
+                              nullable: true
+                              example: This is a comment.
+                              deprecated: true
+                              description: This attribute is deprecated, please use the `Deal Comments` API endpoint
+                            created_at:
+                              type: string
+                              format: date-time
+                            competitive_set:
+                              type: string
+                              nullable: true
+                              example: 100 Main, $34/SF
+                            deal_type:
+                              type: string
+                              enum:
+                              - new
+                              - original
+                              - renewal
+                              - renewal_two
+                              - renewal_three
+                              - extension
+                              - expansion
+                              - termination
+                              - modification
+                              - sublease
+                              - license_agreement
+                              - storage
+                              - specialty
+                              - short_term_lease
+                              - other
+                              - relocation
+                              - rent_review
+                              - break
+                              - fixed_option
+                              example: new
+                            probability:
+                              type: number
+                              format: float
+                              minimum: 0
+                              maximum: 1
+                            brokers:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: number
+                                    example: '1'
+                                    description: Identifier of the broker agent to deal relationship
+                                  first_name:
+                                    type: string
+                                    example: Dweezil
+                                    description: The first name of the broker agent
+                                  last_name:
+                                    type: string
+                                    example: Zappa
+                                    description: The last name of the broker agent
+                                  name:
+                                    type: string
+                                    example: Dweezil Zappa
+                                    description: The full name of the broker agent
+                                  email:
+                                    type: string
+                                    example: zappa@vts.com
+                                    description: The email of the broker agent
+                                  phone_extension:
+                                    type: string
+                                    example: '123'
+                                    description: The phone extension of the broker agent
+                                  phone:
+                                    type: string
+                                    example: 123-456-7890
+                                    description: The phone number of the broker agent
+                                  company:
+                                    type: string
+                                    example: Rock Ltd.
+                                    description: The company the broker agent belongs to
+                              description: The broker agent associated with the deal
+                            contacts:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  name:
+                                    type: string
+                                    example: Moon Unit Zappa
+                                    description: The full name of the tenant contact
+                                  email:
+                                    type: string
+                                    example: moon.zappa@vts.com
+                                    description: The email of the tenant contact
+                                  phone:
+                                    type: string
+                                    example: 012-345-6789
+                                    description: The phone number of the tenant contact
+                                  company:
+                                    type: string
+                                    example: Stone Ltd.
+                                    description: The company the tenant contact belongs to
+                              description: The tenant contact associated with the deal
+                            requirements:
+                              type: object
+                              properties:
+                                commencement_date:
+                                  type: string
+                                  nullable: true
+                                  format: date
+                                inquiry_type:
+                                  type: string
+                                  nullable: true
+                                  enum:
+                                  - costar
+                                  - crexi
+                                  - email
+                                  - event
+                                  - internal_referral
+                                  - loop_net
+                                  - mailer
+                                  - marketing_website
+                                  - open_house
+                                  - other
+                                  - phone
+                                  - vts_marketplace
+                                  - null
+                                  example: costar
+                                requirement_size:
+                                  type: object
+                                  properties:
+                                    minimum:
+                                      type: number
+                                      nullable: true
+                                      example: 5000
+                                    maximum:
+                                      type: number
+                                      nullable: true
+                                      example: 10000
+                                    type:
+                                      type: string
+                                      pattern: area
+                                      example: area
+                                    unit:
+                                      type: string
+                                      enum:
+                                      - sf
+                                      - sm
+                                    unit_components:
+                                      type: object
+                                      properties:
+                                        area:
+                                          type: string
+                                          enum:
+                                          - sf
+                                          - sm
+                                          example: sf
+                                retail_deal_type:
+                                  type: string
+                                  nullable: true
+                                  enum:
+                                  - permanent
+                                  - specialty
+                                  - null
+                                  example: permanent
+                                space_type:
+                                  type: string
+                                  nullable: true
+                                  enum:
+                                  - office
+                                  - retail
+                                  - industrial_warehouse
+                                  - telecom
+                                  - storage
+                                  - flex
+                                  - parking
+                                  - amenities
+                                  - rooftop
+                                  - other
+                                  - lab
+                                  - manufacturing
+                                  - residential
+                                  - medical_office
+                                  - education
+                                  - restaurant
+                                  - leisure
+                                  - unspecified
+                                  - null
+                                target_locations:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      locality:
+                                        type: string
+                                        example: New York
+                                      region:
+                                        type: string
+                                        example: NEW YORK
+                                      postal_code:
+                                        type: string
+                                        example: '10001'
+                                      country:
+                                        type: string
+                                        example: United States
+                                      formatted:
+                                        type: string
+                                        example: New York, NEW YORK 10001 United States
+                                target_rent:
+                                  type: object
+                                  properties:
+                                    minimum:
+                                      type: number
+                                      nullable: true
+                                      example: 5000
+                                      description: Minimum amount of the requirement range
+                                    maximum:
+                                      type: number
+                                      nullable: true
+                                      example: 10000
+                                      description: Maximum amount of the requirement range
+                                    type:
+                                      type: string
+                                      pattern: money
+                                      example: money
+                                      description: Type of unit being measured
+                                    unit:
+                                      type: string
+                                      pattern: '...'
+                                      description: ISO 4217 currency code
+                                      example: USD
+                                    unit_components:
+                                      type: object
+                                      properties:
+                                        money:
+                                          type: string
+                                          pattern: '...'
+                                          example: USD
+                            stage:
+                              type: string
+                              enum:
+                              - tenants_in_the_market
+                              - initial_inquiry
+                              - preview
+                              - tour
+                              - proposal
+                              - loi
+                              - legal
+                              - lease_out
+                              - lease_executed
+                              - dead_deal
+                              - idle
+                              example: loi
+                            tenant_info:
+                              type: object
+                              properties:
+                                name:
+                                  format: string
+                                  example: ACME Tenant Inc.
+                                undisclosed:
+                                  format: boolean
+                                current_lease:
+                                  type: object
+                                  properties:
+                                    current_address:
+                                      type: string
+                                      nullable: true
+                                      example: 123 Park Avenue
+                                    current_rent:
+                                      $ref: '#/components/schemas/measure_money'
+                                    current_size:
+                                      $ref: '#/components/schemas/measure_size'
+                                    expiration_date:
+                                      type: string
+                                      nullable: true
+                                      format: date
+                                      example: '2025-12-31'
+                            total_size:
+                              $ref: '#/components/schemas/measure_size'
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: Changes when any financials on the terms of any proposals on the deal, the terms or proposals themselves, spaces on the deal, or any options or their targets (i.e. targeted spaces, floors, assets, etc) associated to proposals belonging to the deal are updated
+                            is_private:
+                              type: boolean
+                              nullable: true
+                              description: True when the deal has been configured to only allow specified users to view the deal
+                        relationships:
+                          type: object
+                          properties:
+                            deal_tours:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - deal_tours
+                                        example: deal_tours
+                            assets:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - assets
+                                        - multi_building_assets
+                                        example: assets
+                            latest_proposal:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - proposals
+                                      example: proposals
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            comparative_lease_term:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - lease_terms
+                                      example: lease_terms
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            created_by:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - users
+                                      example: users
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            deal_leads:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - users
+                                        example: users
+                            spaces:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - spaces
+                                        example: spaces
+                            tenant:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - tenants
+                                      example: tenants
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            tenant_industry:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - tenant_industries
+                                      example: tenant_industries
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            coordination_projects:
+                              type: object
+                              properties:
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals?page%5Bbefore%5D=MzE2NTI%253D
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals?page%5Bafter%5D=MzE2NjQ%253D
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deals
+  /api/v1/deals/{id}:
+    get:
+      summary: Retrieves specific deal
+      description: Contains an overview of a given deal, including requirements, stage, and deal type
+      tags:
+      - Deals
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested deal if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: deals
+                      id:
+                        type: string
+                        example: '1'
+                      attributes:
+                        type: object
+                        properties:
+                          comment:
+                            type: string
+                            nullable: true
+                            example: This is a comment.
+                            deprecated: true
+                            description: This attribute is deprecated, please use the `Deal Comments` API endpoint
+                          created_at:
+                            type: string
+                            format: date-time
+                          competitive_set:
+                            type: string
+                            nullable: true
+                            example: 100 Main, $34/SF
+                          deal_type:
+                            type: string
+                            enum:
+                            - new
+                            - original
+                            - renewal
+                            - renewal_two
+                            - renewal_three
+                            - extension
+                            - expansion
+                            - termination
+                            - modification
+                            - sublease
+                            - license_agreement
+                            - storage
+                            - specialty
+                            - short_term_lease
+                            - other
+                            - relocation
+                            - rent_review
+                            - break
+                            - fixed_option
+                            example: new
+                          probability:
+                            type: number
+                            format: float
+                            minimum: 0
+                            maximum: 1
+                          brokers:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: number
+                                  example: '1'
+                                  description: Identifier of the broker agent to deal relationship
+                                first_name:
+                                  type: string
+                                  example: Dweezil
+                                  description: The first name of the broker agent
+                                last_name:
+                                  type: string
+                                  example: Zappa
+                                  description: The last name of the broker agent
+                                name:
+                                  type: string
+                                  example: Dweezil Zappa
+                                  description: The full name of the broker agent
+                                email:
+                                  type: string
+                                  example: zappa@vts.com
+                                  description: The email of the broker agent
+                                phone_extension:
+                                  type: string
+                                  example: '123'
+                                  description: The phone extension of the broker agent
+                                phone:
+                                  type: string
+                                  example: 123-456-7890
+                                  description: The phone number of the broker agent
+                                company:
+                                  type: string
+                                  example: Rock Ltd.
+                                  description: The company the broker agent belongs to
+                            description: The broker agent associated with the deal
+                          contacts:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  example: Moon Unit Zappa
+                                  description: The full name of the tenant contact
+                                email:
+                                  type: string
+                                  example: moon.zappa@vts.com
+                                  description: The email of the tenant contact
+                                phone:
+                                  type: string
+                                  example: 012-345-6789
+                                  description: The phone number of the tenant contact
+                                company:
+                                  type: string
+                                  example: Stone Ltd.
+                                  description: The company the tenant contact belongs to
+                            description: The tenant contact associated with the deal
+                          requirements:
+                            type: object
+                            properties:
+                              commencement_date:
+                                type: string
+                                nullable: true
+                                format: date
+                              inquiry_type:
+                                type: string
+                                nullable: true
+                                enum:
+                                - costar
+                                - crexi
+                                - email
+                                - event
+                                - internal_referral
+                                - loop_net
+                                - mailer
+                                - marketing_website
+                                - open_house
+                                - other
+                                - phone
+                                - vts_marketplace
+                                - null
+                                example: costar
+                              requirement_size:
+                                type: object
+                                properties:
+                                  minimum:
+                                    type: number
+                                    nullable: true
+                                    example: 5000
+                                  maximum:
+                                    type: number
+                                    nullable: true
+                                    example: 10000
+                                  type:
+                                    type: string
+                                    pattern: area
+                                    example: area
+                                  unit:
+                                    type: string
+                                    enum:
+                                    - sf
+                                    - sm
+                                  unit_components:
+                                    type: object
+                                    properties:
+                                      area:
+                                        type: string
+                                        enum:
+                                        - sf
+                                        - sm
+                                        example: sf
+                              retail_deal_type:
+                                type: string
+                                nullable: true
+                                enum:
+                                - permanent
+                                - specialty
+                                - null
+                                example: permanent
+                              space_type:
+                                type: string
+                                nullable: true
+                                enum:
+                                - office
+                                - retail
+                                - industrial_warehouse
+                                - telecom
+                                - storage
+                                - flex
+                                - parking
+                                - amenities
+                                - rooftop
+                                - other
+                                - lab
+                                - manufacturing
+                                - residential
+                                - medical_office
+                                - education
+                                - restaurant
+                                - leisure
+                                - unspecified
+                                - null
+                              target_locations:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    locality:
+                                      type: string
+                                      example: New York
+                                    region:
+                                      type: string
+                                      example: NEW YORK
+                                    postal_code:
+                                      type: string
+                                      example: '10001'
+                                    country:
+                                      type: string
+                                      example: United States
+                                    formatted:
+                                      type: string
+                                      example: New York, NEW YORK 10001 United States
+                              target_rent:
+                                type: object
+                                properties:
+                                  minimum:
+                                    type: number
+                                    nullable: true
+                                    example: 5000
+                                    description: Minimum amount of the requirement range
+                                  maximum:
+                                    type: number
+                                    nullable: true
+                                    example: 10000
+                                    description: Maximum amount of the requirement range
+                                  type:
+                                    type: string
+                                    pattern: money
+                                    example: money
+                                    description: Type of unit being measured
+                                  unit:
+                                    type: string
+                                    pattern: '...'
+                                    description: ISO 4217 currency code
+                                    example: USD
+                                  unit_components:
+                                    type: object
+                                    properties:
+                                      money:
+                                        type: string
+                                        pattern: '...'
+                                        example: USD
+                          stage:
+                            type: string
+                            enum:
+                            - tenants_in_the_market
+                            - initial_inquiry
+                            - preview
+                            - tour
+                            - proposal
+                            - loi
+                            - legal
+                            - lease_out
+                            - lease_executed
+                            - dead_deal
+                            - idle
+                            example: loi
+                          tenant_info:
+                            type: object
+                            properties:
+                              name:
+                                format: string
+                                example: ACME Tenant Inc.
+                              undisclosed:
+                                format: boolean
+                              current_lease:
+                                type: object
+                                properties:
+                                  current_address:
+                                    type: string
+                                    nullable: true
+                                    example: 123 Park Avenue
+                                  current_rent:
+                                    $ref: '#/components/schemas/measure_money'
+                                  current_size:
+                                    $ref: '#/components/schemas/measure_size'
+                                  expiration_date:
+                                    type: string
+                                    nullable: true
+                                    format: date
+                                    example: '2025-12-31'
+                          total_size:
+                            $ref: '#/components/schemas/measure_size'
+                          updated_at:
+                            type: string
+                            format: date-time
+                            description: Changes when any financials on the terms of any proposals on the deal, the terms or proposals themselves, spaces on the deal, or any options or their targets (i.e. targeted spaces, floors, assets, etc) associated to proposals belonging to the deal are updated
+                          is_private:
+                            type: boolean
+                            nullable: true
+                            description: True when the deal has been configured to only allow specified users to view the deal
+                      relationships:
+                        type: object
+                        properties:
+                          deal_tours:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deal_tours
+                                      example: deal_tours
+                          assets:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - assets
+                                      - multi_building_assets
+                                      example: assets
+                          latest_proposal:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - proposals
+                                    example: proposals
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+                          comparative_lease_term:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - lease_terms
+                                    example: lease_terms
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+                          created_by:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - users
+                                    example: users
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+                          deal_leads:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - users
+                                      example: users
+                          spaces:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - spaces
+                                      example: spaces
+                          tenant:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - tenants
+                                    example: tenants
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+                          tenant_industry:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - tenant_industries
+                                    example: tenant_industries
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+                          coordination_projects:
+                            type: object
+                            properties:
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested deal does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deals-id
+components:
+  schemas:
+    measure_size:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
+    measure_money:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

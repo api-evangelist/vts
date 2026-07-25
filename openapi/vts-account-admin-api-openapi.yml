@@ -1,0 +1,1483 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Account Admin
+paths:
+  /api/v1/account_admin/approval_settings:
+    get:
+      summary: Fetches approval settings
+      tags:
+      - Account Admin
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        description: 'The number of items returned for any one page (default: 10, max: 100)'
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        description: Show records before the given page indicator
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        description: Show records after the given page indicator
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Approval settings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        id:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: New Approval Setting
+                            deal_types:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 1
+                                  name:
+                                    type: string
+                                    example: New Deal
+                                  created_at:
+                                    type: string
+                                    format: date-time
+                                  updated_at:
+                                    type: string
+                                    format: date-time
+                            space_types:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 1
+                                  name:
+                                    type: string
+                                    example: Education
+                                  created_at:
+                                    type: string
+                                    format: date-time
+                                  updated_at:
+                                    type: string
+                                    format: date-time
+                        relationships:
+                          description: The objects linked to a approval settings
+                          type: object
+                          properties:
+                            asset_group:
+                              type: object
+                              properties:
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/account_admin/asset_groups?id=1
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: asset_groups
+                                    id:
+                                      type: string
+                                      example: '1'
+                            watcher:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      type:
+                                        type: string
+                                        example: users
+                                      id:
+                                        type: string
+                                        example: '1'
+                            approver_slots:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      type:
+                                        type: string
+                                        example: approver_slots
+                                      id:
+                                        type: string
+                                        example: '1'
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/account_admin/approver_slots?filter%5Bapproval_setting_id%5D=1
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/approval_settings?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/approval_settings?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Approval Setting
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/approval_settings?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Approval Setting
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-account-admin-approval-settings
+  /api/v1/account_admin/approver_rules:
+    get:
+      summary: Fetches approver rules
+      tags:
+      - Account Admin
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        description: 'The number of items returned for any one page (default: 10, max: 100)'
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        description: Show records before the given page indicator
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        description: Show records after the given page indicator
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Approver Rules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        id:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            order_number:
+                              type: number
+                              example: 1
+                            rule_type:
+                              type: string
+                              enum:
+                              - above_budget
+                              - below_budget
+                              - capital_variance_above_budget
+                              - cost
+                              - deal_term_greater_than
+                              - deal_term_less_than
+                              - lease_infos
+                              - ner_to_break_below_budget
+                              - options_and_rights
+                              - rentable_size
+                              - size_greater_than
+                              - size_less_than
+                              - total_capital
+                              - total_capital_less_than
+                              - year_one_total_rent
+                              example: above_budget
+                              description: Represents the type of the approver rule as stored in the database.
+                            rule_name:
+                              type: string
+                              example: NER Variance Above Budget
+                              description: Represents a user-friendly label or name for the approver rule type.
+                            condition:
+                              type: string
+                              enum:
+                              - and
+                              - or
+                              example: and
+                            threshold:
+                              type: object
+                              properties:
+                                value:
+                                  type: number
+                                  example: 1
+                                unit:
+                                  type: string
+                                  example: '%'
+                              nullable: true
+                            right_types:
+                              type: array
+                              items:
+                                type: string
+                                example: audit rights
+                                enum:
+                                - audit rights
+                                - cap on rates
+                                - co-tenancy
+                                - contraction
+                                - exclusive use
+                                - generator rights
+                                - go dark
+                                - kick out
+                                - landlord & tenant act 1954
+                                - make good
+                                - must lease
+                                - other
+                                - parking
+                                - purchase
+                                - radius
+                                - relocation
+                                - rent review
+                                - rofn
+                                - set off rights
+                                - signage
+                                - special provisions
+                                - storage
+                                - sublease
+                                - use
+                                - break
+                                - expansion
+                                - renewal
+                                - rights to terminate
+                                - rofo
+                                - rofr
+                                description: The type of the right
+                              nullable: true
+                            lease_info_types:
+                              type: array
+                              items:
+                                type: string
+                                example: guarantor
+                                enum:
+                                - guarantor
+                                - tenant notice info
+                                - lease drafter
+                                - certificate of insurance
+                                - development impact
+                                - other
+                                description: The type of the lease info
+                              nullable: true
+                        relationships:
+                          description: The objects linked to a approver rules
+                          type: object
+                          properties:
+                            approver_slot:
+                              type: object
+                              properties:
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/account_admin/approver_slots/1
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: approver_slots
+                                    id:
+                                      type: string
+                                      example: '1'
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/approver_rules?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/approver_rules?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Approver Rules
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/approver_rules?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Approver Rules
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-account-admin-approver-rules
+  /api/v1/account_admin/approver_slots:
+    get:
+      summary: Fetches approver slots
+      tags:
+      - Account Admin
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        description: 'The number of items returned for any one page (default: 10, max: 100)'
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        description: Show records before the given page indicator
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        description: Show records after the given page indicator
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Approver Slots
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        id:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            description:
+                              type: string
+                              example: Approver Slots Description
+                            order_number:
+                              type: number
+                              example: 1
+                        relationships:
+                          description: The objects linked to a approver slots
+                          type: object
+                          properties:
+                            approver:
+                              type: object
+                              properties:
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/users/1
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: users
+                                    id:
+                                      type: string
+                                      example: '1'
+                            approver_rules:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      type:
+                                        type: string
+                                        example: approver_rules
+                                      id:
+                                        type: string
+                                        example: '1'
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/account_admin/approver_rules?filter%5Bapprover_slot_id%5D=1
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/approver_slots?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/approver_slots?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Approver Slots
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/approver_slots?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Approver Slots
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-account-admin-approver-slots
+  /api/v1/account_admin/approver_slots/{id}:
+    get:
+      summary: Retrieves specific approver slots
+      tags:
+      - Account Admin
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested approver slot if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      id:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          description:
+                            type: string
+                            example: Approver Slots Description
+                          order_number:
+                            type: number
+                            example: 1
+                      relationships:
+                        description: The objects linked to a approver slots
+                        type: object
+                        properties:
+                          approver:
+                            type: object
+                            properties:
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    example: https://api.vts.com/api/v1/users/1
+                              data:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: users
+                                  id:
+                                    type: string
+                                    example: '1'
+                          approver_rules:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: approver_rules
+                                    id:
+                                      type: string
+                                      example: '1'
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    example: https://api.vts.com/api/v1/account_admin/approver_rules?filter%5Bapprover_slot_id%5D=1
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested approver slot does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-account-admin-approver-slots-id
+  /api/v1/account_admin/asset_groups:
+    get:
+      summary: Fetches asset groups
+      tags:
+      - Account Admin
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        description: 'The number of items returned for any one page (default: 10, max: 100)'
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        description: Show records before the given page indicator
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        description: Show records after the given page indicator
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Asset Groups
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        id:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: New Deal
+                        relationships:
+                          description: The objects linked to a Asset Group
+                          type: object
+                          properties:
+                            assets:
+                              type: object
+                              properties:
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/assets?filter%5Basset_group_id%5D=1
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: 100
+                                      type:
+                                        type: string
+                                        example: assets
+                            task_settings:
+                              type: object
+                              properties:
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/account_admin/task_settings?filter%5Basset_group_id%5D=1
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: 100
+                                      type:
+                                        type: string
+                                        example: task_settings
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/asset_groups?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/asset_groups?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Asset Group
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/asset_groups?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Asset Group
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-account-admin-asset-groups
+  /api/v1/account_admin/asset_groups/{id}:
+    get:
+      summary: Retrieves specific asset groups
+      tags:
+      - Account Admin
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested asset group if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      id:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: New Deal
+                      relationships:
+                        description: The objects linked to a Asset Group
+                        type: object
+                        properties:
+                          assets:
+                            type: object
+                            properties:
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    example: https://api.vts.com/api/v1/assets?filter%5Basset_group_id%5D=1
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: 100
+                                    type:
+                                      type: string
+                                      example: assets
+                          task_settings:
+                            type: object
+                            properties:
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    example: https://api.vts.com/api/v1/account_admin/task_settings?filter%5Basset_group_id%5D=1
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: 100
+                                    type:
+                                      type: string
+                                      example: task_settings
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested asset group does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-account-admin-asset-groups-id
+  /api/v1/account_admin/task_settings:
+    get:
+      summary: Fetches task settings
+      tags:
+      - Account Admin
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        description: 'The number of items returned for any one page (default: 10, max: 100)'
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        description: Show records before the given page indicator
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        description: Show records after the given page indicator
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Task settings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        id:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: New Task Setting
+                            deal_types:
+                              type: array
+                              items:
+                                type: string
+                                example: renewal
+                            space_types:
+                              type: array
+                              items:
+                                type: string
+                                example: amenities
+                        relationships:
+                          description: The objects linked to a task settings
+                          type: object
+                          properties:
+                            asset_group:
+                              type: object
+                              properties:
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/account_admin/asset_groups?id=1
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: asset_groups
+                                    id:
+                                      type: string
+                                      example: '1'
+                            task_templates:
+                              type: object
+                              properties:
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/account_admin/task_templates?filter%5Btask_setting_id%5D=1
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      type:
+                                        type: string
+                                        example: task_templates
+                                      id:
+                                        type: string
+                                        example: '1'
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/task_settings?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/task_settings?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Task Setting
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/task_settings?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Task Setting
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-account-admin-task-settings
+  /api/v1/account_admin/task_settings/{id}:
+    get:
+      summary: Retrieves specific task settings
+      tags:
+      - Account Admin
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested task setting if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      id:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: New Task Setting
+                          deal_types:
+                            type: array
+                            items:
+                              type: string
+                              example: renewal
+                          space_types:
+                            type: array
+                            items:
+                              type: string
+                              example: amenities
+                      relationships:
+                        description: The objects linked to a task settings
+                        type: object
+                        properties:
+                          asset_group:
+                            type: object
+                            properties:
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    example: https://api.vts.com/api/v1/account_admin/asset_groups?id=1
+                              data:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: asset_groups
+                                  id:
+                                    type: string
+                                    example: '1'
+                          task_templates:
+                            type: object
+                            properties:
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    example: https://api.vts.com/api/v1/account_admin/task_templates?filter%5Btask_setting_id%5D=1
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: task_templates
+                                    id:
+                                      type: string
+                                      example: '1'
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested task setting does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-account-admin-task-settings-id
+  /api/v1/account_admin/task_templates:
+    get:
+      summary: Fetches task templates
+      tags:
+      - Account Admin
+      security:
+      - basic_auth: []
+      parameters:
+      - name: filter[task_setting_id]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        required: false
+        description: 'The number of items returned for any one page (default: 10, max: 100)'
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        description: Show records before the given page indicator
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        description: Show records after the given page indicator
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Task templates
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        id:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            description:
+                              type: string
+                              example: Setting Name
+                            deal_stage:
+                              type: object
+                              properties:
+                                status:
+                                  type: string
+                                  example: initial_inquiry
+                                display_name:
+                                  type: string
+                                  example: Inquiry
+                            order_number:
+                              type: integer
+                              example: 1
+                            required:
+                              type: boolean
+                        relationships:
+                          description: The objects linked to a task templates
+                          type: object
+                          properties:
+                            assignee:
+                              type: object
+                              properties:
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/users/1
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: users
+                                    id:
+                                      type: string
+                                      example: '1'
+                              nullable: true
+                            task_setting:
+                              type: object
+                              properties:
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/account_admin/task_settings/1
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: task_settings
+                                    id:
+                                      type: string
+                                      example: '1'
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/task_templates?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/task_templates?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Task Template
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/task_templates?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Task Template
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-account-admin-task-templates
+  /api/v1/account_admin/user_asset_permissions:
+    get:
+      summary: Fetches user asset permissions
+      description: Contains the user asset permissions in your portfolio.
+      tags:
+      - Account Admin
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns list of User Asset Permissions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: user_asset_permissions
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            permission:
+                              type: string
+                              example: user_admin
+                            user_email:
+                              type: string
+                              example: johndoe@example.com
+                            asset_address:
+                              type: string
+                              example: 123 Park Avenue
+                        relationships:
+                          type: object
+                          properties:
+                            asset:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: 100
+                                    type:
+                                      type: string
+                                      example: assets
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/assets/1
+                            user:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: 100
+                                    type:
+                                      type: string
+                                      example: user
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/users/1
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/user_asset_permissions
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/user_asset_permissions?page%5Bbefore%5D=MzE2NTI%253D
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/user_asset_permissions?page%5Bafter%5D=MzE2NjQ%253D
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-account-admin-user-asset-permissions
+  /api/v1/account_admin/user_space_permissions:
+    get:
+      summary: Fetches user space permissions
+      description: Contains the user space permissions in your portfolio.
+      tags:
+      - Account Admin
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns list of User Spaces Permissions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: user_space_permissions
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            permission:
+                              type: string
+                              example: user_admin
+                            team_override:
+                              type: boolean
+                            user_email:
+                              type: string
+                              example: johndoe@example.com
+                            asset_address:
+                              type: string
+                              example: 123 Park Avenue
+                            suite_name:
+                              type: string
+                              nullable: true
+                        relationships:
+                          type: object
+                          properties:
+                            asset:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: 100
+                                    type:
+                                      type: string
+                                      example: assets
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/assets/1
+                            space:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: 100
+                                    type:
+                                      type: string
+                                      example: spaces_office
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/spaces/1
+                            user:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: 100
+                                    type:
+                                      type: string
+                                      example: user
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/users/1
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/user_space_permissions
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/user_space_permissions?page%5Bbefore%5D=MzE2NTI%253D
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/account_admin/user_space_permissions?page%5Bafter%5D=MzE2NjQ%253D
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-account-admin-user-space-permissions
+components:
+  schemas:
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

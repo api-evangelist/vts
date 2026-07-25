@@ -1,0 +1,353 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Tenant Updates API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Tenant Updates
+paths:
+  /api/v1/tenant_updates:
+    get:
+      summary: Fetches tenant updates
+      description: Contains updates to a given tenant. Examples include comments, update type, and relationship updates
+      tags:
+      - Tenant Updates
+      security:
+      - basic_auth: []
+      parameters:
+      - name: filter[property_id]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[tenant_id]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns a possibly empty list of tenant_updates that match the provided parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '1'
+                        type:
+                          type: string
+                          example: tenant_updates
+                        attributes:
+                          type: object
+                          properties:
+                            created_at:
+                              type: string
+                              nullable: false
+                              format: date-time
+                            updated_at:
+                              type: string
+                              nullable: false
+                              format: date-time
+                            important:
+                              type: boolean
+                              nullable: false
+                            comment:
+                              type: string
+                              nullable: false
+                              example: This is a comment.
+                            interaction_type:
+                              type: string
+                              nullable: false
+                              enum:
+                              - email
+                              - phone_call
+                              - meeting
+                              - other
+                              - event_entertainment
+                              - rent_relief
+                              - renewal_discussion
+                              - sustainability_conversation
+                              description: The medium/circumstance behind a tenant update — phone call, meeting, etc.
+                            interaction_date:
+                              type: string
+                              format: date
+                              example: '2021-03-01'
+                              description: The date interaction took place
+                            sentiment:
+                              type: string
+                              nullable: true
+                              enum:
+                              - negative
+                              - neutral
+                              - positive
+                              - null
+                        relationships:
+                          type: object
+                          properties:
+                            owner:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - users
+                                      example: users
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            tenant:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - tenants
+                                      example: tenants
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            asset:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - assets
+                                      example: assets
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            contact:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - tenant_contacts
+                                      example: tenant_contacts
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                              deprecated: true
+                            contacts:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - tenant_contacts
+                                        example: tenant_contacts
+                            created_by:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - users
+                                      example: users
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/tenant_updates
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/tenant_updates?page%5Bbefore%5D=MzE2NTI%253D
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/tenant_updates?page%5Bafter%5D=MzE2NjQ%253D
+                    required:
+                    - self
+                  included:
+                    type: array
+                    items:
+                      allOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            example: users
+                          id:
+                            type: string
+                            example: '1'
+                            description: The ID of the user
+                          attributes:
+                            type: object
+                            properties:
+                              first_name:
+                                type: string
+                                example: John
+                                description: First name of user
+                              last_name:
+                                type: string
+                                example: Doe
+                                description: Last name of user
+                              email:
+                                type: string
+                                example: johndoe@example.com
+                                description: Email of the user
+                              phone:
+                                type: string
+                                nullable: true
+                                example: '1234567890'
+                                description: Phone number of the user
+                              phone_extension:
+                                type: string
+                                nullable: true
+                                example: '1234'
+                                description: Phone extension of the user
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '1'
+                          type:
+                            type: string
+                            example: tenant_contact
+                          attributes:
+                            type: object
+                            description: Refer to https://readme.vts.com/reference/get_api-v1-tenant-contacts for a description of the resources returned here
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-tenant-updates
+components:
+  schemas:
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

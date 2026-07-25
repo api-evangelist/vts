@@ -1,0 +1,715 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Approvals API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Approvals
+paths:
+  /api/v1/deal_approvals:
+    get:
+      summary: Fetches approvals
+      tags:
+      - Approvals
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        description: 'The number of items returned for any one page (default: 10, max: 100)'
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        description: Show records before the given page indicator
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        description: Show records after the given page indicator
+        schema:
+          type: string
+      - name: filter[latest]
+        in: query
+        required: false
+        description: Only show Approvals for the latest Proposal
+        schema:
+          type: boolean
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Approvals
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: approvals
+                        id:
+                          type: string
+                          example: '1'
+                          description: The ID of the approval
+                        attributes:
+                          description: Attributes for the approval
+                          type: object
+                          properties:
+                            requester_comment:
+                              type: string
+                              example: This is a comment
+                              description: Any comments made by the approval requester
+                            requested_at:
+                              type: string
+                              format: date-time
+                              description: The date-time the approval was requested at
+                            active:
+                              type: boolean
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this approval was created
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this approval was last updated
+                            recommendation:
+                              type: string
+                              nullable: true
+                              description: Any suggestions for handling the approval request
+                            approvers:
+                              description: Information about the specific approval step requested
+                              type: array
+                              items:
+                                description: Information for an approval step
+                                type: object
+                                properties:
+                                  step_number:
+                                    type: integer
+                                    example: 0
+                                    description: The number of the approval step
+                                  description:
+                                    type: string
+                                    example: A description for the approval step
+                                  status:
+                                    type: string
+                                    enum:
+                                    - pending
+                                    - approved
+                                    - rejected
+                                    - revision_requested
+                                    description: 'The status of the approval step. Possible values: pending, approved, rejected, revision_requested'
+                                  reviewed_at:
+                                    type: string
+                                    format: date-time
+                                    nullable: true
+                                    description: The date-time the approval step was reviewed at - null if not reviewed yet
+                                  comment:
+                                    type: string
+                                    example: This is a comment
+                                    description: Any comments associated with the approval step
+                                  approver_user_id:
+                                    type: integer
+                                    example: 1
+                                    description: The user id of the user assigned to approve the approval step
+                        relationships:
+                          description: The objects linked to an approval step
+                          type: object
+                          properties:
+                            deal:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deals
+                                      example: deals
+                            requester:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - users
+                                      example: users
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            proposal:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - proposals
+                                      example: proposals
+                            approvers:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - users
+                                        example: users
+                  included:
+                    type: array
+                    items:
+                      type: object
+                      description: User information for the proposal approvers
+                      properties:
+                        type:
+                          type: string
+                          example: users
+                        id:
+                          type: string
+                          example: '1'
+                          description: The ID of the user
+                        attributes:
+                          description: User attributes for a specific approver
+                          type: object
+                          properties:
+                            first_name:
+                              type: string
+                              example: John
+                              description: Approver's first name
+                            last_name:
+                              type: string
+                              example: Doe
+                              description: Approver's last name
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/approvals?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/approvals?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Approvals
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/approvals?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Approvals
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deal-approvals
+  /api/v1/deal_approvals/{id}:
+    get:
+      summary: Retrieves specific approvals
+      tags:
+      - Approvals
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested approval if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: approvals
+                      id:
+                        type: string
+                        example: '1'
+                        description: The ID of the approval
+                      attributes:
+                        description: Attributes for the approval
+                        type: object
+                        properties:
+                          requester_comment:
+                            type: string
+                            example: This is a comment
+                            description: Any comments made by the approval requester
+                          requested_at:
+                            type: string
+                            format: date-time
+                            description: The date-time the approval was requested at
+                          active:
+                            type: boolean
+                          created_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this approval was created
+                          updated_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this approval was last updated
+                          recommendation:
+                            type: string
+                            nullable: true
+                            description: Any suggestions for handling the approval request
+                          approvers:
+                            description: Information about the specific approval step requested
+                            type: array
+                            items:
+                              description: Information for an approval step
+                              type: object
+                              properties:
+                                step_number:
+                                  type: integer
+                                  example: 0
+                                  description: The number of the approval step
+                                description:
+                                  type: string
+                                  example: A description for the approval step
+                                status:
+                                  type: string
+                                  enum:
+                                  - pending
+                                  - approved
+                                  - rejected
+                                  - revision_requested
+                                  description: 'The status of the approval step. Possible values: pending, approved, rejected, revision_requested'
+                                reviewed_at:
+                                  type: string
+                                  format: date-time
+                                  nullable: true
+                                  description: The date-time the approval step was reviewed at - null if not reviewed yet
+                                comment:
+                                  type: string
+                                  example: This is a comment
+                                  description: Any comments associated with the approval step
+                                approver_user_id:
+                                  type: integer
+                                  example: 1
+                                  description: The user id of the user assigned to approve the approval step
+                      relationships:
+                        description: The objects linked to an approval step
+                        type: object
+                        properties:
+                          deal:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - deals
+                                    example: deals
+                          requester:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - users
+                                    example: users
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+                          proposal:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - proposals
+                                    example: proposals
+                          approvers:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - users
+                                      example: users
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested approval does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deal-approvals-id
+  /api/v1/deals/{deal_id}/approvals:
+    get:
+      summary: Fetches deal approvals
+      tags:
+      - Approvals
+      security:
+      - basic_auth: []
+      parameters:
+      - name: deal_id
+        in: path
+        required: true
+        description: ID of the deal containing the approval
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        required: false
+        description: 'The number of items returned for any one page (default: 10, max: 100)'
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        description: Show records before the given page indicator
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        description: Show records after the given page indicator
+        schema:
+          type: string
+      - name: filter[latest]
+        in: query
+        required: false
+        description: Only show Approvals for the latest Proposal
+        schema:
+          type: boolean
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Deal Approvals
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: approvals
+                        id:
+                          type: string
+                          example: '1'
+                          description: The ID of the approval
+                        attributes:
+                          description: Attributes for the approval
+                          type: object
+                          properties:
+                            requester_comment:
+                              type: string
+                              example: This is a comment
+                              description: Any comments made by the approval requester
+                            requested_at:
+                              type: string
+                              format: date-time
+                              description: The date-time the approval was requested at
+                            active:
+                              type: boolean
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this approval was created
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this approval was last updated
+                            approvers:
+                              description: Information about the specific approval step requested
+                              type: array
+                              items:
+                                description: Information for an approval step
+                                type: object
+                                properties:
+                                  step_number:
+                                    type: integer
+                                    example: 0
+                                    description: The number of the approval step
+                                  description:
+                                    type: string
+                                    example: A description for the approval step
+                                  status:
+                                    type: string
+                                    enum:
+                                    - pending
+                                    - approved
+                                    - rejected
+                                    - revision_requested
+                                    description: 'The status of the approval step. Possible values: pending, approved, rejected, revision_requested'
+                                  reviewed_at:
+                                    type: string
+                                    format: date-time
+                                    nullable: true
+                                    description: The date-time the approval step was reviewed at - null if not reviewed yet
+                                  comment:
+                                    type: string
+                                    example: This is a comment
+                                    description: Any comments associated with the approval step
+                                  approver_user_id:
+                                    type: integer
+                                    example: 1
+                                    description: The user id of the user assigned to approve the approval step
+                        relationships:
+                          description: The objects linked to an approval step
+                          type: object
+                          properties:
+                            deal:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deals
+                                      example: deals
+                            requester:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - users
+                                      example: users
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            proposal:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - proposals
+                                      example: proposals
+                            approvers:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - users
+                                        example: users
+                  included:
+                    type: array
+                    items:
+                      type: object
+                      description: User information for the proposal approvers
+                      properties:
+                        type:
+                          type: string
+                          example: users
+                        id:
+                          type: string
+                          example: '1'
+                          description: The ID of the user
+                        attributes:
+                          description: User attributes for a specific approver
+                          type: object
+                          properties:
+                            first_name:
+                              type: string
+                              example: John
+                              description: Approver's first name
+                            last_name:
+                              type: string
+                              example: Doe
+                              description: Approver's last name
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/approvals?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/approvals?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Approvals
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/approvals?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Approvals
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deals-deal-id-approvals
+components:
+  schemas:
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

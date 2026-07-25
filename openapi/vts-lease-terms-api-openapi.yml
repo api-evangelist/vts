@@ -1,0 +1,1154 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Lease Terms API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Lease Terms
+paths:
+  /api/v1/lease_terms:
+    get:
+      summary: Fetches lease terms
+      description: Contains attributes of a given lease term including possession date, lease type, and calculated rents
+      tags:
+      - Lease Terms
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of LeaseTerms
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: lease_terms
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            calculated_rents:
+                              type: object
+                              properties:
+                                expiring_base_rent:
+                                  $ref: '#/components/schemas/measure_money_area_period'
+                                expiring_gross_rent:
+                                  $ref: '#/components/schemas/measure_money_area_period'
+                                in_place_base_rent:
+                                  $ref: '#/components/schemas/measure_money_area_period'
+                                in_place_gross_rent:
+                                  $ref: '#/components/schemas/measure_money_area_period'
+                            reimbursable_expenses:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: OperationalExpense
+                                    enum:
+                                    - OperationalExpense
+                                    - RealEstateTax
+                                    - ReimbursableExpenseCleaning
+                                    - ReimbursableExpenseInsurance
+                                    - ReimbursableExpenseMarketing
+                                    - ReimbursableExpenseOm
+                                    - ReimbursableExpenseOther
+                                    - ReimbursableExpenseRepairsAndMaintenance
+                                    - ReimbursableExpenseSecurity
+                                    - ReimbursableExpenseUtility
+                                    - ReimbursableExpenseCam
+                                    - ReimbursableExpenseElectric
+                                    - ReimbursableExpenseLandscaping
+                                    - ReimbursableExpenseManagementFee
+                                    description: The type of the reimbursable expense
+                                  start_date:
+                                    type: string
+                                    example: '2022-03-02'
+                                  end_date:
+                                    type: string
+                                    example: '2023-03-02'
+                                  amount:
+                                    oneOf:
+                                    - $ref: '#/components/schemas/measure_money_area_period'
+                                    - $ref: '#/components/schemas/measure_money_period'
+                            commencement_date:
+                              type: string
+                              format: date
+                            created_at:
+                              type: string
+                              format: date-time
+                            term_type:
+                              type: string
+                              example: Renewal
+                              nullable: true
+                              description: The purpose of the deal (new, renewal, expansion)
+                            entered_date:
+                              type: string
+                              format: date
+                              description: Date the Lease was added to VTS
+                            execution_date:
+                              type: string
+                              format: date
+                              description: The date the Lease is executed—usually the same as the commencement date.
+                            structure:
+                              type: string
+                              enum:
+                              - full service
+                              - triple net
+                              - modified gross
+                              example: full service
+                              description: Type of the lease the lease term belongs to
+                            deal_type:
+                              type: string
+                              example: new
+                              enum:
+                              - new
+                              - original
+                              - renewal
+                              - renewal_two
+                              - renewal_three
+                              - extension
+                              - expansion
+                              - termination
+                              - modification
+                              - sublease
+                              - license_agreement
+                              - storage
+                              - specialty
+                              - short_term_lease
+                              - other
+                              - relocation
+                              - rent_review
+                              - break
+                              - fixed_option
+                            description:
+                              type: string
+                              nullable: true
+                              example: This is a lease term.
+                            downtime:
+                              allOf:
+                              - $ref: '#/components/schemas/measure_period'
+                              - type: object
+                                nullable: true
+                                properties:
+                                  magnitude:
+                                    example: 2
+                                  unit:
+                                    enum:
+                                    - mo
+                                  unit_components:
+                                    properties:
+                                      period:
+                                        enum:
+                                        - mo
+                                  iso8601:
+                                    example: P2M
+                                description: Months from previous tenant move-out to commencement date of replacement tenant
+                            expiration_date:
+                              type: string
+                              format: date
+                            gaap_rent:
+                              $ref: '#/components/schemas/measure_money'
+                            is_month_to_month:
+                              type: boolean
+                            lease_type:
+                              type: string
+                              example: full service
+                            move_out_date:
+                              type: string
+                              format: date
+                              nullable: true
+                            possession_date:
+                              type: string
+                              format: date
+                              nullable: true
+                            rent_commencement_date:
+                              type: string
+                              format: date
+                              nullable: true
+                            rentable_size:
+                              $ref: '#/components/schemas/measure_size'
+                            lock_in_end_date:
+                              type: string
+                              format: date
+                              nullable: true
+                            retail:
+                              type: object
+                              properties:
+                                description:
+                                  type: string
+                                  nullable: true
+                                growth_rate:
+                                  type: number
+                                percent_rent:
+                                  type: number
+                                estimated_sales:
+                                  $ref: '#/components/schemas/measure_money_period'
+                                natural_breakpoint:
+                                  $ref: '#/components/schemas/measure_money_period'
+                                unnatural_breakpoint:
+                                  $ref: '#/components/schemas/measure_money_period'
+                            percentage_rents:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  start_date:
+                                    type: string
+                                    format: date
+                                    example: '2022-03-13'
+                                    description: The start date in which the percentage rent revenue applies
+                                  end_date:
+                                    type: string
+                                    format: date
+                                    example: '2022-04-13'
+                                    description: The end date in which the percentage rent revenue applies
+                                  amount:
+                                    oneOf:
+                                    - $ref: '#/components/schemas/measure_money_area_period'
+                                    - $ref: '#/components/schemas/measure_money_period'
+                                    description: The amount of the percentage rent revenue
+                                description: Amount of the tenant's sales that must be paid as rent to the landlord
+                            sourceid:
+                              type: string
+                              nullable: true
+                              example: '000004353'
+                            tenant_buildout_period:
+                              $ref: '#/components/schemas/measure_period'
+                            term_duration:
+                              $ref: '#/components/schemas/measure_period'
+                            updated_at:
+                              type: string
+                              format: date-time
+                            lease_infos:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: guarantor
+                                    enum:
+                                    - guarantor
+                                    - tenant notice info
+                                    - lease drafter
+                                    - certificate of insurance
+                                    - development impact
+                                    - other
+                                    description: The type of the lease info
+                                  description:
+                                    type: string
+                                    example: My description
+                                    nullable: true
+                                    description: Lease info description
+                            other_incomes:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: parking
+                                    enum:
+                                    - parking
+                                    - storage
+                                    - signage
+                                    - fitout
+                                    - promotional_charges
+                                    - interest
+                                    - other
+                                    description: The type of the other income
+                                  start_date:
+                                    type: string
+                                    example: '2022-03-02'
+                                  end_date:
+                                    type: string
+                                    example: '2023-03-02'
+                                  amount:
+                                    oneOf:
+                                    - $ref: '#/components/schemas/measure_money_area_period'
+                                    - $ref: '#/components/schemas/measure_money_period'
+                                    description: Value of other income that will be paid to landlord by the tenant
+                                  quantity:
+                                    type: number
+                                    example: '1'
+                                    description: The quantity of parking
+                                  description:
+                                    type: string
+                                    example: My description
+                                    nullable: true
+                                    description: Other income description
+                            free_rents:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  start_date:
+                                    type: string
+                                    example: '2022-03-02'
+                                  end_date:
+                                    type: string
+                                    example: '2023-03-02'
+                                  amount:
+                                    oneOf:
+                                    - $ref: '#/components/schemas/measure_money_area_period'
+                                    - $ref: '#/components/schemas/measure_money_period'
+                                    description: This is the amount to be discounted from the base rent
+                            base_rents:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  start_date:
+                                    type: string
+                                    format: date
+                                    example: '2022-03-02'
+                                  end_date:
+                                    type: string
+                                    format: date
+                                    example: '2023-03-02'
+                                  amount:
+                                    oneOf:
+                                    - $ref: '#/components/schemas/measure_money_area_period'
+                                    - $ref: '#/components/schemas/measure_money_period'
+                                    description: This is the per unit rent due over the select duration
+                            commissions:
+                              $ref: '#/components/schemas/commissions'
+                            costs:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    enum:
+                                    - tenant_improvement
+                                    - building_improvement
+                                    - other_fee
+                                    example: tenant_improvement
+                                    description: The type of the cost
+                                  occurrence_month:
+                                    type: number
+                                    example: 1
+                                    description: The occurrence month of the cost. Possible values are between 1 and the number of months in the term
+                                  amount:
+                                    oneOf:
+                                    - $ref: '#/components/schemas/measure_money'
+                                    - $ref: '#/components/schemas/measure_money_period'
+                                    description: The amount, with units, of the cost
+                                  description:
+                                    type: string
+                                    example: Description
+                                    description: The description of the cost
+                        relationships:
+                          type: object
+                          properties:
+                            lease:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - leases
+                                      example: leases
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            spaces:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - spaces_office
+                                        example: spaces_office
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/lease_terms
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/lease_terms?page%5Bbefore%5D=MzE2NTI%253D
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/lease_terms?page%5Bafter%5D=MzE2NjQ%253D
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-lease-terms
+  /api/v1/lease_terms/{id}:
+    get:
+      summary: Retrieves specific lease term
+      description: Contains attributes of a given lease term including possession date, lease type, and calculated rents
+      tags:
+      - Lease Terms
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested lease_term if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: lease_terms
+                      id:
+                        type: string
+                        example: '1'
+                      attributes:
+                        type: object
+                        properties:
+                          calculated_rents:
+                            type: object
+                            properties:
+                              expiring_base_rent:
+                                $ref: '#/components/schemas/measure_money_area_period'
+                              expiring_gross_rent:
+                                $ref: '#/components/schemas/measure_money_area_period'
+                              in_place_base_rent:
+                                $ref: '#/components/schemas/measure_money_area_period'
+                              in_place_gross_rent:
+                                $ref: '#/components/schemas/measure_money_area_period'
+                          reimbursable_expenses:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  example: OperationalExpense
+                                  enum:
+                                  - OperationalExpense
+                                  - RealEstateTax
+                                  - ReimbursableExpenseCleaning
+                                  - ReimbursableExpenseInsurance
+                                  - ReimbursableExpenseMarketing
+                                  - ReimbursableExpenseOm
+                                  - ReimbursableExpenseOther
+                                  - ReimbursableExpenseRepairsAndMaintenance
+                                  - ReimbursableExpenseSecurity
+                                  - ReimbursableExpenseUtility
+                                  - ReimbursableExpenseCam
+                                  - ReimbursableExpenseElectric
+                                  - ReimbursableExpenseLandscaping
+                                  - ReimbursableExpenseManagementFee
+                                  description: The type of the reimbursable expense
+                                start_date:
+                                  type: string
+                                  example: '2022-03-02'
+                                end_date:
+                                  type: string
+                                  example: '2023-03-02'
+                                amount:
+                                  oneOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - $ref: '#/components/schemas/measure_money_period'
+                          commencement_date:
+                            type: string
+                            format: date
+                          created_at:
+                            type: string
+                            format: date-time
+                          term_type:
+                            type: string
+                            example: Renewal
+                            nullable: true
+                            description: The purpose of the deal (new, renewal, expansion)
+                          entered_date:
+                            type: string
+                            format: date
+                            description: Date the Lease was added to VTS
+                          execution_date:
+                            type: string
+                            format: date
+                            description: The date the Lease is executed—usually the same as the commencement date.
+                          structure:
+                            type: string
+                            enum:
+                            - full service
+                            - triple net
+                            - modified gross
+                            example: full service
+                            description: Type of the lease the lease term belongs to
+                          deal_type:
+                            type: string
+                            example: new
+                            enum:
+                            - new
+                            - original
+                            - renewal
+                            - renewal_two
+                            - renewal_three
+                            - extension
+                            - expansion
+                            - termination
+                            - modification
+                            - sublease
+                            - license_agreement
+                            - storage
+                            - specialty
+                            - short_term_lease
+                            - other
+                            - relocation
+                            - rent_review
+                            - break
+                            - fixed_option
+                          description:
+                            type: string
+                            nullable: true
+                            example: This is a lease term.
+                          downtime:
+                            allOf:
+                            - $ref: '#/components/schemas/measure_period'
+                            - type: object
+                              nullable: true
+                              properties:
+                                magnitude:
+                                  example: 2
+                                unit:
+                                  enum:
+                                  - mo
+                                unit_components:
+                                  properties:
+                                    period:
+                                      enum:
+                                      - mo
+                                iso8601:
+                                  example: P2M
+                              description: Months from previous tenant move-out to commencement date of replacement tenant
+                          expiration_date:
+                            type: string
+                            format: date
+                          gaap_rent:
+                            $ref: '#/components/schemas/measure_money'
+                          is_month_to_month:
+                            type: boolean
+                          lease_type:
+                            type: string
+                            example: full service
+                          move_out_date:
+                            type: string
+                            format: date
+                            nullable: true
+                          possession_date:
+                            type: string
+                            format: date
+                            nullable: true
+                          rent_commencement_date:
+                            type: string
+                            format: date
+                            nullable: true
+                          rentable_size:
+                            $ref: '#/components/schemas/measure_size'
+                          lock_in_end_date:
+                            type: string
+                            format: date
+                            nullable: true
+                          retail:
+                            type: object
+                            properties:
+                              description:
+                                type: string
+                                nullable: true
+                              growth_rate:
+                                type: number
+                              percent_rent:
+                                type: number
+                              estimated_sales:
+                                $ref: '#/components/schemas/measure_money_period'
+                              natural_breakpoint:
+                                $ref: '#/components/schemas/measure_money_period'
+                              unnatural_breakpoint:
+                                $ref: '#/components/schemas/measure_money_period'
+                          percentage_rents:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                start_date:
+                                  type: string
+                                  format: date
+                                  example: '2022-03-13'
+                                  description: The start date in which the percentage rent revenue applies
+                                end_date:
+                                  type: string
+                                  format: date
+                                  example: '2022-04-13'
+                                  description: The end date in which the percentage rent revenue applies
+                                amount:
+                                  oneOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - $ref: '#/components/schemas/measure_money_period'
+                                  description: The amount of the percentage rent revenue
+                              description: Amount of the tenant's sales that must be paid as rent to the landlord
+                          sourceid:
+                            type: string
+                            nullable: true
+                            example: '000004353'
+                          tenant_buildout_period:
+                            $ref: '#/components/schemas/measure_period'
+                          term_duration:
+                            $ref: '#/components/schemas/measure_period'
+                          updated_at:
+                            type: string
+                            format: date-time
+                          lease_infos:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  example: guarantor
+                                  enum:
+                                  - guarantor
+                                  - tenant notice info
+                                  - lease drafter
+                                  - certificate of insurance
+                                  - development impact
+                                  - other
+                                  description: The type of the lease info
+                                description:
+                                  type: string
+                                  example: My description
+                                  nullable: true
+                                  description: Lease info description
+                          other_incomes:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  example: parking
+                                  enum:
+                                  - parking
+                                  - storage
+                                  - signage
+                                  - fitout
+                                  - promotional_charges
+                                  - interest
+                                  - other
+                                  description: The type of the other income
+                                start_date:
+                                  type: string
+                                  example: '2022-03-02'
+                                end_date:
+                                  type: string
+                                  example: '2023-03-02'
+                                amount:
+                                  oneOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - $ref: '#/components/schemas/measure_money_period'
+                                  description: Value of other income that will be paid to landlord by the tenant
+                                quantity:
+                                  type: number
+                                  example: '1'
+                                  description: The quantity of parking
+                                description:
+                                  type: string
+                                  example: My description
+                                  nullable: true
+                                  description: Other income description
+                          free_rents:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                start_date:
+                                  type: string
+                                  example: '2022-03-02'
+                                end_date:
+                                  type: string
+                                  example: '2023-03-02'
+                                amount:
+                                  oneOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - $ref: '#/components/schemas/measure_money_period'
+                                  description: This is the amount to be discounted from the base rent
+                          base_rents:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                start_date:
+                                  type: string
+                                  format: date
+                                  example: '2022-03-02'
+                                end_date:
+                                  type: string
+                                  format: date
+                                  example: '2023-03-02'
+                                amount:
+                                  oneOf:
+                                  - $ref: '#/components/schemas/measure_money_area_period'
+                                  - $ref: '#/components/schemas/measure_money_period'
+                                  description: This is the per unit rent due over the select duration
+                          commissions:
+                            $ref: '#/components/schemas/commissions'
+                          costs:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                  - tenant_improvement
+                                  - building_improvement
+                                  - other_fee
+                                  example: tenant_improvement
+                                  description: The type of the cost
+                                occurrence_month:
+                                  type: number
+                                  example: 1
+                                  description: The occurrence month of the cost. Possible values are between 1 and the number of months in the term
+                                amount:
+                                  oneOf:
+                                  - $ref: '#/components/schemas/measure_money'
+                                  - $ref: '#/components/schemas/measure_money_period'
+                                  description: The amount, with units, of the cost
+                                description:
+                                  type: string
+                                  example: Description
+                                  description: The description of the cost
+                      relationships:
+                        type: object
+                        properties:
+                          lease:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - leases
+                                    example: leases
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+                          spaces:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - spaces_office
+                                      example: spaces_office
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested lease_term does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-lease-terms-id
+components:
+  schemas:
+    measure_money_area_period:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/area/period
+          example: money/area/period
+    measure_money:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+    measure_percentage:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '%'
+          example: '%'
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              pattern: '%'
+              example: '%'
+        type:
+          type: string
+          pattern: percentage
+          example: percentage
+    measure_size:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
+    measure_money_period:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/period
+          example: money/period
+    measure_money_area:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: money/area
+          example: money/area
+    measure_period:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 2
+        unit:
+          type: string
+          enum:
+          - yr
+          - mo
+          - day
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: period
+          example: period
+        iso8601:
+          type: string
+          example: P2Y
+          description: Period represented by ISO8601 format
+          nullable: true
+    commissions:
+      type: array
+      items:
+        type: object
+        properties:
+          created_at:
+            type: string
+            example: '2021-12-08T16:28:22.179486Z'
+            format: date-time
+            description: The timestamp when this budget commission was created
+            deprecated: true
+          updated_at:
+            type: string
+            example: '2021-12-08T16:28:22.187979Z'
+            description: The timestamp when this budget commission was last updated
+            deprecated: true
+          net_or_gross:
+            type: string
+            enum:
+            - gross
+            - net
+            example: gross
+            description: The calculation method of the commission amount.
+            nullable: true
+          broker:
+            type: string
+            example: VTS
+            description: Broker/Company name
+          commission_date:
+            type: string
+            example: '2021-12-08'
+            format: date
+            description: The start date when commissions will start counting for.
+          commission_type:
+            type: string
+            enum:
+            - landlord
+            - tenant_rep
+            example: landlord
+            description: Commissions Value paid to landlord or tenant brokers on the deal
+          description:
+            type: string
+            example: Description
+            description: The description of commission
+          free_rent:
+            type: string
+            enum:
+            - amortize_over_term
+            - occurs_in_month
+            - exclude_free_rent
+            example: amortize_over_term
+            description: How commission rent should handle free rent
+          periods:
+            type: array
+            items:
+              type: object
+              properties:
+                starts:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      example: '2021-12-08'
+                      format: date
+                      description: The date of the commissions to be paid out. This doesn't impact any calculations.
+                    month:
+                      type: number
+                      example: 1
+                      description: The start month when commissions will start counting for.
+                amount:
+                  oneOf:
+                  - $ref: '#/components/schemas/measure_percentage'
+                  - $ref: '#/components/schemas/measure_money'
+                  - $ref: '#/components/schemas/measure_money_area'
+                  - $ref: '#/components/schemas/measure_money_period'
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

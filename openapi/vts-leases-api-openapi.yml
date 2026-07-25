@@ -1,0 +1,350 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Leases API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Leases
+paths:
+  /api/v1/leases:
+    get:
+      summary: Gets leases
+      description: Contains all leases in your portfolio. Supports interacting with all leases, or specifying a particular lease ID
+      tags:
+      - Leases
+      security:
+      - basic_auth: []
+      parameters:
+      - name: filter[sourceid]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[delinquent]
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns a possibly empty list of leases that match the provided parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '1'
+                        type:
+                          type: string
+                          example: leases
+                        attributes:
+                          type: object
+                          properties:
+                            commencement_date:
+                              type: string
+                              nullable: true
+                              format: date
+                            created_at:
+                              type: string
+                              nullable: true
+                              format: date-time
+                            execution_date:
+                              type: string
+                              nullable: true
+                              format: date
+                            expiration_date:
+                              type: string
+                              nullable: true
+                              format: date
+                            renewal_status:
+                              type: string
+                              nullable: true
+                              enum:
+                              - renewing
+                              - not_renewing
+                              - unknown
+                              - negotiating
+                            sourceid:
+                              type: string
+                              nullable: true
+                              example: '000004353'
+                            structure:
+                              type: string
+                              nullable: true
+                              enum:
+                              - full service
+                              - modified gross
+                              - triple net
+                            updated_at:
+                              type: string
+                              nullable: true
+                              format: date-time
+                            industry:
+                              type: string
+                              nullable: true
+                              example: wound care & hyperbaric
+                        relationships:
+                          type: object
+                          properties:
+                            tenant:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '1'
+                                    type:
+                                      type: string
+                                      example: tenants
+                                  nullable: true
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                            contacts:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '1'
+                                      type:
+                                        type: string
+                                        example: tenant_contacts
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/leases
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/leases?page%5Bbefore%5D=MzE2NTI%253D
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/leases?page%5Bafter%5D=MzE2NjQ%253D
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-leases
+  /api/v1/leases/{id}:
+    get:
+      summary: Retrieves specific lease
+      description: Contains all leases in your portfolio. Supports interacting with all leases, or specifying a particular lease ID
+      tags:
+      - Leases
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested lease if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '1'
+                      type:
+                        type: string
+                        example: leases
+                      attributes:
+                        type: object
+                        properties:
+                          commencement_date:
+                            type: string
+                            nullable: true
+                            format: date
+                          created_at:
+                            type: string
+                            nullable: true
+                            format: date-time
+                          execution_date:
+                            type: string
+                            nullable: true
+                            format: date
+                          expiration_date:
+                            type: string
+                            nullable: true
+                            format: date
+                          renewal_status:
+                            type: string
+                            nullable: true
+                            enum:
+                            - renewing
+                            - not_renewing
+                            - unknown
+                            - negotiating
+                          sourceid:
+                            type: string
+                            nullable: true
+                            example: '000004353'
+                          structure:
+                            type: string
+                            nullable: true
+                            enum:
+                            - full service
+                            - modified gross
+                            - triple net
+                          updated_at:
+                            type: string
+                            nullable: true
+                            format: date-time
+                          industry:
+                            type: string
+                            nullable: true
+                            example: wound care & hyperbaric
+                      relationships:
+                        type: object
+                        properties:
+                          tenant:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '1'
+                                  type:
+                                    type: string
+                                    example: tenants
+                                nullable: true
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                          contacts:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '1'
+                                    type:
+                                      type: string
+                                      example: tenant_contacts
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested lease does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-leases-id
+components:
+  schemas:
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

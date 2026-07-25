@@ -1,0 +1,1618 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Broker API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Broker
+paths:
+  /api/v1/broker/activities:
+    get:
+      summary: Fetches Broker Activities
+      tags:
+      - Broker
+      security:
+      - basic_auth: []
+      responses:
+        '200':
+          description: Returns list of Broker Activities
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: broker_activities
+                      attributes:
+                        type: object
+                        properties:
+                          total_active_deals:
+                            type: object
+                            description: Number of active deals by deal type (i.e. any deal that doesn't have the status `lease_executed`, `dead_deal`, or `idle`)
+                            properties:
+                              new:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `new`
+                              original:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `original`
+                              renewal:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `renewal`
+                              renewal_two:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `renewal_two`
+                              renewal_three:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `renewal_three`
+                              extension:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `extension`
+                              expansion:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `expansion`
+                              termination:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `termination`
+                              modification:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `modification`
+                              sublease:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `sublease`
+                              license_agreement:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `license_agreement`
+                              storage:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `storage`
+                              specialty:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `specialty`
+                              short_term_lease:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `short_term_lease`
+                              other:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `other`
+                              relocation:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `relocation`
+                              rent_review:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `rent_review`
+                              break:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `break`
+                              fixed_option:
+                                type: number
+                                example: 1
+                                description: Number of active deals with deal type `fixed_option`
+                          total_executed_deals:
+                            type: object
+                            description: Number of executed deals by deal type (i.e. any deal with the status `lease_executed`)
+                            properties:
+                              new:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `new`
+                              original:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `original`
+                              renewal:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `renewal`
+                              renewal_two:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `renewal_two`
+                              renewal_three:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `renewal_three`
+                              extension:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `extension`
+                              expansion:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `expansion`
+                              termination:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `termination`
+                              modification:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `modification`
+                              sublease:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `sublease`
+                              license_agreement:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `license_agreement`
+                              storage:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `storage`
+                              specialty:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `specialty`
+                              short_term_lease:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `short_term_lease`
+                              other:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `other`
+                              relocation:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `relocation`
+                              rent_review:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `rent_review`
+                              break:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `break`
+                              fixed_option:
+                                type: number
+                                example: 1
+                                description: Number of executed deals with deal type `fixed_option`
+                          total_deals:
+                            type: object
+                            description: Number of deals in each stage
+                            properties:
+                              tenants_in_the_market:
+                                type: number
+                                example: 1
+                                description: Number of deals with deal stage `tenants_in_the_market`
+                              initial_inquiry:
+                                type: number
+                                example: 1
+                                description: Number of deals with deal stage `initial_inquiry`
+                              preview:
+                                type: number
+                                example: 1
+                                description: Number of deals with deal stage `preview`
+                              tour:
+                                type: number
+                                example: 1
+                                description: Number of deals with deal stage `tour`
+                              proposal:
+                                type: number
+                                example: 1
+                                description: Number of deals with deal stage `proposal`
+                              loi:
+                                type: number
+                                example: 1
+                                description: Number of deals with deal stage `loi`
+                              legal:
+                                type: number
+                                example: 1
+                                description: Number of deals with deal stage `legal`
+                              lease_out:
+                                type: number
+                                example: 1
+                                description: Number of deals with deal stage `lease_out`
+                              idle:
+                                type: number
+                                example: 1
+                                description: Number of deals with deal stage `idle`
+                              dead_deal:
+                                type: number
+                                example: 1
+                                description: Number of deals with deal stage `dead_deal`
+                              lease_executed:
+                                type: number
+                                example: 1
+                                description: Number of deals with deal stage `lease_executed`
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-broker-activities
+  /api/v1/broker/agents:
+    get:
+      summary: Fetches broker agent users
+      tags:
+      - Broker
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns a list of broker agent users associated with the current account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '1'
+                        type:
+                          type: string
+                          example: broker_agents
+                        attributes:
+                          type: object
+                          properties:
+                            first_name:
+                              type: string
+                              example: John
+                            last_name:
+                              type: string
+                              example: Doe
+                            email:
+                              type: string
+                              example: johndoe@example.com
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: The created at date-time the current broker user
+                            current_sign_in_at:
+                              type: string
+                              nullable: true
+                              format: date-time
+                            is_account_user:
+                              type: boolean
+                            is_company_admin:
+                              type: boolean
+                            phone:
+                              type: string
+                              example: '1234567890'
+                            phone_extension:
+                              type: string
+                              example: '1234'
+                            days_signed_in_for_last_30_days:
+                              type: number
+                              minimum: 0
+                              maximum: 30
+                              example: 14
+                              description: Within the last 30 days, the number of days where the User had at least 1 login
+                            days_with_activity_for_last_30_days:
+                              type: number
+                              minimum: 0
+                              maximum: 30
+                              example: 10
+                              description: Within the last 30 days, the number of days where the User performed at least 1 creation, update, or deletion within VTS Lease
+                            email_engagement_for_last_30_days:
+                              type: object
+                              description: VTS email activity for this User
+                              properties:
+                                emails_delivered:
+                                  type: number
+                                  minimum: 0
+                                  maximum: 30
+                                  example: 4
+                                  description: Within the last 30 days, the number of emails delivered to this User
+                                emails_opened:
+                                  type: number
+                                  minimum: 0
+                                  maximum: 30
+                                  example: 3
+                                  description: Within the last 30 days, number of emails opened by this User
+                            assets:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                  type:
+                                    type: string
+                                    example: asset
+                                  name:
+                                    type: string
+                                    example: A property name
+                                    nullable: true
+                                  owner_name:
+                                    type: string
+                                    example: VTS Investments
+                                  address:
+                                    type: string
+                                    example: 70233 Allyson Lake New York, NY 10023
+                                  country:
+                                    type: string
+                                    example: United States
+                                  account_id:
+                                    type: string
+                                    example: '123'
+                                    nullable: true
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/broker/agents?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/broker/agents?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Broker Agents
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/broker/agents?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Broker Agents
+                    required:
+                    - self
+        '401':
+          description: Bad API Credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-broker-agents
+  /api/v1/broker/agents/{id}:
+    get:
+      summary: Retrieves specific broker agent user
+      tags:
+      - Broker
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested broker agent user if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '1'
+                      type:
+                        type: string
+                        example: broker_agents
+                      attributes:
+                        type: object
+                        properties:
+                          first_name:
+                            type: string
+                            example: John
+                          last_name:
+                            type: string
+                            example: Doe
+                          email:
+                            type: string
+                            example: johndoe@example.com
+                          created_at:
+                            type: string
+                            format: date-time
+                            description: The created at date-time the current broker user
+                          current_sign_in_at:
+                            type: string
+                            nullable: true
+                            format: date-time
+                          is_account_user:
+                            type: boolean
+                          is_company_admin:
+                            type: boolean
+                          phone:
+                            type: string
+                            example: '1234567890'
+                          phone_extension:
+                            type: string
+                            example: '1234'
+                          days_signed_in_for_last_30_days:
+                            type: number
+                            minimum: 0
+                            maximum: 30
+                            example: 14
+                            description: Within the last 30 days, the number of days where the User had at least 1 login
+                          days_with_activity_for_last_30_days:
+                            type: number
+                            minimum: 0
+                            maximum: 30
+                            example: 10
+                            description: Within the last 30 days, the number of days where the User performed at least 1 creation, update, or deletion within VTS Lease
+                          email_engagement_for_last_30_days:
+                            type: object
+                            description: VTS email activity for this User
+                            properties:
+                              emails_delivered:
+                                type: number
+                                minimum: 0
+                                maximum: 30
+                                example: 4
+                                description: Within the last 30 days, the number of emails delivered to this User
+                              emails_opened:
+                                type: number
+                                minimum: 0
+                                maximum: 30
+                                example: 3
+                                description: Within the last 30 days, number of emails opened by this User
+                          assets:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                type:
+                                  type: string
+                                  example: asset
+                                name:
+                                  type: string
+                                  example: A property name
+                                  nullable: true
+                                owner_name:
+                                  type: string
+                                  example: VTS Investments
+                                address:
+                                  type: string
+                                  example: 70233 Allyson Lake New York, NY 10023
+                                country:
+                                  type: string
+                                  example: United States
+                                account_id:
+                                  type: string
+                                  example: '123'
+                                  nullable: true
+        '401':
+          description: Bad API Credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested broker agent user does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-broker-agents-id
+  /api/v1/broker/assets:
+    get:
+      summary: Fetches Broker Assets
+      tags:
+      - Broker
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Broker Assets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        id:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            account:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  example: VTS
+                                  description: The name of the Account that owns this Asset
+                                  nullable: true
+                                id:
+                                  type: string
+                                  example: '12345'
+                                  description: The ID of the Account that owns this Asset
+                                  nullable: true
+                            owner:
+                              type: string
+                              example: OwnerCorp
+                              description: The owning company for this Asset
+                              nullable: true
+                            name:
+                              type: string
+                              example: My Cool Property
+                              description: The building name for this Asset
+                              nullable: true
+                            address:
+                              type: object
+                              description: Geographic address information
+                              properties:
+                                street_address:
+                                  type: string
+                                  example: 114 W 41st St, Floor 11
+                                  description: The street address
+                                locality:
+                                  type: string
+                                  example: New York
+                                  description: The locality or city
+                                region:
+                                  type: string
+                                  example: NY
+                                  description: The province, state, county, or region
+                                country:
+                                  type: string
+                                  example: United States
+                                  description: The country
+                                postal_code:
+                                  type: string
+                                  example: '10036'
+                                  description: The postal or zip code
+                                formatted:
+                                  type: string
+                                  example: 114 W 41st St, Floor 11, New York, NY 10036
+                                  description: Formatted address string
+                            broker:
+                              type: object
+                              description: Broker contact information
+                              properties:
+                                name:
+                                  type: string
+                                  example: Mary Jane Watson
+                                  description: Broker Name
+                                  nullable: true
+                                title:
+                                  type: string
+                                  example: Actor
+                                  description: Broker Title
+                                  nullable: true
+                                email:
+                                  type: string
+                                  example: mj@actorsequity.org
+                                  description: Broker Email Address
+                                  nullable: true
+                              deprecated: true
+                            building_class:
+                              type: string
+                              example: A
+                              enum:
+                              - A
+                              - B
+                              - C
+                              description: 'The Building Class for this Asset. Possible values: A, B, C.'
+                            has_office_space:
+                              type: boolean
+                              description: Whether this Asset has office space
+                            has_retail_space:
+                              type: boolean
+                              description: Whether this Asset has retail space
+                            has_industrial_space:
+                              type: boolean
+                              description: Whether this Asset has industrial space
+                            number_of_floors:
+                              type: number
+                              description: The number of floors this Asset has
+                              nullable: true
+                            rentable_building_area:
+                              $ref: '#/components/schemas/measure_size'
+                            size:
+                              $ref: '#/components/schemas/measure_size'
+                            submarket:
+                              type: string
+                              nullable: true
+                              description: The submarket in which this Asset is located
+                            market:
+                              type: string
+                              nullable: true
+                              description: The market in which this Asset is located
+                            floors:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  position:
+                                    type: number
+                                    description: The floor position
+                                  name:
+                                    type: string
+                                    description: The name or label for this floor
+                            building_contacts:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  name:
+                                    type: string
+                                    description: The name for the Building Contact
+                                  email:
+                                    type: string
+                                    description: The email address for the Building Contact
+                            multi_building_asset:
+                              type: object
+                              nullable: true
+                              properties:
+                                name:
+                                  type: string
+                                  example: Parker Plaza
+                                  description: The name of the Multi-Building Asset that this Asset is associated with
+                                id:
+                                  type: string
+                                  example: '123488776'
+                                  description: The ID of the Multi-Building Asset that this Asset is associated with
+                            created_at:
+                              type: string
+                              format: date-time
+                            updated_at:
+                              type: string
+                              format: date-time
+                            total_active_deals:
+                              type: object
+                              properties:
+                                new:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `new`
+                                original:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `original`
+                                renewal:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `renewal`
+                                renewal_two:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `renewal_two`
+                                renewal_three:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `renewal_three`
+                                extension:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `extension`
+                                expansion:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `expansion`
+                                termination:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `termination`
+                                modification:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `modification`
+                                sublease:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `sublease`
+                                license_agreement:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `license_agreement`
+                                storage:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `storage`
+                                specialty:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `specialty`
+                                short_term_lease:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `short_term_lease`
+                                other:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `other`
+                                relocation:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `relocation`
+                                rent_review:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `rent_review`
+                                break:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `break`
+                                fixed_option:
+                                  type: number
+                                  example: 1
+                                  description: Number of active deals on this Asset with deal type `fixed_option`
+                            total_executed_deals:
+                              type: object
+                              description: Number of executed deals by deal type (i.e. any deal with the status `lease_executed`)
+                              properties:
+                                new:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `new`
+                                original:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `original`
+                                renewal:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `renewal`
+                                renewal_two:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `renewal_two`
+                                renewal_three:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `renewal_three`
+                                extension:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `extension`
+                                expansion:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `expansion`
+                                termination:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `termination`
+                                modification:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `modification`
+                                sublease:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `sublease`
+                                license_agreement:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `license_agreement`
+                                storage:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `storage`
+                                specialty:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `specialty`
+                                short_term_lease:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `short_term_lease`
+                                other:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `other`
+                                relocation:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `relocation`
+                                rent_review:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `rent_review`
+                                break:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `break`
+                                fixed_option:
+                                  type: number
+                                  example: 1
+                                  description: Number of executed deals on this Asset with deal type `fixed_option`
+                            total_deals:
+                              type: object
+                              description: Number of deals in each stage
+                              properties:
+                                tenants_in_the_market:
+                                  type: number
+                                  example: 1
+                                  description: Number of deals on this Asset with deal stage `tenants_in_the_market`
+                                initial_inquiry:
+                                  type: number
+                                  example: 1
+                                  description: Number of deals on this Asset with deal stage `initial_inquiry`
+                                preview:
+                                  type: number
+                                  example: 1
+                                  description: Number of deals on this Asset with deal stage `preview`
+                                tour:
+                                  type: number
+                                  example: 1
+                                  description: Number of deals on this Asset with deal stage `tour`
+                                proposal:
+                                  type: number
+                                  example: 1
+                                  description: Number of deals on this Asset with deal stage `proposal`
+                                loi:
+                                  type: number
+                                  example: 1
+                                  description: Number of deals on this Asset with deal stage `loi`
+                                legal:
+                                  type: number
+                                  example: 1
+                                  description: Number of deals on this Asset with deal stage `legal`
+                                lease_out:
+                                  type: number
+                                  example: 1
+                                  description: Number of deals on this Asset with deal stage `lease_out`
+                                idle:
+                                  type: number
+                                  example: 1
+                                  description: Number of deals on this Asset with deal stage `idle`
+                                dead_deal:
+                                  type: number
+                                  example: 1
+                                  description: Number of deals on this Asset with deal stage `dead_deal`
+                                lease_executed:
+                                  type: number
+                                  example: 1
+                                  description: Number of deals on this Asset with deal stage `lease_executed`
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/broker/assets?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/broker/assets?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Broker Assets
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/broker/assets?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Broker Assets
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-broker-assets
+  /api/v1/broker/assets/{id}:
+    get:
+      summary: Fetches Specific Broker Asset
+      tags:
+      - Broker
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested asset if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      id:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          account:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                example: VTS
+                                description: The name of the Account that owns this Asset
+                                nullable: true
+                              id:
+                                type: string
+                                example: '12345'
+                                description: The ID of the Account that owns this Asset
+                                nullable: true
+                          owner:
+                            type: string
+                            example: OwnerCorp
+                            description: The owning company for this Asset
+                            nullable: true
+                          name:
+                            type: string
+                            example: My Cool Property
+                            description: The building name for this Asset
+                            nullable: true
+                          address:
+                            type: object
+                            description: Geographic address information
+                            properties:
+                              street_address:
+                                type: string
+                                example: 114 W 41st St, Floor 11
+                                description: The street address
+                              locality:
+                                type: string
+                                example: New York
+                                description: The locality or city
+                              region:
+                                type: string
+                                example: NY
+                                description: The province, state, county, or region
+                              country:
+                                type: string
+                                example: United States
+                                description: The country
+                              postal_code:
+                                type: string
+                                example: '10036'
+                                description: The postal or zip code
+                              formatted:
+                                type: string
+                                example: 114 W 41st St, Floor 11, New York, NY 10036
+                                description: Formatted address string
+                          broker:
+                            type: object
+                            description: Broker contact information
+                            properties:
+                              name:
+                                type: string
+                                example: Mary Jane Watson
+                                description: Broker Name
+                                nullable: true
+                              title:
+                                type: string
+                                example: Actor
+                                description: Broker Title
+                                nullable: true
+                              email:
+                                type: string
+                                example: mj@actorsequity.org
+                                description: Broker Email Address
+                                nullable: true
+                            deprecated: true
+                          building_class:
+                            type: string
+                            example: A
+                            enum:
+                            - A
+                            - B
+                            - C
+                            description: 'The Building Class for this Asset. Possible values: A, B, C.'
+                          has_office_space:
+                            type: boolean
+                            description: Whether this Asset has office space
+                          has_retail_space:
+                            type: boolean
+                            description: Whether this Asset has retail space
+                          has_industrial_space:
+                            type: boolean
+                            description: Whether this Asset has industrial space
+                          number_of_floors:
+                            type: number
+                            description: The number of floors this Asset has
+                            nullable: true
+                          rentable_building_area:
+                            $ref: '#/components/schemas/measure_size'
+                          size:
+                            $ref: '#/components/schemas/measure_size'
+                          submarket:
+                            type: string
+                            nullable: true
+                            description: The submarket in which this Asset is located
+                          market:
+                            type: string
+                            nullable: true
+                            description: The market in which this Asset is located
+                          floors:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                position:
+                                  type: number
+                                  description: The floor position
+                                name:
+                                  type: string
+                                  description: The name or label for this floor
+                          building_contacts:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  description: The name for the Building Contact
+                                email:
+                                  type: string
+                                  description: The email address for the Building Contact
+                          multi_building_asset:
+                            type: object
+                            nullable: true
+                            properties:
+                              name:
+                                type: string
+                                example: Parker Plaza
+                                description: The name of the Multi-Building Asset that this Asset is associated with
+                              id:
+                                type: string
+                                example: '123488776'
+                                description: The ID of the Multi-Building Asset that this Asset is associated with
+                          created_at:
+                            type: string
+                            format: date-time
+                          updated_at:
+                            type: string
+                            format: date-time
+                          total_active_deals:
+                            type: object
+                            properties:
+                              new:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `new`
+                              original:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `original`
+                              renewal:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `renewal`
+                              renewal_two:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `renewal_two`
+                              renewal_three:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `renewal_three`
+                              extension:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `extension`
+                              expansion:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `expansion`
+                              termination:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `termination`
+                              modification:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `modification`
+                              sublease:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `sublease`
+                              license_agreement:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `license_agreement`
+                              storage:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `storage`
+                              specialty:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `specialty`
+                              short_term_lease:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `short_term_lease`
+                              other:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `other`
+                              relocation:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `relocation`
+                              rent_review:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `rent_review`
+                              break:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `break`
+                              fixed_option:
+                                type: number
+                                example: 1
+                                description: Number of active deals on this Asset with deal type `fixed_option`
+                          total_executed_deals:
+                            type: object
+                            description: Number of executed deals by deal type (i.e. any deal with the status `lease_executed`)
+                            properties:
+                              new:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `new`
+                              original:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `original`
+                              renewal:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `renewal`
+                              renewal_two:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `renewal_two`
+                              renewal_three:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `renewal_three`
+                              extension:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `extension`
+                              expansion:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `expansion`
+                              termination:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `termination`
+                              modification:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `modification`
+                              sublease:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `sublease`
+                              license_agreement:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `license_agreement`
+                              storage:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `storage`
+                              specialty:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `specialty`
+                              short_term_lease:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `short_term_lease`
+                              other:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `other`
+                              relocation:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `relocation`
+                              rent_review:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `rent_review`
+                              break:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `break`
+                              fixed_option:
+                                type: number
+                                example: 1
+                                description: Number of executed deals on this Asset with deal type `fixed_option`
+                          total_deals:
+                            type: object
+                            description: Number of deals in each stage
+                            properties:
+                              tenants_in_the_market:
+                                type: number
+                                example: 1
+                                description: Number of deals on this Asset with deal stage `tenants_in_the_market`
+                              initial_inquiry:
+                                type: number
+                                example: 1
+                                description: Number of deals on this Asset with deal stage `initial_inquiry`
+                              preview:
+                                type: number
+                                example: 1
+                                description: Number of deals on this Asset with deal stage `preview`
+                              tour:
+                                type: number
+                                example: 1
+                                description: Number of deals on this Asset with deal stage `tour`
+                              proposal:
+                                type: number
+                                example: 1
+                                description: Number of deals on this Asset with deal stage `proposal`
+                              loi:
+                                type: number
+                                example: 1
+                                description: Number of deals on this Asset with deal stage `loi`
+                              legal:
+                                type: number
+                                example: 1
+                                description: Number of deals on this Asset with deal stage `legal`
+                              lease_out:
+                                type: number
+                                example: 1
+                                description: Number of deals on this Asset with deal stage `lease_out`
+                              idle:
+                                type: number
+                                example: 1
+                                description: Number of deals on this Asset with deal stage `idle`
+                              dead_deal:
+                                type: number
+                                example: 1
+                                description: Number of deals on this Asset with deal stage `dead_deal`
+                              lease_executed:
+                                type: number
+                                example: 1
+                                description: Number of deals on this Asset with deal stage `lease_executed`
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested asset does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-broker-assets-id
+  /api/v1/broker/availabilities:
+    get:
+      summary: Fetches Broker Availabilities
+      tags:
+      - Broker
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of BrokerAvailabilities
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        id:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this availability was created
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this availability was last updated
+                            asset:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  example: '232'
+                                  description: The Asset ID for this Space
+                                name:
+                                  type: string
+                                  nullable: true
+                                  example: The Cool Building
+                                  description: The Asset Name that this Space included in
+                            suite:
+                              type: string
+                              example: '7'
+                              description: The Space suite number
+                            floor:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  example: Floor 1
+                                  description: Floor Name
+                                position:
+                                  type: number
+                                  example: 1
+                                  description: Floor Position
+                            availability_type:
+                              type: string
+                              example: arranged
+                              enum:
+                              - arranged
+                              - immediate
+                              - month to month
+                              - not available
+                              - specified
+                              description: 'The Availability Type for this Space. Possible Values: arranged, immediate, month to month, not available, specified'
+                            current_size:
+                              $ref: '#/components/schemas/measure_size'
+                            space_type:
+                              type: string
+                              nullable: true
+                              enum:
+                              - office
+                              - retail
+                              - industrial_warehouse
+                              - telecom
+                              - storage
+                              - flex
+                              - parking
+                              - amenities
+                              - rooftop
+                              - other
+                              - lab
+                              - manufacturing
+                              - residential
+                              - medical_office
+                              - education
+                              - restaurant
+                              - leisure
+                              - unspecified
+                              - null
+                              example: office
+                              description: 'The type of space. Possible values: office, retail, industrial_warehouse, telecom, storage, flex, parking, amenities, rooftop, other, lab, manufacturing, residential, medical_office, education, restaurant, leisure, unspecified'
+                        relationships:
+                          type: object
+                          properties:
+                            asset:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - assets
+                                      example: assets
+                            brokers:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: string
+                                        example: '12345'
+                                      type:
+                                        type: string
+                                        enum:
+                                        - users
+                                        example: users
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/broker/availabilities?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/broker/availabilities?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Availabilities
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/broker/availabilities?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Availabilities
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-broker-availabilities
+components:
+  schemas:
+    measure_size:
+      type: object
+      nullable: true
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

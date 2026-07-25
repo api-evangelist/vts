@@ -1,0 +1,402 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Tenants API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Tenants
+paths:
+  /api/v1/tenants:
+    get:
+      summary: Fetches tenants
+      description: Contains details for a tenant entity based on lease- or deal-inputted tenant information. Links to the Global Tenants endpoint
+      tags:
+      - Tenants
+      security:
+      - basic_auth: []
+      parameters:
+      - name: filter[primary_tenant_id]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[global_tenant_id]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of tenants
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: tenants
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: ACME
+                              description: The reported name of the tenant
+                            global_tenant_name:
+                              type: string
+                              nullable: true
+                              example: ACME Corporation
+                              description: The name of the global tenant or null if it doesn't exist
+                            created_at:
+                              type: string
+                              format: date-time
+                              example: '2021-10-28T20:42:36.401Z'
+                            updated_at:
+                              type: string
+                              format: date-time
+                              example: '2021-10-28T20:42:36.401Z'
+                        relationships:
+                          type: object
+                          properties:
+                            primary_tenant:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: tenants
+                                    id:
+                                      type: string
+                                      example: '1'
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                            tenant_industry:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: tenant_industries
+                                    id:
+                                      type: string
+                                      example: '1'
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                            global_tenant:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: global_tenants
+                                    id:
+                                      type: string
+                                      example: 19dbe413-442a-4fd1-afe4-9b12dc2c02ce
+                                  nullable: true
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/global_tenants/19dbe413-442a-4fd1-afe4-9b12dc2c02ce
+                            relationship_owners:
+                              type: object
+                              properties:
+                                data:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      type:
+                                        type: string
+                                        example: users
+                                      id:
+                                        type: string
+                                        example: 1
+                                    nullable: true
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      example: https://api.vts.com/api/v1/users?tenant_id=1
+                  included:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                          format: global_tenants
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            industry:
+                              type: string
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-tenants
+  /api/v1/tenants/{id}:
+    get:
+      summary: Retrieves specific tenant
+      description: Contains details for a tenant entity based on lease- or deal-inputted tenant information. Links to the Global Tenants endpoint
+      tags:
+      - Tenants
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: filter[primary_tenant_id]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[global_tenant_id]
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested tenant if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: tenants
+                      id:
+                        type: string
+                        example: '1'
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: ACME
+                            description: The reported name of the tenant
+                          global_tenant_name:
+                            type: string
+                            nullable: true
+                            example: ACME Corporation
+                            description: The name of the global tenant or null if it doesn't exist
+                          created_at:
+                            type: string
+                            format: date-time
+                            example: '2021-10-28T20:42:36.401Z'
+                          updated_at:
+                            type: string
+                            format: date-time
+                            example: '2021-10-28T20:42:36.401Z'
+                      relationships:
+                        type: object
+                        properties:
+                          primary_tenant:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: tenants
+                                  id:
+                                    type: string
+                                    example: '1'
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                          tenant_industry:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: tenant_industries
+                                  id:
+                                    type: string
+                                    example: '1'
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                          global_tenant:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: global_tenants
+                                  id:
+                                    type: string
+                                    example: 19dbe413-442a-4fd1-afe4-9b12dc2c02ce
+                                nullable: true
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    example: https://api.vts.com/api/v1/global_tenants/19dbe413-442a-4fd1-afe4-9b12dc2c02ce
+                          relationship_owners:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: users
+                                    id:
+                                      type: string
+                                      example: 1
+                                  nullable: true
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    example: https://api.vts.com/api/v1/users?tenant_id=1
+                  included:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                          format: global_tenants
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            industry:
+                              type: string
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested tenant does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-tenants-id
+components:
+  schemas:
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)

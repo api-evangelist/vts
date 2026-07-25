@@ -1,0 +1,626 @@
+openapi: 3.0.2
+info:
+  title: VTS Lease Account Admin Deal Iterations API
+  version: v1
+  description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
+  contact:
+    name: VTS API Support
+    url: https://readme.vts.com/
+  termsOfService: https://www.vts.com/services-terms
+servers:
+- url: https://api.vts.com
+- url: https://sandbox.vts.com
+  description: Sandbox
+security:
+- basic_auth: []
+tags:
+- name: Deal Iterations
+paths:
+  /api/v1/deal_iterations:
+    get:
+      summary: Fetches account deal iterations
+      description: Contains attributes of deal iterations for a given deal, including deal stage and transition reason
+      tags:
+      - Deal Iterations
+      security:
+      - basic_auth: []
+      parameters:
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Iterations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          pattern: deal_iterations
+                          example: deal_iterations
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            latest:
+                              type: boolean
+                              description: Whether or not this is the latest stage of it's associated deal
+                            stage:
+                              type: string
+                              enum:
+                              - tenants_in_the_market
+                              - initial_inquiry
+                              - preview
+                              - tour
+                              - proposal
+                              - loi
+                              - legal
+                              - lease_out
+                              example: proposal
+                              description: 'The current stage of the associated deal.Possible values: tenants_in_the_market, initial_inquiry, preview, tour, proposal, loi, legal, lease_outidle, dead_deal, lease_executed'
+                            reason:
+                              type: string
+                              enum:
+                              - adjacent_stores
+                              - cannibalization_risk
+                              - ceiling_height
+                              - foot_traffic
+                              - image
+                              - lobby
+                              - location
+                              - location_on_floor
+                              - other
+                              - parking_ratio
+                              - price
+                              - renewal
+                              - requirement_dead
+                              - security
+                              - size
+                              - space_condition
+                              - space_configuration
+                              - space_leased
+                              - storefront
+                              - timing
+                              - transportation
+                              - views
+                              - global_crisis
+                              - duplicate_deal
+                              - requirement_changed
+                              - decided_to_sublease
+                              - unknown
+                              - amenities
+                              - walkability
+                              - tenant_covenant
+                              - landlord_decision
+                              - tenant_non_responsive
+                              - null
+                              example: space_leased
+                              nullable: true
+                              description: 'Why the deal was moved to its current stage. Only applies to a deal in the dead deal stage. Possible values: adjacent_stores, cannibalization_risk, ceiling_height, foot_traffic, image, lobby, location, location_on_floor, other, parking_ratio, price, renewal, requirement_dead, security, size, space_condition, space_configuration, space_leased, storefront, timing, transportation, views, global_crisis, duplicate_deal, requirement_changed, decided_to_sublease, unknown, amenities, walkability, tenant_covenant, landlord_decision, tenant_non_responsive, null'
+                            occurred_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when a deal was marked with the current deal iteration stage
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this deal iteration was created
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this deal iteration was last updated
+                            ended_at:
+                              type: string
+                              format: date
+                              description: The timestamp when the deal iteration ended
+                              nullable: true
+                            duration_in_days:
+                              type: integer
+                              example: 1
+                              description: Number of days remaining to end the the Deal.
+                        relationships:
+                          type: object
+                          properties:
+                            deal:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deals
+                                      example: deals
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            user:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - users
+                                      example: users
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/iterations?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/iterations?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Iterations
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/iterations?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Iterations
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deal-iterations
+  /api/v1/deal_iterations/{id}:
+    get:
+      summary: Retrieves specific account deal iteration
+      description: Contains attributes of deal iterations for a given deal, including deal stage and transition reason
+      tags:
+      - Deal Iterations
+      security:
+      - basic_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns requested account iteration if it exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        pattern: deal_iterations
+                        example: deal_iterations
+                      id:
+                        type: string
+                        example: '1'
+                      attributes:
+                        type: object
+                        properties:
+                          latest:
+                            type: boolean
+                            description: Whether or not this is the latest stage of it's associated deal
+                          stage:
+                            type: string
+                            enum:
+                            - tenants_in_the_market
+                            - initial_inquiry
+                            - preview
+                            - tour
+                            - proposal
+                            - loi
+                            - legal
+                            - lease_out
+                            example: proposal
+                            description: 'The current stage of the associated deal.Possible values: tenants_in_the_market, initial_inquiry, preview, tour, proposal, loi, legal, lease_outidle, dead_deal, lease_executed'
+                          reason:
+                            type: string
+                            enum:
+                            - adjacent_stores
+                            - cannibalization_risk
+                            - ceiling_height
+                            - foot_traffic
+                            - image
+                            - lobby
+                            - location
+                            - location_on_floor
+                            - other
+                            - parking_ratio
+                            - price
+                            - renewal
+                            - requirement_dead
+                            - security
+                            - size
+                            - space_condition
+                            - space_configuration
+                            - space_leased
+                            - storefront
+                            - timing
+                            - transportation
+                            - views
+                            - global_crisis
+                            - duplicate_deal
+                            - requirement_changed
+                            - decided_to_sublease
+                            - unknown
+                            - amenities
+                            - walkability
+                            - tenant_covenant
+                            - landlord_decision
+                            - tenant_non_responsive
+                            - null
+                            example: space_leased
+                            nullable: true
+                            description: 'Why the deal was moved to its current stage. Only applies to a deal in the dead deal stage. Possible values: adjacent_stores, cannibalization_risk, ceiling_height, foot_traffic, image, lobby, location, location_on_floor, other, parking_ratio, price, renewal, requirement_dead, security, size, space_condition, space_configuration, space_leased, storefront, timing, transportation, views, global_crisis, duplicate_deal, requirement_changed, decided_to_sublease, unknown, amenities, walkability, tenant_covenant, landlord_decision, tenant_non_responsive, null'
+                          occurred_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when a deal was marked with the current deal iteration stage
+                          created_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this deal iteration was created
+                          updated_at:
+                            type: string
+                            format: date-time
+                            description: The timestamp when this deal iteration was last updated
+                          ended_at:
+                            type: string
+                            format: date
+                            description: The timestamp when the deal iteration ended
+                            nullable: true
+                          duration_in_days:
+                            type: integer
+                            example: 1
+                            description: Number of days remaining to end the the Deal.
+                      relationships:
+                        type: object
+                        properties:
+                          deal:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - deals
+                                    example: deals
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+                          user:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '12345'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - users
+                                    example: users
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    format: uri
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+        '404':
+          description: Requested iteration does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deal-iterations-id
+  /api/v1/deals/{deal_id}/iterations:
+    get:
+      summary: Fetches Deal Iterations for a Specific Deal
+      description: Contains attributes of deal iterations for a given deal, including deal stage and transition reason
+      tags:
+      - Deal Iterations
+      security:
+      - basic_auth: []
+      parameters:
+      - name: deal_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page[before]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter[updated_since]
+        in: query
+        schema:
+          type: string
+          format: date-time
+        required: false
+        description: Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)
+        example: '2021-03-15'
+      responses:
+        '200':
+          description: Returns list of Iterations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          pattern: deal_iterations
+                          example: deal_iterations
+                        id:
+                          type: string
+                          example: '1'
+                        attributes:
+                          type: object
+                          properties:
+                            latest:
+                              type: boolean
+                              description: Whether or not this is the latest stage of it's associated deal
+                            stage:
+                              type: string
+                              enum:
+                              - tenants_in_the_market
+                              - initial_inquiry
+                              - preview
+                              - tour
+                              - proposal
+                              - loi
+                              - legal
+                              - lease_out
+                              example: proposal
+                              description: 'The current stage of the associated deal. Possible values: tenants_in_the_market, initial_inquiry, preview, tour, proposal, loi, legal, lease_out, idle, dead_deal, lease_executed'
+                            reason:
+                              type: string
+                              enum:
+                              - adjacent_stores
+                              - cannibalization_risk
+                              - ceiling_height
+                              - foot_traffic
+                              - image
+                              - lobby
+                              - location
+                              - location_on_floor
+                              - other
+                              - parking_ratio
+                              - price
+                              - renewal
+                              - requirement_dead
+                              - security
+                              - size
+                              - space_condition
+                              - space_configuration
+                              - space_leased
+                              - storefront
+                              - timing
+                              - transportation
+                              - views
+                              - global_crisis
+                              - duplicate_deal
+                              - requirement_changed
+                              - decided_to_sublease
+                              - unknown
+                              - amenities
+                              - walkability
+                              - tenant_covenant
+                              - landlord_decision
+                              - tenant_non_responsive
+                              - null
+                              example: space_leased
+                              nullable: true
+                              description: 'Why the deal was moved to its current stage. Only applies to a deal in the dead deal stage. Possible values: adjacent_stores, cannibalization_risk, ceiling_height, foot_traffic, image, lobby, location, location_on_floor, other, parking_ratio, price, renewal, requirement_dead, security, size, space_condition, space_configuration, space_leased, storefront, timing, transportation, views, global_crisis, duplicate_deal, requirement_changed, decided_to_sublease, unknown, amenities, walkability, tenant_covenant, landlord_decision, tenant_non_responsive, null'
+                            occurred_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when a deal was marked with the current deal iteration stage
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this deal iteration was created
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this deal iteration was last updated
+                            ended_at:
+                              type: string
+                              format: date
+                              description: The date when a deal will be marked as ended.
+                              nullable: true
+                            duration_in_days:
+                              type: integer
+                              example: 1
+                              description: The duration of the deal iteration in number of days
+                        relationships:
+                          type: object
+                          properties:
+                            deal:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - deals
+                                      example: deals
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                            user:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  nullable: true
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: '12345'
+                                    type:
+                                      type: string
+                                      enum:
+                                      - users
+                                      example: users
+                                links:
+                                  type: object
+                                  properties:
+                                    related:
+                                      type: string
+                                      format: uri
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/iterations?page%5Bafter%5D=MzE2NTE%253D
+                        description: The current URL
+                      prev:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/iterations?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the previous page of Iterations
+                      next:
+                        type: string
+                        example: https://api.vts.com/api/v1/deals/123/iterations?page%5Bbefore%5D=MzE2NTI%253D
+                        description: URL for the next page of Iterations
+                    required:
+                    - self
+        '403':
+          description: API not authorized for use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors_object'
+      operationId: get_api-v1-deals-deal-id-iterations
+components:
+  schemas:
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                nullable: true
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox.vts.com/oauth/authorize
+          tokenUrl: https://sandbox.vts.com/oauth/token
+          refreshUrl: https://sandbox.vts.com/oauth/token
+          scopes:
+            read_write: Read and write access
+            openid: OpenID Connect
+            profile: Profile claims
+            email: Email claim
+x-apis-json:
+  generated: '2026-07-21'
+  method: searched
+  source: https://readme.vts.com/reference (per-operation OpenAPI fragments, harvested & merged)
