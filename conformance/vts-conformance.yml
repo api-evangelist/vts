@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/vts-openapi.yml + https://readme.vts.com/docs + /.well-known metadata
+standards:
+- id: oauth2
+  conforms: true
+  evidence: OAuth 2.0 Authorization Code flow; /.well-known/oauth-authorization-server on sandbox.vts.com;
+    grant_types authorization_code + refresh_token
+- id: oauth2-pkce
+  conforms: true
+  evidence: 'Docs: OIDC client uses Authorization Code Flow with PKCE (code verifier + challenge)'
+- id: oidc
+  conforms: true
+  evidence: /.well-known/openid-configuration published; id_token_signing_alg RS256; scopes openid/profile/email;
+    userinfo + jwks endpoints
+- id: saml2
+  conforms: true
+  evidence: 'Docs: SAML Integrations for VTS Activate SSO'
+- id: http-basic-auth
+  conforms: true
+  evidence: API Key/Secret via HTTP Basic (RFC 7617) on the Lease API
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors returned in a custom errors[] envelope, not application/problem+json
+- id: json-api
+  conforms: false
+  partial: true
+  evidence: JSON:API-style filter[...] and page[...] query conventions, not full JSON:API media type
+- id: cursor-pagination
+  conforms: true
+  evidence: page[before]/page[after] base64 cursor pagination + page[size]
+notes: Standards conformance for the VTS Lease API and VTS Activate SSO. OSCRE (VTS 360) alignment is
+  documented for portfolio import.

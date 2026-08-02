@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vts-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/vts-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://sandbox.vts.com/oauth/authorize
+    tokenUrl: https://sandbox.vts.com/oauth/token
+  description: OAuth 2.0 Authorization Code flow with PKCE (VTS Activate / OIDC).
+scopes:
+- scope: email
+  description: Email claim
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/vts-openapi.yml
+- scope: openid
+  description: OpenID Connect
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/vts-openapi.yml
+- scope: profile
+  description: Profile claims
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/vts-openapi.yml
+- scope: read_write
+  description: Read and write access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/vts-openapi.yml

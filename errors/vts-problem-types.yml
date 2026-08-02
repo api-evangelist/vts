@@ -1,0 +1,53 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vts-openapi.yml (4xx/5xx responses)
+format: json
+envelope:
+  field: errors
+  schema: components.schemas.errors_object
+  note: Errors are returned in an errors array; each item carries a status, code/title
+    and detail.
+problems:
+- status: 400
+  title: Bad Request
+  description: Bad Request
+  example_operations:
+  - openapi/vts-openapi.yml#get_-1
+  - openapi/vts-openapi.yml#patch_api-v1-deal-snapshots-id
+  - openapi/vts-openapi.yml#patch_api-v1-delinquencies-id
+- status: 401
+  title: Unauthorized
+  description: Unauthorized
+  example_operations:
+  - openapi/vts-openapi.yml#get_-1
+  - openapi/vts-openapi.yml#get_api-v1-broker-agents
+  - openapi/vts-openapi.yml#get_api-v1-broker-agents-id
+- status: 403
+  title: Forbidden
+  description: Forbidden
+  example_operations:
+  - openapi/vts-openapi.yml#get_-1
+  - openapi/vts-openapi.yml#get_api-v1-account-admin-approval-settings
+  - openapi/vts-openapi.yml#get_api-v1-account-admin-approver-rules
+- status: 500
+  title: Internal Server Error
+  description: Internal Server Error
+  example_operations:
+  - openapi/vts-openapi.yml#get_-1
+- status: 503
+  title: Service Unavailable
+  description: Service Unavailable
+  example_operations:
+  - openapi/vts-openapi.yml#get_-1
+- status: 404
+  title: Not Found
+  description: Requested approver slot does not exist
+  example_operations:
+  - openapi/vts-openapi.yml#get_api-v1-account-admin-approver-slots-id
+  - openapi/vts-openapi.yml#get_api-v1-account-admin-asset-groups-id
+  - openapi/vts-openapi.yml#get_api-v1-account-admin-task-settings-id
+- status: 409
+  title: Duplicate record
+  description: Duplicate record
+  example_operations:
+  - openapi/vts-openapi.yml#post_api-v1-leases-lease-id-delinquencies

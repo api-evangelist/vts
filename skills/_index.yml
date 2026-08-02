@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/vts-openapi.yml
+skills:
+- file: vts-leasing-pipeline-sync.md
+  name: Sync the VTS leasing pipeline
+  api: openapi/vts-openapi.yml
+  operations:
+  - get_api-v1-assets
+  - get_api-v1-spaces
+  - get_api-v1-deals
+  - get_api-v1-deals-id
+  - get_api-v1-deal-terms
+  - get_api-v1-deal-terms-deal-term-id-financials
+  - get_api-v1-tenants
+- file: vts-publish-building-availability.md
+  name: Publish VTS building availability to a website
+  api: openapi/vts-openapi.yml
+  operations:
+  - get_api-v1-buildings
+  - get_api-v1-buildings-id
+  - get_api-v1-listings-id

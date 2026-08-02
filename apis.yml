@@ -1,8 +1,26 @@
 aid: vts
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/vts.png
 name: VTS
-description: VTS is a company surfaced as a portfolio company of 500-global, fifth-wall, insight-partners,
-  trinity-ventures and added to the API Evangelist network as a stub for enrichment. This profile is a
-  lead awaiting the enrichment pipeline.
+description: VTS (View The Space) is the commercial real estate leasing, asset management, and tenant-experience
+  platform used by landlords, property managers, and brokers to run their leasing pipeline and operate their
+  buildings. The VTS Lease REST API exposes portfolio data — assets, spaces, leases, deals, deal terms, lease
+  terms, financials, budgets, tenants, buildings, and listings — plus a Leasing Availability API for publishing
+  real-time building/listing availability, and VTS Activate (OIDC/SAML SSO and bulk data export) for the tenant-experience
+  product. Authentication is HTTP Basic (API Key + Secret) for the Lease API and OAuth 2.0 Authorization Code
+  with PKCE / OpenID Connect for Activate. The developer portal, reference, sandbox, and changelog are public
+  at readme.vts.com.
 url: https://raw.githubusercontent.com/api-evangelist/vts/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,14 +29,469 @@ x-backed-by:
 - fifth-wall
 - insight-partners
 - trinity-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: company
+x-tier-reason: has-public-api
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Commercial Real Estate
+- PropTech
+- Real Estate
+- Leasing
+- Asset Management
+- Property Management
+- Tenant Experience
+apis:
+- aid: vts:vts-account-admin-api
+  name: VTS Account Admin API
+  description: The Account Admin API from VTS — 11 operation(s) for account admin.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Account Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-account-admin-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-appraisals-api
+  name: VTS Appraisals API
+  description: The Appraisals API from VTS — 2 operation(s) for appraisals.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Appraisals
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-appraisals-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-approvals-api
+  name: VTS Approvals API
+  description: The Approvals API from VTS — 3 operation(s) for approvals.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Approvals
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-approvals-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-assets-api
+  name: VTS Assets API
+  description: The Assets API from VTS — 3 operation(s) for assets.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-assets-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-auth2-0-access-token-api
+  name: VTS Auth2.0 Access Token API
+  description: The Auth2.0 Access Token API from VTS — 1 operation(s) for auth2.0 access token.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Auth2.0 Access Token
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-auth2-0-access-token-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-blended-budgets-api
+  name: VTS Blended Budgets API
+  description: The Blended Budgets API from VTS — 2 operation(s) for blended budgets.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Blended Budgets
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-blended-budgets-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-broker-api
+  name: VTS Broker API
+  description: The Broker API from VTS — 6 operation(s) for broker.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Broker
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-broker-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-budgets-api
+  name: VTS Budgets API
+  description: The Budgets API from VTS — 2 operation(s) for budgets.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Budgets
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-budgets-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-coordination-projects-api
+  name: VTS Coordination Projects API
+  description: The Coordination Projects API from VTS — 6 operation(s) for coordination projects.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Coordination Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-coordination-projects-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-deal-comments-api
+  name: VTS Deal Comments API
+  description: The Deal Comments API from VTS — 3 operation(s) for deal comments.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Deal Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-deal-comments-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-deal-iterations-api
+  name: VTS Deal Iterations API
+  description: The Deal Iterations API from VTS — 3 operation(s) for deal iterations.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Deal Iterations
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-deal-iterations-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-deal-snapshots-api
+  name: VTS Deal Snapshots API
+  description: The Deal Snapshots API from VTS — 1 operation(s) for deal snapshots.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Deal Snapshots
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-deal-snapshots-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-deal-tasks-api
+  name: VTS Deal Tasks API
+  description: The Deal Tasks API from VTS — 3 operation(s) for deal tasks.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Deal Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-deal-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-deal-terms-api
+  name: VTS Deal Terms API
+  description: The Deal Terms API from VTS — 2 operation(s) for deal terms.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Deal Terms
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-deal-terms-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-deal-tours-api
+  name: VTS Deal Tours API
+  description: The Deal Tours API from VTS — 1 operation(s) for deal tours.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Deal Tours
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-deal-tours-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-deals-api
+  name: VTS Deals API
+  description: The Deals API from VTS — 2 operation(s) for deals.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Deals
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-deals-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-delinquencies-api
+  name: VTS Delinquencies API
+  description: The Delinquencies API from VTS — 4 operation(s) for delinquencies.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Delinquencies
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-delinquencies-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-download-links-api
+  name: VTS Download Links API
+  description: The Download Links API from VTS — 1 operation(s) for download links.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Download Links
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-download-links-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-financials-api
+  name: VTS Financials API
+  description: The Financials API from VTS — 3 operation(s) for financials.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Financials
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-financials-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-global-tenants-api
+  name: VTS Global Tenants API
+  description: The Global Tenants API from VTS — 2 operation(s) for global tenants.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Global Tenants
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-global-tenants-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-lease-terms-api
+  name: VTS Lease Terms API
+  description: The Lease Terms API from VTS — 2 operation(s) for lease terms.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Lease Terms
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-lease-terms-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-leases-api
+  name: VTS Leases API
+  description: The Leases API from VTS — 2 operation(s) for leases.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Leases
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-leases-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-leasing-availability-api
+  name: VTS Leasing Availability API
+  description: The Leasing Availability API from VTS — 3 operation(s) for leasing availability.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Leasing Availability
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-leasing-availability-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-options-api
+  name: VTS Options API
+  description: The Options API from VTS — 4 operation(s) for options.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Options
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-options-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-proposals-api
+  name: VTS Proposals API
+  description: The Proposals API from VTS — 3 operation(s) for proposals.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Proposals
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-proposals-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-retail-sales-api
+  name: VTS Retail Sales API
+  description: The Retail Sales API from VTS — 1 operation(s) for retail sales.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Retail Sales
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-retail-sales-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-spaces-api
+  name: VTS Spaces API
+  description: The Spaces API from VTS — 2 operation(s) for spaces.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Spaces
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-spaces-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-tenant-contacts-api
+  name: VTS Tenant Contacts API
+  description: The Tenant Contacts API from VTS — 3 operation(s) for tenant contacts.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Tenant Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-tenant-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-tenant-industries-api
+  name: VTS Tenant Industries API
+  description: The Tenant Industries API from VTS — 2 operation(s) for tenant industries.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Tenant Industries
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-tenant-industries-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-tenant-updates-api
+  name: VTS Tenant Updates API
+  description: The Tenant Updates API from VTS — 1 operation(s) for tenant updates.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Tenant Updates
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-tenant-updates-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-tenants-api
+  name: VTS Tenants API
+  description: The Tenants API from VTS — 2 operation(s) for tenants.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Tenants
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-tenants-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
+- aid: vts:vts-users-api
+  name: VTS Users API
+  description: The Users API from VTS — 2 operation(s) for users.
+  humanURL: https://readme.vts.com/
+  baseURL: https://api.vts.com/api/connect/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/vts-users-api-openapi.yml
+  - type: Documentation
+    url: https://readme.vts.com/docs
+  - type: APIReference
+    url: https://readme.vts.com/reference
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,4 +499,67 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://vts.com
+  url: https://www.vts.com
+- type: DeveloperPortal
+  url: https://readme.vts.com/
+- type: Documentation
+  url: https://readme.vts.com/docs
+- type: APIReference
+  url: https://readme.vts.com/reference
+- type: GettingStarted
+  url: https://readme.vts.com/docs/authentication
+- type: ChangeLog
+  url: https://readme.vts.com/changelog
+- type: Support
+  url: https://readme.vts.com/docs/faqs
+- type: Integrations
+  url: https://www.vts.com/cre-technology-partners
+- type: SignUp
+  url: https://www.vts.com/demo-request
+- type: TermsOfService
+  url: https://www.vts.com/services-terms
+- type: PrivacyPolicy
+  url: https://www.vts.com/privacy
+- type: LinkedIn
+  url: https://www.linkedin.com/company/we-are-vts
+- type: OpenAPI
+  url: openapi/vts-openapi.yml
+- type: Authentication
+  url: authentication/vts-authentication.yml
+- type: OAuthScopes
+  url: scopes/vts-scopes.yml
+- type: AgenticAccess
+  url: agentic-access/vts-agentic-access.yml
+- type: DomainSecurity
+  url: security/vts-domain-security.yml
+- type: WellKnown
+  url: well-known/vts-well-known.yml
+- type: MCPServer
+  url: mcp/vts-mcp.yml
+- type: LLMsTxt
+  url: llms/vts-llms.txt
+- type: Overlay
+  url: overlays/vts-openapi-overlay.yaml
+- type: Conformance
+  url: conformance/vts-conformance.yml
+- type: ErrorCatalog
+  url: errors/vts-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/vts-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/vts-lifecycle.yml
+- type: Conventions
+  url: conventions/vts-conventions.yml
+- type: ChangeLog
+  url: changelog/vts-changelog.yml
+- type: Sandbox
+  url: sandbox/vts-sandbox.yml
+- type: DataModel
+  url: data-model/vts-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 22
+  pass: local-v1

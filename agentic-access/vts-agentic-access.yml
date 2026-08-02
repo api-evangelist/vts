@@ -1,0 +1,962 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/vts-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 91
+  by_action_class:
+    connected: 85
+    acting: 6
+  by_consequence:
+    read: 85
+    write: 6
+  human_in_the_loop_required: 0
+operations:
+- path: /
+  method: get
+  operationId: get_-1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/account_admin/approval_settings
+  method: get
+  operationId: get_api-v1-account-admin-approval-settings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/account_admin/approver_rules
+  method: get
+  operationId: get_api-v1-account-admin-approver-rules
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/account_admin/approver_slots
+  method: get
+  operationId: get_api-v1-account-admin-approver-slots
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/account_admin/approver_slots/{id}
+  method: get
+  operationId: get_api-v1-account-admin-approver-slots-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/account_admin/asset_groups
+  method: get
+  operationId: get_api-v1-account-admin-asset-groups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/account_admin/asset_groups/{id}
+  method: get
+  operationId: get_api-v1-account-admin-asset-groups-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/account_admin/task_settings
+  method: get
+  operationId: get_api-v1-account-admin-task-settings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/account_admin/task_settings/{id}
+  method: get
+  operationId: get_api-v1-account-admin-task-settings-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/account_admin/task_templates
+  method: get
+  operationId: get_api-v1-account-admin-task-templates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/account_admin/user_asset_permissions
+  method: get
+  operationId: get_api-v1-account-admin-user-asset-permissions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/account_admin/user_space_permissions
+  method: get
+  operationId: get_api-v1-account-admin-user-space-permissions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appraisals
+  method: get
+  operationId: get_api-v1-appraisals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appraisals/{id}
+  method: get
+  operationId: get_api-v1-appraisals-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/assets
+  method: get
+  operationId: get_api-v1-assets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/assets/{asset_id}/deal_settings
+  method: get
+  operationId: get_api-v1-assets-asset-id-deal-settings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/assets/{id}
+  method: get
+  operationId: get_api-v1-assets-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/blended_budgets
+  method: get
+  operationId: get_api-v1-blended-budgets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/blended_budgets/{id}
+  method: get
+  operationId: get_api-v1-blended-budgets-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/broker/activities
+  method: get
+  operationId: get_api-v1-broker-activities
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/broker/agents
+  method: get
+  operationId: get_api-v1-broker-agents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/broker/agents/{id}
+  method: get
+  operationId: get_api-v1-broker-agents-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/broker/assets
+  method: get
+  operationId: get_api-v1-broker-assets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/broker/assets/{id}
+  method: get
+  operationId: get_api-v1-broker-assets-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/broker/availabilities
+  method: get
+  operationId: get_api-v1-broker-availabilities
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/budgets
+  method: get
+  operationId: get_api-v1-budgets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/budgets/{id}
+  method: get
+  operationId: get_api-v1-budgets-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/buildings
+  method: get
+  operationId: get_api-v1-buildings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/buildings/{id}
+  method: get
+  operationId: get_api-v1-buildings-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/coordination_project_milestones
+  method: get
+  operationId: get_api-v1-coordination-project-milestones
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/coordination_project_milestones/{id}
+  method: get
+  operationId: get_api-v1-coordination-project-milestones-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/coordination_projects
+  method: get
+  operationId: coordination_projects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/coordination_projects/{id}
+  method: get
+  operationId: coordination_project
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/coordination_projects/{project_id}/milestones
+  method: get
+  operationId: get_api-v1-coordination-projects-project-id-milestones
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_approvals
+  method: get
+  operationId: get_api-v1-deal-approvals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_approvals/{id}
+  method: get
+  operationId: get_api-v1-deal-approvals-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_comments
+  method: get
+  operationId: get_api-v1-deal-comments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_comments/{id}
+  method: get
+  operationId: get_api-v1-deal-comments-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_iterations
+  method: get
+  operationId: get_api-v1-deal-iterations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_iterations/{id}
+  method: get
+  operationId: get_api-v1-deal-iterations-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_snapshots/{id}
+  method: get
+  operationId: get_api-v1-deal-snapshots-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_snapshots/{id}
+  method: patch
+  operationId: patch_api-v1-deal-snapshots-id
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/deal_tasks
+  method: get
+  operationId: get_api-v1-deal-tasks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_tasks/{id}
+  method: get
+  operationId: get_api-v1-deal-tasks-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_terms
+  method: get
+  operationId: get_api-v1-deal-terms
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_terms/{deal_term_id}/financials
+  method: get
+  operationId: get_api-v1-deal-terms-deal-term-id-financials
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_terms/{deal_term_id}/options
+  method: get
+  operationId: get_api-v1-deal-terms-deal-term-id-options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deal_terms/{id}
+  method: get
+  operationId: get_api-v1-deal-terms-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deals
+  method: get
+  operationId: get_api-v1-deals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deals/{deal_id}/approvals
+  method: get
+  operationId: get_api-v1-deals-deal-id-approvals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deals/{deal_id}/comments
+  method: get
+  operationId: get_api-v1-deals-deal-id-comments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deals/{deal_id}/coordination_projects
+  method: get
+  operationId: coordination_projects_per_deal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deals/{deal_id}/iterations
+  method: get
+  operationId: get_api-v1-deals-deal-id-iterations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deals/{deal_id}/proposals
+  method: get
+  operationId: get_api-v1-deals-deal-id-proposals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deals/{deal_id}/tasks
+  method: get
+  operationId: get_api-v1-deals-deal-id-tasks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deals/{deal_id}/tours
+  method: get
+  operationId: get_api-v1-deals-deal-id-tours
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/deals/{id}
+  method: get
+  operationId: get_api-v1-deals-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/delinquencies
+  method: get
+  operationId: get_api-v1-delinquencies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/delinquencies/{id}
+  method: patch
+  operationId: patch_api-v1-delinquencies-id
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/financials
+  method: get
+  operationId: get_api-v1-financials
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/global_tenants
+  method: get
+  operationId: get_api-v1-global-tenants
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/global_tenants/{id}
+  method: get
+  operationId: get_api-v1-global-tenants-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/lease_terms
+  method: get
+  operationId: get_api-v1-lease-terms
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/lease_terms/{id}
+  method: get
+  operationId: get_api-v1-lease-terms-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/lease_terms/{lease_term_id}/financials
+  method: get
+  operationId: get_api-v1-lease-terms-lease-term-id-financials
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/lease_terms/{lease_term_id}/options
+  method: get
+  operationId: get_api-v1-lease-terms-lease-term-id-options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/leases
+  method: get
+  operationId: get_api-v1-leases
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/leases/{id}
+  method: get
+  operationId: get_api-v1-leases-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/leases/{lease_id}/delinquencies
+  method: post
+  operationId: post_api-v1-leases-lease-id-delinquencies
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/leases/{lease_id}/delinquencies
+  method: get
+  operationId: get_api-v1-leases-lease-id-delinquencies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/leases/{lease_id}/delinquencies/{id}
+  method: patch
+  operationId: patch_api-v1-leases-lease-id-delinquencies-id
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/leases/{lease_id}/retail_sales
+  method: post
+  operationId: post_api-v1-leases-lease-id-retail-sales
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/leases/{lease_id}/retail_sales
+  method: get
+  operationId: get_api-v1-leases-lease-id-retail-sales
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/listings/{id}
+  method: get
+  operationId: get_api-v1-listings-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/options
+  method: get
+  operationId: get_api-v1-options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/options/{id}
+  method: get
+  operationId: get_api-v1-options-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/proposals
+  method: get
+  operationId: get_api-v1-proposals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/proposals/{id}
+  method: get
+  operationId: get_api-v1-proposals-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/spaces
+  method: get
+  operationId: get_api-v1-spaces
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/spaces/{id}
+  method: get
+  operationId: get_api-v1-spaces-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/tenant_contacts
+  method: get
+  operationId: get_api-v1-tenant-contacts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/tenant_contacts/{id}
+  method: get
+  operationId: get_api-v1-tenant-contacts-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/tenant_industries
+  method: get
+  operationId: get_api-v1-tenant-industries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/tenant_industries/{id}
+  method: get
+  operationId: get_api-v1-tenant-industries-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/tenant_updates
+  method: get
+  operationId: get_api-v1-tenant-updates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/tenants
+  method: get
+  operationId: get_api-v1-tenants
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/tenants/{id}
+  method: get
+  operationId: get_api-v1-tenants-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/tenants/{tenant_id}/contacts
+  method: get
+  operationId: get_api-v1-tenants-tenant-id-contacts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/users
+  method: get
+  operationId: get_api-v1-users
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/users/{id}
+  method: get
+  operationId: get_api-v1-users-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /oauth/v1/token
+  method: post
+  operationId: post_oauth-v1-token-1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required

@@ -1,0 +1,7 @@
+generated: '2026-07-21'
+method: searched
+source: npm, PyPI, RubyGems, GitHub search (2026-07)
+packages: []
+notes: No first-party VTS client SDK/CLI published on npm, PyPI, RubyGems, Maven, NuGet, or a public GitHub
+  org (2026-07). The ReadMe developer portal generates per-language request snippets but ships no distributed
+  client library.

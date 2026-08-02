@@ -1,0 +1,128 @@
+# VTS Documentation
+
+> Documentation for VTS
+
+## Guides
+- [Portfolio Import [V2]](https://readme.vts.com/docs/portfolio-import-v2.md)
+- [Leasing Availability API](https://readme.vts.com/docs/leasing-availability-api.md)
+- [Marketing Export](https://readme.vts.com/docs/marketing-api.md)
+- [Bulk Export](https://readme.vts.com/docs/bulk-data-export.md)
+- [Overview](https://readme.vts.com/docs/overview.md): Basics on how to get started with Activate Bulk Exports
+- [ACTIVATE_ANALYTICS_EVENTS](https://readme.vts.com/docs/app_activate_analytics_events.md)
+- [Analytics Events Captured](https://readme.vts.com/docs/analytics-events-captured.md)
+- [ACTIVATE_USER_CHANNEL_DETAILS](https://readme.vts.com/docs/app_activate_user_channel_details.md)
+- [ACTIVATE_RESERVATIONS](https://readme.vts.com/docs/app_activate_reservations.md)
+- [ACTIVATE_PROPERTY_CHANNEL_DETAILS](https://readme.vts.com/docs/app_activate_channels.md)
+- [ACTIVATE_SERVICE_REQUEST_DETAILS](https://readme.vts.com/docs/activate_service_request_details.md)
+- [ACTIVATE_TASK_EXECUTION_DETAILS](https://readme.vts.com/docs/activate_task_execution_details.md)
+- [OIDC](https://readme.vts.com/docs/oidc.md)
+- [Webview Requirements](https://readme.vts.com/docs/webview-requirements.md)
+- [Getting Started](https://readme.vts.com/docs/overview-1.md)
+- [Using OIDC](https://readme.vts.com/docs/using-oidc.md): OIDC client using Authorization Code Flow with PKCE (code verifier + challenge); validates ID tokens (JWTs); uses Client ID, issuer/domain, ext-integration-id, connection, and organization as documented.
+- [Going Live](https://readme.vts.com/docs/going-live.md)
+- [SAML Integrations](https://readme.vts.com/docs/saml-integrations.md)
+- [Webview Requirements](https://readme.vts.com/docs/webview-requirements-copy.md)
+- [Getting Started](https://readme.vts.com/docs/getting-started-1.md)
+- [Using SAML](https://readme.vts.com/docs/using-saml.md)
+- [FAQs](https://readme.vts.com/docs/faqs.md)
+
+## API Reference
+- [Fetches approval settings](https://readme.vts.com/reference/get_api-v1-account-admin-approval-settings.md)
+- [Fetches approver rules](https://readme.vts.com/reference/get_api-v1-account-admin-approver-rules.md)
+- [Fetches approver slots](https://readme.vts.com/reference/get_api-v1-account-admin-approver-slots.md)
+- [Retrieves specific approver slots](https://readme.vts.com/reference/get_api-v1-account-admin-approver-slots-id.md)
+- [Fetches asset groups](https://readme.vts.com/reference/get_api-v1-account-admin-asset-groups.md)
+- [Retrieves specific asset groups](https://readme.vts.com/reference/get_api-v1-account-admin-asset-groups-id.md)
+- [Fetches task settings](https://readme.vts.com/reference/get_api-v1-account-admin-task-settings.md)
+- [Retrieves specific task settings](https://readme.vts.com/reference/get_api-v1-account-admin-task-settings-id.md)
+- [Fetches task templates](https://readme.vts.com/reference/get_api-v1-account-admin-task-templates.md)
+- [Fetches user asset permissions](https://readme.vts.com/reference/get_api-v1-account-admin-user-asset-permissions.md): Contains the user asset permissions in your portfolio.
+- [Fetches user space permissions](https://readme.vts.com/reference/get_api-v1-account-admin-user-space-permissions.md): Contains the user space permissions in your portfolio.
+- [Fetches appraisals](https://readme.vts.com/reference/get_api-v1-appraisals.md)
+- [Retrieves specific appraisals](https://readme.vts.com/reference/get_api-v1-appraisals-id.md)
+- [Fetches approvals](https://readme.vts.com/reference/get_api-v1-deal-approvals.md)
+- [Retrieves specific approvals](https://readme.vts.com/reference/get_api-v1-deal-approvals-id.md)
+- [Fetches deal approvals](https://readme.vts.com/reference/get_api-v1-deals-deal-id-approvals.md)
+- [Fetches assets](https://readme.vts.com/reference/get_api-v1-assets.md): Contains the assets in your portfolio. Assets are the top-level building or property component in VTS.
+- [Retrieves specific asset](https://readme.vts.com/reference/get_api-v1-assets-id.md): Contains the assets in your portfolio. Assets are the top-level building or property component in VTS.
+- [Retrieves deal settings for given asset for specific account](https://readme.vts.com/reference/get_api-v1-assets-asset-id-deal-settings.md)
+- [Fetches blended budgets](https://readme.vts.com/reference/get_api-v1-blended-budgets.md)
+- [Retrieves specific blended budgets](https://readme.vts.com/reference/get_api-v1-blended-budgets-id.md)
+- [Fetches Broker Activities](https://readme.vts.com/reference/get_api-v1-broker-activities.md)
+- [Fetches broker agent users](https://readme.vts.com/reference/get_api-v1-broker-agents.md)
+- [Retrieves specific broker agent user](https://readme.vts.com/reference/get_api-v1-broker-agents-id.md)
+- [Fetches Broker Assets](https://readme.vts.com/reference/get_api-v1-broker-assets.md)
+- [Fetches Specific Broker Asset](https://readme.vts.com/reference/get_api-v1-broker-assets-id.md)
+- [Fetches Broker Availabilities](https://readme.vts.com/reference/get_api-v1-broker-availabilities.md)
+- [Fetches budgets](https://readme.vts.com/reference/get_api-v1-budgets.md)
+- [Retrieves specific budgets](https://readme.vts.com/reference/get_api-v1-budgets-id.md)
+- [Fetches a specific building](https://readme.vts.com/reference/get_api-v1-buildings-id.md): Part of the Leasing Availability API, this fetches a specific building on VTS Market with information about the building and its available listings. Expected usage would be to make a webpage about the building
+- [Fetches a set of buildings](https://readme.vts.com/reference/get_api-v1-buildings.md): Part of the Leasing Availability API, this fetches buildings on VTS Market associated with the account that the API key is generated for with information about the building and its available listings. Expected usage would be to make a portfolio page for the given account
+- [Fetches a specific listing](https://readme.vts.com/reference/get_api-v1-listings-id.md): Part of the Leasing Availability API, this fetches a specific listing on VTS Market with information about the listing. Expected usage would be to make a webpage about the listing
+- [Gets coordination projects](https://readme.vts.com/reference/coordination_projects.md): Contains the coordination projects in your portfolio
+- [Gets coordination projects for specific deal](https://readme.vts.com/reference/coordination_projects_per_deal.md): Contains the coordination projects in your portfolio for specific deal
+- [Retrieves specific coordination project](https://readme.vts.com/reference/coordination_project.md): Contains the coordination projects in your portfolio
+- [Gets a coordination project's milestones](https://readme.vts.com/reference/get_api-v1-coordination-projects-project-id-milestones.md): Contains the coordination projects in your portfolio
+- [Gets a list of coordination project milestones](https://readme.vts.com/reference/get_api-v1-coordination-project-milestones.md): Contains all milestones of your portfolio
+- [Gets specific coordination project milestones](https://readme.vts.com/reference/get_api-v1-coordination-project-milestones-id.md): Contains specific milestones of your portfolio
+- [Fetches Deal Comments for a Specific Account](https://readme.vts.com/reference/get_api-v1-deal-comments.md): Contains comments associated with a given deal
+- [Retrieves specific Deal Comment](https://readme.vts.com/reference/get_api-v1-deal-comments-id.md): Contains the Deal Comment from your account
+- [Fetches Deal Comments for a Specific Deal](https://readme.vts.com/reference/get_api-v1-deals-deal-id-comments.md)
+- [Fetches account deal iterations](https://readme.vts.com/reference/get_api-v1-deal-iterations.md): Contains attributes of deal iterations for a given deal, including deal stage and transition reason
+- [Retrieves specific account deal iteration](https://readme.vts.com/reference/get_api-v1-deal-iterations-id.md): Contains attributes of deal iterations for a given deal, including deal stage and transition reason
+- [Fetches Deal Iterations for a Specific Deal](https://readme.vts.com/reference/get_api-v1-deals-deal-id-iterations.md): Contains attributes of deal iterations for a given deal, including deal stage and transition reason
+- [Retrieves specific deal snapshot](https://readme.vts.com/reference/get_api-v1-deal-snapshots-id.md): Refer to https://readme.vts.com/docs/deal-snapshot-documentation for a description of deal snapshots payload
+- [Updates deal snapshot](https://readme.vts.com/reference/patch_api-v1-deal-snapshots-id.md): Updates a deal snapshot record
+- [Fetches deal tasks](https://readme.vts.com/reference/get_api-v1-deal-tasks.md)
+- [Retrieves Tasks for Given Deal for Specific Account](https://readme.vts.com/reference/get_api-v1-deal-tasks-id.md)
+- [Fetches deal tasks for a Deal](https://readme.vts.com/reference/get_api-v1-deals-deal-id-tasks.md)
+- [Fetches Financials for a given deal term](https://readme.vts.com/reference/get_api-v1-deal-terms-deal-term-id-financials.md): Contains the corresponding financials for a lease or deal term
+- [Fetches Financials for lease terms and/or lease terms](https://readme.vts.com/reference/get_api-v1-financials.md): Contains the corresponding financials for a lease or deal term
+- [Fetches Financials for a given lease term](https://readme.vts.com/reference/get_api-v1-lease-terms-lease-term-id-financials.md): Contains the corresponding financials for a lease or deal term
+- [Fetches options for Deal Term](https://readme.vts.com/reference/get_api-v1-deal-terms-deal-term-id-options.md): Contains all options for a given deal term or lease term. Examples include encumbrances, renewals, and termination options
+- [Fetches options for Lease Term](https://readme.vts.com/reference/get_api-v1-lease-terms-lease-term-id-options.md): Contains all options for a given deal term or lease term. Examples include encumbrances, renewals, and termination options
+- [Fetches options](https://readme.vts.com/reference/get_api-v1-options.md): Contains all options for a given deal term or lease term. Examples include encumbrances, renewals, and termination options
+- [Retrieves Options for Specific Account](https://readme.vts.com/reference/get_api-v1-options-id.md): Contains all options for a given deal term or lease term. Examples include encumbrances, renewals, and termination options
+- [Fetches deal terms](https://readme.vts.com/reference/get_api-v1-deal-terms.md): Contains attributes of a given deal term, including rentable size, term duration, and tenant risks
+- [Retrieves specific deal term](https://readme.vts.com/reference/get_api-v1-deal-terms-id.md): Contains attributes of a given deal term, including rentable size, term duration, and tenant risks
+- [Fetches deal tours](https://readme.vts.com/reference/get_api-v1-deals-deal-id-tours.md): Contains attributes of a given deal tours, including rentable size, term duration, and tenant risks
+- [Fetches proposals](https://readme.vts.com/reference/get_api-v1-deals-deal-id-proposals.md): Contains details of a given proposal, including discount rate, proposal type, and description
+- [Fetches proposals](https://readme.vts.com/reference/get_api-v1-proposals.md): Contains details of a given proposal, including discount rate, proposal type, and description
+- [Retrieves specific proposal](https://readme.vts.com/reference/get_api-v1-proposals-id.md): Contains details of a given proposal, including discount rate, proposal type, and description
+- [Fetches deals](https://readme.vts.com/reference/get_api-v1-deals.md): Contains an overview of a given deal, including requirements, stage, and deal type
+- [Retrieves specific deal](https://readme.vts.com/reference/get_api-v1-deals-id.md): Contains an overview of a given deal, including requirements, stage, and deal type
+- [Fetches delinquencies](https://readme.vts.com/reference/get_api-v1-delinquencies.md): Contains the delinquent leases in your portfolio
+- [Updates delinquency](https://readme.vts.com/reference/patch_api-v1-delinquencies-id.md): Updates a delinquency record on the lease
+- [Creates delinquency](https://readme.vts.com/reference/post_api-v1-leases-lease-id-delinquencies.md): Creates a delinquency record on the lease
+- [Fetches delinquencies](https://readme.vts.com/reference/get_api-v1-leases-lease-id-delinquencies.md): Contains the delinquent leases in your portfolio
+- [Updates delinquency](https://readme.vts.com/reference/patch_api-v1-leases-lease-id-delinquencies-id.md): Updates a delinquency record on the lease
+- [Fetches global tenants](https://readme.vts.com/reference/get_api-v1-global-tenants.md): Contains the cleansed tenant names associated with reported or inputted tenant names. Links to the ultimate parent global tenant ID
+- [Fetches specific global tenant](https://readme.vts.com/reference/get_api-v1-global-tenants-id.md): Contains the cleansed tenant names associated with reported or inputted tenant names. Links to the ultimate parent global tenant ID
+- [Fetches lease terms](https://readme.vts.com/reference/get_api-v1-lease-terms.md): Contains attributes of a given lease term including possession date, lease type, and calculated rents
+- [Retrieves specific lease term](https://readme.vts.com/reference/get_api-v1-lease-terms-id.md): Contains attributes of a given lease term including possession date, lease type, and calculated rents
+- [Gets leases](https://readme.vts.com/reference/get_api-v1-leases.md): Contains all leases in your portfolio. Supports interacting with all leases, or specifying a particular lease ID
+- [Retrieves specific lease](https://readme.vts.com/reference/get_api-v1-leases-id.md): Contains all leases in your portfolio. Supports interacting with all leases, or specifying a particular lease ID
+- [Creates retail sale](https://readme.vts.com/reference/post_api-v1-leases-lease-id-retail-sales.md): Creates the retail sale amounts for a given lease ID
+- [Fetches retail sales](https://readme.vts.com/reference/get_api-v1-leases-lease-id-retail-sales.md): Contains the retail sale amounts for a given lease ID
+- [Fetches spaces](https://readme.vts.com/reference/get_api-v1-spaces.md): Contains the spaces in your portfolio. Spaces are sub-components of assets
+- [Retrieves specific space](https://readme.vts.com/reference/get_api-v1-spaces-id.md): Contains the spaces in your portfolio. Spaces are sub-components of assets
+- [Fetches Tenant Contacts for a Specific Account](https://readme.vts.com/reference/get_api-v1-tenant-contacts.md)
+- [Retrieves specific tenant contacts](https://readme.vts.com/reference/get_api-v1-tenant-contacts-id.md): Contains the tenant contact from your account
+- [Fetches tenant contacts](https://readme.vts.com/reference/get_api-v1-tenants-tenant-id-contacts.md)
+- [Fetches tenant industries](https://readme.vts.com/reference/get_api-v1-tenant-industries.md): Contains more details on a given tenant's industry, including industry name and sector
+- [Retrieves specific tenant industry](https://readme.vts.com/reference/get_api-v1-tenant-industries-id.md): Contains more details on a given tenant's industry, including industry name and sector
+- [Fetches tenant updates](https://readme.vts.com/reference/get_api-v1-tenant-updates.md): Contains updates to a given tenant. Examples include comments, update type, and relationship updates
+- [Fetches tenants](https://readme.vts.com/reference/get_api-v1-tenants.md): Contains details for a tenant entity based on lease- or deal-inputted tenant information. Links to the Global Tenants endpoint
+- [Retrieves specific tenant](https://readme.vts.com/reference/get_api-v1-tenants-id.md): Contains details for a tenant entity based on lease- or deal-inputted tenant information. Links to the Global Tenants endpoint
+- [Fetches users](https://readme.vts.com/reference/get_api-v1-users.md): Contains your VTS user details such as name on account, user level, and user contact information
+- [Retrieves specific user](https://readme.vts.com/reference/get_api-v1-users-id.md): Contains your VTS user details such as name on account, user level, and user contact information
+- [Download files URIs](https://readme.vts.com/reference/get_-1.md): Download AWS CloudFront pre-signed URIs
+- [Get access token](https://readme.vts.com/reference/post_oauth-v1-token.md): Get access token
+- [Get access token](https://readme.vts.com/reference/post_oauth-v1-token-1.md): Get access token
+
+## Changelog
+- [Changelog for April 24, 2026](https://readme.vts.com/changelog/changelog-for-april-24-2026.md)
+- [Changelog for August 5, 2024](https://readme.vts.com/changelog/changelog-for-august-5-2024.md)
+- [Changelog for July 19th, 2024](https://readme.vts.com/changelog/changelog-for-july-19th-2024.md)
+- [Changelog for May 15, 2024](https://readme.vts.com/changelog/changelog-for-may-15-2024.md)
+- [Changelog for May 14, 2024](https://readme.vts.com/changelog/changelog-for-may-14-2024.md)

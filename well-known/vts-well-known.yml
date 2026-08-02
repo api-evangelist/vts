@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of VTS hosts
+hosts:
+- host: https://sandbox.vts.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: vts-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: vts-oauth-authorization-server.json
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api.vts.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+- host: https://www.vts.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    note: host behind bot protection
+notes: OIDC + OAuth 2.0 Authorization Server metadata published on the sandbox host (Doorkeeper/Rails).
+  No security.txt or api-catalog found.

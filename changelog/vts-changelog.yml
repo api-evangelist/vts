@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: https://readme.vts.com/changelog
+scheme: dated
+current_version: v1
+url: https://readme.vts.com/changelog
+entries:
+- date: '2026-04-24'
+  type: fix
+  area: Financials
+  breaking: false
+  highlights:
+  - Financials endpoint now sorted by numeric object ID rather than object type
+  - Fixed missing financial objects on page 2+ of results
+- date: '2024-08-05'
+  type: update
+  area: Global Tenants
+  breaking: false
+  highlights:
+  - Global Tenant scope expanded to all linked tenants (direct or indirect relationships)
+- date: '2024-07-19'
+  type: addition
+  area: Tenant Contacts
+  breaking: false
+  highlights:
+  - Added phone_type, type, role, is_decision_maker, and note fields
+- date: '2024-05-15'
+  type: addition
+  area: Approvals
+  breaking: false
+  highlights:
+  - Added recommendation field to the Approvals endpoint
+- date: '2024-05-14'
+  type: fix
+  area: Coordination Projects
+  breaking: false
+  highlights:
+  - Fixed NULL rent commencement dates
+  - Undisclosed-client coordination projects now returned

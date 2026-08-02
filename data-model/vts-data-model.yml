@@ -1,0 +1,105 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vts-openapi.yml (tags + nested path references)
+entities:
+- name: Account Admin
+- name: Appraisals
+- name: Approvals
+- name: Assets
+- name: Auth2.0 Access Token
+- name: Blended Budgets
+- name: Broker
+- name: Budgets
+- name: Coordination Projects
+- name: Deal Comments
+- name: Deal Iterations
+- name: Deal Snapshots
+- name: Deal Tasks
+- name: Deal Terms
+- name: Deal Tours
+- name: Deals
+- name: Delinquencies
+- name: Download Links
+- name: Financials
+- name: Global Tenants
+- name: Lease Terms
+- name: Leases
+- name: Leasing Availability
+- name: Options
+- name: Proposals
+- name: Retail Sales
+- name: Spaces
+- name: Tenant Contacts
+- name: Tenant Industries
+- name: Tenant Updates
+- name: Tenants
+- name: Users
+relationships:
+- from: assets
+  to: deal_settings
+  type: has_many
+  via: path
+- from: coordination_projects
+  to: milestones
+  type: has_many
+  via: path
+- from: deal_terms
+  to: financials
+  type: has_many
+  via: path
+- from: deal_terms
+  to: options
+  type: has_many
+  via: path
+- from: deals
+  to: approvals
+  type: has_many
+  via: path
+- from: deals
+  to: comments
+  type: has_many
+  via: path
+- from: deals
+  to: coordination_projects
+  type: has_many
+  via: path
+- from: deals
+  to: iterations
+  type: has_many
+  via: path
+- from: deals
+  to: proposals
+  type: has_many
+  via: path
+- from: deals
+  to: tasks
+  type: has_many
+  via: path
+- from: deals
+  to: tours
+  type: has_many
+  via: path
+- from: lease_terms
+  to: financials
+  type: has_many
+  via: path
+- from: lease_terms
+  to: options
+  type: has_many
+  via: path
+- from: leases
+  to: delinquencies
+  type: has_many
+  via: path
+- from: leases
+  to: retail_sales
+  type: has_many
+  via: path
+- from: tenants
+  to: contacts
+  type: has_many
+  via: path
+notes: 'Core CRE hierarchy: Assets (top-level buildings/properties) contain Spaces;
+  Leases and Deals attach to Assets/Spaces; Deals carry Deal Terms, Deal Tasks, Proposals,
+  Tours and Approvals; Leases carry Lease Terms, Financials, Delinquencies and Retail
+  Sales; Tenants link to Global Tenants and Tenant Contacts.'

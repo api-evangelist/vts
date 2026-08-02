@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: https://readme.vts.com/docs/authentication
+sandbox_host: https://sandbox.vts.com
+sandbox_base: https://sandbox.vts.com/api/connect/v1
+production_host: https://api.vts.com
+production_base: https://api.vts.com/api/connect/v1
+access:
+  model: VTS provisions a Sandbox environment for integration testing ahead of production go-live; API
+    Key + API Secret credentials issued per authorized consumer with Account Administrator approval.
+  auth_test: curl -u <API Key>:<API Secret> https://sandbox.vts.com/api/connect/v1
+test_values:
+  published: false
+  note: VTS does not publish public magic test cards/identifiers; sandbox is populated with the client
+    onboarded test data.
+oauth:
+  authorization_endpoint: https://sandbox.vts.com/oauth/authorize
+  token_endpoint: https://sandbox.vts.com/oauth/token
+  scopes:
+  - read_write
+  - openid
+  - profile
+  - email

@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: https://readme.vts.com/docs + openapi/vts-openapi.yml
+base_url:
+  production: https://api.vts.com
+  sandbox: https://sandbox.vts.com
+  base_path: /api/v1
+authentication:
+  style: HTTP Basic (API Key as username, API Secret as password) for the Lease API; OAuth 2.0 Authorization
+    Code + PKCE / OIDC for VTS Activate
+  ref: authentication/vts-authentication.yml
+pagination:
+  style: cursor
+  params:
+  - page[after]
+  - page[before]
+  - page[size]
+  note: Base64-encoded opaque cursors; responses expose next/prev cursor links.
+filtering:
+  style: JSON:API-like
+  params_example:
+  - filter[approval_setting_id]
+  - filter[multi_building_asset_id]
+errors:
+  envelope_field: errors
+  ref: errors/vts-problem-types.yml
+  format: custom errors[] array (not RFC 9457)
+idempotency:
+  supported: false
+  note: No documented idempotency-key header; API is predominantly read-only (GET) with a few PATCH/POST
+    write endpoints (deal snapshots, delinquencies, retail sales).
+versioning:
+  ref: lifecycle/vts-lifecycle.yml
+  scheme: uri-path
+  current: v1
+content_type: application/json (Lease API); XML on the /api/connect/v1 auth-check endpoint
+rate_limits:
+  documented: false

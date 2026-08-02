@@ -1,0 +1,465 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+server:
+  name: vts
+  transport: http
+  note: No official VTS MCP server found (2026-07). Candidate tool surface derived
+    from the VTS Lease API operations.
+source: openapi/vts-openapi.yml
+tools:
+- name: get_-1
+  description: Download files URIs
+  source_operation: openapi/vts-openapi.yml#get_-1
+  method: GET
+  path: /
+- name: get_api-v1-account-admin-approval-settings
+  description: Fetches approval settings
+  source_operation: openapi/vts-openapi.yml#get_api-v1-account-admin-approval-settings
+  method: GET
+  path: /api/v1/account_admin/approval_settings
+- name: get_api-v1-account-admin-approver-rules
+  description: Fetches approver rules
+  source_operation: openapi/vts-openapi.yml#get_api-v1-account-admin-approver-rules
+  method: GET
+  path: /api/v1/account_admin/approver_rules
+- name: get_api-v1-account-admin-approver-slots
+  description: Fetches approver slots
+  source_operation: openapi/vts-openapi.yml#get_api-v1-account-admin-approver-slots
+  method: GET
+  path: /api/v1/account_admin/approver_slots
+- name: get_api-v1-account-admin-approver-slots-id
+  description: Retrieves specific approver slots
+  source_operation: openapi/vts-openapi.yml#get_api-v1-account-admin-approver-slots-id
+  method: GET
+  path: /api/v1/account_admin/approver_slots/{id}
+- name: get_api-v1-account-admin-asset-groups
+  description: Fetches asset groups
+  source_operation: openapi/vts-openapi.yml#get_api-v1-account-admin-asset-groups
+  method: GET
+  path: /api/v1/account_admin/asset_groups
+- name: get_api-v1-account-admin-asset-groups-id
+  description: Retrieves specific asset groups
+  source_operation: openapi/vts-openapi.yml#get_api-v1-account-admin-asset-groups-id
+  method: GET
+  path: /api/v1/account_admin/asset_groups/{id}
+- name: get_api-v1-account-admin-task-settings
+  description: Fetches task settings
+  source_operation: openapi/vts-openapi.yml#get_api-v1-account-admin-task-settings
+  method: GET
+  path: /api/v1/account_admin/task_settings
+- name: get_api-v1-account-admin-task-settings-id
+  description: Retrieves specific task settings
+  source_operation: openapi/vts-openapi.yml#get_api-v1-account-admin-task-settings-id
+  method: GET
+  path: /api/v1/account_admin/task_settings/{id}
+- name: get_api-v1-account-admin-task-templates
+  description: Fetches task templates
+  source_operation: openapi/vts-openapi.yml#get_api-v1-account-admin-task-templates
+  method: GET
+  path: /api/v1/account_admin/task_templates
+- name: get_api-v1-account-admin-user-asset-permissions
+  description: Fetches user asset permissions
+  source_operation: openapi/vts-openapi.yml#get_api-v1-account-admin-user-asset-permissions
+  method: GET
+  path: /api/v1/account_admin/user_asset_permissions
+- name: get_api-v1-account-admin-user-space-permissions
+  description: Fetches user space permissions
+  source_operation: openapi/vts-openapi.yml#get_api-v1-account-admin-user-space-permissions
+  method: GET
+  path: /api/v1/account_admin/user_space_permissions
+- name: get_api-v1-appraisals
+  description: Fetches appraisals
+  source_operation: openapi/vts-openapi.yml#get_api-v1-appraisals
+  method: GET
+  path: /api/v1/appraisals
+- name: get_api-v1-appraisals-id
+  description: Retrieves specific appraisals
+  source_operation: openapi/vts-openapi.yml#get_api-v1-appraisals-id
+  method: GET
+  path: /api/v1/appraisals/{id}
+- name: get_api-v1-assets
+  description: Fetches assets
+  source_operation: openapi/vts-openapi.yml#get_api-v1-assets
+  method: GET
+  path: /api/v1/assets
+- name: get_api-v1-assets-asset-id-deal-settings
+  description: Retrieves deal settings for given asset for specific account
+  source_operation: openapi/vts-openapi.yml#get_api-v1-assets-asset-id-deal-settings
+  method: GET
+  path: /api/v1/assets/{asset_id}/deal_settings
+- name: get_api-v1-assets-id
+  description: Retrieves specific asset
+  source_operation: openapi/vts-openapi.yml#get_api-v1-assets-id
+  method: GET
+  path: /api/v1/assets/{id}
+- name: get_api-v1-blended-budgets
+  description: Fetches blended budgets
+  source_operation: openapi/vts-openapi.yml#get_api-v1-blended-budgets
+  method: GET
+  path: /api/v1/blended_budgets
+- name: get_api-v1-blended-budgets-id
+  description: Retrieves specific blended budgets
+  source_operation: openapi/vts-openapi.yml#get_api-v1-blended-budgets-id
+  method: GET
+  path: /api/v1/blended_budgets/{id}
+- name: get_api-v1-broker-activities
+  description: Fetches Broker Activities
+  source_operation: openapi/vts-openapi.yml#get_api-v1-broker-activities
+  method: GET
+  path: /api/v1/broker/activities
+- name: get_api-v1-broker-agents
+  description: Fetches broker agent users
+  source_operation: openapi/vts-openapi.yml#get_api-v1-broker-agents
+  method: GET
+  path: /api/v1/broker/agents
+- name: get_api-v1-broker-agents-id
+  description: Retrieves specific broker agent user
+  source_operation: openapi/vts-openapi.yml#get_api-v1-broker-agents-id
+  method: GET
+  path: /api/v1/broker/agents/{id}
+- name: get_api-v1-broker-assets
+  description: Fetches Broker Assets
+  source_operation: openapi/vts-openapi.yml#get_api-v1-broker-assets
+  method: GET
+  path: /api/v1/broker/assets
+- name: get_api-v1-broker-assets-id
+  description: Fetches Specific Broker Asset
+  source_operation: openapi/vts-openapi.yml#get_api-v1-broker-assets-id
+  method: GET
+  path: /api/v1/broker/assets/{id}
+- name: get_api-v1-broker-availabilities
+  description: Fetches Broker Availabilities
+  source_operation: openapi/vts-openapi.yml#get_api-v1-broker-availabilities
+  method: GET
+  path: /api/v1/broker/availabilities
+- name: get_api-v1-budgets
+  description: Fetches budgets
+  source_operation: openapi/vts-openapi.yml#get_api-v1-budgets
+  method: GET
+  path: /api/v1/budgets
+- name: get_api-v1-budgets-id
+  description: Retrieves specific budgets
+  source_operation: openapi/vts-openapi.yml#get_api-v1-budgets-id
+  method: GET
+  path: /api/v1/budgets/{id}
+- name: get_api-v1-buildings
+  description: Fetches a set of buildings
+  source_operation: openapi/vts-openapi.yml#get_api-v1-buildings
+  method: GET
+  path: /api/v1/buildings
+- name: get_api-v1-buildings-id
+  description: Fetches a specific building
+  source_operation: openapi/vts-openapi.yml#get_api-v1-buildings-id
+  method: GET
+  path: /api/v1/buildings/{id}
+- name: get_api-v1-coordination-project-milestones
+  description: Gets a list of coordination project milestones
+  source_operation: openapi/vts-openapi.yml#get_api-v1-coordination-project-milestones
+  method: GET
+  path: /api/v1/coordination_project_milestones
+- name: get_api-v1-coordination-project-milestones-id
+  description: Gets specific coordination project milestones
+  source_operation: openapi/vts-openapi.yml#get_api-v1-coordination-project-milestones-id
+  method: GET
+  path: /api/v1/coordination_project_milestones/{id}
+- name: coordination_projects
+  description: Gets coordination projects
+  source_operation: openapi/vts-openapi.yml#coordination_projects
+  method: GET
+  path: /api/v1/coordination_projects
+- name: coordination_project
+  description: Retrieves specific coordination project
+  source_operation: openapi/vts-openapi.yml#coordination_project
+  method: GET
+  path: /api/v1/coordination_projects/{id}
+- name: get_api-v1-coordination-projects-project-id-milestones
+  description: Gets a coordination project's milestones
+  source_operation: openapi/vts-openapi.yml#get_api-v1-coordination-projects-project-id-milestones
+  method: GET
+  path: /api/v1/coordination_projects/{project_id}/milestones
+- name: get_api-v1-deal-approvals
+  description: Fetches approvals
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-approvals
+  method: GET
+  path: /api/v1/deal_approvals
+- name: get_api-v1-deal-approvals-id
+  description: Retrieves specific approvals
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-approvals-id
+  method: GET
+  path: /api/v1/deal_approvals/{id}
+- name: get_api-v1-deal-comments
+  description: Fetches Deal Comments for a Specific Account
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-comments
+  method: GET
+  path: /api/v1/deal_comments
+- name: get_api-v1-deal-comments-id
+  description: Retrieves specific Deal Comment
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-comments-id
+  method: GET
+  path: /api/v1/deal_comments/{id}
+- name: get_api-v1-deal-iterations
+  description: Fetches account deal iterations
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-iterations
+  method: GET
+  path: /api/v1/deal_iterations
+- name: get_api-v1-deal-iterations-id
+  description: Retrieves specific account deal iteration
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-iterations-id
+  method: GET
+  path: /api/v1/deal_iterations/{id}
+- name: get_api-v1-deal-snapshots-id
+  description: Retrieves specific deal snapshot
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-snapshots-id
+  method: GET
+  path: /api/v1/deal_snapshots/{id}
+- name: patch_api-v1-deal-snapshots-id
+  description: Updates deal snapshot
+  source_operation: openapi/vts-openapi.yml#patch_api-v1-deal-snapshots-id
+  method: PATCH
+  path: /api/v1/deal_snapshots/{id}
+- name: get_api-v1-deal-tasks
+  description: Fetches deal tasks
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-tasks
+  method: GET
+  path: /api/v1/deal_tasks
+- name: get_api-v1-deal-tasks-id
+  description: Retrieves Tasks for Given Deal for Specific Account
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-tasks-id
+  method: GET
+  path: /api/v1/deal_tasks/{id}
+- name: get_api-v1-deal-terms
+  description: Fetches deal terms
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-terms
+  method: GET
+  path: /api/v1/deal_terms
+- name: get_api-v1-deal-terms-deal-term-id-financials
+  description: Fetches Financials for a given deal term
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-terms-deal-term-id-financials
+  method: GET
+  path: /api/v1/deal_terms/{deal_term_id}/financials
+- name: get_api-v1-deal-terms-deal-term-id-options
+  description: Fetches options for Deal Term
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-terms-deal-term-id-options
+  method: GET
+  path: /api/v1/deal_terms/{deal_term_id}/options
+- name: get_api-v1-deal-terms-id
+  description: Retrieves specific deal term
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deal-terms-id
+  method: GET
+  path: /api/v1/deal_terms/{id}
+- name: get_api-v1-deals
+  description: Fetches deals
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deals
+  method: GET
+  path: /api/v1/deals
+- name: get_api-v1-deals-deal-id-approvals
+  description: Fetches deal approvals
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deals-deal-id-approvals
+  method: GET
+  path: /api/v1/deals/{deal_id}/approvals
+- name: get_api-v1-deals-deal-id-comments
+  description: Fetches Deal Comments for a Specific Deal
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deals-deal-id-comments
+  method: GET
+  path: /api/v1/deals/{deal_id}/comments
+- name: coordination_projects_per_deal
+  description: Gets coordination projects for specific deal
+  source_operation: openapi/vts-openapi.yml#coordination_projects_per_deal
+  method: GET
+  path: /api/v1/deals/{deal_id}/coordination_projects
+- name: get_api-v1-deals-deal-id-iterations
+  description: Fetches Deal Iterations for a Specific Deal
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deals-deal-id-iterations
+  method: GET
+  path: /api/v1/deals/{deal_id}/iterations
+- name: get_api-v1-deals-deal-id-proposals
+  description: Fetches proposals
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deals-deal-id-proposals
+  method: GET
+  path: /api/v1/deals/{deal_id}/proposals
+- name: get_api-v1-deals-deal-id-tasks
+  description: Fetches deal tasks for a Deal
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deals-deal-id-tasks
+  method: GET
+  path: /api/v1/deals/{deal_id}/tasks
+- name: get_api-v1-deals-deal-id-tours
+  description: Fetches deal tours
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deals-deal-id-tours
+  method: GET
+  path: /api/v1/deals/{deal_id}/tours
+- name: get_api-v1-deals-id
+  description: Retrieves specific deal
+  source_operation: openapi/vts-openapi.yml#get_api-v1-deals-id
+  method: GET
+  path: /api/v1/deals/{id}
+- name: get_api-v1-delinquencies
+  description: Fetches delinquencies
+  source_operation: openapi/vts-openapi.yml#get_api-v1-delinquencies
+  method: GET
+  path: /api/v1/delinquencies
+- name: patch_api-v1-delinquencies-id
+  description: Updates delinquency
+  source_operation: openapi/vts-openapi.yml#patch_api-v1-delinquencies-id
+  method: PATCH
+  path: /api/v1/delinquencies/{id}
+- name: get_api-v1-financials
+  description: Fetches Financials for lease terms and/or lease terms
+  source_operation: openapi/vts-openapi.yml#get_api-v1-financials
+  method: GET
+  path: /api/v1/financials
+- name: get_api-v1-global-tenants
+  description: Fetches global tenants
+  source_operation: openapi/vts-openapi.yml#get_api-v1-global-tenants
+  method: GET
+  path: /api/v1/global_tenants
+- name: get_api-v1-global-tenants-id
+  description: Fetches specific global tenant
+  source_operation: openapi/vts-openapi.yml#get_api-v1-global-tenants-id
+  method: GET
+  path: /api/v1/global_tenants/{id}
+- name: get_api-v1-lease-terms
+  description: Fetches lease terms
+  source_operation: openapi/vts-openapi.yml#get_api-v1-lease-terms
+  method: GET
+  path: /api/v1/lease_terms
+- name: get_api-v1-lease-terms-id
+  description: Retrieves specific lease term
+  source_operation: openapi/vts-openapi.yml#get_api-v1-lease-terms-id
+  method: GET
+  path: /api/v1/lease_terms/{id}
+- name: get_api-v1-lease-terms-lease-term-id-financials
+  description: Fetches Financials for a given lease term
+  source_operation: openapi/vts-openapi.yml#get_api-v1-lease-terms-lease-term-id-financials
+  method: GET
+  path: /api/v1/lease_terms/{lease_term_id}/financials
+- name: get_api-v1-lease-terms-lease-term-id-options
+  description: Fetches options for Lease Term
+  source_operation: openapi/vts-openapi.yml#get_api-v1-lease-terms-lease-term-id-options
+  method: GET
+  path: /api/v1/lease_terms/{lease_term_id}/options
+- name: get_api-v1-leases
+  description: Gets leases
+  source_operation: openapi/vts-openapi.yml#get_api-v1-leases
+  method: GET
+  path: /api/v1/leases
+- name: get_api-v1-leases-id
+  description: Retrieves specific lease
+  source_operation: openapi/vts-openapi.yml#get_api-v1-leases-id
+  method: GET
+  path: /api/v1/leases/{id}
+- name: post_api-v1-leases-lease-id-delinquencies
+  description: Creates delinquency
+  source_operation: openapi/vts-openapi.yml#post_api-v1-leases-lease-id-delinquencies
+  method: POST
+  path: /api/v1/leases/{lease_id}/delinquencies
+- name: get_api-v1-leases-lease-id-delinquencies
+  description: Fetches delinquencies
+  source_operation: openapi/vts-openapi.yml#get_api-v1-leases-lease-id-delinquencies
+  method: GET
+  path: /api/v1/leases/{lease_id}/delinquencies
+- name: patch_api-v1-leases-lease-id-delinquencies-id
+  description: Updates delinquency
+  source_operation: openapi/vts-openapi.yml#patch_api-v1-leases-lease-id-delinquencies-id
+  method: PATCH
+  path: /api/v1/leases/{lease_id}/delinquencies/{id}
+- name: post_api-v1-leases-lease-id-retail-sales
+  description: Creates retail sale
+  source_operation: openapi/vts-openapi.yml#post_api-v1-leases-lease-id-retail-sales
+  method: POST
+  path: /api/v1/leases/{lease_id}/retail_sales
+- name: get_api-v1-leases-lease-id-retail-sales
+  description: Fetches retail sales
+  source_operation: openapi/vts-openapi.yml#get_api-v1-leases-lease-id-retail-sales
+  method: GET
+  path: /api/v1/leases/{lease_id}/retail_sales
+- name: get_api-v1-listings-id
+  description: Fetches a specific listing
+  source_operation: openapi/vts-openapi.yml#get_api-v1-listings-id
+  method: GET
+  path: /api/v1/listings/{id}
+- name: get_api-v1-options
+  description: Fetches options
+  source_operation: openapi/vts-openapi.yml#get_api-v1-options
+  method: GET
+  path: /api/v1/options
+- name: get_api-v1-options-id
+  description: Retrieves Options for Specific Account
+  source_operation: openapi/vts-openapi.yml#get_api-v1-options-id
+  method: GET
+  path: /api/v1/options/{id}
+- name: get_api-v1-proposals
+  description: Fetches proposals
+  source_operation: openapi/vts-openapi.yml#get_api-v1-proposals
+  method: GET
+  path: /api/v1/proposals
+- name: get_api-v1-proposals-id
+  description: Retrieves specific proposal
+  source_operation: openapi/vts-openapi.yml#get_api-v1-proposals-id
+  method: GET
+  path: /api/v1/proposals/{id}
+- name: get_api-v1-spaces
+  description: Fetches spaces
+  source_operation: openapi/vts-openapi.yml#get_api-v1-spaces
+  method: GET
+  path: /api/v1/spaces
+- name: get_api-v1-spaces-id
+  description: Retrieves specific space
+  source_operation: openapi/vts-openapi.yml#get_api-v1-spaces-id
+  method: GET
+  path: /api/v1/spaces/{id}
+- name: get_api-v1-tenant-contacts
+  description: Fetches Tenant Contacts for a Specific Account
+  source_operation: openapi/vts-openapi.yml#get_api-v1-tenant-contacts
+  method: GET
+  path: /api/v1/tenant_contacts
+- name: get_api-v1-tenant-contacts-id
+  description: Retrieves specific tenant contacts
+  source_operation: openapi/vts-openapi.yml#get_api-v1-tenant-contacts-id
+  method: GET
+  path: /api/v1/tenant_contacts/{id}
+- name: get_api-v1-tenant-industries
+  description: Fetches tenant industries
+  source_operation: openapi/vts-openapi.yml#get_api-v1-tenant-industries
+  method: GET
+  path: /api/v1/tenant_industries
+- name: get_api-v1-tenant-industries-id
+  description: Retrieves specific tenant industry
+  source_operation: openapi/vts-openapi.yml#get_api-v1-tenant-industries-id
+  method: GET
+  path: /api/v1/tenant_industries/{id}
+- name: get_api-v1-tenant-updates
+  description: Fetches tenant updates
+  source_operation: openapi/vts-openapi.yml#get_api-v1-tenant-updates
+  method: GET
+  path: /api/v1/tenant_updates
+- name: get_api-v1-tenants
+  description: Fetches tenants
+  source_operation: openapi/vts-openapi.yml#get_api-v1-tenants
+  method: GET
+  path: /api/v1/tenants
+- name: get_api-v1-tenants-id
+  description: Retrieves specific tenant
+  source_operation: openapi/vts-openapi.yml#get_api-v1-tenants-id
+  method: GET
+  path: /api/v1/tenants/{id}
+- name: get_api-v1-tenants-tenant-id-contacts
+  description: Fetches tenant contacts
+  source_operation: openapi/vts-openapi.yml#get_api-v1-tenants-tenant-id-contacts
+  method: GET
+  path: /api/v1/tenants/{tenant_id}/contacts
+- name: get_api-v1-users
+  description: Fetches users
+  source_operation: openapi/vts-openapi.yml#get_api-v1-users
+  method: GET
+  path: /api/v1/users
+- name: get_api-v1-users-id
+  description: Retrieves specific user
+  source_operation: openapi/vts-openapi.yml#get_api-v1-users-id
+  method: GET
+  path: /api/v1/users/{id}
+- name: post_oauth-v1-token-1
+  description: Get access token
+  source_operation: openapi/vts-openapi.yml#post_oauth-v1-token-1
+  method: POST
+  path: /oauth/v1/token

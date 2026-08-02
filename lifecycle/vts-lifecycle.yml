@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: https://readme.vts.com/docs + https://readme.vts.com/changelog
+versioning:
+  scheme: uri-path
+  current: v1
+  base_path: /api/v1
+  docs: https://readme.vts.com/docs
+  note: A "Next Gen" API reference is published alongside legacy Portfolio/Deal Export endpoints.
+changelog: https://readme.vts.com/changelog
+changelog_latest: '2026-04-24'
+sandbox: https://sandbox.vts.com
+deprecation:
+  legacy_endpoints:
+  - Portfolio Export [Legacy]
+  - Deal Export [Legacy]
+  note: Legacy Portfolio/Deal Export endpoints are marked Legacy in the developer portal in favor of the
+    Next-Gen v1 reference.
+notes: No public status page or formal SLA/Sunset-header policy found; legacy export endpoints are flagged
+  in the docs.
