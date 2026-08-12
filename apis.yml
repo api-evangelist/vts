@@ -523,7 +523,7 @@ common:
 - type: LinkedIn
   url: https://www.linkedin.com/company/we-are-vts
 - type: OpenAPI
-  url: openapi/vts-openapi.yml
+  url: openapi/_original/vts-openapi.yml
 - type: Authentication
   url: authentication/vts-authentication.yml
 - type: OAuthScopes
