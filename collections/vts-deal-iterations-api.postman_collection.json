@@ -1,0 +1,685 @@
+{
+  "item": [
+    {
+      "id": "3a1b8a52-c1a6-4217-9694-b5bcfbbdc8cb",
+      "name": "Deal Iterations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "182897c7-12a9-4c50-a524-b46eb947b562",
+          "name": "Fetches account deal iterations",
+          "request": {
+            "name": "Fetches account deal iterations",
+            "description": {
+              "content": "Contains attributes of deal iterations for a given deal, including deal stage and transition reason",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deal_iterations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5f5379ef-9482-49a0-9eac-c9e9cb9cfde5",
+              "name": "Returns list of Iterations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_iterations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"deal_iterations\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"latest\": false,\n        \"stage\": \"proposal\",\n        \"reason\": \"space_leased\",\n        \"occurred_at\": \"1991-06-02T02:12:48.041Z\",\n        \"created_at\": \"2019-04-03T16:47:54.957Z\",\n        \"updated_at\": \"1948-12-18T17:52:35.771Z\",\n        \"ended_at\": \"1972-01-09\",\n        \"duration_in_days\": 1\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"http://qbyYZqqzlKZLMgaEZSVOji.andvKpCqprLbm60\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"http://xNTTzPr.xirpg5KKBUZSoMLEfYedVMYMg\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"deal_iterations\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"latest\": true,\n        \"stage\": \"proposal\",\n        \"reason\": \"space_leased\",\n        \"occurred_at\": \"2019-04-10T20:01:52.085Z\",\n        \"created_at\": \"1987-02-22T23:06:05.316Z\",\n        \"updated_at\": \"1988-12-08T02:16:38.130Z\",\n        \"ended_at\": \"1979-10-16\",\n        \"duration_in_days\": 1\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"http://sAExmeZFsrmrQnVeRfyuU.rbzHjtYLP5dL25YLio8eJNCrzU8aCTZO4Z9hReC7z9ltvi3EJLknqJlmjm3amzww\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"http://Xetx.fsvtPqMpeQSNP4MWoIso5G-49jMqUcRDHYqlwDMrshSJ8rJpQICe\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/deals/123/iterations?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/deals/123/iterations?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/deals/123/iterations?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2b562bf-25a3-410e-978d-01bfe20d3957",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_iterations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "baf4b6e5-96ab-4049-9d62-0e2b679bf712",
+          "name": "Retrieves specific account deal iteration",
+          "request": {
+            "name": "Retrieves specific account deal iteration",
+            "description": {
+              "content": "Contains attributes of deal iterations for a given deal, including deal stage and transition reason",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deal_iterations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a8291d26-cd64-4881-8fab-ba20b718079d",
+              "name": "Returns requested account iteration if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_iterations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"deal_iterations\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"latest\": true,\n      \"stage\": \"proposal\",\n      \"reason\": \"space_leased\",\n      \"occurred_at\": \"2014-12-26T20:10:17.546Z\",\n      \"created_at\": \"2014-08-25T19:31:25.967Z\",\n      \"updated_at\": \"2009-12-27T11:28:59.828Z\",\n      \"ended_at\": \"1970-05-14\",\n      \"duration_in_days\": 1\n    },\n    \"relationships\": {\n      \"deal\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"deals\"\n        },\n        \"links\": {\n          \"related\": \"http://dzkiYuzZWXCQFxUkvdREltDzDMPTJqPe.npzyxcuCtAjVclbP,b.\"\n        }\n      },\n      \"user\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"users\"\n        },\n        \"links\": {\n          \"related\": \"https://rnnnvxRjMaxMFPdVdFsi.ejqxjD.oTFBP37XR7fp42wQDotI-mdJ-X2zcO\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2052662f-cc33-430c-a5e8-a8160fcd3f03",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_iterations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bd6268a-fc93-407c-a2e4-bdf45fb9c48c",
+              "name": "Requested iteration does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_iterations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84c218f5-048d-4dfa-b949-7862587c163b",
+          "name": "Fetches Deal Iterations for a Specific Deal",
+          "request": {
+            "name": "Fetches Deal Iterations for a Specific Deal",
+            "description": {
+              "content": "Contains attributes of deal iterations for a given deal, including deal stage and transition reason",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deals",
+                ":deal_id",
+                "iterations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deal_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c7937517-59da-4017-9ba5-8e373b3dc283",
+              "name": "Returns list of Iterations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":deal_id",
+                    "iterations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"deal_iterations\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"latest\": false,\n        \"stage\": \"proposal\",\n        \"reason\": \"space_leased\",\n        \"occurred_at\": \"2009-05-17T20:53:53.374Z\",\n        \"created_at\": \"2010-10-13T17:38:20.175Z\",\n        \"updated_at\": \"1991-08-26T17:40:31.174Z\",\n        \"ended_at\": \"2009-04-26\",\n        \"duration_in_days\": 1\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"https://jJkV.pzhryETxfDs-yLsRYHafm0vqLjgJO8I,sCPH3pZIVY7FzBlSFZo9RFLWKqW.\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"https://GuTbWnfViGGqPzTGIIIbJEZfZp.kkQAXqFP0jMt2FOABg4qp6.gvDXE.bYPbLXjgML\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"deal_iterations\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"latest\": false,\n        \"stage\": \"proposal\",\n        \"reason\": \"space_leased\",\n        \"occurred_at\": \"2008-11-12T01:45:27.891Z\",\n        \"created_at\": \"1952-01-27T11:23:40.802Z\",\n        \"updated_at\": \"1984-03-13T02:14:00.625Z\",\n        \"ended_at\": \"1992-07-28\",\n        \"duration_in_days\": 1\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"https://UZq.kjUqO8mGU\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"https://G.qnxdVHWvSd6WL,+5ZaEHO0T1\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/deals/123/iterations?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/deals/123/iterations?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/deals/123/iterations?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6adeb304-be98-4837-8054-3fb0ccda4c89",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":deal_id",
+                    "iterations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f05b17bf-3821-4ae1-b495-481a0755892e",
+    "name": "VTS Lease Account Admin Deal Iterations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

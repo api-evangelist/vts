@@ -1,0 +1,486 @@
+{
+  "item": [
+    {
+      "id": "45cd8733-b052-48b5-a36d-bf9e065326e6",
+      "name": "Leases",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49fb8787-83eb-46f2-8645-cd3b5f7a4570",
+          "name": "Gets leases",
+          "request": {
+            "name": "Gets leases",
+            "description": {
+              "content": "Contains all leases in your portfolio. Supports interacting with all leases, or specifying a particular lease ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "leases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[sourceid]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[delinquent]",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b10b2ad9-05db-4c34-a0a3-1283f82dc002",
+              "name": "Returns a possibly empty list of leases that match the provided parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "leases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[sourceid]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[delinquent]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"1\",\n      \"type\": \"leases\",\n      \"attributes\": {\n        \"commencement_date\": \"1955-04-27\",\n        \"created_at\": \"2024-08-30T15:12:36.983Z\",\n        \"execution_date\": \"1985-10-03\",\n        \"expiration_date\": \"2016-01-02\",\n        \"renewal_status\": \"unknown\",\n        \"sourceid\": \"000004353\",\n        \"structure\": \"triple net\",\n        \"updated_at\": \"1952-07-22T15:56:06.604Z\",\n        \"industry\": \"wound care & hyperbaric\"\n      },\n      \"relationships\": {\n        \"tenant\": {\n          \"data\": {\n            \"id\": \"1\",\n            \"type\": \"tenants\"\n          },\n          \"links\": {\n            \"related\": \"string\"\n          }\n        },\n        \"contacts\": {\n          \"data\": [\n            {\n              \"id\": \"1\",\n              \"type\": \"tenant_contacts\"\n            },\n            {\n              \"id\": \"1\",\n              \"type\": \"tenant_contacts\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"string\"\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"1\",\n      \"type\": \"leases\",\n      \"attributes\": {\n        \"commencement_date\": \"1986-04-21\",\n        \"created_at\": \"2026-04-29T14:00:28.043Z\",\n        \"execution_date\": \"1962-12-13\",\n        \"expiration_date\": \"2016-01-11\",\n        \"renewal_status\": \"not_renewing\",\n        \"sourceid\": \"000004353\",\n        \"structure\": \"triple net\",\n        \"updated_at\": \"2024-07-04T05:07:51.077Z\",\n        \"industry\": \"wound care & hyperbaric\"\n      },\n      \"relationships\": {\n        \"tenant\": {\n          \"data\": {\n            \"id\": \"1\",\n            \"type\": \"tenants\"\n          },\n          \"links\": {\n            \"related\": \"string\"\n          }\n        },\n        \"contacts\": {\n          \"data\": [\n            {\n              \"id\": \"1\",\n              \"type\": \"tenant_contacts\"\n            },\n            {\n              \"id\": \"1\",\n              \"type\": \"tenant_contacts\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"string\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/leases\",\n    \"prev\": \"https://api.vts.com/api/v1/leases?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/leases?page%5Bafter%5D=MzE2NjQ%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77e715e9-7cd0-4117-9a50-28ecaa52d904",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "leases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[sourceid]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[delinquent]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ac69f3f-0636-4d84-b29d-ba8d5dc69bd9",
+          "name": "Retrieves specific lease",
+          "request": {
+            "name": "Retrieves specific lease",
+            "description": {
+              "content": "Contains all leases in your portfolio. Supports interacting with all leases, or specifying a particular lease ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "leases",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f936e84f-ec4e-4631-a998-bde68b05e2bd",
+              "name": "Returns requested lease if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "leases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"1\",\n    \"type\": \"leases\",\n    \"attributes\": {\n      \"commencement_date\": \"2024-09-10\",\n      \"created_at\": \"1991-08-14T00:35:09.186Z\",\n      \"execution_date\": \"1978-08-07\",\n      \"expiration_date\": \"1991-05-28\",\n      \"renewal_status\": \"negotiating\",\n      \"sourceid\": \"000004353\",\n      \"structure\": \"full service\",\n      \"updated_at\": \"1974-08-26T13:38:36.272Z\",\n      \"industry\": \"wound care & hyperbaric\"\n    },\n    \"relationships\": {\n      \"tenant\": {\n        \"data\": {\n          \"id\": \"1\",\n          \"type\": \"tenants\"\n        },\n        \"links\": {\n          \"related\": \"string\"\n        }\n      },\n      \"contacts\": {\n        \"data\": [\n          {\n            \"id\": \"1\",\n            \"type\": \"tenant_contacts\"\n          },\n          {\n            \"id\": \"1\",\n            \"type\": \"tenant_contacts\"\n          }\n        ],\n        \"links\": {\n          \"related\": \"string\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fbe04ed-8578-4e55-bcbf-515477367bbb",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "leases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea84bb75-caee-4a21-84c5-32dd90cddc74",
+              "name": "Requested lease does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "leases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "04d0fa17-f829-4e7c-b4c1-3eb524def116",
+    "name": "VTS Lease Account Admin Leases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

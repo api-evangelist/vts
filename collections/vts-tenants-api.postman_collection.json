@@ -1,0 +1,524 @@
+{
+  "item": [
+    {
+      "id": "8d9fc496-5292-4527-a3fe-f32e69821cba",
+      "name": "Tenants",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "50f14a43-b9bc-4c8f-94f5-4521d1d2b54e",
+          "name": "Fetches tenants",
+          "request": {
+            "name": "Fetches tenants",
+            "description": {
+              "content": "Contains details for a tenant entity based on lease- or deal-inputted tenant information. Links to the Global Tenants endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[primary_tenant_id]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[global_tenant_id]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "043c681b-f0a1-4c49-adca-2bc0e470323c",
+              "name": "Returns list of tenants",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[primary_tenant_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[global_tenant_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"tenants\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"name\": \"ACME\",\n        \"global_tenant_name\": \"ACME Corporation\",\n        \"created_at\": \"2021-10-28T20:42:36.401Z\",\n        \"updated_at\": \"2021-10-28T20:42:36.401Z\"\n      },\n      \"relationships\": {\n        \"primary_tenant\": {\n          \"data\": {\n            \"type\": \"tenants\",\n            \"id\": \"1\"\n          },\n          \"links\": {\n            \"related\": \"string\"\n          }\n        },\n        \"tenant_industry\": {\n          \"data\": {\n            \"type\": \"tenant_industries\",\n            \"id\": \"1\"\n          },\n          \"links\": {\n            \"related\": \"string\"\n          }\n        },\n        \"global_tenant\": {\n          \"data\": {\n            \"type\": \"global_tenants\",\n            \"id\": \"19dbe413-442a-4fd1-afe4-9b12dc2c02ce\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/global_tenants/19dbe413-442a-4fd1-afe4-9b12dc2c02ce\"\n          }\n        },\n        \"relationship_owners\": {\n          \"data\": [\n            {\n              \"type\": \"users\",\n              \"id\": \"string\"\n            },\n            {\n              \"type\": \"users\",\n              \"id\": \"string\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/users?tenant_id=1\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"tenants\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"name\": \"ACME\",\n        \"global_tenant_name\": \"ACME Corporation\",\n        \"created_at\": \"2021-10-28T20:42:36.401Z\",\n        \"updated_at\": \"2021-10-28T20:42:36.401Z\"\n      },\n      \"relationships\": {\n        \"primary_tenant\": {\n          \"data\": {\n            \"type\": \"tenants\",\n            \"id\": \"1\"\n          },\n          \"links\": {\n            \"related\": \"string\"\n          }\n        },\n        \"tenant_industry\": {\n          \"data\": {\n            \"type\": \"tenant_industries\",\n            \"id\": \"1\"\n          },\n          \"links\": {\n            \"related\": \"string\"\n          }\n        },\n        \"global_tenant\": {\n          \"data\": {\n            \"type\": \"global_tenants\",\n            \"id\": \"19dbe413-442a-4fd1-afe4-9b12dc2c02ce\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/global_tenants/19dbe413-442a-4fd1-afe4-9b12dc2c02ce\"\n          }\n        },\n        \"relationship_owners\": {\n          \"data\": [\n            {\n              \"type\": \"users\",\n              \"id\": \"string\"\n            },\n            {\n              \"type\": \"users\",\n              \"id\": \"string\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/users?tenant_id=1\"\n          }\n        }\n      }\n    }\n  ],\n  \"included\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"industry\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"industry\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8038b836-18da-4224-91a3-4c5c3bfbcef6",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[primary_tenant_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[global_tenant_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7573fee1-58ea-4623-b87e-20ca84846668",
+          "name": "Retrieves specific tenant",
+          "request": {
+            "name": "Retrieves specific tenant",
+            "description": {
+              "content": "Contains details for a tenant entity based on lease- or deal-inputted tenant information. Links to the Global Tenants endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[primary_tenant_id]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[global_tenant_id]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "94dc83e5-adc0-4c83-8aee-279b76eae4cf",
+              "name": "Returns requested tenant if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[primary_tenant_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[global_tenant_id]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"tenants\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"name\": \"ACME\",\n      \"global_tenant_name\": \"ACME Corporation\",\n      \"created_at\": \"2021-10-28T20:42:36.401Z\",\n      \"updated_at\": \"2021-10-28T20:42:36.401Z\"\n    },\n    \"relationships\": {\n      \"primary_tenant\": {\n        \"data\": {\n          \"type\": \"tenants\",\n          \"id\": \"1\"\n        },\n        \"links\": {\n          \"related\": \"string\"\n        }\n      },\n      \"tenant_industry\": {\n        \"data\": {\n          \"type\": \"tenant_industries\",\n          \"id\": \"1\"\n        },\n        \"links\": {\n          \"related\": \"string\"\n        }\n      },\n      \"global_tenant\": {\n        \"data\": {\n          \"type\": \"global_tenants\",\n          \"id\": \"19dbe413-442a-4fd1-afe4-9b12dc2c02ce\"\n        },\n        \"links\": {\n          \"related\": \"https://api.vts.com/api/v1/global_tenants/19dbe413-442a-4fd1-afe4-9b12dc2c02ce\"\n        }\n      },\n      \"relationship_owners\": {\n        \"data\": [\n          {\n            \"type\": \"users\",\n            \"id\": \"string\"\n          },\n          {\n            \"type\": \"users\",\n            \"id\": \"string\"\n          }\n        ],\n        \"links\": {\n          \"related\": \"https://api.vts.com/api/v1/users?tenant_id=1\"\n        }\n      }\n    }\n  },\n  \"included\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"industry\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"industry\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4477c063-dd4c-4091-b055-2407ad985465",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[primary_tenant_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[global_tenant_id]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "341d3676-b57a-4e9c-a769-bca679a4da55",
+              "name": "Requested tenant does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[primary_tenant_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[global_tenant_id]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1307c892-421f-4323-ad53-a237ec84903a",
+    "name": "VTS Lease Account Admin Tenants API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

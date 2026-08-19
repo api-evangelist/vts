@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VTS Lease Account Admin Deal Tasks API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deal Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches deal tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/deal_tasks",
+            "params": [
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "The number of items returned for any one page (default: 10, max: 100)"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query",
+                "description": "Show records before the given page indicator"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query",
+                "description": "Show records after the given page indicator"
+              },
+              {
+                "name": "filter[updated_since]",
+                "value": "2021-03-15",
+                "type": "query",
+                "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Fetches deal tasks"
+        },
+        {
+          "info": {
+            "name": "Retrieves Tasks for Given Deal for Specific Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/deal_tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieves Tasks for Given Deal for Specific Account"
+        },
+        {
+          "info": {
+            "name": "Fetches deal tasks for a Deal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/deals/:deal_id/tasks",
+            "params": [
+              {
+                "name": "deal_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the deal containing the tasks"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "The number of items returned for any one page (default: 10, max: 100)"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query",
+                "description": "Show records before the given page indicator"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query",
+                "description": "Show records after the given page indicator"
+              },
+              {
+                "name": "filter[updated_since]",
+                "value": "2021-03-15",
+                "type": "query",
+                "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Fetches deal tasks for a Deal"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

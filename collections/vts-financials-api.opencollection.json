@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VTS Lease Account Admin Financials API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Financials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches Financials for a given deal term",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/deal_terms/:deal_term_id/financials",
+            "params": [
+              {
+                "name": "deal_term_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[updated_since]",
+                "value": "2021-03-15",
+                "type": "query",
+                "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Contains the corresponding financials for a lease or deal term"
+        },
+        {
+          "info": {
+            "name": "Fetches Financials for lease terms and/or lease terms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/financials",
+            "params": [
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[updated_since]",
+                "value": "2021-03-15",
+                "type": "query",
+                "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+              },
+              {
+                "name": "filter[term_type]",
+                "value": "deal_term",
+                "type": "query",
+                "description": "Only display financials belonging to the specific parent object"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Contains the corresponding financials for a lease or deal term"
+        },
+        {
+          "info": {
+            "name": "Fetches Financials for a given lease term",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/lease_terms/:lease_term_id/financials",
+            "params": [
+              {
+                "name": "lease_term_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[updated_since]",
+                "value": "2021-03-15",
+                "type": "query",
+                "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Contains the corresponding financials for a lease or deal term"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

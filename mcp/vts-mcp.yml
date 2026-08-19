@@ -4,8 +4,8 @@ status: candidate
 server:
   name: vts
   transport: http
-  note: No official VTS MCP server found (2026-07). Candidate tool surface derived
-    from the VTS Lease API operations.
+  note: No official VTS MCP server found (2026-07). Candidate tool surface derived from the VTS Lease
+    API operations.
 source: openapi/vts-openapi.yml
 tools:
 - name: get_-1
@@ -463,3 +463,9 @@ tools:
   source_operation: openapi/vts-openapi.yml#post_oauth-v1-token-1
   method: POST
   path: /oauth/v1/token
+deployment:
+  mode: none
+  verified: derived
+  tools: 91
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,2277 @@
+{
+  "item": [
+    {
+      "id": "e0174faf-c36c-4046-93ae-36b578912ea2",
+      "name": "Account Admin",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c47421c8-2033-4217-a4b4-411dd6bfe40c",
+          "name": "Fetches approval settings",
+          "request": {
+            "name": "Fetches approval settings",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "account_admin",
+                "approval_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "The number of items returned for any one page (default: 10, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "Show records before the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "Show records after the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c69fd456-ca22-46d9-9fdd-e6b5e4e15f88",
+              "name": "Returns list of Approval settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "approval_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"name\": \"New Approval Setting\",\n        \"deal_types\": [\n          {\n            \"id\": 1,\n            \"name\": \"New Deal\",\n            \"created_at\": \"1980-12-12T08:24:04.171Z\",\n            \"updated_at\": \"1980-03-18T14:40:56.862Z\"\n          },\n          {\n            \"id\": 1,\n            \"name\": \"New Deal\",\n            \"created_at\": \"1986-04-04T04:09:02.479Z\",\n            \"updated_at\": \"2009-09-20T13:27:07.270Z\"\n          }\n        ],\n        \"space_types\": [\n          {\n            \"id\": 1,\n            \"name\": \"Education\",\n            \"created_at\": \"2014-06-07T04:38:35.703Z\",\n            \"updated_at\": \"2005-12-28T16:32:01.192Z\"\n          },\n          {\n            \"id\": 1,\n            \"name\": \"Education\",\n            \"created_at\": \"1985-08-19T13:20:20.108Z\",\n            \"updated_at\": \"2011-10-11T16:00:10.204Z\"\n          }\n        ]\n      },\n      \"relationships\": {\n        \"asset_group\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/asset_groups?id=1\"\n          },\n          \"data\": {\n            \"type\": \"asset_groups\",\n            \"id\": \"1\"\n          }\n        },\n        \"watcher\": {\n          \"data\": [\n            {\n              \"type\": \"users\",\n              \"id\": \"1\"\n            },\n            {\n              \"type\": \"users\",\n              \"id\": \"1\"\n            }\n          ]\n        },\n        \"approver_slots\": {\n          \"data\": [\n            {\n              \"type\": \"approver_slots\",\n              \"id\": \"1\"\n            },\n            {\n              \"type\": \"approver_slots\",\n              \"id\": \"1\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/approver_slots?filter%5Bapproval_setting_id%5D=1\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"name\": \"New Approval Setting\",\n        \"deal_types\": [\n          {\n            \"id\": 1,\n            \"name\": \"New Deal\",\n            \"created_at\": \"2011-03-30T04:10:27.805Z\",\n            \"updated_at\": \"1973-01-22T16:35:00.354Z\"\n          },\n          {\n            \"id\": 1,\n            \"name\": \"New Deal\",\n            \"created_at\": \"1977-12-27T00:57:53.613Z\",\n            \"updated_at\": \"1950-04-01T03:31:59.225Z\"\n          }\n        ],\n        \"space_types\": [\n          {\n            \"id\": 1,\n            \"name\": \"Education\",\n            \"created_at\": \"1963-10-26T22:02:41.838Z\",\n            \"updated_at\": \"1994-03-08T06:05:48.057Z\"\n          },\n          {\n            \"id\": 1,\n            \"name\": \"Education\",\n            \"created_at\": \"1997-02-09T00:36:42.969Z\",\n            \"updated_at\": \"1986-05-22T18:36:54.947Z\"\n          }\n        ]\n      },\n      \"relationships\": {\n        \"asset_group\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/asset_groups?id=1\"\n          },\n          \"data\": {\n            \"type\": \"asset_groups\",\n            \"id\": \"1\"\n          }\n        },\n        \"watcher\": {\n          \"data\": [\n            {\n              \"type\": \"users\",\n              \"id\": \"1\"\n            },\n            {\n              \"type\": \"users\",\n              \"id\": \"1\"\n            }\n          ]\n        },\n        \"approver_slots\": {\n          \"data\": [\n            {\n              \"type\": \"approver_slots\",\n              \"id\": \"1\"\n            },\n            {\n              \"type\": \"approver_slots\",\n              \"id\": \"1\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/approver_slots?filter%5Bapproval_setting_id%5D=1\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/account_admin/approval_settings?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/account_admin/approval_settings?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/account_admin/approval_settings?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9d3b8f3-6064-4d9b-828e-3bf38a47f744",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "approval_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e75c201-10d6-44fe-b6f4-b1bdfedd409b",
+          "name": "Fetches approver rules",
+          "request": {
+            "name": "Fetches approver rules",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "account_admin",
+                "approver_rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "The number of items returned for any one page (default: 10, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "Show records before the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "Show records after the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "138717b4-5103-4179-801e-15a839a2b334",
+              "name": "Returns list of Approver Rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "approver_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"order_number\": 1,\n        \"rule_type\": \"above_budget\",\n        \"rule_name\": \"NER Variance Above Budget\",\n        \"condition\": \"and\",\n        \"threshold\": {\n          \"value\": 1,\n          \"unit\": \"%\"\n        },\n        \"right_types\": [\n          \"audit rights\",\n          \"audit rights\"\n        ],\n        \"lease_info_types\": [\n          \"guarantor\",\n          \"guarantor\"\n        ]\n      },\n      \"relationships\": {\n        \"approver_slot\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/approver_slots/1\"\n          },\n          \"data\": {\n            \"type\": \"approver_slots\",\n            \"id\": \"1\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"order_number\": 1,\n        \"rule_type\": \"above_budget\",\n        \"rule_name\": \"NER Variance Above Budget\",\n        \"condition\": \"and\",\n        \"threshold\": {\n          \"value\": 1,\n          \"unit\": \"%\"\n        },\n        \"right_types\": [\n          \"audit rights\",\n          \"audit rights\"\n        ],\n        \"lease_info_types\": [\n          \"guarantor\",\n          \"guarantor\"\n        ]\n      },\n      \"relationships\": {\n        \"approver_slot\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/approver_slots/1\"\n          },\n          \"data\": {\n            \"type\": \"approver_slots\",\n            \"id\": \"1\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/account_admin/approver_rules?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/account_admin/approver_rules?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/account_admin/approver_rules?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38bf8e73-b6f2-43d3-b59a-5e31f3af523f",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "approver_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1aafb7d0-7bfe-4d9b-9df5-f72c453c31d0",
+          "name": "Fetches approver slots",
+          "request": {
+            "name": "Fetches approver slots",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "account_admin",
+                "approver_slots"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "The number of items returned for any one page (default: 10, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "Show records before the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "Show records after the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "82ae8bec-c43b-439e-bfa8-aa3653177aae",
+              "name": "Returns list of Approver Slots",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "approver_slots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"description\": \"Approver Slots Description\",\n        \"order_number\": 1\n      },\n      \"relationships\": {\n        \"approver\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/users/1\"\n          },\n          \"data\": {\n            \"type\": \"users\",\n            \"id\": \"1\"\n          }\n        },\n        \"approver_rules\": {\n          \"data\": [\n            {\n              \"type\": \"approver_rules\",\n              \"id\": \"1\"\n            },\n            {\n              \"type\": \"approver_rules\",\n              \"id\": \"1\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/approver_rules?filter%5Bapprover_slot_id%5D=1\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"description\": \"Approver Slots Description\",\n        \"order_number\": 1\n      },\n      \"relationships\": {\n        \"approver\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/users/1\"\n          },\n          \"data\": {\n            \"type\": \"users\",\n            \"id\": \"1\"\n          }\n        },\n        \"approver_rules\": {\n          \"data\": [\n            {\n              \"type\": \"approver_rules\",\n              \"id\": \"1\"\n            },\n            {\n              \"type\": \"approver_rules\",\n              \"id\": \"1\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/approver_rules?filter%5Bapprover_slot_id%5D=1\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/account_admin/approver_slots?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/account_admin/approver_slots?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/account_admin/approver_slots?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ef79f44-c53a-41fa-aaf9-e970b0c87b84",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "approver_slots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0663ab98-e4eb-489d-afde-09572af3615c",
+          "name": "Retrieves specific approver slots",
+          "request": {
+            "name": "Retrieves specific approver slots",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "account_admin",
+                "approver_slots",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8519695d-f4e6-4dce-b407-38a904d0c983",
+              "name": "Returns requested approver slot if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "approver_slots",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"string\",\n    \"id\": \"string\",\n    \"attributes\": {\n      \"description\": \"Approver Slots Description\",\n      \"order_number\": 1\n    },\n    \"relationships\": {\n      \"approver\": {\n        \"links\": {\n          \"related\": \"https://api.vts.com/api/v1/users/1\"\n        },\n        \"data\": {\n          \"type\": \"users\",\n          \"id\": \"1\"\n        }\n      },\n      \"approver_rules\": {\n        \"data\": [\n          {\n            \"type\": \"approver_rules\",\n            \"id\": \"1\"\n          },\n          {\n            \"type\": \"approver_rules\",\n            \"id\": \"1\"\n          }\n        ],\n        \"links\": {\n          \"related\": \"https://api.vts.com/api/v1/account_admin/approver_rules?filter%5Bapprover_slot_id%5D=1\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ba2bbb2-ef3b-4763-8cf8-cea0d6a96042",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "approver_slots",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cd7062b-4ea4-4539-b0d2-a2677312a5a7",
+              "name": "Requested approver slot does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "approver_slots",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80b43153-dd5a-4459-bb87-e83a061d9ec0",
+          "name": "Fetches asset groups",
+          "request": {
+            "name": "Fetches asset groups",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "account_admin",
+                "asset_groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "The number of items returned for any one page (default: 10, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "Show records before the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "Show records after the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0fdb4687-1691-43f4-80a1-4652bc53944a",
+              "name": "Returns list of Asset Groups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "asset_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"name\": \"New Deal\"\n      },\n      \"relationships\": {\n        \"assets\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/assets?filter%5Basset_group_id%5D=1\"\n          },\n          \"data\": [\n            {\n              \"id\": \"string\",\n              \"type\": \"assets\"\n            },\n            {\n              \"id\": \"string\",\n              \"type\": \"assets\"\n            }\n          ]\n        },\n        \"task_settings\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/task_settings?filter%5Basset_group_id%5D=1\"\n          },\n          \"data\": [\n            {\n              \"id\": \"string\",\n              \"type\": \"task_settings\"\n            },\n            {\n              \"id\": \"string\",\n              \"type\": \"task_settings\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"name\": \"New Deal\"\n      },\n      \"relationships\": {\n        \"assets\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/assets?filter%5Basset_group_id%5D=1\"\n          },\n          \"data\": [\n            {\n              \"id\": \"string\",\n              \"type\": \"assets\"\n            },\n            {\n              \"id\": \"string\",\n              \"type\": \"assets\"\n            }\n          ]\n        },\n        \"task_settings\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/task_settings?filter%5Basset_group_id%5D=1\"\n          },\n          \"data\": [\n            {\n              \"id\": \"string\",\n              \"type\": \"task_settings\"\n            },\n            {\n              \"id\": \"string\",\n              \"type\": \"task_settings\"\n            }\n          ]\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/account_admin/asset_groups?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/account_admin/asset_groups?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/account_admin/asset_groups?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d38d7a4-542c-4ed3-a37e-3d492260e2be",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "asset_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ece90d17-b598-47fd-9e7a-05d089114378",
+          "name": "Retrieves specific asset groups",
+          "request": {
+            "name": "Retrieves specific asset groups",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "account_admin",
+                "asset_groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7191cab7-2743-421f-993a-25bacbea3703",
+              "name": "Returns requested asset group if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "asset_groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"string\",\n    \"id\": \"string\",\n    \"attributes\": {\n      \"name\": \"New Deal\"\n    },\n    \"relationships\": {\n      \"assets\": {\n        \"links\": {\n          \"related\": \"https://api.vts.com/api/v1/assets?filter%5Basset_group_id%5D=1\"\n        },\n        \"data\": [\n          {\n            \"id\": \"string\",\n            \"type\": \"assets\"\n          },\n          {\n            \"id\": \"string\",\n            \"type\": \"assets\"\n          }\n        ]\n      },\n      \"task_settings\": {\n        \"links\": {\n          \"related\": \"https://api.vts.com/api/v1/account_admin/task_settings?filter%5Basset_group_id%5D=1\"\n        },\n        \"data\": [\n          {\n            \"id\": \"string\",\n            \"type\": \"task_settings\"\n          },\n          {\n            \"id\": \"string\",\n            \"type\": \"task_settings\"\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96420590-cd14-49d4-9d1c-8cb133ad44c4",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "asset_groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5369508-77b1-4dd2-9910-d74d924c57ca",
+              "name": "Requested asset group does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "asset_groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ff6f894-e530-4f8b-9f31-689398615f6c",
+          "name": "Fetches task settings",
+          "request": {
+            "name": "Fetches task settings",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "account_admin",
+                "task_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "The number of items returned for any one page (default: 10, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "Show records before the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "Show records after the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6f5b97b6-6ebd-46ae-9b30-82055dba4c55",
+              "name": "Returns list of Task settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "task_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"name\": \"New Task Setting\",\n        \"deal_types\": [\n          \"renewal\",\n          \"renewal\"\n        ],\n        \"space_types\": [\n          \"amenities\",\n          \"amenities\"\n        ]\n      },\n      \"relationships\": {\n        \"asset_group\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/asset_groups?id=1\"\n          },\n          \"data\": {\n            \"type\": \"asset_groups\",\n            \"id\": \"1\"\n          }\n        },\n        \"task_templates\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/task_templates?filter%5Btask_setting_id%5D=1\"\n          },\n          \"data\": [\n            {\n              \"type\": \"task_templates\",\n              \"id\": \"1\"\n            },\n            {\n              \"type\": \"task_templates\",\n              \"id\": \"1\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"name\": \"New Task Setting\",\n        \"deal_types\": [\n          \"renewal\",\n          \"renewal\"\n        ],\n        \"space_types\": [\n          \"amenities\",\n          \"amenities\"\n        ]\n      },\n      \"relationships\": {\n        \"asset_group\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/asset_groups?id=1\"\n          },\n          \"data\": {\n            \"type\": \"asset_groups\",\n            \"id\": \"1\"\n          }\n        },\n        \"task_templates\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/task_templates?filter%5Btask_setting_id%5D=1\"\n          },\n          \"data\": [\n            {\n              \"type\": \"task_templates\",\n              \"id\": \"1\"\n            },\n            {\n              \"type\": \"task_templates\",\n              \"id\": \"1\"\n            }\n          ]\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/account_admin/task_settings?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/account_admin/task_settings?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/account_admin/task_settings?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "335ec28b-8311-48ed-a67a-c5f8a42cad5e",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "task_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a33131e-b91e-4846-8c5d-544083b37ed8",
+          "name": "Retrieves specific task settings",
+          "request": {
+            "name": "Retrieves specific task settings",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "account_admin",
+                "task_settings",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "055b787a-4a97-4acd-9c7d-73bea667d453",
+              "name": "Returns requested task setting if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "task_settings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"string\",\n    \"id\": \"string\",\n    \"attributes\": {\n      \"name\": \"New Task Setting\",\n      \"deal_types\": [\n        \"renewal\",\n        \"renewal\"\n      ],\n      \"space_types\": [\n        \"amenities\",\n        \"amenities\"\n      ]\n    },\n    \"relationships\": {\n      \"asset_group\": {\n        \"links\": {\n          \"related\": \"https://api.vts.com/api/v1/account_admin/asset_groups?id=1\"\n        },\n        \"data\": {\n          \"type\": \"asset_groups\",\n          \"id\": \"1\"\n        }\n      },\n      \"task_templates\": {\n        \"links\": {\n          \"related\": \"https://api.vts.com/api/v1/account_admin/task_templates?filter%5Btask_setting_id%5D=1\"\n        },\n        \"data\": [\n          {\n            \"type\": \"task_templates\",\n            \"id\": \"1\"\n          },\n          {\n            \"type\": \"task_templates\",\n            \"id\": \"1\"\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "865f3ae9-34e7-4b3d-97ac-6a488de296b0",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "task_settings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd4e2ce0-bb67-4bf3-a921-27e3a4fc51da",
+              "name": "Requested task setting does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "task_settings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1d89d72-5976-4553-82b1-9c64d480a054",
+          "name": "Fetches task templates",
+          "request": {
+            "name": "Fetches task templates",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "account_admin",
+                "task_templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[task_setting_id]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "The number of items returned for any one page (default: 10, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "Show records before the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "Show records after the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ffe2d5c6-6652-4397-bd77-14ed92cfe0af",
+              "name": "Returns list of Task templates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "task_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[task_setting_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"description\": \"Setting Name\",\n        \"deal_stage\": {\n          \"status\": \"initial_inquiry\",\n          \"display_name\": \"Inquiry\"\n        },\n        \"order_number\": 1,\n        \"required\": true\n      },\n      \"relationships\": {\n        \"assignee\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/users/1\"\n          },\n          \"data\": {\n            \"type\": \"users\",\n            \"id\": \"1\"\n          }\n        },\n        \"task_setting\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/task_settings/1\"\n          },\n          \"data\": {\n            \"type\": \"task_settings\",\n            \"id\": \"1\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"description\": \"Setting Name\",\n        \"deal_stage\": {\n          \"status\": \"initial_inquiry\",\n          \"display_name\": \"Inquiry\"\n        },\n        \"order_number\": 1,\n        \"required\": false\n      },\n      \"relationships\": {\n        \"assignee\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/users/1\"\n          },\n          \"data\": {\n            \"type\": \"users\",\n            \"id\": \"1\"\n          }\n        },\n        \"task_setting\": {\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/account_admin/task_settings/1\"\n          },\n          \"data\": {\n            \"type\": \"task_settings\",\n            \"id\": \"1\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/account_admin/task_templates?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/account_admin/task_templates?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/account_admin/task_templates?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ff6419b-f600-405b-a643-bdd04e38e4b2",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "task_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[task_setting_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c46373a-c0f5-40a9-b9d9-eda2dc06d772",
+          "name": "Fetches user asset permissions",
+          "request": {
+            "name": "Fetches user asset permissions",
+            "description": {
+              "content": "Contains the user asset permissions in your portfolio.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "account_admin",
+                "user_asset_permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8719ffce-8ddc-47e0-87f0-87c2b76dc51d",
+              "name": "Returns list of User Asset Permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "user_asset_permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"user_asset_permissions\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"permission\": \"user_admin\",\n        \"user_email\": \"johndoe@example.com\",\n        \"asset_address\": \"123 Park Avenue\"\n      },\n      \"relationships\": {\n        \"asset\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"assets\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/assets/1\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"user\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/users/1\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"user_asset_permissions\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"permission\": \"user_admin\",\n        \"user_email\": \"johndoe@example.com\",\n        \"asset_address\": \"123 Park Avenue\"\n      },\n      \"relationships\": {\n        \"asset\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"assets\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/assets/1\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"user\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/users/1\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/account_admin/user_asset_permissions\",\n    \"prev\": \"https://api.vts.com/api/v1/account_admin/user_asset_permissions?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/account_admin/user_asset_permissions?page%5Bafter%5D=MzE2NjQ%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e8dbf0c-e7b0-4908-b37d-1a54ca078755",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "user_asset_permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "873714c1-5fa6-4839-93e0-dbf4cee32d00",
+          "name": "Fetches user space permissions",
+          "request": {
+            "name": "Fetches user space permissions",
+            "description": {
+              "content": "Contains the user space permissions in your portfolio.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "account_admin",
+                "user_space_permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "662e3fe7-9377-46da-b18c-aa1180e8be76",
+              "name": "Returns list of User Spaces Permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "user_space_permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"user_space_permissions\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"permission\": \"user_admin\",\n        \"team_override\": false,\n        \"user_email\": \"johndoe@example.com\",\n        \"asset_address\": \"123 Park Avenue\",\n        \"suite_name\": \"string\"\n      },\n      \"relationships\": {\n        \"asset\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"assets\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/assets/1\"\n          }\n        },\n        \"space\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"spaces_office\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/spaces/1\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"user\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/users/1\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"user_space_permissions\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"permission\": \"user_admin\",\n        \"team_override\": true,\n        \"user_email\": \"johndoe@example.com\",\n        \"asset_address\": \"123 Park Avenue\",\n        \"suite_name\": \"string\"\n      },\n      \"relationships\": {\n        \"asset\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"assets\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/assets/1\"\n          }\n        },\n        \"space\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"spaces_office\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/spaces/1\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"user\"\n          },\n          \"links\": {\n            \"related\": \"https://api.vts.com/api/v1/users/1\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/account_admin/user_space_permissions\",\n    \"prev\": \"https://api.vts.com/api/v1/account_admin/user_space_permissions?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/account_admin/user_space_permissions?page%5Bafter%5D=MzE2NjQ%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7dd33cfc-b8d7-406a-9648-667696014eee",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "account_admin",
+                    "user_space_permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0ad9c872-0465-4f99-959c-be958feb7bb7",
+    "name": "VTS Lease Account Admin API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

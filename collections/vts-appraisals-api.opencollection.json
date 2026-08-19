@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VTS Lease Account Admin Appraisals API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appraisals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches appraisals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/appraisals",
+            "params": [
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Fetches appraisals"
+        },
+        {
+          "info": {
+            "name": "Retrieves specific appraisals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/appraisals/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieves specific appraisals"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VTS Lease Account Admin Deal Tours API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deal Tours",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches deal tours",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/deals/:deal_id/tours",
+            "params": [
+              {
+                "name": "deal_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[updated_since]",
+                "value": "2021-03-15",
+                "type": "query",
+                "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Contains attributes of a given deal tours, including rentable size, term duration, and tenant risks"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VTS Lease Account Admin Delinquencies API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Delinquencies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches delinquencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/delinquencies",
+            "params": [
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[status]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[updated_since]",
+                "value": "2021-03-15",
+                "type": "query",
+                "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Contains the delinquent leases in your portfolio"
+        },
+        {
+          "info": {
+            "name": "Updates delinquency",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.vts.com/api/v1/delinquencies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Updates a delinquency record on the lease"
+        },
+        {
+          "info": {
+            "name": "Fetches delinquencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/leases/:lease_id/delinquencies",
+            "params": [
+              {
+                "name": "lease_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[status]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[updated_since]",
+                "value": "2021-03-15",
+                "type": "query",
+                "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Contains the delinquent leases in your portfolio"
+        },
+        {
+          "info": {
+            "name": "Creates delinquency",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vts.com/api/v1/leases/:lease_id/delinquencies",
+            "params": [
+              {
+                "name": "lease_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Creates a delinquency record on the lease"
+        },
+        {
+          "info": {
+            "name": "Updates delinquency",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.vts.com/api/v1/leases/:lease_id/delinquencies/:id",
+            "params": [
+              {
+                "name": "lease_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Updates a delinquency record on the lease"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,270 @@
+{
+  "item": [
+    {
+      "id": "501b3c96-c5be-426b-be4b-7eb3b37cda3c",
+      "name": "Deal Tours",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf1029f3-9521-4dcc-9ac9-b2e6eb5e2914",
+          "name": "Fetches deal tours",
+          "request": {
+            "name": "Fetches deal tours",
+            "description": {
+              "content": "Contains attributes of a given deal tours, including rentable size, term duration, and tenant risks",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deals",
+                ":deal_id",
+                "tours"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deal_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "23ea5096-7583-4031-b6e1-11c327a7e64a",
+              "name": "Returns list of DealTours for a Deal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":deal_id",
+                    "tours"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"deal_tours\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"tour_datetime\": \"2023-03-16T10:08:10.000000Z\",\n        \"comment\": \"Tour completed\",\n        \"created_at\": \"1970-12-18T02:39:20.163Z\",\n        \"updated_at\": \"2022-04-27T13:31:17.672Z\"\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          }\n        },\n        \"spaces\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"type\": \"deal_tours\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"tour_datetime\": \"2023-03-16T10:08:10.000000Z\",\n        \"comment\": \"Tour completed\",\n        \"created_at\": \"1990-08-24T15:26:54.559Z\",\n        \"updated_at\": \"1986-05-31T20:13:41.601Z\"\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          }\n        },\n        \"spaces\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89ada11d-29fe-40ad-a482-915e3edef6be",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":deal_id",
+                    "tours"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "77354921-d9dd-440e-a7e0-d66c5b0b73b7",
+    "name": "VTS Lease Account Admin Deal Tours API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

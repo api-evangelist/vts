@@ -1,0 +1,440 @@
+{
+  "item": [
+    {
+      "id": "8c54e81a-88da-491b-aea7-f67a75071cbe",
+      "name": "Appraisals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "66ffba70-816c-4408-8c2c-4881ee799432",
+          "name": "Fetches appraisals",
+          "request": {
+            "name": "Fetches appraisals",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "appraisals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0b29d74e-f1d3-4202-bbc5-d40902f398e4",
+              "name": "Returns list of Appraisals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "appraisals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"appraisals\",\n  \"id\": \"1\",\n  \"attributes\": {\n    \"analysis_type\": \"appraisal\",\n    \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n    \"commencement_date\": \"2021-12-08\",\n    \"concessions\": \"0.0\",\n    \"description\": \"Some text\",\n    \"entered_date\": \"1\",\n    \"npv_discount_rate\": \"1.0\",\n    \"payback\": 1,\n    \"structure\": \"full service\",\n    \"calculated_metrics\": {\n      \"ner_override\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD/sf/yr\",\n        \"unit_components\": {\n          \"money\": \"USD\",\n          \"area\": \"sm\",\n          \"period\": \"day\"\n        },\n        \"type\": \"money/area/period\"\n      },\n      \"npv_per_area\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD/sf\",\n        \"unit_components\": {\n          \"money\": \"USD\",\n          \"area\": \"sm\"\n        },\n        \"type\": \"money/area\"\n      },\n      \"total_net_cash_flow\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD\",\n        \"unit_components\": {\n          \"money\": \"USD\"\n        },\n        \"type\": \"money\"\n      },\n      \"internal_rate_of_return\": \"100.0\"\n    },\n    \"percentage_rents\": [\n      {\n        \"start_month\": 1,\n        \"minimum_guarantee\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\",\n            \"period\": \"day\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"sales_overage_breakpoints_type\": \"Natural\",\n        \"sales_overage_breakpoints\": [\n          {\n            \"breakpoint\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/period\"\n            },\n            \"percent_rent\": {\n              \"magnitude\": 1000,\n              \"unit\": \"%\",\n              \"unit_components\": {\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"percentage\"\n            }\n          },\n          {\n            \"breakpoint\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/period\"\n            },\n            \"percent_rent\": {\n              \"magnitude\": 1000,\n              \"unit\": \"%\",\n              \"unit_components\": {\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"percentage\"\n            }\n          }\n        ]\n      },\n      {\n        \"start_month\": 1,\n        \"minimum_guarantee\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\",\n            \"period\": \"yr\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"sales_overage_breakpoints_type\": \"Natural\",\n        \"sales_overage_breakpoints\": [\n          {\n            \"breakpoint\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/period\"\n            },\n            \"percent_rent\": {\n              \"magnitude\": 1000,\n              \"unit\": \"%\",\n              \"unit_components\": {\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"percentage\"\n            }\n          },\n          {\n            \"breakpoint\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/period\"\n            },\n            \"percent_rent\": {\n              \"magnitude\": 1000,\n              \"unit\": \"%\",\n              \"unit_components\": {\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"percentage\"\n            }\n          }\n        ]\n      }\n    ],\n    \"other_incomes\": [\n      {\n        \"type\": \"storage\",\n        \"start_month\": 1,\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\",\n            \"period\": \"mo\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"quantity\": 1\n      },\n      {\n        \"type\": \"storage\",\n        \"start_month\": 1,\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\",\n            \"period\": \"day\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"quantity\": 1\n      }\n    ],\n    \"reimbursable_expenses\": [\n      {\n        \"type\": \"OperationalExpense\",\n        \"expense_type\": \"OperationalExpense\",\n        \"recovery_method\": \"gross\",\n        \"expense_growth_rate\": {\n          \"magnitude\": 1000,\n          \"unit\": \"%\",\n          \"unit_components\": {\n            \"period\": \"%\"\n          },\n          \"type\": \"percentage\"\n        },\n        \"expense_amount\": 10,\n        \"expense_amount_with_units\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\",\n            \"period\": \"day\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"recovery_amount\": 5,\n        \"recovery_amount_with_units\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\",\n            \"period\": \"mo\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"expense_stop\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\",\n            \"period\": \"day\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"description\": \"Description\"\n      },\n      {\n        \"type\": \"OperationalExpense\",\n        \"expense_type\": \"OperationalExpense\",\n        \"recovery_method\": \"gross\",\n        \"expense_growth_rate\": {\n          \"magnitude\": 1000,\n          \"unit\": \"%\",\n          \"unit_components\": {\n            \"period\": \"%\"\n          },\n          \"type\": \"percentage\"\n        },\n        \"expense_amount\": 10,\n        \"expense_amount_with_units\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\",\n            \"period\": \"mo\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"recovery_amount\": 5,\n        \"recovery_amount_with_units\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\",\n            \"period\": \"yr\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"expense_stop\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\",\n            \"period\": \"mo\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"description\": \"Description\"\n      }\n    ],\n    \"base_rents\": [\n      {\n        \"start_month\": 1,\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\",\n            \"period\": \"day\"\n          },\n          \"type\": \"money/area/period\"\n        }\n      },\n      {\n        \"start_month\": 1,\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\",\n            \"period\": \"yr\"\n          },\n          \"type\": \"money/area/period\"\n        }\n      }\n    ],\n    \"commissions\": [\n      {\n        \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n        \"updated_at\": \"2021-12-08T16:28:22.187979Z\",\n        \"net_or_gross\": \"gross\",\n        \"broker\": \"VTS\",\n        \"commission_date\": \"2021-12-08\",\n        \"commission_type\": \"landlord\",\n        \"description\": \"Description\",\n        \"free_rent\": \"amortize_over_term\",\n        \"periods\": [\n          {\n            \"starts\": {\n              \"date\": \"2021-12-08\",\n              \"month\": 1\n            },\n            \"amount\": {\n              \"magnitude\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit_components\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"starts\": {\n              \"date\": \"2021-12-08\",\n              \"month\": 1\n            },\n            \"amount\": {\n              \"magnitude\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit_components\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ]\n      },\n      {\n        \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n        \"updated_at\": \"2021-12-08T16:28:22.187979Z\",\n        \"net_or_gross\": \"gross\",\n        \"broker\": \"VTS\",\n        \"commission_date\": \"2021-12-08\",\n        \"commission_type\": \"landlord\",\n        \"description\": \"Description\",\n        \"free_rent\": \"amortize_over_term\",\n        \"periods\": [\n          {\n            \"starts\": {\n              \"date\": \"2021-12-08\",\n              \"month\": 1\n            },\n            \"amount\": {\n              \"magnitude\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit_components\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"starts\": {\n              \"date\": \"2021-12-08\",\n              \"month\": 1\n            },\n            \"amount\": {\n              \"magnitude\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit_components\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ]\n      }\n    ],\n    \"costs\": [\n      {\n        \"type\": \"tenant_improvement\",\n        \"occurrence_month\": 1,\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"description\": \"Description\"\n      },\n      {\n        \"type\": \"tenant_improvement\",\n        \"occurrence_month\": 1,\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"description\": \"Description\"\n      }\n    ],\n    \"free_rents\": {\n      \"value\": \"<Error: Could not resolve allOf schema\"\n    },\n    \"net_effective_rent\": {\n      \"value\": \"<Error: Could not resolve allOf schema\"\n    },\n    \"rent_escalations\": [\n      {\n        \"start_month\": 1,\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"%\",\n          \"unit_components\": {\n            \"period\": \"%\"\n          },\n          \"type\": \"percentage\"\n        },\n        \"occurs\": \"One Time\"\n      },\n      {\n        \"start_month\": 1,\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"%\",\n          \"unit_components\": {\n            \"period\": \"%\"\n          },\n          \"type\": \"percentage\"\n        },\n        \"occurs\": \"One Time\"\n      }\n    ],\n    \"rentable_size\": {\n      \"magnitude\": 1000,\n      \"unit\": \"sf\",\n      \"unit_components\": {\n        \"area\": \"sf\"\n      },\n      \"type\": \"area\"\n    },\n    \"security_deposit\": {\n      \"magnitude\": 1000,\n      \"unit\": \"USD\",\n      \"unit_components\": {\n        \"money\": \"USD\"\n      },\n      \"type\": \"money\",\n      \"security_deposit_type\": \"letter_of_credit\"\n    },\n    \"total_deal_value\": {\n      \"value\": \"<Error: Could not resolve allOf schema\"\n    },\n    \"total_lease_term\": {\n      \"magnitude\": 2,\n      \"unit\": \"day\",\n      \"unit_components\": {\n        \"period\": \"mo\"\n      },\n      \"type\": \"period\",\n      \"iso8601\": \"P2Y\"\n    },\n    \"tenant_improvements\": [\n      {\n        \"allowance_unit\": \"rsf\",\n        \"allowance\": 0,\n        \"occurrence_month\": 1,\n        \"description\": \"Some text\"\n      },\n      {\n        \"allowance_unit\": \"rsf\",\n        \"allowance\": 0,\n        \"occurrence_month\": 1,\n        \"description\": \"Some text\"\n      }\n    ],\n    \"building_improvements\": [\n      {\n        \"allowance_unit\": \"rsf\",\n        \"allowance\": 0,\n        \"occurrence_month\": 1,\n        \"description\": \"Some text\"\n      },\n      {\n        \"allowance_unit\": \"rsf\",\n        \"allowance\": 0,\n        \"occurrence_month\": 1,\n        \"description\": \"Some text\"\n      }\n    ],\n    \"total_rent\": {\n      \"value\": \"<Error: Could not resolve allOf schema\"\n    }\n  },\n  \"relationships\": {\n    \"space\": {\n      \"data\": {\n        \"id\": \"12345\",\n        \"type\": \"spaces_office\"\n      },\n      \"links\": {\n        \"related\": \"https://PicQKzDBFwszJWgFwkcDLQnmZwki.amtj9gOg0.55N7BwsYCug5.fQ\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b093e892-9c03-4cf6-a13b-8163d3eefb78",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "appraisals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf149271-6708-4841-b472-6ccc351b5fda",
+          "name": "Retrieves specific appraisals",
+          "request": {
+            "name": "Retrieves specific appraisals",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "appraisals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5270a21c-32a7-437c-a674-ce5d98ecb97d",
+              "name": "Returns requested appraisal if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "appraisals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"appraisals\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"analysis_type\": \"appraisal\",\n      \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n      \"commencement_date\": \"2021-12-08\",\n      \"concessions\": \"0.0\",\n      \"description\": \"Some text\",\n      \"entered_date\": \"1\",\n      \"npv_discount_rate\": \"1.0\",\n      \"payback\": 1,\n      \"structure\": \"full service\",\n      \"calculated_metrics\": {\n        \"ner_override\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\",\n            \"period\": \"yr\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"npv_per_area\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\"\n          },\n          \"type\": \"money/area\"\n        },\n        \"total_net_cash_flow\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"internal_rate_of_return\": \"100.0\"\n      },\n      \"percentage_rents\": [\n        {\n          \"start_month\": 1,\n          \"minimum_guarantee\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"area\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"sales_overage_breakpoints_type\": \"Natural\",\n          \"sales_overage_breakpoints\": [\n            {\n              \"breakpoint\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"percent_rent\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"breakpoint\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"percent_rent\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        {\n          \"start_month\": 1,\n          \"minimum_guarantee\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"area\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"sales_overage_breakpoints_type\": \"Natural\",\n          \"sales_overage_breakpoints\": [\n            {\n              \"breakpoint\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"percent_rent\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"breakpoint\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"percent_rent\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        }\n      ],\n      \"other_incomes\": [\n        {\n          \"type\": \"storage\",\n          \"start_month\": 1,\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"area\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"quantity\": 1\n        },\n        {\n          \"type\": \"storage\",\n          \"start_month\": 1,\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"area\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"quantity\": 1\n        }\n      ],\n      \"reimbursable_expenses\": [\n        {\n          \"type\": \"OperationalExpense\",\n          \"expense_type\": \"OperationalExpense\",\n          \"recovery_method\": \"gross\",\n          \"expense_growth_rate\": {\n            \"magnitude\": 1000,\n            \"unit\": \"%\",\n            \"unit_components\": {\n              \"period\": \"%\"\n            },\n            \"type\": \"percentage\"\n          },\n          \"expense_amount\": 10,\n          \"expense_amount_with_units\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"yr\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"recovery_amount\": 5,\n          \"recovery_amount_with_units\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"expense_stop\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"yr\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"description\": \"Description\"\n        },\n        {\n          \"type\": \"OperationalExpense\",\n          \"expense_type\": \"OperationalExpense\",\n          \"recovery_method\": \"gross\",\n          \"expense_growth_rate\": {\n            \"magnitude\": 1000,\n            \"unit\": \"%\",\n            \"unit_components\": {\n              \"period\": \"%\"\n            },\n            \"type\": \"percentage\"\n          },\n          \"expense_amount\": 10,\n          \"expense_amount_with_units\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"recovery_amount\": 5,\n          \"recovery_amount_with_units\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"expense_stop\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"description\": \"Description\"\n        }\n      ],\n      \"base_rents\": [\n        {\n          \"start_month\": 1,\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"area\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"money/area/period\"\n          }\n        },\n        {\n          \"start_month\": 1,\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"area\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"money/area/period\"\n          }\n        }\n      ],\n      \"commissions\": [\n        {\n          \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n          \"updated_at\": \"2021-12-08T16:28:22.187979Z\",\n          \"net_or_gross\": \"gross\",\n          \"broker\": \"VTS\",\n          \"commission_date\": \"2021-12-08\",\n          \"commission_type\": \"landlord\",\n          \"description\": \"Description\",\n          \"free_rent\": \"amortize_over_term\",\n          \"periods\": [\n            {\n              \"starts\": {\n                \"date\": \"2021-12-08\",\n                \"month\": 1\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"starts\": {\n                \"date\": \"2021-12-08\",\n                \"month\": 1\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n          \"updated_at\": \"2021-12-08T16:28:22.187979Z\",\n          \"net_or_gross\": \"gross\",\n          \"broker\": \"VTS\",\n          \"commission_date\": \"2021-12-08\",\n          \"commission_type\": \"landlord\",\n          \"description\": \"Description\",\n          \"free_rent\": \"amortize_over_term\",\n          \"periods\": [\n            {\n              \"starts\": {\n                \"date\": \"2021-12-08\",\n                \"month\": 1\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"starts\": {\n                \"date\": \"2021-12-08\",\n                \"month\": 1\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"costs\": [\n        {\n          \"type\": \"tenant_improvement\",\n          \"occurrence_month\": 1,\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"money\"\n          },\n          \"description\": \"Description\"\n        },\n        {\n          \"type\": \"tenant_improvement\",\n          \"occurrence_month\": 1,\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"money\"\n          },\n          \"description\": \"Description\"\n        }\n      ],\n      \"free_rents\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"net_effective_rent\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"rent_escalations\": [\n        {\n          \"start_month\": 1,\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"%\",\n            \"unit_components\": {\n              \"period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"percentage\"\n          },\n          \"occurs\": \"One Time\"\n        },\n        {\n          \"start_month\": 1,\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"%\",\n            \"unit_components\": {\n              \"period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"percentage\"\n          },\n          \"occurs\": \"One Time\"\n        }\n      ],\n      \"rentable_size\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sm\"\n        },\n        \"type\": \"area\"\n      },\n      \"security_deposit\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD\",\n        \"unit_components\": {\n          \"money\": \"USD\"\n        },\n        \"type\": \"money\",\n        \"security_deposit_type\": \"letter_of_credit\"\n      },\n      \"total_deal_value\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"total_lease_term\": {\n        \"magnitude\": 2,\n        \"unit\": \"day\",\n        \"unit_components\": {\n          \"period\": \"mo\"\n        },\n        \"type\": \"period\",\n        \"iso8601\": \"P2Y\"\n      },\n      \"tenant_improvements\": [\n        {\n          \"allowance_unit\": \"rsf\",\n          \"allowance\": 0,\n          \"occurrence_month\": 1,\n          \"description\": \"Some text\"\n        },\n        {\n          \"allowance_unit\": \"rsf\",\n          \"allowance\": 0,\n          \"occurrence_month\": 1,\n          \"description\": \"Some text\"\n        }\n      ],\n      \"building_improvements\": [\n        {\n          \"allowance_unit\": \"rsf\",\n          \"allowance\": 0,\n          \"occurrence_month\": 1,\n          \"description\": \"Some text\"\n        },\n        {\n          \"allowance_unit\": \"rsf\",\n          \"allowance\": 0,\n          \"occurrence_month\": 1,\n          \"description\": \"Some text\"\n        }\n      ],\n      \"total_rent\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      }\n    },\n    \"relationships\": {\n      \"space\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"spaces_office\"\n        },\n        \"links\": {\n          \"related\": \"http://LSpZAZgzfNGGRXRnXQjotKB.krxuIrdlSWuNpJuP-DnORtyY3-yCIW7Sh7\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2905abe-e857-4964-be5d-f945cfb5c2c3",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "appraisals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "084a3fc7-e6b0-4b22-a6c7-c6fba7dc83c7",
+              "name": "Requested appraisal does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "appraisals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "295f262e-69cf-4e8c-86b7-ef69e4bd3242",
+    "name": "VTS Lease Account Admin Appraisals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

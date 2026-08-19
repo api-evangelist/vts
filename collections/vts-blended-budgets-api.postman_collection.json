@@ -1,0 +1,440 @@
+{
+  "item": [
+    {
+      "id": "a68021f4-4215-4090-9c17-cea9cf1938f3",
+      "name": "Blended Budgets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "679cb5fd-0d00-496f-93f4-fb178d134d27",
+          "name": "Fetches blended budgets",
+          "request": {
+            "name": "Fetches blended budgets",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "blended_budgets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a1d187d2-48b5-41f7-9551-5d28c21a6620",
+              "name": "Returns list of Blended Budgets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "blended_budgets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"blended_budgets\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"created_at\": \"2021-11-29T20:10:15.232949Z\",\n        \"updated_at\": \"2021-11-29T20:10:15.232949Z\",\n        \"rentable_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"base_rent\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"recovered_income\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"total_other_revenue\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"total_percentage_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"total_free_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"tenant_improvements\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\"\n          },\n          \"type\": \"money/area\"\n        },\n        \"building_improvements\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\"\n          },\n          \"type\": \"money/area\"\n        },\n        \"total_commissions\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"reimbursable_expenses\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"net_effective_rent\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"net_present_value\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\"\n          },\n          \"type\": \"money/area\"\n        }\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"http://kJOYSskHifhFt.sxblrBaDZclmJ9DtxmofhVBEBGVL3JAukjVrnCKdABIBX3+0i1Nhn6n\"\n          }\n        },\n        \"budgets\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"budgets\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"budgets\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"type\": \"blended_budgets\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"created_at\": \"2021-11-29T20:10:15.232949Z\",\n        \"updated_at\": \"2021-11-29T20:10:15.232949Z\",\n        \"rentable_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"base_rent\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"recovered_income\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"total_other_revenue\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"total_percentage_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"total_free_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"tenant_improvements\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\"\n          },\n          \"type\": \"money/area\"\n        },\n        \"building_improvements\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\"\n          },\n          \"type\": \"money/area\"\n        },\n        \"total_commissions\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"reimbursable_expenses\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"net_effective_rent\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"net_present_value\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\"\n          },\n          \"type\": \"money/area\"\n        }\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"http://SqMPGbTWdjZLGE.lgddqW.-fxoz.46QS9ZezsQi.KzR.iZByCauglm,Ku2MGnNuj\"\n          }\n        },\n        \"budgets\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"budgets\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"budgets\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bc5e1af-af3b-41e7-a6e9-50ce222b3842",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "blended_budgets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "670bc625-066b-4f84-8fe2-50fc504ffe98",
+          "name": "Retrieves specific blended budgets",
+          "request": {
+            "name": "Retrieves specific blended budgets",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "blended_budgets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "80c86815-7411-469c-bf47-3234b026d7c6",
+              "name": "Returns requested blended budget if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "blended_budgets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"blended_budgets\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"created_at\": \"2021-11-29T20:10:15.232949Z\",\n      \"updated_at\": \"2021-11-29T20:10:15.232949Z\",\n      \"rentable_size\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sf\"\n        },\n        \"type\": \"area\"\n      },\n      \"base_rent\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"recovered_income\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"total_other_revenue\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"total_percentage_rent\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD\",\n        \"unit_components\": {\n          \"money\": \"USD\"\n        },\n        \"type\": \"money\"\n      },\n      \"total_free_rent\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD\",\n        \"unit_components\": {\n          \"money\": \"USD\"\n        },\n        \"type\": \"money\"\n      },\n      \"tenant_improvements\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD/sf\",\n        \"unit_components\": {\n          \"money\": \"USD\",\n          \"area\": \"sf\"\n        },\n        \"type\": \"money/area\"\n      },\n      \"building_improvements\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD/sf\",\n        \"unit_components\": {\n          \"money\": \"USD\",\n          \"area\": \"sf\"\n        },\n        \"type\": \"money/area\"\n      },\n      \"total_commissions\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD\",\n        \"unit_components\": {\n          \"money\": \"USD\"\n        },\n        \"type\": \"money\"\n      },\n      \"reimbursable_expenses\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"net_effective_rent\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"net_present_value\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD/sf\",\n        \"unit_components\": {\n          \"money\": \"USD\",\n          \"area\": \"sf\"\n        },\n        \"type\": \"money/area\"\n      }\n    },\n    \"relationships\": {\n      \"deal\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"deals\"\n        },\n        \"links\": {\n          \"related\": \"https://vKaCkRgYBnGLJELjwMrGIw.ruXYvGPK.r6Np-BIZuQ7Lak+\"\n        }\n      },\n      \"budgets\": {\n        \"data\": [\n          {\n            \"id\": \"12345\",\n            \"type\": \"budgets\"\n          },\n          {\n            \"id\": \"12345\",\n            \"type\": \"budgets\"\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3562fb65-c568-4860-a36c-eff5c617e378",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "blended_budgets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7851ad84-60bf-4ae6-85bd-af65d83be9de",
+              "name": "Requested blended budget does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "blended_budgets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "375d9650-2b8f-46df-9794-3ecc6c39d825",
+    "name": "VTS Lease Account Admin Blended Budgets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

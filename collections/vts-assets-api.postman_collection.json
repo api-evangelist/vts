@@ -1,0 +1,694 @@
+{
+  "item": [
+    {
+      "id": "b1a90339-59af-4ce2-a756-dc8b94a5d2fc",
+      "name": "Assets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5119c5c1-8af8-4650-bcab-d6e3edbed449",
+          "name": "Fetches assets",
+          "request": {
+            "name": "Fetches assets",
+            "description": {
+              "content": "Contains the assets in your portfolio. Assets are the top-level building or property component in VTS.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[multi_building_asset_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "89bd2491-06e8-4fa0-a5ff-af0f589bf8f8",
+              "name": "Returns list of Assets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[multi_building_asset_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"assets\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"address\": {\n          \"street_address\": \"114 W 41st St, Floor 11\",\n          \"locality\": \"New York\",\n          \"region\": \"NY\",\n          \"country\": \"United States\",\n          \"postal_code\": \"10036\",\n          \"formatted\": \"114 W 41st St, Floor 11, New York, NY 10036\"\n        },\n        \"building_class\": \"A\",\n        \"created_at\": \"1983-10-14T10:55:43.458Z\",\n        \"currency\": \"USD\",\n        \"description\": \"Beautiful property with great views and park nearby.\",\n        \"external_ids\": [\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          },\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          }\n        ],\n        \"has_industrial_space\": true,\n        \"has_office_space\": false,\n        \"has_retail_space\": true,\n        \"lease_roll\": 32999,\n        \"lease_vacant_area\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"leasing_company\": \"Leasing Company\",\n        \"managing_company\": \"Managing Company\",\n        \"name\": \"West 41st Tower\",\n        \"notes\": \"string\",\n        \"number_of_floors\": 22,\n        \"photo_url\": \"http://images.vts.com/image/upload/photo.jpg\",\n        \"owner\": \"string\",\n        \"owning_company\": \"string\",\n        \"rentable_building_area\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"sourceid\": \"000004353\",\n        \"space_available\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"submarket\": \"string\",\n        \"building_region\": \"New York\",\n        \"updated_at\": \"1963-02-11T15:40:51.964Z\",\n        \"video_thumbnail\": \"http://images.vts.com/image/upload/thumbnail.jpg\",\n        \"year_built\": 1915,\n        \"years_renovated\": \"string\",\n        \"property_funds\": [\n          \"Multi Tenant\",\n          \"Test Fund\"\n        ],\n        \"market\": \"test market\",\n        \"account\": {\n          \"id\": 123,\n          \"name\": \"Monacan LLC\"\n        },\n        \"size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"legal_entity\": \"Avenue Holdings\",\n        \"asset_managers\": [\n          \"John Stephens\",\n          \"Mary Smith\"\n        ],\n        \"jv_partners\": [\n          \"XYZ Partners\",\n          \"ABC Global Development\"\n        ],\n        \"clients\": [\n          \"ABC Partners\",\n          \"XYZ Partners\"\n        ]\n      },\n      \"relationships\": {\n        \"multi_building_asset\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"multi_building_asset\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"assets\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"address\": {\n          \"street_address\": \"114 W 41st St, Floor 11\",\n          \"locality\": \"New York\",\n          \"region\": \"NY\",\n          \"country\": \"United States\",\n          \"postal_code\": \"10036\",\n          \"formatted\": \"114 W 41st St, Floor 11, New York, NY 10036\"\n        },\n        \"building_class\": \"A\",\n        \"created_at\": \"1965-02-08T20:53:13.390Z\",\n        \"currency\": \"USD\",\n        \"description\": \"Beautiful property with great views and park nearby.\",\n        \"external_ids\": [\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          },\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          }\n        ],\n        \"has_industrial_space\": true,\n        \"has_office_space\": false,\n        \"has_retail_space\": false,\n        \"lease_roll\": 32999,\n        \"lease_vacant_area\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"leasing_company\": \"Leasing Company\",\n        \"managing_company\": \"Managing Company\",\n        \"name\": \"West 41st Tower\",\n        \"notes\": \"string\",\n        \"number_of_floors\": 22,\n        \"photo_url\": \"http://images.vts.com/image/upload/photo.jpg\",\n        \"owner\": \"string\",\n        \"owning_company\": \"string\",\n        \"rentable_building_area\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sm\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"sourceid\": \"000004353\",\n        \"space_available\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"submarket\": \"string\",\n        \"building_region\": \"New York\",\n        \"updated_at\": \"1974-12-01T09:31:30.954Z\",\n        \"video_thumbnail\": \"http://images.vts.com/image/upload/thumbnail.jpg\",\n        \"year_built\": 1915,\n        \"years_renovated\": \"string\",\n        \"property_funds\": [\n          \"Multi Tenant\",\n          \"Test Fund\"\n        ],\n        \"market\": \"test market\",\n        \"account\": {\n          \"id\": 123,\n          \"name\": \"Monacan LLC\"\n        },\n        \"size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"legal_entity\": \"Avenue Holdings\",\n        \"asset_managers\": [\n          \"John Stephens\",\n          \"Mary Smith\"\n        ],\n        \"jv_partners\": [\n          \"XYZ Partners\",\n          \"ABC Global Development\"\n        ],\n        \"clients\": [\n          \"ABC Partners\",\n          \"XYZ Partners\"\n        ]\n      },\n      \"relationships\": {\n        \"multi_building_asset\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"multi_building_asset\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/assets\",\n    \"prev\": \"https://api.vts.com/api/v1/assets?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/assets?page%5Bafter%5D=MzE2NjQ%253D\"\n  },\n  \"included\": [\n    {\n      \"id\": \"1\",\n      \"type\": \"multi_building_assets\",\n      \"attributes\": {\n        \"name\": \"VTS Office Park\",\n        \"sourceid\": \"000004353\",\n        \"external_ids\": [\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          },\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"1\",\n      \"type\": \"multi_building_assets\",\n      \"attributes\": {\n        \"name\": \"VTS Office Park\",\n        \"sourceid\": \"000004353\",\n        \"external_ids\": [\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          },\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "660b5bf3-cc5d-4346-ba40-168acd2027bd",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[multi_building_asset_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af3124cc-7d71-443b-98c7-2d519d40b84a",
+          "name": "Retrieves deal settings for given asset for specific account",
+          "request": {
+            "name": "Retrieves deal settings for given asset for specific account",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "assets",
+                ":asset_id",
+                "deal_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "asset_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d79ed470-9228-43e4-ab02-abd972d96ac9",
+              "name": "returns requested account asset deal settings if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assets",
+                    ":asset_id",
+                    "deal_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"assets\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"terms\": {\n        \"lease_type\": \"triple net\",\n        \"discount_rate\": \"5.0\",\n        \"periods\": \"rsf/month\"\n      },\n      \"rent_schedule\": {\n        \"rent_schedule_display_in_unit\": \"psf/mo\"\n      },\n      \"expenses_and_recoveries\": [\n        {\n          \"type\": \"ReimbursableExpenseLandscaping\",\n          \"expense_amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"mo\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"recovery_amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"mo\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"expense_growth_rate\": {\n            \"magnitude\": 1000,\n            \"unit\": \"%\",\n            \"unit_components\": {\n              \"period\": \"%\"\n            },\n            \"type\": \"percentage\"\n          },\n          \"recovery_method\": \"gross\"\n        },\n        {\n          \"type\": \"ReimbursableExpenseLandscaping\",\n          \"expense_amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"recovery_amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"yr\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"expense_growth_rate\": {\n            \"magnitude\": 1000,\n            \"unit\": \"%\",\n            \"unit_components\": {\n              \"period\": \"%\"\n            },\n            \"type\": \"percentage\"\n          },\n          \"recovery_method\": \"gross\"\n        }\n      ],\n      \"commissions\": [\n        {\n          \"broker\": \"VTS\",\n          \"commission_type\": \"landlord\",\n          \"periods\": [\n            {\n              \"amount\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"starts\": {\n                \"month\": 1\n              }\n            },\n            {\n              \"amount\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"starts\": {\n                \"month\": 1\n              }\n            }\n          ],\n          \"free_rent\": \"amortize_over_term\",\n          \"net_or_gross\": \"gross\"\n        },\n        {\n          \"broker\": \"VTS\",\n          \"commission_type\": \"landlord\",\n          \"periods\": [\n            {\n              \"amount\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"starts\": {\n                \"month\": 1\n              }\n            },\n            {\n              \"amount\": {\n                \"magnitude\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit_components\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"starts\": {\n                \"month\": 1\n              }\n            }\n          ],\n          \"free_rent\": \"amortize_over_term\",\n          \"net_or_gross\": \"gross\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26bac8f7-d158-4833-a2e6-e5913481152f",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assets",
+                    ":asset_id",
+                    "deal_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd699828-f6ce-48b1-b632-a5c87079a7bb",
+              "name": "Requested asset does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assets",
+                    ":asset_id",
+                    "deal_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "562bdbdc-600d-4668-a79d-7df965dc89a2",
+          "name": "Retrieves specific asset",
+          "request": {
+            "name": "Retrieves specific asset",
+            "description": {
+              "content": "Contains the assets in your portfolio. Assets are the top-level building or property component in VTS.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "assets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da5fc4b4-1503-45fc-b937-a187a6845dad",
+              "name": "Returns requested asset if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"assets\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"address\": {\n        \"street_address\": \"114 W 41st St, Floor 11\",\n        \"locality\": \"New York\",\n        \"region\": \"NY\",\n        \"country\": \"United States\",\n        \"postal_code\": \"10036\",\n        \"formatted\": \"114 W 41st St, Floor 11, New York, NY 10036\"\n      },\n      \"building_class\": \"A\",\n      \"created_at\": \"1961-10-08T10:49:40.162Z\",\n      \"currency\": \"USD\",\n      \"description\": \"Beautiful property with great views and park nearby.\",\n      \"external_ids\": [\n        {\n          \"system_id\": \"12345\",\n          \"system_name\": \"ExternalSystem\"\n        },\n        {\n          \"system_id\": \"12345\",\n          \"system_name\": \"ExternalSystem\"\n        }\n      ],\n      \"has_industrial_space\": false,\n      \"has_office_space\": false,\n      \"has_retail_space\": false,\n      \"lease_roll\": 32999,\n      \"lease_vacant_area\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sf\"\n        },\n        \"type\": \"area\"\n      },\n      \"leasing_company\": \"Leasing Company\",\n      \"managing_company\": \"Managing Company\",\n      \"name\": \"West 41st Tower\",\n      \"notes\": \"string\",\n      \"number_of_floors\": 22,\n      \"photo_url\": \"http://images.vts.com/image/upload/photo.jpg\",\n      \"owner\": \"string\",\n      \"owning_company\": \"string\",\n      \"rentable_building_area\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sm\",\n        \"unit_components\": {\n          \"area\": \"sf\"\n        },\n        \"type\": \"area\"\n      },\n      \"sourceid\": \"000004353\",\n      \"space_available\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sf\"\n        },\n        \"type\": \"area\"\n      },\n      \"submarket\": \"string\",\n      \"building_region\": \"New York\",\n      \"updated_at\": \"1963-10-21T16:58:59.746Z\",\n      \"video_thumbnail\": \"http://images.vts.com/image/upload/thumbnail.jpg\",\n      \"year_built\": 1915,\n      \"years_renovated\": \"string\",\n      \"property_funds\": [\n        \"Multi Tenant\",\n        \"Test Fund\"\n      ],\n      \"market\": \"test market\",\n      \"account\": {\n        \"id\": 123,\n        \"name\": \"Monacan LLC\"\n      },\n      \"size\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sf\"\n        },\n        \"type\": \"area\"\n      },\n      \"legal_entity\": \"Avenue Holdings\",\n      \"asset_managers\": [\n        \"John Stephens\",\n        \"Mary Smith\"\n      ],\n      \"jv_partners\": [\n        \"XYZ Partners\",\n        \"ABC Global Development\"\n      ],\n      \"clients\": [\n        \"ABC Partners\",\n        \"XYZ Partners\"\n      ]\n    },\n    \"relationships\": {\n      \"multi_building_asset\": {\n        \"data\": {\n          \"id\": \"string\",\n          \"type\": \"multi_building_asset\"\n        }\n      }\n    }\n  },\n  \"included\": [\n    {\n      \"id\": \"1\",\n      \"type\": \"multi_building_assets\",\n      \"attributes\": {\n        \"name\": \"VTS Office Park\",\n        \"sourceid\": \"000004353\",\n        \"external_ids\": [\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          },\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"1\",\n      \"type\": \"multi_building_assets\",\n      \"attributes\": {\n        \"name\": \"VTS Office Park\",\n        \"sourceid\": \"000004353\",\n        \"external_ids\": [\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          },\n          {\n            \"system_id\": \"12345\",\n            \"system_name\": \"ExternalSystem\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea9f779a-d4cf-43d3-9ac5-276d660107b8",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26a96c93-0b34-40f9-8f13-359b1ffa6daf",
+              "name": "Requested asset does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "daba2648-2bbd-4fbb-b326-89ebe87988db",
+    "name": "VTS Lease Account Admin Assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

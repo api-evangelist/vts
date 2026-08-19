@@ -1,0 +1,473 @@
+{
+  "item": [
+    {
+      "id": "f2fa7e6d-a119-464c-952e-bad49755854c",
+      "name": "Spaces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e9f1f7a5-0645-49b6-80d8-682eee9403f1",
+          "name": "Fetches spaces",
+          "request": {
+            "name": "Fetches spaces",
+            "description": {
+              "content": "Contains the spaces in your portfolio. Spaces are sub-components of assets",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "spaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[deal_id]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "461a3222-4577-4cc7-96f5-62a678791cc4",
+              "name": "Returns list of Spaces",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "spaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[deal_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"spaces_industrial\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"archived_date\": \"2025-11-18\",\n        \"availability_date\": \"2016-08-26\",\n        \"availability_type\": \"arranged\",\n        \"created_at\": \"1980-02-10T02:07:45.396Z\",\n        \"current_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sm\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"description\": \"string\",\n        \"external_ids\": [\n          {\n            \"system_id\": \"string\",\n            \"system_name\": \"string\"\n          },\n          {\n            \"system_id\": \"string\",\n            \"system_name\": \"string\"\n          }\n        ],\n        \"floor\": {\n          \"composition\": \"string\",\n          \"name\": \"string\",\n          \"position\": 7974.102166964892\n        },\n        \"hypothetical_space\": false,\n        \"lease_type\": \"direct\",\n        \"listing_date\": \"2005-08-28\",\n        \"market_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"maximum_contiguous_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"minimum_divisible_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"occupancy_status\": \"string\",\n        \"position\": 8749.874799028616,\n        \"price_is_negotiable\": true,\n        \"public\": false,\n        \"remeasured_space_available\": \"string\",\n        \"rental_pay_type\": \"amt_month\",\n        \"rental_rate_max\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"day\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"rental_rate_min\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"mo\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"sale_price\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"sourceid\": \"string\",\n        \"space_condition\": \"category a+\",\n        \"space_type\": \"office\",\n        \"subtitle\": \"string\",\n        \"suite\": \"string\",\n        \"term_duration\": \"string\",\n        \"transaction_type\": \"sale\",\n        \"updated_at\": \"1956-03-05\",\n        \"vacant_on_date\": \"2003-03-06\",\n        \"internal_notes\": \"Notes\",\n        \"clear_height\": \"string\",\n        \"depth\": \"string\",\n        \"dock_height\": \"string\",\n        \"ground_level_doors\": \"string\",\n        \"office_portion\": \"string\",\n        \"trailer_parking\": \"string\",\n        \"yard\": \"string\",\n        \"ceiling_height\": \"string\",\n        \"column_spacing\": \"string\",\n        \"electrical\": \"string\",\n        \"hvac\": \"string\",\n        \"parking\": \"string\",\n        \"roof\": \"string\",\n        \"sprinklers\": \"string\"\n      },\n      \"relationships\": {\n        \"in_place_lease\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"leases\"\n          },\n          \"links\": {\n            \"related\": \"http://QLLrIMIaFI.nolyJg8YCiCDdupkmaYFCCev+QDTHhNXFVpTI0pv7z+GLN.xVkRY-0fBjwk0.f1,Q+sk+C\"\n          }\n        },\n        \"committed_lease\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"leases\"\n          },\n          \"links\": {\n            \"related\": \"http://YFACSzPdUUxtzuRSCTtBwwzOOSPgwI.xhYoWwlMfaSxjgN-rWsFUSd-lKVbuezC,4lwIDFJ-\"\n          }\n        },\n        \"last_expired_lease\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"leases\"\n          },\n          \"links\": {\n            \"related\": \"https://qKSTWDObqORrNosAKzwEgTLJjHur.pxcTqyWX+aLu1xJ8RcSin.mmmWfT33SyB8T\"\n          }\n        },\n        \"asset\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"assets\"\n          },\n          \"links\": {\n            \"related\": \"https://CdY.wwghjhiJgxhuJhRW.KkvnGwz8+h6myjtYW2dqynYUZfrKXEkLeBaDHwVz+zcKIkEBHuTZS,a66\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"spaces_industrial\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"archived_date\": \"1949-04-30\",\n        \"availability_date\": \"1996-12-21\",\n        \"availability_type\": \"arranged\",\n        \"created_at\": \"1992-05-10T08:03:19.880Z\",\n        \"current_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sm\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"description\": \"string\",\n        \"external_ids\": [\n          {\n            \"system_id\": \"string\",\n            \"system_name\": \"string\"\n          },\n          {\n            \"system_id\": \"string\",\n            \"system_name\": \"string\"\n          }\n        ],\n        \"floor\": {\n          \"composition\": \"string\",\n          \"name\": \"string\",\n          \"position\": 7463.854211943589\n        },\n        \"hypothetical_space\": false,\n        \"lease_type\": \"renewal\",\n        \"listing_date\": \"1954-01-02\",\n        \"market_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"maximum_contiguous_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"minimum_divisible_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"occupancy_status\": \"string\",\n        \"position\": 8227.897504751785,\n        \"price_is_negotiable\": true,\n        \"public\": false,\n        \"remeasured_space_available\": \"string\",\n        \"rental_pay_type\": \"psf_year\",\n        \"rental_rate_max\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"yr\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"rental_rate_min\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"yr\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"sale_price\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"sourceid\": \"string\",\n        \"space_condition\": \"turnkey\",\n        \"space_type\": \"telecom\",\n        \"subtitle\": \"string\",\n        \"suite\": \"string\",\n        \"term_duration\": \"string\",\n        \"transaction_type\": \"sale\",\n        \"updated_at\": \"1982-08-04\",\n        \"vacant_on_date\": \"1990-08-30\",\n        \"internal_notes\": \"Notes\",\n        \"clear_height\": \"string\",\n        \"depth\": \"string\",\n        \"dock_height\": \"string\",\n        \"ground_level_doors\": \"string\",\n        \"office_portion\": \"string\",\n        \"trailer_parking\": \"string\",\n        \"yard\": \"string\",\n        \"ceiling_height\": \"string\",\n        \"column_spacing\": \"string\",\n        \"electrical\": \"string\",\n        \"hvac\": \"string\",\n        \"parking\": \"string\",\n        \"roof\": \"string\",\n        \"sprinklers\": \"string\"\n      },\n      \"relationships\": {\n        \"in_place_lease\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"leases\"\n          },\n          \"links\": {\n            \"related\": \"http://vAXDIncxctE.fuulMKR7fFWzf-J0eNwsQUes2tVBmX5udHyY\"\n          }\n        },\n        \"committed_lease\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"leases\"\n          },\n          \"links\": {\n            \"related\": \"https://rtzDktoxpspAIyUGDbCzKVSAbhWeH.qucoN1pJgrw1X1H9VdBei1\"\n          }\n        },\n        \"last_expired_lease\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"leases\"\n          },\n          \"links\": {\n            \"related\": \"http://WmJYdQpJpSNrubEwaPnFQKzWOXtyq.rxqaPwo3w7JzhAfpQ1nHaulmY9LBIEvU\"\n          }\n        },\n        \"asset\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"assets\"\n          },\n          \"links\": {\n            \"related\": \"http://gCKHdH.pwbcFyVO+swAyoeBzyKPyeP\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/spaces\",\n    \"prev\": \"https://api.vts.com/api/v1/spaces?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/spaces?page%5Bafter%5D=MzE2NjQ%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ca237c1-956f-4e1d-9bc7-2d5a4ddbd815",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "spaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[deal_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2205a403-633a-44f2-bc76-24010dde4850",
+          "name": "Retrieves specific space",
+          "request": {
+            "name": "Retrieves specific space",
+            "description": {
+              "content": "Contains the spaces in your portfolio. Spaces are sub-components of assets",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "spaces",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8bb4b630-2ab0-470b-8db8-84c39d7c2190",
+              "name": "Returns requested space if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "spaces",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"spaces_industrial\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"archived_date\": \"2014-10-03\",\n      \"availability_date\": \"1966-01-04\",\n      \"availability_type\": \"arranged\",\n      \"created_at\": \"1954-01-08T13:07:51.758Z\",\n      \"current_size\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sm\",\n        \"unit_components\": {\n          \"area\": \"sf\"\n        },\n        \"type\": \"area\"\n      },\n      \"description\": \"string\",\n      \"external_ids\": [\n        {\n          \"system_id\": \"string\",\n          \"system_name\": \"string\"\n        },\n        {\n          \"system_id\": \"string\",\n          \"system_name\": \"string\"\n        }\n      ],\n      \"floor\": {\n        \"composition\": \"string\",\n        \"name\": \"string\",\n        \"position\": 8020.579211626122\n      },\n      \"hypothetical_space\": false,\n      \"lease_type\": \"direct\",\n      \"listing_date\": \"1986-07-03\",\n      \"market_rent\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD\",\n        \"unit_components\": {\n          \"money\": \"USD\"\n        },\n        \"type\": \"money\"\n      },\n      \"maximum_contiguous_size\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sm\",\n        \"unit_components\": {\n          \"area\": \"sf\"\n        },\n        \"type\": \"area\"\n      },\n      \"minimum_divisible_size\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sf\"\n        },\n        \"type\": \"area\"\n      },\n      \"occupancy_status\": \"string\",\n      \"position\": 3658.0966342246456,\n      \"price_is_negotiable\": false,\n      \"public\": false,\n      \"remeasured_space_available\": \"string\",\n      \"rental_pay_type\": \"amt_year\",\n      \"rental_rate_max\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD/yr\",\n        \"unit_components\": {\n          \"money\": \"USD\",\n          \"period\": \"day\"\n        },\n        \"type\": \"money/period\"\n      },\n      \"rental_rate_min\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD/yr\",\n        \"unit_components\": {\n          \"money\": \"USD\",\n          \"period\": \"mo\"\n        },\n        \"type\": \"money/period\"\n      },\n      \"sale_price\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD\",\n        \"unit_components\": {\n          \"money\": \"USD\"\n        },\n        \"type\": \"money\"\n      },\n      \"sourceid\": \"string\",\n      \"space_condition\": \"pre-existing\",\n      \"space_type\": \"retail\",\n      \"subtitle\": \"string\",\n      \"suite\": \"string\",\n      \"term_duration\": \"string\",\n      \"transaction_type\": \"sale\",\n      \"updated_at\": \"1990-02-07\",\n      \"vacant_on_date\": \"2001-07-17\",\n      \"internal_notes\": \"Notes\",\n      \"clear_height\": \"string\",\n      \"depth\": \"string\",\n      \"dock_height\": \"string\",\n      \"ground_level_doors\": \"string\",\n      \"office_portion\": \"string\",\n      \"trailer_parking\": \"string\",\n      \"yard\": \"string\",\n      \"ceiling_height\": \"string\",\n      \"column_spacing\": \"string\",\n      \"electrical\": \"string\",\n      \"hvac\": \"string\",\n      \"parking\": \"string\",\n      \"roof\": \"string\",\n      \"sprinklers\": \"string\"\n    },\n    \"relationships\": {\n      \"in_place_lease\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"leases\"\n        },\n        \"links\": {\n          \"related\": \"http://HDRTwFgMAITQrYH.izlylAGA7O-0\"\n        }\n      },\n      \"committed_lease\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"leases\"\n        },\n        \"links\": {\n          \"related\": \"https://Bvsinmlo.mkLrhznPLr2TeYbqep1XvblgSeGU,Zcp.WtnS5O5vS5LnCFu\"\n        }\n      },\n      \"last_expired_lease\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"leases\"\n        },\n        \"links\": {\n          \"related\": \"https://bxSWKCoB.stxu6x.0HAKAyhkNY4GLxky+Z\"\n        }\n      },\n      \"asset\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"assets\"\n        },\n        \"links\": {\n          \"related\": \"https://Yxep.nnfaePM3-I-YZjpfigcjmP7bjh\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6874c2a9-1bc8-4509-9342-6d66171ccd94",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "spaces",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "621b44d5-cca4-41ea-9b0d-4a9f53fca999",
+              "name": "Requested space does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "spaces",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bc3d20cf-261b-4f70-9b98-7de615e34920",
+    "name": "VTS Lease Account Admin Spaces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

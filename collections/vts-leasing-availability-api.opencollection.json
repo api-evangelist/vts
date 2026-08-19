@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VTS Lease Account Admin Leasing Availability API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Leasing Availability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches a set of buildings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/buildings",
+            "params": [
+              {
+                "name": "filter[city]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by city name. Intended use is either a page for buildings of a given city or to populate a dropdown of cities"
+              },
+              {
+                "name": "filter[search]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a search string. Partial matches will match and the results will be ordered by the amount of match with buildings and which data element it matches on. Weighted highest for building name and address, then for city, then for state and country"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Part of the Leasing Availability API, this fetches buildings on VTS Market associated with the account that the API key is generated for with information about the building and its available listings. Expected usage would be to make a portfolio page for the given account"
+        },
+        {
+          "info": {
+            "name": "Fetches a specific building",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/buildings/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Part of the Leasing Availability API, this fetches a specific building on VTS Market with information about the building and its available listings. Expected usage would be to make a webpage about the building"
+        },
+        {
+          "info": {
+            "name": "Fetches a specific listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/api/v1/listings/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Part of the Leasing Availability API, this fetches a specific listing on VTS Market with information about the listing. Expected usage would be to make a webpage about the listing"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

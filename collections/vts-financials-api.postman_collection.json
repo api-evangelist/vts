@@ -1,0 +1,704 @@
+{
+  "item": [
+    {
+      "id": "64c24c1b-80a1-4d6a-a2a4-d72eb8ed8c62",
+      "name": "Financials",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de4e6764-b109-43cf-b735-3eb7f83527f0",
+          "name": "Fetches Financials for a given deal term",
+          "request": {
+            "name": "Fetches Financials for a given deal term",
+            "description": {
+              "content": "Contains the corresponding financials for a lease or deal term",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deal_terms",
+                ":deal_term_id",
+                "financials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deal_term_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7d3645f8-c0ce-4cda-98dd-5a962f6339b6",
+              "name": "Returns list of Financials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_terms",
+                    ":deal_term_id",
+                    "financials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_term_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"base_rents\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"mo\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"ends\": {\n          \"date\": \"1986-05-25\",\n          \"duration\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          }\n        },\n        \"starts\": {\n          \"date\": \"1980-09-30\",\n          \"month\": 3\n        },\n        \"created_at\": \"1996-11-11T04:31:57.584Z\",\n        \"updated_at\": \"1960-02-09T08:39:24.167Z\"\n      },\n      \"relationships\": {\n        \"deal_term\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"deal_terms\"\n          },\n          \"links\": {\n            \"related\": \"https://kcmPrCRpojdfxsgGTjidyntEuADsVisy.kdfkVNRbdXOb+nYK.TYIEeGFzNtTD0N+quOl5VZJzJN.UbePod-OAriH31wpP2CJNqTr1-5ZQbSCryRjO-u\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"base_rents\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"yr\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"ends\": {\n          \"date\": \"1995-04-11\",\n          \"duration\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          }\n        },\n        \"starts\": {\n          \"date\": \"1993-03-15\",\n          \"month\": 3\n        },\n        \"created_at\": \"2013-10-22T13:13:01.154Z\",\n        \"updated_at\": \"2025-01-26T18:38:32.066Z\"\n      },\n      \"relationships\": {\n        \"deal_term\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"deal_terms\"\n          },\n          \"links\": {\n            \"related\": \"https://yWWYwkWmPaGvKADb.qeF1VIiUCxYcohnnWm5Pf8cftPY7VigR0B4f1eszbfL\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cefdcdb9-ca36-4ca2-ac18-3fbcdd1091b7",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_terms",
+                    ":deal_term_id",
+                    "financials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_term_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19ca802b-323d-4e04-af97-75676da06b50",
+          "name": "Fetches Financials for lease terms and/or lease terms",
+          "request": {
+            "name": "Fetches Financials for lease terms and/or lease terms",
+            "description": {
+              "content": "Contains the corresponding financials for a lease or deal term",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "financials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[term_type]",
+                  "value": "<string>",
+                  "description": "Only display financials belonging to the specific parent object"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d8739727-9e93-4c7e-971d-6f9bdc0409af",
+              "name": "Returns list of Financials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "financials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[term_type]",
+                      "value": "deal_term"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"base_rents\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"mo\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"ends\": {\n          \"date\": \"1986-05-25\",\n          \"duration\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          }\n        },\n        \"starts\": {\n          \"date\": \"1980-09-30\",\n          \"month\": 3\n        },\n        \"created_at\": \"1996-11-11T04:31:57.584Z\",\n        \"updated_at\": \"1960-02-09T08:39:24.167Z\"\n      },\n      \"relationships\": {\n        \"deal_term\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"deal_terms\"\n          },\n          \"links\": {\n            \"related\": \"https://kcmPrCRpojdfxsgGTjidyntEuADsVisy.kdfkVNRbdXOb+nYK.TYIEeGFzNtTD0N+quOl5VZJzJN.UbePod-OAriH31wpP2CJNqTr1-5ZQbSCryRjO-u\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"base_rents\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"yr\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"ends\": {\n          \"date\": \"1995-04-11\",\n          \"duration\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          }\n        },\n        \"starts\": {\n          \"date\": \"1993-03-15\",\n          \"month\": 3\n        },\n        \"created_at\": \"2013-10-22T13:13:01.154Z\",\n        \"updated_at\": \"2025-01-26T18:38:32.066Z\"\n      },\n      \"relationships\": {\n        \"deal_term\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"deal_terms\"\n          },\n          \"links\": {\n            \"related\": \"https://yWWYwkWmPaGvKADb.qeF1VIiUCxYcohnnWm5Pf8cftPY7VigR0B4f1eszbfL\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33606d42-6304-4496-a174-c93f1fedde21",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "financials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[term_type]",
+                      "value": "deal_term"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a404f9c5-64e1-448b-9fbe-0c7d3f26a7cf",
+          "name": "Fetches Financials for a given lease term",
+          "request": {
+            "name": "Fetches Financials for a given lease term",
+            "description": {
+              "content": "Contains the corresponding financials for a lease or deal term",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "lease_terms",
+                ":lease_term_id",
+                "financials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lease_term_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "14af4fc4-0342-478e-84f4-61724ae3561e",
+              "name": "Returns list of Financials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "lease_terms",
+                    ":lease_term_id",
+                    "financials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lease_term_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"base_rents\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"day\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"ends\": {\n          \"date\": \"1990-07-14\",\n          \"duration\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          }\n        },\n        \"starts\": {\n          \"date\": \"2006-01-03\",\n          \"month\": 3\n        },\n        \"created_at\": \"1992-09-03T11:06:04.924Z\",\n        \"updated_at\": \"2023-01-31T23:31:28.260Z\"\n      },\n      \"relationships\": {\n        \"lease_term\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"lease_terms\"\n          },\n          \"links\": {\n            \"related\": \"https://cjfUiHyvxzZZfgvAv.thkfflmZEvrGhSfGfMprRWenAydtGXEaYcaFlgzjDGA.BYafr0Cd,G0SJ\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"base_rents\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"amount\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"yr\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"ends\": {\n          \"date\": \"1961-10-06\",\n          \"duration\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          }\n        },\n        \"starts\": {\n          \"date\": \"1959-04-12\",\n          \"month\": 3\n        },\n        \"created_at\": \"1964-05-20T13:39:15.167Z\",\n        \"updated_at\": \"1947-12-25T18:36:49.237Z\"\n      },\n      \"relationships\": {\n        \"lease_term\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"lease_terms\"\n          },\n          \"links\": {\n            \"related\": \"http://EhLcwGexAuiI.qcfoM5AViZcztySONUkl.swwprWPP5HLasca6cnfszU4oo7tjq,jUiOV88u\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5846944-6f09-4d6d-9a6b-ca0679a4b236",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "lease_terms",
+                    ":lease_term_id",
+                    "financials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lease_term_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4dfe2e41-a584-44e0-bca6-ae43b41a49bf",
+    "name": "VTS Lease Account Admin Financials API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

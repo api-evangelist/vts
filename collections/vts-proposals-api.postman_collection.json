@@ -1,0 +1,685 @@
+{
+  "item": [
+    {
+      "id": "4cfec29b-014c-4fc6-90ea-f76b55d77cf3",
+      "name": "Proposals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d3c2d9aa-9714-4e20-8513-862d28d5973d",
+          "name": "Fetches proposals",
+          "request": {
+            "name": "Fetches proposals",
+            "description": {
+              "content": "Contains details of a given proposal, including discount rate, proposal type, and description",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deals",
+                ":deal_id",
+                "proposals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[latest]",
+                  "value": "<boolean>",
+                  "description": "Only show the latest Proposal"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deal_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dc184ed5-98c5-46f5-923f-05d0b666f069",
+              "name": "Returns list of Proposals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":deal_id",
+                    "proposals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[latest]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"proposals\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"proposal_label\": \"Proposal Name\",\n        \"calculated_metrics\": {\n          \"net_effective_rent\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_to_termination\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_with_downtime\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_vs_budget\": 1,\n          \"ner_to_termination_vs_budget\": 1,\n          \"net_present_value\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"net_rent\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"total_capital\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_net_cash_flow\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_base_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_escalated_rent_before_abatement\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          }\n        },\n        \"created_at\": \"1951-05-13T08:28:21.149Z\",\n        \"updated_at\": \"1953-10-16T18:15:28.096Z\",\n        \"entered_date\": \"2001-07-02\",\n        \"latest\": true,\n        \"discount_rate\": 0.08,\n        \"description\": \"This is a proposal.\",\n        \"proposal_date\": \"1988-07-21\",\n        \"proposal_type\": \"final\"\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"http://cGpXsXvDNuAwsJxIzLoCwCchtwAWXf.sxexpImX\"\n          }\n        },\n        \"deal_terms\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_terms\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_terms\"\n            }\n          ]\n        },\n        \"options\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"options_miscellaneous\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"options_miscellaneous\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"type\": \"proposals\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"proposal_label\": \"Proposal Name\",\n        \"calculated_metrics\": {\n          \"net_effective_rent\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_to_termination\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_with_downtime\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_vs_budget\": 1,\n          \"ner_to_termination_vs_budget\": 1,\n          \"net_present_value\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"net_rent\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"total_capital\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_net_cash_flow\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_base_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_escalated_rent_before_abatement\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          }\n        },\n        \"created_at\": \"1965-10-15T18:31:32.929Z\",\n        \"updated_at\": \"2005-09-13T22:27:20.677Z\",\n        \"entered_date\": \"2014-05-28\",\n        \"latest\": true,\n        \"discount_rate\": 0.08,\n        \"description\": \"This is a proposal.\",\n        \"proposal_date\": \"1999-07-25\",\n        \"proposal_type\": \"final\"\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"https://mQTIpnqGQzAVPffHBbxQLlelEfOYt.zgyZzf8,ZyZ1XDU5yvSV.Zr3l+qoctSaTjRl-FRN4Z+FFoJMm9J089NnLUC9HGtGwWBzs9a5-VetI.69i-05V\"\n          }\n        },\n        \"deal_terms\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_terms\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_terms\"\n            }\n          ]\n        },\n        \"options\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"options_miscellaneous\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"options_miscellaneous\"\n            }\n          ]\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/deals/1/proposals\",\n    \"prev\": \"https://api.vts.com/api/v1/deals/12345/proposals?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/deals/12345/proposals?page%5Bafter%5D=MzE2NjQ%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "922760f8-4893-407b-aefa-b1605d79da85",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":deal_id",
+                    "proposals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[latest]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc97bd7c-a225-40ca-8ad5-54aacc846639",
+          "name": "Fetches proposals",
+          "request": {
+            "name": "Fetches proposals",
+            "description": {
+              "content": "Contains details of a given proposal, including discount rate, proposal type, and description",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "proposals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "86533d57-954b-4cbf-a90f-3519dbac031d",
+              "name": "Returns list of Proposals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "proposals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"proposals\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"proposal_label\": \"Proposal Name\",\n        \"calculated_metrics\": {\n          \"net_effective_rent\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_to_termination\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_with_downtime\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_vs_budget\": 1,\n          \"ner_to_termination_vs_budget\": 1,\n          \"net_present_value\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"net_rent\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"total_capital\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_net_cash_flow\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_base_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_escalated_rent_before_abatement\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          }\n        },\n        \"created_at\": \"2010-10-29T01:04:37.184Z\",\n        \"updated_at\": \"2000-06-30T03:14:39.732Z\",\n        \"entered_date\": \"1983-11-09\",\n        \"latest\": true,\n        \"discount_rate\": 0.08,\n        \"description\": \"This is a proposal.\",\n        \"proposal_date\": \"2013-04-20\",\n        \"proposal_type\": \"final\"\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"http://JgyqJvMcSshImwZBSXUrhGMWKuF.ewADOfyK48e-\"\n          }\n        },\n        \"deal_terms\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_terms\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_terms\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"http://ZzECQEABGDlgPtAjgOJyKHSaUFEUSA.qtildd2howKOUJveJjq0gbmi+h\"\n          }\n        },\n        \"options\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"options_miscellaneous\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"options_miscellaneous\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"type\": \"proposals\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"proposal_label\": \"Proposal Name\",\n        \"calculated_metrics\": {\n          \"net_effective_rent\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_to_termination\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_with_downtime\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"ner_vs_budget\": 1,\n          \"ner_to_termination_vs_budget\": 1,\n          \"net_present_value\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"net_rent\": {\n            \"value\": \"<Error: Could not resolve allOf schema\"\n          },\n          \"total_capital\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_net_cash_flow\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_base_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"total_escalated_rent_before_abatement\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          }\n        },\n        \"created_at\": \"1971-07-05T01:54:09.196Z\",\n        \"updated_at\": \"1962-02-13T03:38:29.548Z\",\n        \"entered_date\": \"1949-08-30\",\n        \"latest\": true,\n        \"discount_rate\": 0.08,\n        \"description\": \"This is a proposal.\",\n        \"proposal_date\": \"1995-11-11\",\n        \"proposal_type\": \"final\"\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"http://RQRBiHZJczYBmjMtTpid.euqUGbtUG83pPB\"\n          }\n        },\n        \"deal_terms\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_terms\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_terms\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"https://dKh.icXPpIZI2SofqhkAwsHp8mhNpb6\"\n          }\n        },\n        \"options\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"options_miscellaneous\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"options_miscellaneous\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fb237b3-fb5f-4184-9a35-bae11849fb9f",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "proposals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b54cc991-93f2-42f8-93a3-a5c38af50f17",
+          "name": "Retrieves specific proposal",
+          "request": {
+            "name": "Retrieves specific proposal",
+            "description": {
+              "content": "Contains details of a given proposal, including discount rate, proposal type, and description",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "proposals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "65305791-d60b-4139-bc79-0a626a79e74e",
+              "name": "Returns requested proposal if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "proposals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"proposals\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"proposal_label\": \"Proposal Name\",\n      \"calculated_metrics\": {\n        \"net_effective_rent\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"ner_to_termination\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"ner_with_downtime\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"ner_vs_budget\": 1,\n        \"ner_to_termination_vs_budget\": 1,\n        \"net_present_value\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"net_rent\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"total_capital\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"total_net_cash_flow\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"total_base_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"total_escalated_rent_before_abatement\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        }\n      },\n      \"created_at\": \"1980-08-12T07:28:55.684Z\",\n      \"updated_at\": \"2021-03-01T02:23:58.528Z\",\n      \"entered_date\": \"1954-09-12\",\n      \"latest\": false,\n      \"discount_rate\": 0.08,\n      \"description\": \"This is a proposal.\",\n      \"proposal_date\": \"2019-12-15\",\n      \"proposal_type\": \"final\"\n    },\n    \"relationships\": {\n      \"deal\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"deals\"\n        },\n        \"links\": {\n          \"related\": \"https://KNwlPZmFHugEelxghlrBKhHmqyebkQ.vcyfgr7AfBmDPMq,F1W2TCGOO\"\n        }\n      },\n      \"deal_terms\": {\n        \"data\": [\n          {\n            \"id\": \"12345\",\n            \"type\": \"deal_terms\"\n          },\n          {\n            \"id\": \"12345\",\n            \"type\": \"deal_terms\"\n          }\n        ],\n        \"links\": {\n          \"related\": \"http://t.udhI,2l\"\n        }\n      },\n      \"options\": {\n        \"data\": [\n          {\n            \"id\": \"12345\",\n            \"type\": \"options_miscellaneous\"\n          },\n          {\n            \"id\": \"12345\",\n            \"type\": \"options_miscellaneous\"\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b48f0976-03f5-49e5-b8d3-ae75eaafb28f",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "proposals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c15a9b5-747a-4660-9306-caad863dade3",
+              "name": "Requested proposal does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "proposals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "42fa109e-6ca0-415b-9cca-48e9d1db4669",
+    "name": "VTS Lease Account Admin Proposals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

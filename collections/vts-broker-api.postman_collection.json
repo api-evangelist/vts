@@ -1,0 +1,1329 @@
+{
+  "item": [
+    {
+      "id": "3d086530-7472-4458-80bb-0a62bf1b65c3",
+      "name": "Broker",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b8842314-5ea2-4c81-a37c-98b371323149",
+          "name": "Fetches Broker Activities",
+          "request": {
+            "name": "Fetches Broker Activities",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "broker",
+                "activities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "48606b22-ba08-4e89-af9b-4cdab6ec0840",
+              "name": "Returns list of Broker Activities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"broker_activities\",\n    \"attributes\": {\n      \"total_active_deals\": {\n        \"new\": 1,\n        \"original\": 1,\n        \"renewal\": 1,\n        \"renewal_two\": 1,\n        \"renewal_three\": 1,\n        \"extension\": 1,\n        \"expansion\": 1,\n        \"termination\": 1,\n        \"modification\": 1,\n        \"sublease\": 1,\n        \"license_agreement\": 1,\n        \"storage\": 1,\n        \"specialty\": 1,\n        \"short_term_lease\": 1,\n        \"other\": 1,\n        \"relocation\": 1,\n        \"rent_review\": 1,\n        \"break\": 1,\n        \"fixed_option\": 1\n      },\n      \"total_executed_deals\": {\n        \"new\": 1,\n        \"original\": 1,\n        \"renewal\": 1,\n        \"renewal_two\": 1,\n        \"renewal_three\": 1,\n        \"extension\": 1,\n        \"expansion\": 1,\n        \"termination\": 1,\n        \"modification\": 1,\n        \"sublease\": 1,\n        \"license_agreement\": 1,\n        \"storage\": 1,\n        \"specialty\": 1,\n        \"short_term_lease\": 1,\n        \"other\": 1,\n        \"relocation\": 1,\n        \"rent_review\": 1,\n        \"break\": 1,\n        \"fixed_option\": 1\n      },\n      \"total_deals\": {\n        \"tenants_in_the_market\": 1,\n        \"initial_inquiry\": 1,\n        \"preview\": 1,\n        \"tour\": 1,\n        \"proposal\": 1,\n        \"loi\": 1,\n        \"legal\": 1,\n        \"lease_out\": 1,\n        \"idle\": 1,\n        \"dead_deal\": 1,\n        \"lease_executed\": 1\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4eec5174-cab8-43a3-a08c-67f5857cc720",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ef84c75-d78f-4179-943a-0b566f528512",
+          "name": "Fetches broker agent users",
+          "request": {
+            "name": "Fetches broker agent users",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "broker",
+                "agents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "81d1c442-b7bb-4982-9e3c-638cef236542",
+              "name": "Returns a list of broker agent users associated with the current account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"1\",\n      \"type\": \"broker_agents\",\n      \"attributes\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"1964-06-16T14:36:40.079Z\",\n        \"current_sign_in_at\": \"1947-01-04T00:53:15.146Z\",\n        \"is_account_user\": false,\n        \"is_company_admin\": true,\n        \"phone\": \"1234567890\",\n        \"phone_extension\": \"1234\",\n        \"days_signed_in_for_last_30_days\": 14,\n        \"days_with_activity_for_last_30_days\": 10,\n        \"email_engagement_for_last_30_days\": {\n          \"emails_delivered\": 4,\n          \"emails_opened\": 3\n        },\n        \"assets\": [\n          {\n            \"id\": \"string\",\n            \"type\": \"asset\",\n            \"name\": \"A property name\",\n            \"owner_name\": \"VTS Investments\",\n            \"address\": \"70233 Allyson Lake New York, NY 10023\",\n            \"country\": \"United States\",\n            \"account_id\": \"123\"\n          },\n          {\n            \"id\": \"string\",\n            \"type\": \"asset\",\n            \"name\": \"A property name\",\n            \"owner_name\": \"VTS Investments\",\n            \"address\": \"70233 Allyson Lake New York, NY 10023\",\n            \"country\": \"United States\",\n            \"account_id\": \"123\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"1\",\n      \"type\": \"broker_agents\",\n      \"attributes\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"1952-08-05T18:51:14.749Z\",\n        \"current_sign_in_at\": \"1975-06-09T04:27:29.494Z\",\n        \"is_account_user\": true,\n        \"is_company_admin\": true,\n        \"phone\": \"1234567890\",\n        \"phone_extension\": \"1234\",\n        \"days_signed_in_for_last_30_days\": 14,\n        \"days_with_activity_for_last_30_days\": 10,\n        \"email_engagement_for_last_30_days\": {\n          \"emails_delivered\": 4,\n          \"emails_opened\": 3\n        },\n        \"assets\": [\n          {\n            \"id\": \"string\",\n            \"type\": \"asset\",\n            \"name\": \"A property name\",\n            \"owner_name\": \"VTS Investments\",\n            \"address\": \"70233 Allyson Lake New York, NY 10023\",\n            \"country\": \"United States\",\n            \"account_id\": \"123\"\n          },\n          {\n            \"id\": \"string\",\n            \"type\": \"asset\",\n            \"name\": \"A property name\",\n            \"owner_name\": \"VTS Investments\",\n            \"address\": \"70233 Allyson Lake New York, NY 10023\",\n            \"country\": \"United States\",\n            \"account_id\": \"123\"\n          }\n        ]\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/broker/agents?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/broker/agents?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/broker/agents?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a65454a-a561-4a02-b235-8fe0d9189dc9",
+              "name": "Bad API Credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0572031-71c2-4488-85b4-e22f9fabedfa",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af2b2aef-16e0-4f81-bc11-7e07456008a9",
+          "name": "Retrieves specific broker agent user",
+          "request": {
+            "name": "Retrieves specific broker agent user",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "broker",
+                "agents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6f20a4b2-7595-4c3b-8deb-b5b0e353fe8d",
+              "name": "Returns requested broker agent user if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"1\",\n    \"type\": \"broker_agents\",\n    \"attributes\": {\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"email\": \"johndoe@example.com\",\n      \"created_at\": \"1995-01-24T08:20:01.300Z\",\n      \"current_sign_in_at\": \"1973-06-18T07:45:56.181Z\",\n      \"is_account_user\": false,\n      \"is_company_admin\": false,\n      \"phone\": \"1234567890\",\n      \"phone_extension\": \"1234\",\n      \"days_signed_in_for_last_30_days\": 14,\n      \"days_with_activity_for_last_30_days\": 10,\n      \"email_engagement_for_last_30_days\": {\n        \"emails_delivered\": 4,\n        \"emails_opened\": 3\n      },\n      \"assets\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"asset\",\n          \"name\": \"A property name\",\n          \"owner_name\": \"VTS Investments\",\n          \"address\": \"70233 Allyson Lake New York, NY 10023\",\n          \"country\": \"United States\",\n          \"account_id\": \"123\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"asset\",\n          \"name\": \"A property name\",\n          \"owner_name\": \"VTS Investments\",\n          \"address\": \"70233 Allyson Lake New York, NY 10023\",\n          \"country\": \"United States\",\n          \"account_id\": \"123\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0299ee8e-ee38-42bf-9cae-20a8cc48d1bd",
+              "name": "Bad API Credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a69121e1-fc33-49c9-ae10-62d034b4da09",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8e96379-4732-49dd-ad71-4199793b66cb",
+              "name": "Requested broker agent user does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c7f9c3d-ddb7-4805-bcc5-2f23d0d1ccee",
+          "name": "Fetches Broker Assets",
+          "request": {
+            "name": "Fetches Broker Assets",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "broker",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7839ce0b-9c56-4570-895a-05d84a305eb4",
+              "name": "Returns list of Broker Assets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"account\": {\n          \"name\": \"VTS\",\n          \"id\": \"12345\"\n        },\n        \"owner\": \"OwnerCorp\",\n        \"name\": \"My Cool Property\",\n        \"address\": {\n          \"street_address\": \"114 W 41st St, Floor 11\",\n          \"locality\": \"New York\",\n          \"region\": \"NY\",\n          \"country\": \"United States\",\n          \"postal_code\": \"10036\",\n          \"formatted\": \"114 W 41st St, Floor 11, New York, NY 10036\"\n        },\n        \"broker\": {\n          \"name\": \"Mary Jane Watson\",\n          \"title\": \"Actor\",\n          \"email\": \"mj@actorsequity.org\"\n        },\n        \"building_class\": \"A\",\n        \"has_office_space\": true,\n        \"has_retail_space\": false,\n        \"has_industrial_space\": false,\n        \"number_of_floors\": 1175.3602359993565,\n        \"rentable_building_area\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sm\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"submarket\": \"string\",\n        \"market\": \"string\",\n        \"floors\": [\n          {\n            \"position\": 8450.684947704709,\n            \"name\": \"string\"\n          },\n          {\n            \"position\": 2650.3240077084056,\n            \"name\": \"string\"\n          }\n        ],\n        \"building_contacts\": [\n          {\n            \"name\": \"string\",\n            \"email\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"email\": \"string\"\n          }\n        ],\n        \"multi_building_asset\": {\n          \"name\": \"Parker Plaza\",\n          \"id\": \"123488776\"\n        },\n        \"created_at\": \"1954-12-20T07:53:09.796Z\",\n        \"updated_at\": \"2026-02-22T01:13:00.294Z\",\n        \"total_active_deals\": {\n          \"new\": 1,\n          \"original\": 1,\n          \"renewal\": 1,\n          \"renewal_two\": 1,\n          \"renewal_three\": 1,\n          \"extension\": 1,\n          \"expansion\": 1,\n          \"termination\": 1,\n          \"modification\": 1,\n          \"sublease\": 1,\n          \"license_agreement\": 1,\n          \"storage\": 1,\n          \"specialty\": 1,\n          \"short_term_lease\": 1,\n          \"other\": 1,\n          \"relocation\": 1,\n          \"rent_review\": 1,\n          \"break\": 1,\n          \"fixed_option\": 1\n        },\n        \"total_executed_deals\": {\n          \"new\": 1,\n          \"original\": 1,\n          \"renewal\": 1,\n          \"renewal_two\": 1,\n          \"renewal_three\": 1,\n          \"extension\": 1,\n          \"expansion\": 1,\n          \"termination\": 1,\n          \"modification\": 1,\n          \"sublease\": 1,\n          \"license_agreement\": 1,\n          \"storage\": 1,\n          \"specialty\": 1,\n          \"short_term_lease\": 1,\n          \"other\": 1,\n          \"relocation\": 1,\n          \"rent_review\": 1,\n          \"break\": 1,\n          \"fixed_option\": 1\n        },\n        \"total_deals\": {\n          \"tenants_in_the_market\": 1,\n          \"initial_inquiry\": 1,\n          \"preview\": 1,\n          \"tour\": 1,\n          \"proposal\": 1,\n          \"loi\": 1,\n          \"legal\": 1,\n          \"lease_out\": 1,\n          \"idle\": 1,\n          \"dead_deal\": 1,\n          \"lease_executed\": 1\n        }\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"account\": {\n          \"name\": \"VTS\",\n          \"id\": \"12345\"\n        },\n        \"owner\": \"OwnerCorp\",\n        \"name\": \"My Cool Property\",\n        \"address\": {\n          \"street_address\": \"114 W 41st St, Floor 11\",\n          \"locality\": \"New York\",\n          \"region\": \"NY\",\n          \"country\": \"United States\",\n          \"postal_code\": \"10036\",\n          \"formatted\": \"114 W 41st St, Floor 11, New York, NY 10036\"\n        },\n        \"broker\": {\n          \"name\": \"Mary Jane Watson\",\n          \"title\": \"Actor\",\n          \"email\": \"mj@actorsequity.org\"\n        },\n        \"building_class\": \"A\",\n        \"has_office_space\": false,\n        \"has_retail_space\": true,\n        \"has_industrial_space\": false,\n        \"number_of_floors\": 120.87453428054285,\n        \"rentable_building_area\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sm\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"submarket\": \"string\",\n        \"market\": \"string\",\n        \"floors\": [\n          {\n            \"position\": 5251.430650577755,\n            \"name\": \"string\"\n          },\n          {\n            \"position\": 7326.628435625131,\n            \"name\": \"string\"\n          }\n        ],\n        \"building_contacts\": [\n          {\n            \"name\": \"string\",\n            \"email\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"email\": \"string\"\n          }\n        ],\n        \"multi_building_asset\": {\n          \"name\": \"Parker Plaza\",\n          \"id\": \"123488776\"\n        },\n        \"created_at\": \"2009-02-05T23:01:16.722Z\",\n        \"updated_at\": \"1958-11-23T03:53:26.185Z\",\n        \"total_active_deals\": {\n          \"new\": 1,\n          \"original\": 1,\n          \"renewal\": 1,\n          \"renewal_two\": 1,\n          \"renewal_three\": 1,\n          \"extension\": 1,\n          \"expansion\": 1,\n          \"termination\": 1,\n          \"modification\": 1,\n          \"sublease\": 1,\n          \"license_agreement\": 1,\n          \"storage\": 1,\n          \"specialty\": 1,\n          \"short_term_lease\": 1,\n          \"other\": 1,\n          \"relocation\": 1,\n          \"rent_review\": 1,\n          \"break\": 1,\n          \"fixed_option\": 1\n        },\n        \"total_executed_deals\": {\n          \"new\": 1,\n          \"original\": 1,\n          \"renewal\": 1,\n          \"renewal_two\": 1,\n          \"renewal_three\": 1,\n          \"extension\": 1,\n          \"expansion\": 1,\n          \"termination\": 1,\n          \"modification\": 1,\n          \"sublease\": 1,\n          \"license_agreement\": 1,\n          \"storage\": 1,\n          \"specialty\": 1,\n          \"short_term_lease\": 1,\n          \"other\": 1,\n          \"relocation\": 1,\n          \"rent_review\": 1,\n          \"break\": 1,\n          \"fixed_option\": 1\n        },\n        \"total_deals\": {\n          \"tenants_in_the_market\": 1,\n          \"initial_inquiry\": 1,\n          \"preview\": 1,\n          \"tour\": 1,\n          \"proposal\": 1,\n          \"loi\": 1,\n          \"legal\": 1,\n          \"lease_out\": 1,\n          \"idle\": 1,\n          \"dead_deal\": 1,\n          \"lease_executed\": 1\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/broker/assets?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/broker/assets?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/broker/assets?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dab80835-18ee-4ed1-a875-71818835ccdc",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67ce951b-4e4b-4f31-a632-9ad537f6b4ca",
+          "name": "Fetches Specific Broker Asset",
+          "request": {
+            "name": "Fetches Specific Broker Asset",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "broker",
+                "assets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a3babbf4-99d2-4f39-9faa-ca1c3f68ef0a",
+              "name": "Returns requested asset if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"string\",\n    \"id\": \"string\",\n    \"attributes\": {\n      \"account\": {\n        \"name\": \"VTS\",\n        \"id\": \"12345\"\n      },\n      \"owner\": \"OwnerCorp\",\n      \"name\": \"My Cool Property\",\n      \"address\": {\n        \"street_address\": \"114 W 41st St, Floor 11\",\n        \"locality\": \"New York\",\n        \"region\": \"NY\",\n        \"country\": \"United States\",\n        \"postal_code\": \"10036\",\n        \"formatted\": \"114 W 41st St, Floor 11, New York, NY 10036\"\n      },\n      \"broker\": {\n        \"name\": \"Mary Jane Watson\",\n        \"title\": \"Actor\",\n        \"email\": \"mj@actorsequity.org\"\n      },\n      \"building_class\": \"A\",\n      \"has_office_space\": false,\n      \"has_retail_space\": true,\n      \"has_industrial_space\": true,\n      \"number_of_floors\": 7305.301259859861,\n      \"rentable_building_area\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sm\"\n        },\n        \"type\": \"area\"\n      },\n      \"size\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sm\",\n        \"unit_components\": {\n          \"area\": \"sf\"\n        },\n        \"type\": \"area\"\n      },\n      \"submarket\": \"string\",\n      \"market\": \"string\",\n      \"floors\": [\n        {\n          \"position\": 7682.572463697632,\n          \"name\": \"string\"\n        },\n        {\n          \"position\": 7618.464045375895,\n          \"name\": \"string\"\n        }\n      ],\n      \"building_contacts\": [\n        {\n          \"name\": \"string\",\n          \"email\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"email\": \"string\"\n        }\n      ],\n      \"multi_building_asset\": {\n        \"name\": \"Parker Plaza\",\n        \"id\": \"123488776\"\n      },\n      \"created_at\": \"2016-09-03T02:55:53.295Z\",\n      \"updated_at\": \"1948-12-24T14:14:58.174Z\",\n      \"total_active_deals\": {\n        \"new\": 1,\n        \"original\": 1,\n        \"renewal\": 1,\n        \"renewal_two\": 1,\n        \"renewal_three\": 1,\n        \"extension\": 1,\n        \"expansion\": 1,\n        \"termination\": 1,\n        \"modification\": 1,\n        \"sublease\": 1,\n        \"license_agreement\": 1,\n        \"storage\": 1,\n        \"specialty\": 1,\n        \"short_term_lease\": 1,\n        \"other\": 1,\n        \"relocation\": 1,\n        \"rent_review\": 1,\n        \"break\": 1,\n        \"fixed_option\": 1\n      },\n      \"total_executed_deals\": {\n        \"new\": 1,\n        \"original\": 1,\n        \"renewal\": 1,\n        \"renewal_two\": 1,\n        \"renewal_three\": 1,\n        \"extension\": 1,\n        \"expansion\": 1,\n        \"termination\": 1,\n        \"modification\": 1,\n        \"sublease\": 1,\n        \"license_agreement\": 1,\n        \"storage\": 1,\n        \"specialty\": 1,\n        \"short_term_lease\": 1,\n        \"other\": 1,\n        \"relocation\": 1,\n        \"rent_review\": 1,\n        \"break\": 1,\n        \"fixed_option\": 1\n      },\n      \"total_deals\": {\n        \"tenants_in_the_market\": 1,\n        \"initial_inquiry\": 1,\n        \"preview\": 1,\n        \"tour\": 1,\n        \"proposal\": 1,\n        \"loi\": 1,\n        \"legal\": 1,\n        \"lease_out\": 1,\n        \"idle\": 1,\n        \"dead_deal\": 1,\n        \"lease_executed\": 1\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce1c254f-6b32-4226-bc7c-d5c6f79cd71b",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1efb5c7-f151-4f27-a794-914148c2a675",
+              "name": "Requested asset does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f0ca474-8541-4102-b1d0-1d728be98558",
+          "name": "Fetches Broker Availabilities",
+          "request": {
+            "name": "Fetches Broker Availabilities",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "broker",
+                "availabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3ad8fa3c-aee3-4602-a7c6-5d4c96c749e1",
+              "name": "Returns list of BrokerAvailabilities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "availabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"created_at\": \"2018-07-25T15:27:54.021Z\",\n        \"updated_at\": \"1958-04-13T16:25:32.064Z\",\n        \"asset\": {\n          \"id\": \"232\",\n          \"name\": \"The Cool Building\"\n        },\n        \"suite\": \"7\",\n        \"floor\": {\n          \"name\": \"Floor 1\",\n          \"position\": 1\n        },\n        \"availability_type\": \"arranged\",\n        \"current_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sm\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"space_type\": \"office\"\n      },\n      \"relationships\": {\n        \"asset\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"assets\"\n          }\n        },\n        \"brokers\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"attributes\": {\n        \"created_at\": \"2022-08-04T23:47:31.912Z\",\n        \"updated_at\": \"1990-09-29T18:02:20.423Z\",\n        \"asset\": {\n          \"id\": \"232\",\n          \"name\": \"The Cool Building\"\n        },\n        \"suite\": \"7\",\n        \"floor\": {\n          \"name\": \"Floor 1\",\n          \"position\": 1\n        },\n        \"availability_type\": \"arranged\",\n        \"current_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sm\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"space_type\": \"office\"\n      },\n      \"relationships\": {\n        \"asset\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"assets\"\n          }\n        },\n        \"brokers\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            }\n          ]\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/broker/availabilities?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/broker/availabilities?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/broker/availabilities?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34202d79-8cbd-4ef2-8ea4-483e8e57ac6b",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "broker",
+                    "availabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e555784a-a346-485b-a4bb-aac77c3cd4fb",
+    "name": "VTS Lease Account Admin Broker API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VTS Lease Account Admin Download Links API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Download Links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download files URIs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vts.com/",
+            "headers": [
+              {
+                "name": "authorization",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "export_name",
+                "value": "",
+                "type": "query",
+                "description": "Defines the export."
+              },
+              {
+                "name": "generated_date",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the generated date of the requested export file (YYYY-MM-DD)."
+              }
+            ]
+          },
+          "docs": "Download AWS CloudFront pre-signed URIs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

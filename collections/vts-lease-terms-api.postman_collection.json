@@ -1,0 +1,460 @@
+{
+  "item": [
+    {
+      "id": "6852bf10-afee-43d8-84e1-cd524339391e",
+      "name": "Lease Terms",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4c63c87f-1c09-4d7c-827c-f2bcf3e16e73",
+          "name": "Fetches lease terms",
+          "request": {
+            "name": "Fetches lease terms",
+            "description": {
+              "content": "Contains attributes of a given lease term including possession date, lease type, and calculated rents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "lease_terms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7ef95f1c-edf6-42ae-81b2-2fb00319e50c",
+              "name": "Returns list of LeaseTerms",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "lease_terms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"lease_terms\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"calculated_rents\": {\n          \"expiring_base_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"expiring_gross_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"mo\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"in_place_base_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"in_place_gross_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"yr\"\n            },\n            \"type\": \"money/area/period\"\n          }\n        },\n        \"reimbursable_expenses\": [\n          {\n            \"type\": \"OperationalExpense\",\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          },\n          {\n            \"type\": \"OperationalExpense\",\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          }\n        ],\n        \"commencement_date\": \"1987-08-18\",\n        \"created_at\": \"1980-10-07T21:28:49.212Z\",\n        \"term_type\": \"Renewal\",\n        \"entered_date\": \"2009-05-28\",\n        \"execution_date\": \"2010-02-25\",\n        \"structure\": \"full service\",\n        \"deal_type\": \"new\",\n        \"description\": \"This is a lease term.\",\n        \"downtime\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"expiration_date\": \"1985-03-03\",\n        \"gaap_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"is_month_to_month\": true,\n        \"lease_type\": \"full service\",\n        \"move_out_date\": \"2025-04-17\",\n        \"possession_date\": \"1976-03-16\",\n        \"rent_commencement_date\": \"2010-02-07\",\n        \"rentable_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sm\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"lock_in_end_date\": \"2018-10-22\",\n        \"retail\": {\n          \"description\": \"string\",\n          \"growth_rate\": 396.17266095478,\n          \"percent_rent\": 65.62069773818679,\n          \"estimated_sales\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"period\": \"yr\"\n            },\n            \"type\": \"money/period\"\n          },\n          \"natural_breakpoint\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"period\": \"yr\"\n            },\n            \"type\": \"money/period\"\n          },\n          \"unnatural_breakpoint\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"period\": \"mo\"\n            },\n            \"type\": \"money/period\"\n          }\n        },\n        \"percentage_rents\": [\n          {\n            \"start_date\": \"2022-03-13\",\n            \"end_date\": \"2022-04-13\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          },\n          {\n            \"start_date\": \"2022-03-13\",\n            \"end_date\": \"2022-04-13\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          }\n        ],\n        \"sourceid\": \"000004353\",\n        \"tenant_buildout_period\": {\n          \"magnitude\": 2,\n          \"unit\": \"day\",\n          \"unit_components\": {\n            \"period\": \"day\"\n          },\n          \"type\": \"period\",\n          \"iso8601\": \"P2Y\"\n        },\n        \"term_duration\": {\n          \"magnitude\": 2,\n          \"unit\": \"day\",\n          \"unit_components\": {\n            \"period\": \"yr\"\n          },\n          \"type\": \"period\",\n          \"iso8601\": \"P2Y\"\n        },\n        \"updated_at\": \"1980-01-25T15:05:58.979Z\",\n        \"lease_infos\": [\n          {\n            \"type\": \"guarantor\",\n            \"description\": \"My description\"\n          },\n          {\n            \"type\": \"guarantor\",\n            \"description\": \"My description\"\n          }\n        ],\n        \"other_incomes\": [\n          {\n            \"type\": \"parking\",\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            },\n            \"quantity\": 7722.541241086703,\n            \"description\": \"My description\"\n          },\n          {\n            \"type\": \"parking\",\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            },\n            \"quantity\": 1850.0474618841213,\n            \"description\": \"My description\"\n          }\n        ],\n        \"free_rents\": [\n          {\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          },\n          {\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          }\n        ],\n        \"base_rents\": [\n          {\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          },\n          {\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          }\n        ],\n        \"commissions\": [\n          {\n            \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n            \"updated_at\": \"2021-12-08T16:28:22.187979Z\",\n            \"net_or_gross\": \"gross\",\n            \"broker\": \"VTS\",\n            \"commission_date\": \"2021-12-08\",\n            \"commission_type\": \"landlord\",\n            \"description\": \"Description\",\n            \"free_rent\": \"amortize_over_term\",\n            \"periods\": [\n              {\n                \"starts\": {\n                  \"date\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"month\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"amount\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"starts\": {\n                  \"date\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"month\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"amount\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ]\n          },\n          {\n            \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n            \"updated_at\": \"2021-12-08T16:28:22.187979Z\",\n            \"net_or_gross\": \"gross\",\n            \"broker\": \"VTS\",\n            \"commission_date\": \"2021-12-08\",\n            \"commission_type\": \"landlord\",\n            \"description\": \"Description\",\n            \"free_rent\": \"amortize_over_term\",\n            \"periods\": [\n              {\n                \"starts\": {\n                  \"date\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"month\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"amount\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"starts\": {\n                  \"date\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"month\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"amount\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ]\n          }\n        ],\n        \"costs\": [\n          {\n            \"type\": \"tenant_improvement\",\n            \"occurrence_month\": 1,\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money\"\n            },\n            \"description\": \"Description\"\n          },\n          {\n            \"type\": \"tenant_improvement\",\n            \"occurrence_month\": 1,\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money\"\n            },\n            \"description\": \"Description\"\n          }\n        ]\n      },\n      \"relationships\": {\n        \"lease\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"leases\"\n          },\n          \"links\": {\n            \"related\": \"http://kiSbtSYGRhXsVzUiwUlYMGUXoPKKb.jgwKRmR1PumUfKMpN7Cx\"\n          }\n        },\n        \"spaces\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"type\": \"lease_terms\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"calculated_rents\": {\n          \"expiring_base_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"expiring_gross_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"yr\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"in_place_base_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"in_place_gross_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"yr\"\n            },\n            \"type\": \"money/area/period\"\n          }\n        },\n        \"reimbursable_expenses\": [\n          {\n            \"type\": \"OperationalExpense\",\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          },\n          {\n            \"type\": \"OperationalExpense\",\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          }\n        ],\n        \"commencement_date\": \"1991-05-24\",\n        \"created_at\": \"2010-12-20T09:22:32.452Z\",\n        \"term_type\": \"Renewal\",\n        \"entered_date\": \"2009-08-29\",\n        \"execution_date\": \"1981-10-06\",\n        \"structure\": \"full service\",\n        \"deal_type\": \"new\",\n        \"description\": \"This is a lease term.\",\n        \"downtime\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"expiration_date\": \"2007-02-21\",\n        \"gaap_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          },\n          \"type\": \"money\"\n        },\n        \"is_month_to_month\": false,\n        \"lease_type\": \"full service\",\n        \"move_out_date\": \"2025-10-22\",\n        \"possession_date\": \"2005-01-10\",\n        \"rent_commencement_date\": \"1987-08-12\",\n        \"rentable_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sm\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"lock_in_end_date\": \"1965-06-03\",\n        \"retail\": {\n          \"description\": \"string\",\n          \"growth_rate\": 3520.4484531495127,\n          \"percent_rent\": 9011.55563890105,\n          \"estimated_sales\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/period\"\n          },\n          \"natural_breakpoint\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"period\": \"yr\"\n            },\n            \"type\": \"money/period\"\n          },\n          \"unnatural_breakpoint\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/period\"\n          }\n        },\n        \"percentage_rents\": [\n          {\n            \"start_date\": \"2022-03-13\",\n            \"end_date\": \"2022-04-13\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          },\n          {\n            \"start_date\": \"2022-03-13\",\n            \"end_date\": \"2022-04-13\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          }\n        ],\n        \"sourceid\": \"000004353\",\n        \"tenant_buildout_period\": {\n          \"magnitude\": 2,\n          \"unit\": \"yr\",\n          \"unit_components\": {\n            \"period\": \"day\"\n          },\n          \"type\": \"period\",\n          \"iso8601\": \"P2Y\"\n        },\n        \"term_duration\": {\n          \"magnitude\": 2,\n          \"unit\": \"yr\",\n          \"unit_components\": {\n            \"period\": \"day\"\n          },\n          \"type\": \"period\",\n          \"iso8601\": \"P2Y\"\n        },\n        \"updated_at\": \"1996-02-25T02:33:21.468Z\",\n        \"lease_infos\": [\n          {\n            \"type\": \"guarantor\",\n            \"description\": \"My description\"\n          },\n          {\n            \"type\": \"guarantor\",\n            \"description\": \"My description\"\n          }\n        ],\n        \"other_incomes\": [\n          {\n            \"type\": \"parking\",\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            },\n            \"quantity\": 6196.127852799576,\n            \"description\": \"My description\"\n          },\n          {\n            \"type\": \"parking\",\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            },\n            \"quantity\": 9542.805235265789,\n            \"description\": \"My description\"\n          }\n        ],\n        \"free_rents\": [\n          {\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          },\n          {\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          }\n        ],\n        \"base_rents\": [\n          {\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          },\n          {\n            \"start_date\": \"2022-03-02\",\n            \"end_date\": \"2023-03-02\",\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD/sf/yr\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"period\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money/area/period\"\n            }\n          }\n        ],\n        \"commissions\": [\n          {\n            \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n            \"updated_at\": \"2021-12-08T16:28:22.187979Z\",\n            \"net_or_gross\": \"gross\",\n            \"broker\": \"VTS\",\n            \"commission_date\": \"2021-12-08\",\n            \"commission_type\": \"landlord\",\n            \"description\": \"Description\",\n            \"free_rent\": \"amortize_over_term\",\n            \"periods\": [\n              {\n                \"starts\": {\n                  \"date\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"month\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"amount\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"starts\": {\n                  \"date\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"month\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"amount\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ]\n          },\n          {\n            \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n            \"updated_at\": \"2021-12-08T16:28:22.187979Z\",\n            \"net_or_gross\": \"gross\",\n            \"broker\": \"VTS\",\n            \"commission_date\": \"2021-12-08\",\n            \"commission_type\": \"landlord\",\n            \"description\": \"Description\",\n            \"free_rent\": \"amortize_over_term\",\n            \"periods\": [\n              {\n                \"starts\": {\n                  \"date\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"month\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"amount\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"starts\": {\n                  \"date\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"month\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"amount\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ]\n          }\n        ],\n        \"costs\": [\n          {\n            \"type\": \"tenant_improvement\",\n            \"occurrence_month\": 1,\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money\"\n            },\n            \"description\": \"Description\"\n          },\n          {\n            \"type\": \"tenant_improvement\",\n            \"occurrence_month\": 1,\n            \"amount\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD\",\n              \"unit_components\": {\n                \"money\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"money\"\n            },\n            \"description\": \"Description\"\n          }\n        ]\n      },\n      \"relationships\": {\n        \"lease\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"leases\"\n          },\n          \"links\": {\n            \"related\": \"http://enYysHCreMGpEVQoP.bvdYzA8nR1CbO,obtf5x5-STiV\"\n          }\n        },\n        \"spaces\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            }\n          ]\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/lease_terms\",\n    \"prev\": \"https://api.vts.com/api/v1/lease_terms?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/lease_terms?page%5Bafter%5D=MzE2NjQ%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58dd9b6c-c3e7-4b6b-a58c-e55eb05cd444",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "lease_terms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d94282b-9b1c-4b20-ad90-b9f14e3d5784",
+          "name": "Retrieves specific lease term",
+          "request": {
+            "name": "Retrieves specific lease term",
+            "description": {
+              "content": "Contains attributes of a given lease term including possession date, lease type, and calculated rents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "lease_terms",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "98f0c2f0-ae1b-47fe-bc31-171d2079a157",
+              "name": "Returns requested lease_term if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "lease_terms",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"lease_terms\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"calculated_rents\": {\n        \"expiring_base_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\",\n            \"period\": \"mo\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"expiring_gross_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\",\n            \"period\": \"yr\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"in_place_base_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sm\",\n            \"period\": \"mo\"\n          },\n          \"type\": \"money/area/period\"\n        },\n        \"in_place_gross_rent\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/sf/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"area\": \"sf\",\n            \"period\": \"mo\"\n          },\n          \"type\": \"money/area/period\"\n        }\n      },\n      \"reimbursable_expenses\": [\n        {\n          \"type\": \"OperationalExpense\",\n          \"start_date\": \"2022-03-02\",\n          \"end_date\": \"2023-03-02\",\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          }\n        },\n        {\n          \"type\": \"OperationalExpense\",\n          \"start_date\": \"2022-03-02\",\n          \"end_date\": \"2023-03-02\",\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"mo\"\n            },\n            \"type\": \"money/area/period\"\n          }\n        }\n      ],\n      \"commencement_date\": \"1966-10-07\",\n      \"created_at\": \"1946-10-06T22:54:38.202Z\",\n      \"term_type\": \"Renewal\",\n      \"entered_date\": \"1999-09-16\",\n      \"execution_date\": \"1997-11-12\",\n      \"structure\": \"full service\",\n      \"deal_type\": \"new\",\n      \"description\": \"This is a lease term.\",\n      \"downtime\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"expiration_date\": \"2003-04-07\",\n      \"gaap_rent\": {\n        \"magnitude\": 1000,\n        \"unit\": \"USD\",\n        \"unit_components\": {\n          \"money\": \"USD\"\n        },\n        \"type\": \"money\"\n      },\n      \"is_month_to_month\": true,\n      \"lease_type\": \"full service\",\n      \"move_out_date\": \"2004-12-18\",\n      \"possession_date\": \"2025-10-06\",\n      \"rent_commencement_date\": \"2012-02-11\",\n      \"rentable_size\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sm\"\n        },\n        \"type\": \"area\"\n      },\n      \"lock_in_end_date\": \"2006-02-12\",\n      \"retail\": {\n        \"description\": \"string\",\n        \"growth_rate\": 5044.042406322279,\n        \"percent_rent\": 1991.6989883432357,\n        \"estimated_sales\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"yr\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"natural_breakpoint\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"mo\"\n          },\n          \"type\": \"money/period\"\n        },\n        \"unnatural_breakpoint\": {\n          \"magnitude\": 1000,\n          \"unit\": \"USD/yr\",\n          \"unit_components\": {\n            \"money\": \"USD\",\n            \"period\": \"day\"\n          },\n          \"type\": \"money/period\"\n        }\n      },\n      \"percentage_rents\": [\n        {\n          \"start_date\": \"2022-03-13\",\n          \"end_date\": \"2022-04-13\",\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"mo\"\n            },\n            \"type\": \"money/area/period\"\n          }\n        },\n        {\n          \"start_date\": \"2022-03-13\",\n          \"end_date\": \"2022-04-13\",\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"mo\"\n            },\n            \"type\": \"money/area/period\"\n          }\n        }\n      ],\n      \"sourceid\": \"000004353\",\n      \"tenant_buildout_period\": {\n        \"magnitude\": 2,\n        \"unit\": \"yr\",\n        \"unit_components\": {\n          \"period\": \"yr\"\n        },\n        \"type\": \"period\",\n        \"iso8601\": \"P2Y\"\n      },\n      \"term_duration\": {\n        \"magnitude\": 2,\n        \"unit\": \"yr\",\n        \"unit_components\": {\n          \"period\": \"day\"\n        },\n        \"type\": \"period\",\n        \"iso8601\": \"P2Y\"\n      },\n      \"updated_at\": \"1984-07-22T12:08:50.346Z\",\n      \"lease_infos\": [\n        {\n          \"type\": \"guarantor\",\n          \"description\": \"My description\"\n        },\n        {\n          \"type\": \"guarantor\",\n          \"description\": \"My description\"\n        }\n      ],\n      \"other_incomes\": [\n        {\n          \"type\": \"parking\",\n          \"start_date\": \"2022-03-02\",\n          \"end_date\": \"2023-03-02\",\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"mo\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"quantity\": 1466.7028071149346,\n          \"description\": \"My description\"\n        },\n        {\n          \"type\": \"parking\",\n          \"start_date\": \"2022-03-02\",\n          \"end_date\": \"2023-03-02\",\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          },\n          \"quantity\": 5711.504688650663,\n          \"description\": \"My description\"\n        }\n      ],\n      \"free_rents\": [\n        {\n          \"start_date\": \"2022-03-02\",\n          \"end_date\": \"2023-03-02\",\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sm\",\n              \"period\": \"yr\"\n            },\n            \"type\": \"money/area/period\"\n          }\n        },\n        {\n          \"start_date\": \"2022-03-02\",\n          \"end_date\": \"2023-03-02\",\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          }\n        }\n      ],\n      \"base_rents\": [\n        {\n          \"start_date\": \"2022-03-02\",\n          \"end_date\": \"2023-03-02\",\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"yr\"\n            },\n            \"type\": \"money/area/period\"\n          }\n        },\n        {\n          \"start_date\": \"2022-03-02\",\n          \"end_date\": \"2023-03-02\",\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD/sf/yr\",\n            \"unit_components\": {\n              \"money\": \"USD\",\n              \"area\": \"sf\",\n              \"period\": \"day\"\n            },\n            \"type\": \"money/area/period\"\n          }\n        }\n      ],\n      \"commissions\": [\n        {\n          \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n          \"updated_at\": \"2021-12-08T16:28:22.187979Z\",\n          \"net_or_gross\": \"gross\",\n          \"broker\": \"VTS\",\n          \"commission_date\": \"2021-12-08\",\n          \"commission_type\": \"landlord\",\n          \"description\": \"Description\",\n          \"free_rent\": \"amortize_over_term\",\n          \"periods\": [\n            {\n              \"starts\": {\n                \"date\": \"2021-12-08\",\n                \"month\": 1\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"starts\": {\n                \"date\": \"2021-12-08\",\n                \"month\": 1\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"created_at\": \"2021-12-08T16:28:22.179486Z\",\n          \"updated_at\": \"2021-12-08T16:28:22.187979Z\",\n          \"net_or_gross\": \"gross\",\n          \"broker\": \"VTS\",\n          \"commission_date\": \"2021-12-08\",\n          \"commission_type\": \"landlord\",\n          \"description\": \"Description\",\n          \"free_rent\": \"amortize_over_term\",\n          \"periods\": [\n            {\n              \"starts\": {\n                \"date\": \"2021-12-08\",\n                \"month\": 1\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"starts\": {\n                \"date\": \"2021-12-08\",\n                \"month\": 1\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"costs\": [\n        {\n          \"type\": \"tenant_improvement\",\n          \"occurrence_month\": 1,\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"description\": \"Description\"\n        },\n        {\n          \"type\": \"tenant_improvement\",\n          \"occurrence_month\": 1,\n          \"amount\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"description\": \"Description\"\n        }\n      ]\n    },\n    \"relationships\": {\n      \"lease\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"leases\"\n        },\n        \"links\": {\n          \"related\": \"https://oJYYsNzzVcpkEBjvEo.dupnoK66CXIIZ5\"\n        }\n      },\n      \"spaces\": {\n        \"data\": [\n          {\n            \"id\": \"12345\",\n            \"type\": \"spaces_office\"\n          },\n          {\n            \"id\": \"12345\",\n            \"type\": \"spaces_office\"\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7afdbbb1-3968-4fe2-9867-fbc155afbec1",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "lease_terms",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c10736eb-2a2d-4439-af26-a3d565cf9bfd",
+              "name": "Requested lease_term does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "lease_terms",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f3100def-ec1f-4038-9660-5bd4fb8c3fe4",
+    "name": "VTS Lease Account Admin Lease Terms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

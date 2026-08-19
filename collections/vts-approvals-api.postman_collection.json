@@ -1,0 +1,710 @@
+{
+  "item": [
+    {
+      "id": "f354f3f3-90ec-421d-a340-e7b16fd4daa9",
+      "name": "Approvals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90917ba4-a149-496a-8138-ab2b24903d70",
+          "name": "Fetches approvals",
+          "request": {
+            "name": "Fetches approvals",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deal_approvals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "The number of items returned for any one page (default: 10, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "Show records before the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "Show records after the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[latest]",
+                  "value": "<boolean>",
+                  "description": "Only show Approvals for the latest Proposal"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7c238b8c-1e46-4987-b2e4-752699448ebd",
+              "name": "Returns list of Approvals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_approvals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[latest]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"approvals\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"requester_comment\": \"This is a comment\",\n        \"requested_at\": \"1974-10-25T16:35:50.272Z\",\n        \"active\": false,\n        \"created_at\": \"1985-05-09T20:09:34.267Z\",\n        \"updated_at\": \"1979-12-13T23:53:02.624Z\",\n        \"recommendation\": \"string\",\n        \"approvers\": [\n          {\n            \"step_number\": 0,\n            \"description\": \"A description for the approval step\",\n            \"status\": \"approved\",\n            \"reviewed_at\": \"1974-05-18T03:43:44.189Z\",\n            \"comment\": \"This is a comment\",\n            \"approver_user_id\": 1\n          },\n          {\n            \"step_number\": 0,\n            \"description\": \"A description for the approval step\",\n            \"status\": \"pending\",\n            \"reviewed_at\": \"1961-07-24T23:33:42.321Z\",\n            \"comment\": \"This is a comment\",\n            \"approver_user_id\": 1\n          }\n        ]\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          }\n        },\n        \"requester\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"https://oTOdHQiYbpXLbOIZlSsKkfmzCOwNOa.pmgbgG5SxuHRYaTv0dYYqnWnabmi\"\n          }\n        },\n        \"proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          }\n        },\n        \"approvers\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"type\": \"approvals\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"requester_comment\": \"This is a comment\",\n        \"requested_at\": \"1986-07-13T22:12:56.438Z\",\n        \"active\": false,\n        \"created_at\": \"1964-06-30T00:05:02.930Z\",\n        \"updated_at\": \"1967-04-22T15:21:03.536Z\",\n        \"recommendation\": \"string\",\n        \"approvers\": [\n          {\n            \"step_number\": 0,\n            \"description\": \"A description for the approval step\",\n            \"status\": \"revision_requested\",\n            \"reviewed_at\": \"1951-02-15T17:04:19.713Z\",\n            \"comment\": \"This is a comment\",\n            \"approver_user_id\": 1\n          },\n          {\n            \"step_number\": 0,\n            \"description\": \"A description for the approval step\",\n            \"status\": \"approved\",\n            \"reviewed_at\": \"1986-12-30T11:58:11.753Z\",\n            \"comment\": \"This is a comment\",\n            \"approver_user_id\": 1\n          }\n        ]\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          }\n        },\n        \"requester\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"http://TUKqHKeeuZScbYuqvty.lkwJcZUJgXOf0E,jjLn-bocUKRXmYLTGBYkUvLg\"\n          }\n        },\n        \"proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          }\n        },\n        \"approvers\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            }\n          ]\n        }\n      }\n    }\n  ],\n  \"included\": [\n    {\n      \"type\": \"users\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\"\n      }\n    },\n    {\n      \"type\": \"users\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\"\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/deals/123/approvals?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/deals/123/approvals?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/deals/123/approvals?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2cd679a-2cc0-4ccf-9990-773b0ceb2960",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_approvals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[latest]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a934214-6b0e-4c0f-85a4-b90125de8d58",
+          "name": "Retrieves specific approvals",
+          "request": {
+            "name": "Retrieves specific approvals",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deal_approvals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "13b9fabd-b960-4c0b-a977-27a7bd40894f",
+              "name": "Returns requested approval if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_approvals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"approvals\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"requester_comment\": \"This is a comment\",\n      \"requested_at\": \"1958-09-26T10:05:53.456Z\",\n      \"active\": false,\n      \"created_at\": \"2023-12-28T20:28:28.207Z\",\n      \"updated_at\": \"1974-11-30T08:14:10.162Z\",\n      \"recommendation\": \"string\",\n      \"approvers\": [\n        {\n          \"step_number\": 0,\n          \"description\": \"A description for the approval step\",\n          \"status\": \"revision_requested\",\n          \"reviewed_at\": \"1950-11-04T16:03:51.990Z\",\n          \"comment\": \"This is a comment\",\n          \"approver_user_id\": 1\n        },\n        {\n          \"step_number\": 0,\n          \"description\": \"A description for the approval step\",\n          \"status\": \"approved\",\n          \"reviewed_at\": \"1975-06-02T00:10:47.077Z\",\n          \"comment\": \"This is a comment\",\n          \"approver_user_id\": 1\n        }\n      ]\n    },\n    \"relationships\": {\n      \"deal\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"deals\"\n        }\n      },\n      \"requester\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"users\"\n        },\n        \"links\": {\n          \"related\": \"https://gfnfLQEJS.nonnV,.kbqQlq9+e95yaqREqa93ZmGEyWgUJpuPletY\"\n        }\n      },\n      \"proposal\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"proposals\"\n        }\n      },\n      \"approvers\": {\n        \"data\": [\n          {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c28d375a-ddf9-4956-bc34-a48659aee005",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_approvals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23f40e60-95d2-414f-a5ae-9d4a7ff59ff1",
+              "name": "Requested approval does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_approvals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10048c3d-ce22-4483-9e9b-06f266626fb2",
+          "name": "Fetches deal approvals",
+          "request": {
+            "name": "Fetches deal approvals",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deals",
+                ":deal_id",
+                "approvals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "The number of items returned for any one page (default: 10, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "Show records before the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "Show records after the given page indicator"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[latest]",
+                  "value": "<boolean>",
+                  "description": "Only show Approvals for the latest Proposal"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deal_id",
+                  "description": "(Required) ID of the deal containing the approval"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08447702-741f-459f-a07b-b70cb7221f77",
+              "name": "Returns list of Deal Approvals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":deal_id",
+                    "approvals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[latest]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_id",
+                      "description": "(Required) ID of the deal containing the approval"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"approvals\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"requester_comment\": \"This is a comment\",\n        \"requested_at\": \"1974-08-22T10:10:14.145Z\",\n        \"active\": false,\n        \"created_at\": \"1971-07-31T03:35:39.947Z\",\n        \"updated_at\": \"1978-08-24T01:09:00.065Z\",\n        \"approvers\": [\n          {\n            \"step_number\": 0,\n            \"description\": \"A description for the approval step\",\n            \"status\": \"revision_requested\",\n            \"reviewed_at\": \"2008-10-01T13:32:55.766Z\",\n            \"comment\": \"This is a comment\",\n            \"approver_user_id\": 1\n          },\n          {\n            \"step_number\": 0,\n            \"description\": \"A description for the approval step\",\n            \"status\": \"pending\",\n            \"reviewed_at\": \"1954-08-24T14:47:14.056Z\",\n            \"comment\": \"This is a comment\",\n            \"approver_user_id\": 1\n          }\n        ]\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          }\n        },\n        \"requester\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"https://DSYmWzNSQLshe.aquSJKQq+IWs4lDDARB7x8Q.gOHY9gWH\"\n          }\n        },\n        \"proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          }\n        },\n        \"approvers\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"type\": \"approvals\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"requester_comment\": \"This is a comment\",\n        \"requested_at\": \"1981-04-02T07:07:53.226Z\",\n        \"active\": true,\n        \"created_at\": \"1983-04-06T15:50:51.048Z\",\n        \"updated_at\": \"1993-08-20T08:14:41.020Z\",\n        \"approvers\": [\n          {\n            \"step_number\": 0,\n            \"description\": \"A description for the approval step\",\n            \"status\": \"rejected\",\n            \"reviewed_at\": \"2021-05-27T18:13:26.765Z\",\n            \"comment\": \"This is a comment\",\n            \"approver_user_id\": 1\n          },\n          {\n            \"step_number\": 0,\n            \"description\": \"A description for the approval step\",\n            \"status\": \"approved\",\n            \"reviewed_at\": \"2026-03-02T11:21:29.603Z\",\n            \"comment\": \"This is a comment\",\n            \"approver_user_id\": 1\n          }\n        ]\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          }\n        },\n        \"requester\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"https://cvkgrD.qndb0H7qrGK6FSQHmUcWk6.UZ6CFi0DhHy0MQWg8ZqjNV.r49dypmJztwtlEvORoB2DxHa\"\n          }\n        },\n        \"proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          }\n        },\n        \"approvers\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            }\n          ]\n        }\n      }\n    }\n  ],\n  \"included\": [\n    {\n      \"type\": \"users\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\"\n      }\n    },\n    {\n      \"type\": \"users\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\"\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/deals/123/approvals?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/deals/123/approvals?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/deals/123/approvals?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbd1cd99-99f3-4f46-a162-5863d23651fc",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":deal_id",
+                    "approvals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[latest]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_id",
+                      "description": "(Required) ID of the deal containing the approval"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d6b40743-b4b4-40c7-bac6-b6a1720ca517",
+    "name": "VTS Lease Account Admin Approvals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

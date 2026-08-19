@@ -1,0 +1,924 @@
+{
+  "item": [
+    {
+      "id": "1293ccfb-554b-4c57-89f0-96e10c4a7de6",
+      "name": "Options",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8ed8f299-2cd3-4202-a427-68c64bf8b88c",
+          "name": "Fetches options for Deal Term",
+          "request": {
+            "name": "Fetches options for Deal Term",
+            "description": {
+              "content": "Contains all options for a given deal term or lease term. Examples include encumbrances, renewals, and termination options",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deal_terms",
+                ":deal_term_id",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deal_term_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "32f45eb2-7b02-4399-9337-1452df06c64a",
+              "name": "Returns list of Options",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_terms",
+                    ":deal_term_id",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_term_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"options_miscellaneous\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"option_type\": \"signage\",\n        \"description\": \"This is a description.\"\n      },\n      \"relationships\": {\n        \"targets\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"https://AfqTPMOUzcRJEfPPnqea.ivcjkfYmehYF8GPKgAcUiZTU3JZ9Jj04NoSe,tE1PL63zN2jYL\"\n          }\n        },\n        \"lease_term\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"lease_terms\"\n          },\n          \"links\": {\n            \"related\": \"https://YfxyWXngNRopHBJUQWdNmzAG.dhuQIGBe.rIFit,IdPvCg4e-3hxAE,reFm0Z3T5V561G7wzjc7mzM6iUDTghTscRB,n\"\n          }\n        },\n        \"proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          },\n          \"links\": {\n            \"related\": \"http://yMJjljQIEBCxePJbFzpxuYtFxEZpld.kcD2aiE+YkR58b00tSUhg4\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"options_miscellaneous\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"option_type\": \"parking\",\n        \"description\": \"This is a description.\"\n      },\n      \"relationships\": {\n        \"targets\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"http://NKLfPDVYNHUxtfMyS.hxovA,TEkX\"\n          }\n        },\n        \"lease_term\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"lease_terms\"\n          },\n          \"links\": {\n            \"related\": \"https://SWamClNraujWtlEnJgLBjwTAqQKl.koiSXThKisDOxvix01s-pM+3\"\n          }\n        },\n        \"proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          },\n          \"links\": {\n            \"related\": \"http://NKXbmgebgXXkNCphpO.xzuZusEevA0tvVtr,iIFv2oZDsZJiWXLG4W94h+QEA1ue\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f61eac1-4560-4f3a-b1c9-f9e3f035ca88",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_terms",
+                    ":deal_term_id",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_term_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19422a86-db12-408a-93ca-1fa301c36786",
+          "name": "Fetches options for Lease Term",
+          "request": {
+            "name": "Fetches options for Lease Term",
+            "description": {
+              "content": "Contains all options for a given deal term or lease term. Examples include encumbrances, renewals, and termination options",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "lease_terms",
+                ":lease_term_id",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lease_term_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "48440598-d2c0-4393-b209-e34e334f06c7",
+              "name": "Returns list of Options",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "lease_terms",
+                    ":lease_term_id",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lease_term_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"options_miscellaneous\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"option_type\": \"signage\",\n        \"description\": \"This is a description.\"\n      },\n      \"relationships\": {\n        \"targets\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"https://AfqTPMOUzcRJEfPPnqea.ivcjkfYmehYF8GPKgAcUiZTU3JZ9Jj04NoSe,tE1PL63zN2jYL\"\n          }\n        },\n        \"lease_term\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"lease_terms\"\n          },\n          \"links\": {\n            \"related\": \"https://YfxyWXngNRopHBJUQWdNmzAG.dhuQIGBe.rIFit,IdPvCg4e-3hxAE,reFm0Z3T5V561G7wzjc7mzM6iUDTghTscRB,n\"\n          }\n        },\n        \"proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          },\n          \"links\": {\n            \"related\": \"http://yMJjljQIEBCxePJbFzpxuYtFxEZpld.kcD2aiE+YkR58b00tSUhg4\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"options_miscellaneous\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"option_type\": \"parking\",\n        \"description\": \"This is a description.\"\n      },\n      \"relationships\": {\n        \"targets\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"http://NKLfPDVYNHUxtfMyS.hxovA,TEkX\"\n          }\n        },\n        \"lease_term\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"lease_terms\"\n          },\n          \"links\": {\n            \"related\": \"https://SWamClNraujWtlEnJgLBjwTAqQKl.koiSXThKisDOxvix01s-pM+3\"\n          }\n        },\n        \"proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          },\n          \"links\": {\n            \"related\": \"http://NKXbmgebgXXkNCphpO.xzuZusEevA0tvVtr,iIFv2oZDsZJiWXLG4W94h+QEA1ue\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22f30c54-4fdb-4217-91fb-b19e372ca3a9",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "lease_terms",
+                    ":lease_term_id",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lease_term_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb84790e-38c4-4a17-b9d7-055c0e0636ec",
+          "name": "Fetches options",
+          "request": {
+            "name": "Fetches options",
+            "description": {
+              "content": "Contains all options for a given deal term or lease term. Examples include encumbrances, renewals, and termination options",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[term_type]",
+                  "value": "<string>",
+                  "description": "Only display options belonging to the specific parent object. Possible values: 'deal_term', 'lease_term'"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "37308026-5ec0-45b1-9a18-9961d79b3453",
+              "name": "Returns list of Options",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[term_type]",
+                      "value": "deal_term"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"options_miscellaneous\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"created_at\": \"2026-08-07T10:28:37.624Z\",\n        \"updated_at\": \"1956-09-21T03:19:12.976Z\",\n        \"option_type\": \"audit rights\",\n        \"description\": \"This is a description.\"\n      },\n      \"relationships\": {\n        \"targets\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"https://oblnexpXIFJrzjENdRWXMpHhaPgFO.rbufa+hHbtos0kbR\"\n          }\n        },\n        \"lease_term\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"lease_terms\"\n          },\n          \"links\": {\n            \"related\": \"https://FexSOSyJliYXNo.nkxhcvzGJqOa01F7Z7+\"\n          }\n        },\n        \"proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          },\n          \"links\": {\n            \"related\": \"https://PbnvVByczvXqUb.znzYbVYMH3A0BZ1ZVPez6\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"options_miscellaneous\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"created_at\": \"2005-09-25T03:29:42.017Z\",\n        \"updated_at\": \"1968-07-12T18:53:25.703Z\",\n        \"option_type\": \"storage\",\n        \"description\": \"This is a description.\"\n      },\n      \"relationships\": {\n        \"targets\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces_office\"\n            }\n          ],\n          \"links\": {\n            \"related\": \"https://IjgpvZblFNbzqkWIojnf.lsJ+Fzl.S,bbkKo\"\n          }\n        },\n        \"lease_term\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"lease_terms\"\n          },\n          \"links\": {\n            \"related\": \"https://VVLzsKWaMOocDbCqtjvrHtwcAehp.hsejtkLoi1V7UxV9vTjPj8KdwUy+rY6tD+eYMPfI4nwkX4MUzb-Bt2li9IITNZpF0\"\n          }\n        },\n        \"proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          },\n          \"links\": {\n            \"related\": \"http://tphFxWjjTMLxiYZRuUAKH.ylnbwxh--mtAi0Qk2JiqaPkMtaGMYZ0GNMBzc.oGo0lSb3PjijNSoi4dXrT7kg.5+xXwpIHSEa8\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9acd706e-de68-4795-ac68-bfc0eba0b815",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[term_type]",
+                      "value": "deal_term"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d853979-158a-492a-a8f9-36915ccf289d",
+          "name": "Retrieves Options for Specific Account",
+          "request": {
+            "name": "Retrieves Options for Specific Account",
+            "description": {
+              "content": "Contains all options for a given deal term or lease term. Examples include encumbrances, renewals, and termination options",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "options",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "83c763a7-4d3a-4eed-a625-406a811eaf02",
+              "name": "Returns requested account option if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "options",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"options_miscellaneous\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"created_at\": \"2024-06-03T13:54:19.979Z\",\n      \"updated_at\": \"2020-12-06T03:49:41.670Z\",\n      \"option_type\": \"special provisions\",\n      \"description\": \"This is a description.\"\n    },\n    \"relationships\": {\n      \"targets\": {\n        \"data\": [\n          {\n            \"id\": \"12345\",\n            \"type\": \"spaces_office\"\n          },\n          {\n            \"id\": \"12345\",\n            \"type\": \"spaces_office\"\n          }\n        ],\n        \"links\": {\n          \"related\": \"http://dnqwSZKOgvrSIRVZXRCRscncGGTR.oxdrJa76T-a,i-TkF-2nAuA-vNeA4aIjMfQdqqI5UmcEFUkwmsoEyC,B9HOdtBzTiAMudZKnDbqoSKx7gHIPE\"\n        }\n      },\n      \"lease_term\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"lease_terms\"\n        },\n        \"links\": {\n          \"related\": \"https://HJKGnVQBJRtUrRdgLJD.ydbE2JKbXCxzYPOcjQ5\"\n        }\n      },\n      \"proposal\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"proposals\"\n        },\n        \"links\": {\n          \"related\": \"https://hTIDIQFdagSvhgQv.pzsi3dLhsg8U5rWpqMCxujMEed47sZz0eckpWLG\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1554b43f-c89a-4eb2-bd80-b57c008f7d0d",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "options",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3252849b-4cda-43c2-8984-f4e5b38cd8b1",
+              "name": "Requested option does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "options",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7a37d787-00b9-4718-81cd-96c21b560499",
+    "name": "VTS Lease Account Admin Options API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

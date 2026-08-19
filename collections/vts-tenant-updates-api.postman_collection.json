@@ -1,0 +1,266 @@
+{
+  "item": [
+    {
+      "id": "45faec4e-ab2a-4d97-9567-58e751e08973",
+      "name": "Tenant Updates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "808207e1-1978-4c32-a919-d040d2c915b8",
+          "name": "Fetches tenant updates",
+          "request": {
+            "name": "Fetches tenant updates",
+            "description": {
+              "content": "Contains updates to a given tenant. Examples include comments, update type, and relationship updates",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenant_updates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[property_id]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[tenant_id]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "44379b6d-1b1f-45dd-8b8f-5f0665d3b97e",
+              "name": "Returns a possibly empty list of tenant_updates that match the provided parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenant_updates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[property_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[tenant_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"1\",\n      \"type\": \"tenant_updates\",\n      \"attributes\": {\n        \"created_at\": \"1958-06-10T14:50:55.117Z\",\n        \"updated_at\": \"2009-03-19T13:51:59.209Z\",\n        \"important\": false,\n        \"comment\": \"This is a comment.\",\n        \"interaction_type\": \"email\",\n        \"interaction_date\": \"2021-03-01\",\n        \"sentiment\": \"negative\"\n      },\n      \"relationships\": {\n        \"owner\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"http://K.vcvh4Ed7F.SNJkAg5Zn\"\n          }\n        },\n        \"tenant\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"tenants\"\n          },\n          \"links\": {\n            \"related\": \"http://uyBOXKzNUU.zrxXBWiOc.yySGLJ6gqQlxt8QPAklH0XPWP9LqarN13o\"\n          }\n        },\n        \"asset\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"assets\"\n          },\n          \"links\": {\n            \"related\": \"http://euigDioftJkKNJHJmovEQSZgrRjQywPY.vqgzDSUyzaUHwJlvMUfq.,1VpHP5wHfQYFUdS7W4\"\n          }\n        },\n        \"contact\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"tenant_contacts\"\n          },\n          \"links\": {\n            \"related\": \"https://cSWmbDmYyGS.nwgx8Bd7XAY2Sw0TbJYZA+dMNeneuzbAh1\"\n          }\n        },\n        \"contacts\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"tenant_contacts\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"tenant_contacts\"\n            }\n          ]\n        },\n        \"created_by\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"http://OuHfUUBjIkzigiFdsZZEgprdDKyDB.zeA1ZaTTcs4O5nrA\"\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"1\",\n      \"type\": \"tenant_updates\",\n      \"attributes\": {\n        \"created_at\": \"1971-02-14T06:06:19.102Z\",\n        \"updated_at\": \"2015-11-26T18:30:09.289Z\",\n        \"important\": false,\n        \"comment\": \"This is a comment.\",\n        \"interaction_type\": \"renewal_discussion\",\n        \"interaction_date\": \"2021-03-01\",\n        \"sentiment\": \"positive\"\n      },\n      \"relationships\": {\n        \"owner\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"https://ZBpuOobmrlOqcRfDKnNWsxaXauE.hkwEMPBpsxj-xnQtVIvFcyD3,lzpo3JXbUo3t3f+,W,aq\"\n          }\n        },\n        \"tenant\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"tenants\"\n          },\n          \"links\": {\n            \"related\": \"http://VjIuqBEcImyS.ofmSo0izcAacKSrvY6hGtSeFACjBBH\"\n          }\n        },\n        \"asset\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"assets\"\n          },\n          \"links\": {\n            \"related\": \"http://BnTJEKWNyIegqEQCSHwxq.ipdiS8U4azqPRC374WwxZXkI.hojHujFFKr658QRmJS8ut\"\n          }\n        },\n        \"contact\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"tenant_contacts\"\n          },\n          \"links\": {\n            \"related\": \"https://RJsybYckzxLuwjVBzCIFvKLkDcBXieVtm.ieoidEny5PnHISUJxxu-4fSfTBhG+L+hhDYZCK494qvcs03W39lm5YeJGxhEufY8\"\n          }\n        },\n        \"contacts\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"tenant_contacts\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"tenant_contacts\"\n            }\n          ]\n        },\n        \"created_by\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"http://kdIJSTiCmV.vtpzxI1+G0JC+zXgU\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/tenant_updates\",\n    \"prev\": \"https://api.vts.com/api/v1/tenant_updates?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/tenant_updates?page%5Bafter%5D=MzE2NjQ%253D\"\n  },\n  \"included\": [\n    {\n      \"type\": \"users\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"phone\": \"1234567890\",\n        \"phone_extension\": \"1234\"\n      }\n    },\n    {\n      \"type\": \"users\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"phone\": \"1234567890\",\n        \"phone_extension\": \"1234\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6adf940-60d5-45e6-b4ac-a610d4a7da78",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenant_updates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[property_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[tenant_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2b1e0ef2-d1db-48de-bdd8-f9a1225d1f03",
+    "name": "VTS Lease Account Admin Tenant Updates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,460 @@
+{
+  "item": [
+    {
+      "id": "52eadf1e-786a-4c8d-a9e1-7ff8f09a5c25",
+      "name": "Deals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d4cfe18f-6a2d-4045-9abf-5851cfc53f50",
+          "name": "Fetches deals",
+          "request": {
+            "name": "Fetches deals",
+            "description": {
+              "content": "Contains an overview of a given deal, including requirements, stage, and deal type",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3c6822e1-745e-4dec-9301-aa8154f59fc7",
+              "name": "Returns list of Deals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"deals\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"comment\": \"This is a comment.\",\n        \"created_at\": \"1988-03-27T11:36:24.214Z\",\n        \"competitive_set\": \"100 Main, $34/SF\",\n        \"deal_type\": \"new\",\n        \"probability\": 0.7703321186732353,\n        \"brokers\": [\n          {\n            \"id\": 7660.6599832445745,\n            \"first_name\": \"Dweezil\",\n            \"last_name\": \"Zappa\",\n            \"name\": \"Dweezil Zappa\",\n            \"email\": \"zappa@vts.com\",\n            \"phone_extension\": \"123\",\n            \"phone\": \"123-456-7890\",\n            \"company\": \"Rock Ltd.\"\n          },\n          {\n            \"id\": 4519.663359756113,\n            \"first_name\": \"Dweezil\",\n            \"last_name\": \"Zappa\",\n            \"name\": \"Dweezil Zappa\",\n            \"email\": \"zappa@vts.com\",\n            \"phone_extension\": \"123\",\n            \"phone\": \"123-456-7890\",\n            \"company\": \"Rock Ltd.\"\n          }\n        ],\n        \"contacts\": [\n          {\n            \"name\": \"Moon Unit Zappa\",\n            \"email\": \"moon.zappa@vts.com\",\n            \"phone\": \"012-345-6789\",\n            \"company\": \"Stone Ltd.\"\n          },\n          {\n            \"name\": \"Moon Unit Zappa\",\n            \"email\": \"moon.zappa@vts.com\",\n            \"phone\": \"012-345-6789\",\n            \"company\": \"Stone Ltd.\"\n          }\n        ],\n        \"requirements\": {\n          \"commencement_date\": \"2022-03-07\",\n          \"inquiry_type\": \"costar\",\n          \"requirement_size\": {\n            \"minimum\": 5000,\n            \"maximum\": 10000,\n            \"type\": \"area\",\n            \"unit\": \"sf\",\n            \"unit_components\": {\n              \"area\": \"sf\"\n            }\n          },\n          \"retail_deal_type\": \"permanent\",\n          \"space_type\": \"office\",\n          \"target_locations\": [\n            {\n              \"locality\": \"New York\",\n              \"region\": \"NEW YORK\",\n              \"postal_code\": \"10001\",\n              \"country\": \"United States\",\n              \"formatted\": \"New York, NEW YORK 10001 United States\"\n            },\n            {\n              \"locality\": \"New York\",\n              \"region\": \"NEW YORK\",\n              \"postal_code\": \"10001\",\n              \"country\": \"United States\",\n              \"formatted\": \"New York, NEW YORK 10001 United States\"\n            }\n          ],\n          \"target_rent\": {\n            \"minimum\": 5000,\n            \"maximum\": 10000,\n            \"type\": \"money\",\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            }\n          }\n        },\n        \"stage\": \"loi\",\n        \"tenant_info\": {\n          \"name\": {},\n          \"undisclosed\": {},\n          \"current_lease\": {\n            \"current_address\": \"123 Park Avenue\",\n            \"current_rent\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD\",\n              \"unit_components\": {\n                \"money\": \"USD\"\n              },\n              \"type\": \"money\"\n            },\n            \"current_size\": {\n              \"magnitude\": 1000,\n              \"unit\": \"sm\",\n              \"unit_components\": {\n                \"area\": \"sm\"\n              },\n              \"type\": \"area\"\n            },\n            \"expiration_date\": \"2025-12-31\"\n          }\n        },\n        \"total_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sm\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"updated_at\": \"2021-02-01T01:39:46.348Z\",\n        \"is_private\": true\n      },\n      \"relationships\": {\n        \"deal_tours\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_tours\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_tours\"\n            }\n          ]\n        },\n        \"assets\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"assets\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"assets\"\n            }\n          ]\n        },\n        \"latest_proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          },\n          \"links\": {\n            \"related\": \"https://klXIfIdFnSJWDIanZlGaMltXsNDrZiL.ekejG-L9Qw-6XD2CDM90y7c0WIAoh\"\n          }\n        },\n        \"comparative_lease_term\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"lease_terms\"\n          },\n          \"links\": {\n            \"related\": \"http://VIYWFtjwpLMEAwysVgK.rfRp64pMeavhoPGM0I,YlCNFalIyaooPu1z4CNeOKTIBgWE.JP9f30UfoJ\"\n          }\n        },\n        \"created_by\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"https://FgycFSmoMFfcUcbfFePVoVSglt.ziCLv,PqeqJ.M8qZ2cMCXmBlCq,8\"\n          }\n        },\n        \"deal_leads\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            }\n          ]\n        },\n        \"spaces\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces\"\n            }\n          ]\n        },\n        \"tenant\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"tenants\"\n          },\n          \"links\": {\n            \"related\": \"https://wIZnOUfeT.ulhHKa5WfF+GTLj+IGoBp8ZgvCQ0TIplnROY5Mf0cjFvg4oUdIqz4gJ3w,ZsDcvi.SWex9J\"\n          }\n        },\n        \"tenant_industry\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"tenant_industries\"\n          },\n          \"links\": {\n            \"related\": \"https://FQXhGrLYPBQrz.kbD1AcsFMUc\"\n          }\n        },\n        \"coordination_projects\": {\n          \"links\": {\n            \"related\": \"https://fWCnLyqRHc.folbN,1HRoDsNmvc9IqPd,34\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"deals\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"comment\": \"This is a comment.\",\n        \"created_at\": \"2002-12-16T19:14:02.941Z\",\n        \"competitive_set\": \"100 Main, $34/SF\",\n        \"deal_type\": \"new\",\n        \"probability\": 0.12661616243001372,\n        \"brokers\": [\n          {\n            \"id\": 4637.313254759787,\n            \"first_name\": \"Dweezil\",\n            \"last_name\": \"Zappa\",\n            \"name\": \"Dweezil Zappa\",\n            \"email\": \"zappa@vts.com\",\n            \"phone_extension\": \"123\",\n            \"phone\": \"123-456-7890\",\n            \"company\": \"Rock Ltd.\"\n          },\n          {\n            \"id\": 4250.948683512579,\n            \"first_name\": \"Dweezil\",\n            \"last_name\": \"Zappa\",\n            \"name\": \"Dweezil Zappa\",\n            \"email\": \"zappa@vts.com\",\n            \"phone_extension\": \"123\",\n            \"phone\": \"123-456-7890\",\n            \"company\": \"Rock Ltd.\"\n          }\n        ],\n        \"contacts\": [\n          {\n            \"name\": \"Moon Unit Zappa\",\n            \"email\": \"moon.zappa@vts.com\",\n            \"phone\": \"012-345-6789\",\n            \"company\": \"Stone Ltd.\"\n          },\n          {\n            \"name\": \"Moon Unit Zappa\",\n            \"email\": \"moon.zappa@vts.com\",\n            \"phone\": \"012-345-6789\",\n            \"company\": \"Stone Ltd.\"\n          }\n        ],\n        \"requirements\": {\n          \"commencement_date\": \"2017-09-02\",\n          \"inquiry_type\": \"costar\",\n          \"requirement_size\": {\n            \"minimum\": 5000,\n            \"maximum\": 10000,\n            \"type\": \"area\",\n            \"unit\": \"sm\",\n            \"unit_components\": {\n              \"area\": \"sf\"\n            }\n          },\n          \"retail_deal_type\": \"permanent\",\n          \"space_type\": \"education\",\n          \"target_locations\": [\n            {\n              \"locality\": \"New York\",\n              \"region\": \"NEW YORK\",\n              \"postal_code\": \"10001\",\n              \"country\": \"United States\",\n              \"formatted\": \"New York, NEW YORK 10001 United States\"\n            },\n            {\n              \"locality\": \"New York\",\n              \"region\": \"NEW YORK\",\n              \"postal_code\": \"10001\",\n              \"country\": \"United States\",\n              \"formatted\": \"New York, NEW YORK 10001 United States\"\n            }\n          ],\n          \"target_rent\": {\n            \"minimum\": 5000,\n            \"maximum\": 10000,\n            \"type\": \"money\",\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            }\n          }\n        },\n        \"stage\": \"loi\",\n        \"tenant_info\": {\n          \"name\": {},\n          \"undisclosed\": {},\n          \"current_lease\": {\n            \"current_address\": \"123 Park Avenue\",\n            \"current_rent\": {\n              \"magnitude\": 1000,\n              \"unit\": \"USD\",\n              \"unit_components\": {\n                \"money\": \"USD\"\n              },\n              \"type\": \"money\"\n            },\n            \"current_size\": {\n              \"magnitude\": 1000,\n              \"unit\": \"sf\",\n              \"unit_components\": {\n                \"area\": \"sm\"\n              },\n              \"type\": \"area\"\n            },\n            \"expiration_date\": \"2025-12-31\"\n          }\n        },\n        \"total_size\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          },\n          \"type\": \"area\"\n        },\n        \"updated_at\": \"1957-04-24T11:14:37.323Z\",\n        \"is_private\": true\n      },\n      \"relationships\": {\n        \"deal_tours\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_tours\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"deal_tours\"\n            }\n          ]\n        },\n        \"assets\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"assets\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"assets\"\n            }\n          ]\n        },\n        \"latest_proposal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"proposals\"\n          },\n          \"links\": {\n            \"related\": \"https://dXNcLFkRHMLiaLuGhQUMaEGtZAzSqyVi.ymcUeOyPhorvcjSiCE7w0AzKCPPbAjV5bJDuhzaEN\"\n          }\n        },\n        \"comparative_lease_term\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"lease_terms\"\n          },\n          \"links\": {\n            \"related\": \"http://NAEOqqHIuvlbtQprfjNMIWrxstPNT.mzCiF-H0nulmaFEHaUGBHh.8oIKRJ4yqE1oSdCr5kX4CXksd\"\n          }\n        },\n        \"created_by\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"http://ERJExXramxgYUgAoxxTdFt.stv..eDk91aVWZq\"\n          }\n        },\n        \"deal_leads\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"users\"\n            }\n          ]\n        },\n        \"spaces\": {\n          \"data\": [\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces\"\n            },\n            {\n              \"id\": \"12345\",\n              \"type\": \"spaces\"\n            }\n          ]\n        },\n        \"tenant\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"tenants\"\n          },\n          \"links\": {\n            \"related\": \"http://LfjfoP.kdfsPD.WL2EQX+JxLCG29jvwnMVtirki6dOMvNVIVxePQ1d2\"\n          }\n        },\n        \"tenant_industry\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"tenant_industries\"\n          },\n          \"links\": {\n            \"related\": \"https://NMEMeUDVKrDLJOGLqMbRZUrxeVDeTm.delffntMopKGmCA5Nh0PNtCLjNuaask0e9-yrzl-TTjMzBE,UXCbcra,usejvx5\"\n          }\n        },\n        \"coordination_projects\": {\n          \"links\": {\n            \"related\": \"http://WEyCQcXwoQKPZOzgnf.xwwbAm6D0zlf,0XrhoC\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/deals\",\n    \"prev\": \"https://api.vts.com/api/v1/deals?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/deals?page%5Bafter%5D=MzE2NjQ%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2b7bc98-f31f-4768-b059-9dfa71b51a83",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4cf658e-8798-446a-be97-f4100a98d6ce",
+          "name": "Retrieves specific deal",
+          "request": {
+            "name": "Retrieves specific deal",
+            "description": {
+              "content": "Contains an overview of a given deal, including requirements, stage, and deal type",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "097a9389-dce1-4f1a-8eb4-1956d95b10bd",
+              "name": "Returns requested deal if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"deals\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"comment\": \"This is a comment.\",\n      \"created_at\": \"1969-06-20T12:46:01.365Z\",\n      \"competitive_set\": \"100 Main, $34/SF\",\n      \"deal_type\": \"new\",\n      \"probability\": 0.12724794457301802,\n      \"brokers\": [\n        {\n          \"id\": 2793.296167012873,\n          \"first_name\": \"Dweezil\",\n          \"last_name\": \"Zappa\",\n          \"name\": \"Dweezil Zappa\",\n          \"email\": \"zappa@vts.com\",\n          \"phone_extension\": \"123\",\n          \"phone\": \"123-456-7890\",\n          \"company\": \"Rock Ltd.\"\n        },\n        {\n          \"id\": 9937.086997650533,\n          \"first_name\": \"Dweezil\",\n          \"last_name\": \"Zappa\",\n          \"name\": \"Dweezil Zappa\",\n          \"email\": \"zappa@vts.com\",\n          \"phone_extension\": \"123\",\n          \"phone\": \"123-456-7890\",\n          \"company\": \"Rock Ltd.\"\n        }\n      ],\n      \"contacts\": [\n        {\n          \"name\": \"Moon Unit Zappa\",\n          \"email\": \"moon.zappa@vts.com\",\n          \"phone\": \"012-345-6789\",\n          \"company\": \"Stone Ltd.\"\n        },\n        {\n          \"name\": \"Moon Unit Zappa\",\n          \"email\": \"moon.zappa@vts.com\",\n          \"phone\": \"012-345-6789\",\n          \"company\": \"Stone Ltd.\"\n        }\n      ],\n      \"requirements\": {\n        \"commencement_date\": \"1976-10-22\",\n        \"inquiry_type\": \"costar\",\n        \"requirement_size\": {\n          \"minimum\": 5000,\n          \"maximum\": 10000,\n          \"type\": \"area\",\n          \"unit\": \"sm\",\n          \"unit_components\": {\n            \"area\": \"sf\"\n          }\n        },\n        \"retail_deal_type\": \"permanent\",\n        \"space_type\": \"parking\",\n        \"target_locations\": [\n          {\n            \"locality\": \"New York\",\n            \"region\": \"NEW YORK\",\n            \"postal_code\": \"10001\",\n            \"country\": \"United States\",\n            \"formatted\": \"New York, NEW YORK 10001 United States\"\n          },\n          {\n            \"locality\": \"New York\",\n            \"region\": \"NEW YORK\",\n            \"postal_code\": \"10001\",\n            \"country\": \"United States\",\n            \"formatted\": \"New York, NEW YORK 10001 United States\"\n          }\n        ],\n        \"target_rent\": {\n          \"minimum\": 5000,\n          \"maximum\": 10000,\n          \"type\": \"money\",\n          \"unit\": \"USD\",\n          \"unit_components\": {\n            \"money\": \"USD\"\n          }\n        }\n      },\n      \"stage\": \"loi\",\n      \"tenant_info\": {\n        \"name\": {},\n        \"undisclosed\": {},\n        \"current_lease\": {\n          \"current_address\": \"123 Park Avenue\",\n          \"current_rent\": {\n            \"magnitude\": 1000,\n            \"unit\": \"USD\",\n            \"unit_components\": {\n              \"money\": \"USD\"\n            },\n            \"type\": \"money\"\n          },\n          \"current_size\": {\n            \"magnitude\": 1000,\n            \"unit\": \"sm\",\n            \"unit_components\": {\n              \"area\": \"sf\"\n            },\n            \"type\": \"area\"\n          },\n          \"expiration_date\": \"2025-12-31\"\n        }\n      },\n      \"total_size\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sf\"\n        },\n        \"type\": \"area\"\n      },\n      \"updated_at\": \"2009-09-17T06:13:57.986Z\",\n      \"is_private\": true\n    },\n    \"relationships\": {\n      \"deal_tours\": {\n        \"data\": [\n          {\n            \"id\": \"12345\",\n            \"type\": \"deal_tours\"\n          },\n          {\n            \"id\": \"12345\",\n            \"type\": \"deal_tours\"\n          }\n        ]\n      },\n      \"assets\": {\n        \"data\": [\n          {\n            \"id\": \"12345\",\n            \"type\": \"assets\"\n          },\n          {\n            \"id\": \"12345\",\n            \"type\": \"assets\"\n          }\n        ]\n      },\n      \"latest_proposal\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"proposals\"\n        },\n        \"links\": {\n          \"related\": \"http://gUqWbvfHxUGMW.aouPjDVkoU9ePIUn4fiZrnm0HsMBwdneU.o1w2rt8QzALx8AR.DIX,\"\n        }\n      },\n      \"comparative_lease_term\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"lease_terms\"\n        },\n        \"links\": {\n          \"related\": \"https://Jk.zxvyywYuskzFrjmuW3D,AZ1SMGyMR2S4bJM.0AM\"\n        }\n      },\n      \"created_by\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"users\"\n        },\n        \"links\": {\n          \"related\": \"http://RYDgLvGJdMYjF.xltlnbtIbr1xEupp7O+\"\n        }\n      },\n      \"deal_leads\": {\n        \"data\": [\n          {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          }\n        ]\n      },\n      \"spaces\": {\n        \"data\": [\n          {\n            \"id\": \"12345\",\n            \"type\": \"spaces\"\n          },\n          {\n            \"id\": \"12345\",\n            \"type\": \"spaces\"\n          }\n        ]\n      },\n      \"tenant\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"tenants\"\n        },\n        \"links\": {\n          \"related\": \"https://CguCEfcNvJIvFsy.qztNoG2Lwj7pLeqiT+Tt3uBwMq3heJZFtRhyMHEk2P.XQdGZRF2\"\n        }\n      },\n      \"tenant_industry\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"tenant_industries\"\n        },\n        \"links\": {\n          \"related\": \"http://ItgwQKtmSsESsSDjnugBYsqals.xjtvwoK,fW1ApjIk1eg\"\n        }\n      },\n      \"coordination_projects\": {\n        \"links\": {\n          \"related\": \"http://lzHLNgSPwjVbIFwOomIqhxDnn.uenetxhs4sPU\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06873df7-3b7c-4269-aa0b-7ee71659fc21",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83603764-ef73-4707-a2f7-5ac20ac1ebb4",
+              "name": "Requested deal does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "83694dc1-c7e7-40b3-ac9c-62f3cfd0d439",
+    "name": "VTS Lease Account Admin Deals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

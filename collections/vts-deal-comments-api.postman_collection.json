@@ -1,0 +1,682 @@
+{
+  "item": [
+    {
+      "id": "76bf0058-20da-4748-90e5-e252387b75d8",
+      "name": "Deal Comments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f2adbb33-f170-4447-abd8-e7e8ab265faf",
+          "name": "Fetches Deal Comments for a Specific Account",
+          "request": {
+            "name": "Fetches Deal Comments for a Specific Account",
+            "description": {
+              "content": "Contains comments associated with a given deal",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deal_comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b1b49c63-9925-49e5-ab65-7bb6082583bc",
+              "name": "Returns list of Deal Comments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"deal_comments\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"latest\": true,\n        \"text\": \"This is a comment.\",\n        \"occurred_at\": \"1975-10-04T02:01:00.205Z\",\n        \"created_at\": \"1981-12-29T22:11:24.867Z\",\n        \"updated_at\": \"1998-05-10T19:37:00.593Z\"\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"https://eVBzlRKqaBRwJ.fvqkGApr,mQwIJW9c9qP6-eOMUck6yKTAjYenYzx\"\n          }\n        },\n        \"iteration\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deal_iterations\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"http://TYROAgjrVnQlRzSBKqsHV.cefAfX.83MgsBJRdjNz8Rg52e.4QGJYVetoi7hXQmNOipl4WtcoJ70-BVm\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"deal_comments\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"latest\": true,\n        \"text\": \"This is a comment.\",\n        \"occurred_at\": \"2013-12-02T09:15:20.904Z\",\n        \"created_at\": \"1969-06-10T19:59:20.290Z\",\n        \"updated_at\": \"2023-06-07T19:24:44.735Z\"\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"https://kEVBnqfnuIeS.ydxXR2ns49AL0lr.TCyMzVECXbDK-9MEs+XxY\"\n          }\n        },\n        \"iteration\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deal_iterations\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"http://IQRXwQGUYzXRUKYNTTMFzqaGMDhDdDF.vrb5YPtOuCi7BB7zY+lpKANAHxEQk\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/deals/123/comments?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/deals/123/comments?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/deals/123/comments?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1a5a318-f493-4689-a33d-f092882f0060",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38ddf22f-0f11-457f-ad29-ec70d28a77d1",
+          "name": "Retrieves specific Deal Comment",
+          "request": {
+            "name": "Retrieves specific Deal Comment",
+            "description": {
+              "content": "Contains the Deal Comment from your account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deal_comments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2480a6e4-1a96-4b19-97a4-6914c810f3cc",
+              "name": "Returns requested account deal comment if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_comments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"deal_comments\",\n    \"id\": \"1\",\n    \"attributes\": {\n      \"latest\": true,\n      \"text\": \"This is a comment.\",\n      \"occurred_at\": \"2009-11-17T17:09:15.408Z\",\n      \"created_at\": \"1965-07-21T17:26:39.468Z\",\n      \"updated_at\": \"1969-11-17T21:56:35.809Z\"\n    },\n    \"relationships\": {\n      \"deal\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"deals\"\n        },\n        \"links\": {\n          \"related\": \"http://FLXbUIVmlPYiteTADwUFzLheAVLTJLQB.xpQ4FlIbn+I+5oSZbqutFulYZwLr7LAQBG9YiCeLoPdK5J9ciXgO-xO\"\n        }\n      },\n      \"iteration\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"deal_iterations\"\n        }\n      },\n      \"user\": {\n        \"data\": {\n          \"id\": \"12345\",\n          \"type\": \"users\"\n        },\n        \"links\": {\n          \"related\": \"http://zoRSTMPEQKGzngevQAMDDpjiwJvPitZoj.fvHvOCjSfk7TnRYTDYi\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec43969b-755c-4a3e-aa4e-b79a08c2992d",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_comments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9811e143-4253-4010-a883-c26e6dd54fb4",
+              "name": "Requested deal comment does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deal_comments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2d5acc0-aba5-4405-b653-ec5427a2fef1",
+          "name": "Fetches Deal Comments for a Specific Deal",
+          "request": {
+            "name": "Fetches Deal Comments for a Specific Deal",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deals",
+                ":deal_id",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[updated_since]",
+                  "value": "<dateTime>",
+                  "description": "Only display records that have been modified after the given date/timestamp. Should be in `YYYY-MM-DD HH:MM:SS` (ISO8601) format. (Hours, minutes, and seconds are optional.)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deal_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "94a49998-863d-4f9d-96b7-dd9bb7172db6",
+              "name": "Returns list of Deal Comments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":deal_id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"deal_comments\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"latest\": true,\n        \"text\": \"This is a comment.\",\n        \"occurred_at\": \"1975-10-04T02:01:00.205Z\",\n        \"created_at\": \"1981-12-29T22:11:24.867Z\",\n        \"updated_at\": \"1998-05-10T19:37:00.593Z\"\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"https://eVBzlRKqaBRwJ.fvqkGApr,mQwIJW9c9qP6-eOMUck6yKTAjYenYzx\"\n          }\n        },\n        \"iteration\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deal_iterations\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"http://TYROAgjrVnQlRzSBKqsHV.cefAfX.83MgsBJRdjNz8Rg52e.4QGJYVetoi7hXQmNOipl4WtcoJ70-BVm\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"deal_comments\",\n      \"id\": \"1\",\n      \"attributes\": {\n        \"latest\": true,\n        \"text\": \"This is a comment.\",\n        \"occurred_at\": \"2013-12-02T09:15:20.904Z\",\n        \"created_at\": \"1969-06-10T19:59:20.290Z\",\n        \"updated_at\": \"2023-06-07T19:24:44.735Z\"\n      },\n      \"relationships\": {\n        \"deal\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deals\"\n          },\n          \"links\": {\n            \"related\": \"https://kEVBnqfnuIeS.ydxXR2ns49AL0lr.TCyMzVECXbDK-9MEs+XxY\"\n          }\n        },\n        \"iteration\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"deal_iterations\"\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": \"12345\",\n            \"type\": \"users\"\n          },\n          \"links\": {\n            \"related\": \"http://IQRXwQGUYzXRUKYNTTMFzqaGMDhDdDF.vrb5YPtOuCi7BB7zY+lpKANAHxEQk\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/deals/123/comments?page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/deals/123/comments?page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/deals/123/comments?page%5Bbefore%5D=MzE2NTI%253D\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d81e3fc0-fedf-4c91-8744-7f77fe741149",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deals",
+                    ":deal_id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[updated_since]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deal_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1d409e20-568d-41b1-90fb-a03da83b8153",
+    "name": "VTS Lease Account Admin Deal Comments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,694 @@
+{
+  "item": [
+    {
+      "id": "25327d27-98d2-4bc2-af98-e70f94c8e895",
+      "name": "Leasing Availability",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f560c9ba-ced2-42a5-91dc-494eff1b16f3",
+          "name": "Fetches a set of buildings",
+          "request": {
+            "name": "Fetches a set of buildings",
+            "description": {
+              "content": "Part of the Leasing Availability API, this fetches buildings on VTS Market associated with the account that the API key is generated for with information about the building and its available listings. Expected usage would be to make a portfolio page for the given account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "buildings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[city]",
+                  "value": "<string>",
+                  "description": "Filter by city name. Intended use is either a page for buildings of a given city or to populate a dropdown of cities"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[search]",
+                  "value": "<string>",
+                  "description": "Filter by a search string. Partial matches will match and the results will be ordered by the amount of match with buildings and which data element it matches on. Weighted highest for building name and address, then for city, then for state and country"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "84d067cb-a43c-4d40-a46a-f57b49474b66",
+              "name": "Returns a list of buildings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "buildings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[city]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[search]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"buildings\",\n      \"id\": \"20be22bd-7d79-47f6-a267-fc3492c5d90b\",\n      \"attributes\": {\n        \"abbreviated_region\": \"NY\",\n        \"amenities\": {\n          \"bar_available\": true,\n          \"barbershop\": true,\n          \"bike_storage_available\": true,\n          \"cafe_available\": true,\n          \"car_wash\": true,\n          \"cctv\": true,\n          \"common_area_wifi\": true,\n          \"communal_lobby_space\": true,\n          \"communal_outdoor_space\": true,\n          \"communal_roof_access\": true,\n          \"conference_center\": true,\n          \"controlled_elevator_access\": true,\n          \"covered_parking\": true,\n          \"destination_dispatch_elevators\": true,\n          \"event_space\": true,\n          \"flex_space_available\": true,\n          \"food_service_available\": true,\n          \"general_store_available\": true,\n          \"gym_available\": true,\n          \"key_card_building_entry\": true,\n          \"loading_dock\": true,\n          \"lobby_attendant\": true,\n          \"lobby_beverage_available\": true,\n          \"lobby_food_available\": true,\n          \"locker_rooms\": true,\n          \"messenger_center\": true,\n          \"networking_events\": true,\n          \"option_to_add_internet_service_provider\": true,\n          \"parking_available\": true,\n          \"parking_garage\": true,\n          \"pets_allowed\": true,\n          \"pharmacy_available\": true,\n          \"property_manager_on_site\": true,\n          \"restaurant_available\": true,\n          \"showers\": true,\n          \"shuttle\": true,\n          \"spa_available\": true,\n          \"storage_available\": true,\n          \"tenant_lounge\": true,\n          \"tenant_portal_app\": true,\n          \"touch_free_elevator_access\": true,\n          \"touchless_turnstile_entry\": true,\n          \"transportation_accessible\": true,\n          \"turnstiles\": true,\n          \"twenty_four_seven_access\": true,\n          \"twenty_four_seven_security\": true,\n          \"urgent_care_doctor_onsite\": true,\n          \"valet_parking\": true,\n          \"yoga_studio_available\": true,\n          \"electric_vehicle_charging_stations_count\": 1,\n          \"passenger_elevator_count\": 1,\n          \"service_elevator_count\": 1,\n          \"leed_certification\": \"Gold\",\n          \"wired_certification\": \"Platinum\"\n        },\n        \"asset_types\": [\n          \"industrial\",\n          \"industrial\"\n        ],\n        \"banner_image\": {\n          \"path\": \"https://media.truva.com/path\",\n          \"small_path\": \"https://media.truva.com/t_small_image/path\",\n          \"description\": \"Building Photo\"\n        },\n        \"building_brochure\": {\n          \"name\": \"Brochure-name.pdf\",\n          \"url\": \"https://download.link/whatever.pdf\",\n          \"id\": 2\n        },\n        \"building_name\": \"Empire State Building\",\n        \"contacts\": [\n          {\n            \"id\": 1,\n            \"first_name\": \"John\",\n            \"last_name\": \"Doe\",\n            \"email\": \"whatever@whever.com\",\n            \"role\": \"CEO\",\n            \"phone\": \"123-456-7890\",\n            \"phone_extension\": \"1234\",\n            \"photo_url\": \"https://media.truva.com/path\",\n            \"company_logo_url\": \"https://media.truva.com/path\",\n            \"broker_licence_number\": \"RC #192017\"\n          },\n          {\n            \"id\": 1,\n            \"first_name\": \"John\",\n            \"last_name\": \"Doe\",\n            \"email\": \"whatever@whever.com\",\n            \"role\": \"CEO\",\n            \"phone\": \"123-456-7890\",\n            \"phone_extension\": \"1234\",\n            \"photo_url\": \"https://media.truva.com/path\",\n            \"company_logo_url\": \"https://media.truva.com/path\",\n            \"broker_licence_number\": \"RC #192017\"\n          }\n        ],\n        \"country_code\": \"US\",\n        \"description\": \"This is a building\",\n        \"images\": [\n          {\n            \"path\": \"https://media.truva.com/path\",\n            \"small_path\": \"https://media.truva.com/t_small_image/path\",\n            \"description\": \"Building Photo\"\n          },\n          {\n            \"path\": \"https://media.truva.com/path\",\n            \"small_path\": \"https://media.truva.com/t_small_image/path\",\n            \"description\": \"Building Photo\"\n          }\n        ],\n        \"latitude\": 40.7128,\n        \"listings\": [\n          {\n            \"id\": \"45b13e12-057c-4136-8dde-06a375613465\",\n            \"area\": {\n              \"magnitude\": 1000,\n              \"unit\": \"sf\",\n              \"unit_components\": {\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"area\"\n            },\n            \"asking_rent\": {\n              \"magnitude\": 10000,\n              \"type\": \"area\",\n              \"units\": {\n                \"area\": \"SquareFoot\",\n                \"currency\": \"USD\",\n                \"period\": \"month\"\n              }\n            },\n            \"available\": true,\n            \"available_date\": \"2021-01-01\",\n            \"condition\": \"white_box\",\n            \"floor\": \"7\",\n            \"floor_plan\": {\n              \"path\": \"https://media.truva.com/path\",\n              \"small_path\": \"https://media.truva.com/t_small_image/path\",\n              \"description\": \"Building Photo\"\n            },\n            \"hero_image\": {\n              \"path\": \"https://media.truva.com/path\",\n              \"small_path\": \"https://media.truva.com/t_small_image/path\",\n              \"description\": \"Building Photo\"\n            },\n            \"lease_type\": \"direct\",\n            \"listing_name\": \"7th Floor, Room 204\",\n            \"suite\": \"204\",\n            \"suite_type\": \"room\"\n          },\n          {\n            \"id\": \"45b13e12-057c-4136-8dde-06a375613465\",\n            \"area\": {\n              \"magnitude\": 1000,\n              \"unit\": \"sf\",\n              \"unit_components\": {\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"area\"\n            },\n            \"asking_rent\": {\n              \"magnitude\": 10000,\n              \"type\": \"area\",\n              \"units\": {\n                \"area\": \"SquareFoot\",\n                \"currency\": \"USD\",\n                \"period\": \"month\"\n              }\n            },\n            \"available\": true,\n            \"available_date\": \"2021-01-01\",\n            \"condition\": \"white_box\",\n            \"floor\": \"7\",\n            \"floor_plan\": {\n              \"path\": \"https://media.truva.com/path\",\n              \"small_path\": \"https://media.truva.com/t_small_image/path\",\n              \"description\": \"Building Photo\"\n            },\n            \"hero_image\": {\n              \"path\": \"https://media.truva.com/path\",\n              \"small_path\": \"https://media.truva.com/t_small_image/path\",\n              \"description\": \"Building Photo\"\n            },\n            \"lease_type\": \"direct\",\n            \"listing_name\": \"7th Floor, Room 204\",\n            \"suite\": \"204\",\n            \"suite_type\": \"room\"\n          }\n        ],\n        \"locality\": \"New York\",\n        \"logo\": {\n          \"path\": \"https://media.truva.com/path\",\n          \"small_path\": \"https://media.truva.com/t_small_image/path\",\n          \"description\": \"Building Photo\"\n        },\n        \"longitude\": -74.006,\n        \"marketplace_url\": \"https://marketplace.vts.com/market_buildings/id\",\n        \"notable_tenants\": [\n          {\n            \"company_name\": \"Company\",\n            \"logo\": \"path\"\n          },\n          {\n            \"company_name\": \"Company\",\n            \"logo\": \"path\"\n          }\n        ],\n        \"postal_code\": \"10001\",\n        \"rentable_area\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"status\": \"active\",\n        \"street_address\": \"123 Main St\",\n        \"submarket\": \"Bryant Park\",\n        \"video_url\": \"https://example.com\",\n        \"virtual_tour_url\": \"https://example.com\",\n        \"vts_property_id\": 100,\n        \"year_built\": 1920,\n        \"year_renovated\": 2020\n      }\n    },\n    {\n      \"type\": \"buildings\",\n      \"id\": \"20be22bd-7d79-47f6-a267-fc3492c5d90b\",\n      \"attributes\": {\n        \"abbreviated_region\": \"NY\",\n        \"amenities\": {\n          \"bar_available\": true,\n          \"barbershop\": true,\n          \"bike_storage_available\": true,\n          \"cafe_available\": true,\n          \"car_wash\": true,\n          \"cctv\": true,\n          \"common_area_wifi\": true,\n          \"communal_lobby_space\": true,\n          \"communal_outdoor_space\": true,\n          \"communal_roof_access\": true,\n          \"conference_center\": true,\n          \"controlled_elevator_access\": true,\n          \"covered_parking\": true,\n          \"destination_dispatch_elevators\": true,\n          \"event_space\": true,\n          \"flex_space_available\": true,\n          \"food_service_available\": true,\n          \"general_store_available\": true,\n          \"gym_available\": true,\n          \"key_card_building_entry\": true,\n          \"loading_dock\": true,\n          \"lobby_attendant\": true,\n          \"lobby_beverage_available\": true,\n          \"lobby_food_available\": true,\n          \"locker_rooms\": true,\n          \"messenger_center\": true,\n          \"networking_events\": true,\n          \"option_to_add_internet_service_provider\": true,\n          \"parking_available\": true,\n          \"parking_garage\": true,\n          \"pets_allowed\": true,\n          \"pharmacy_available\": true,\n          \"property_manager_on_site\": true,\n          \"restaurant_available\": true,\n          \"showers\": true,\n          \"shuttle\": true,\n          \"spa_available\": true,\n          \"storage_available\": true,\n          \"tenant_lounge\": true,\n          \"tenant_portal_app\": true,\n          \"touch_free_elevator_access\": true,\n          \"touchless_turnstile_entry\": true,\n          \"transportation_accessible\": true,\n          \"turnstiles\": true,\n          \"twenty_four_seven_access\": true,\n          \"twenty_four_seven_security\": true,\n          \"urgent_care_doctor_onsite\": true,\n          \"valet_parking\": true,\n          \"yoga_studio_available\": true,\n          \"electric_vehicle_charging_stations_count\": 1,\n          \"passenger_elevator_count\": 1,\n          \"service_elevator_count\": 1,\n          \"leed_certification\": \"Gold\",\n          \"wired_certification\": \"Platinum\"\n        },\n        \"asset_types\": [\n          \"industrial\",\n          \"industrial\"\n        ],\n        \"banner_image\": {\n          \"path\": \"https://media.truva.com/path\",\n          \"small_path\": \"https://media.truva.com/t_small_image/path\",\n          \"description\": \"Building Photo\"\n        },\n        \"building_brochure\": {\n          \"name\": \"Brochure-name.pdf\",\n          \"url\": \"https://download.link/whatever.pdf\",\n          \"id\": 2\n        },\n        \"building_name\": \"Empire State Building\",\n        \"contacts\": [\n          {\n            \"id\": 1,\n            \"first_name\": \"John\",\n            \"last_name\": \"Doe\",\n            \"email\": \"whatever@whever.com\",\n            \"role\": \"CEO\",\n            \"phone\": \"123-456-7890\",\n            \"phone_extension\": \"1234\",\n            \"photo_url\": \"https://media.truva.com/path\",\n            \"company_logo_url\": \"https://media.truva.com/path\",\n            \"broker_licence_number\": \"RC #192017\"\n          },\n          {\n            \"id\": 1,\n            \"first_name\": \"John\",\n            \"last_name\": \"Doe\",\n            \"email\": \"whatever@whever.com\",\n            \"role\": \"CEO\",\n            \"phone\": \"123-456-7890\",\n            \"phone_extension\": \"1234\",\n            \"photo_url\": \"https://media.truva.com/path\",\n            \"company_logo_url\": \"https://media.truva.com/path\",\n            \"broker_licence_number\": \"RC #192017\"\n          }\n        ],\n        \"country_code\": \"US\",\n        \"description\": \"This is a building\",\n        \"images\": [\n          {\n            \"path\": \"https://media.truva.com/path\",\n            \"small_path\": \"https://media.truva.com/t_small_image/path\",\n            \"description\": \"Building Photo\"\n          },\n          {\n            \"path\": \"https://media.truva.com/path\",\n            \"small_path\": \"https://media.truva.com/t_small_image/path\",\n            \"description\": \"Building Photo\"\n          }\n        ],\n        \"latitude\": 40.7128,\n        \"listings\": [\n          {\n            \"id\": \"45b13e12-057c-4136-8dde-06a375613465\",\n            \"area\": {\n              \"magnitude\": 1000,\n              \"unit\": \"sf\",\n              \"unit_components\": {\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"area\"\n            },\n            \"asking_rent\": {\n              \"magnitude\": 10000,\n              \"type\": \"area\",\n              \"units\": {\n                \"area\": \"SquareFoot\",\n                \"currency\": \"USD\",\n                \"period\": \"month\"\n              }\n            },\n            \"available\": true,\n            \"available_date\": \"2021-01-01\",\n            \"condition\": \"white_box\",\n            \"floor\": \"7\",\n            \"floor_plan\": {\n              \"path\": \"https://media.truva.com/path\",\n              \"small_path\": \"https://media.truva.com/t_small_image/path\",\n              \"description\": \"Building Photo\"\n            },\n            \"hero_image\": {\n              \"path\": \"https://media.truva.com/path\",\n              \"small_path\": \"https://media.truva.com/t_small_image/path\",\n              \"description\": \"Building Photo\"\n            },\n            \"lease_type\": \"direct\",\n            \"listing_name\": \"7th Floor, Room 204\",\n            \"suite\": \"204\",\n            \"suite_type\": \"room\"\n          },\n          {\n            \"id\": \"45b13e12-057c-4136-8dde-06a375613465\",\n            \"area\": {\n              \"magnitude\": 1000,\n              \"unit\": \"sf\",\n              \"unit_components\": {\n                \"area\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"type\": \"area\"\n            },\n            \"asking_rent\": {\n              \"magnitude\": 10000,\n              \"type\": \"area\",\n              \"units\": {\n                \"area\": \"SquareFoot\",\n                \"currency\": \"USD\",\n                \"period\": \"month\"\n              }\n            },\n            \"available\": true,\n            \"available_date\": \"2021-01-01\",\n            \"condition\": \"white_box\",\n            \"floor\": \"7\",\n            \"floor_plan\": {\n              \"path\": \"https://media.truva.com/path\",\n              \"small_path\": \"https://media.truva.com/t_small_image/path\",\n              \"description\": \"Building Photo\"\n            },\n            \"hero_image\": {\n              \"path\": \"https://media.truva.com/path\",\n              \"small_path\": \"https://media.truva.com/t_small_image/path\",\n              \"description\": \"Building Photo\"\n            },\n            \"lease_type\": \"direct\",\n            \"listing_name\": \"7th Floor, Room 204\",\n            \"suite\": \"204\",\n            \"suite_type\": \"room\"\n          }\n        ],\n        \"locality\": \"New York\",\n        \"logo\": {\n          \"path\": \"https://media.truva.com/path\",\n          \"small_path\": \"https://media.truva.com/t_small_image/path\",\n          \"description\": \"Building Photo\"\n        },\n        \"longitude\": -74.006,\n        \"marketplace_url\": \"https://marketplace.vts.com/market_buildings/id\",\n        \"notable_tenants\": [\n          {\n            \"company_name\": \"Company\",\n            \"logo\": \"path\"\n          },\n          {\n            \"company_name\": \"Company\",\n            \"logo\": \"path\"\n          }\n        ],\n        \"postal_code\": \"10001\",\n        \"rentable_area\": {\n          \"magnitude\": 1000,\n          \"unit\": \"sf\",\n          \"unit_components\": {\n            \"area\": \"sm\"\n          },\n          \"type\": \"area\"\n        },\n        \"status\": \"active\",\n        \"street_address\": \"123 Main St\",\n        \"submarket\": \"Bryant Park\",\n        \"video_url\": \"https://example.com\",\n        \"virtual_tour_url\": \"https://example.com\",\n        \"vts_property_id\": 100,\n        \"year_built\": 1920,\n        \"year_renovated\": 2020\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"https://api.vts.com/api/v1/buildings?building_id=20be22bd-7d79-47f6-a267-fc3492c5d90b&page%5Bafter%5D=MzE2NTE%253D\",\n    \"prev\": \"https://api.vts.com/api/v1/buildings?building_id=20be22bd-7d79-47f6-a267-fc3492c5d90b&page%5Bbefore%5D=MzE2NTI%253D\",\n    \"next\": \"https://api.vts.com/api/v1/buildings?building_id=20be22bd-7d79-47f6-a267-fc3492c5d90b&page%5Bbefore%5D=MzE2NTI%253D\"\n  },\n  \"meta\": {\n    \"all_cities\": [\n      \"New York\",\n      \"New York\"\n    ],\n    \"total_buildings\": 13\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3965dbd9-5858-4774-a880-7c76981b7953",
+              "name": "API not authorized for use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "buildings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[city]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[search]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d72939a4-4d41-43c6-99d5-e999db9163f1",
+          "name": "Fetches a specific building",
+          "request": {
+            "name": "Fetches a specific building",
+            "description": {
+              "content": "Part of the Leasing Availability API, this fetches a specific building on VTS Market with information about the building and its available listings. Expected usage would be to make a webpage about the building",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "buildings",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "24fd3735-7d6e-4f54-b20f-3693f4592dde",
+              "name": "Returns requested building if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "buildings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"buildings\",\n    \"id\": \"20be22bd-7d79-47f6-a267-fc3492c5d90b\",\n    \"attributes\": {\n      \"abbreviated_region\": \"NY\",\n      \"amenities\": {\n        \"bar_available\": true,\n        \"barbershop\": true,\n        \"bike_storage_available\": true,\n        \"cafe_available\": true,\n        \"car_wash\": true,\n        \"cctv\": true,\n        \"common_area_wifi\": true,\n        \"communal_lobby_space\": true,\n        \"communal_outdoor_space\": true,\n        \"communal_roof_access\": true,\n        \"conference_center\": true,\n        \"controlled_elevator_access\": true,\n        \"covered_parking\": true,\n        \"destination_dispatch_elevators\": true,\n        \"event_space\": true,\n        \"flex_space_available\": true,\n        \"food_service_available\": true,\n        \"general_store_available\": true,\n        \"gym_available\": true,\n        \"key_card_building_entry\": true,\n        \"loading_dock\": true,\n        \"lobby_attendant\": true,\n        \"lobby_beverage_available\": true,\n        \"lobby_food_available\": true,\n        \"locker_rooms\": true,\n        \"messenger_center\": true,\n        \"networking_events\": true,\n        \"option_to_add_internet_service_provider\": true,\n        \"parking_available\": true,\n        \"parking_garage\": true,\n        \"pets_allowed\": true,\n        \"pharmacy_available\": true,\n        \"property_manager_on_site\": true,\n        \"restaurant_available\": true,\n        \"showers\": true,\n        \"shuttle\": true,\n        \"spa_available\": true,\n        \"storage_available\": true,\n        \"tenant_lounge\": true,\n        \"tenant_portal_app\": true,\n        \"touch_free_elevator_access\": true,\n        \"touchless_turnstile_entry\": true,\n        \"transportation_accessible\": true,\n        \"turnstiles\": true,\n        \"twenty_four_seven_access\": true,\n        \"twenty_four_seven_security\": true,\n        \"urgent_care_doctor_onsite\": true,\n        \"valet_parking\": true,\n        \"yoga_studio_available\": true,\n        \"electric_vehicle_charging_stations_count\": 1,\n        \"passenger_elevator_count\": 1,\n        \"service_elevator_count\": 1,\n        \"leed_certification\": \"Gold\",\n        \"wired_certification\": \"Platinum\"\n      },\n      \"asset_types\": [\n        \"industrial\",\n        \"industrial\"\n      ],\n      \"banner_image\": {\n        \"path\": \"https://media.truva.com/path\",\n        \"small_path\": \"https://media.truva.com/t_small_image/path\",\n        \"description\": \"Building Photo\"\n      },\n      \"building_brochure\": {\n        \"name\": \"Brochure-name.pdf\",\n        \"url\": \"https://download.link/whatever.pdf\",\n        \"id\": 2\n      },\n      \"building_name\": \"Empire State Building\",\n      \"contacts\": [\n        {\n          \"id\": 1,\n          \"first_name\": \"John\",\n          \"last_name\": \"Doe\",\n          \"email\": \"whatever@whever.com\",\n          \"role\": \"CEO\",\n          \"phone\": \"123-456-7890\",\n          \"phone_extension\": \"1234\",\n          \"photo_url\": \"https://media.truva.com/path\",\n          \"company_logo_url\": \"https://media.truva.com/path\",\n          \"broker_licence_number\": \"RC #192017\"\n        },\n        {\n          \"id\": 1,\n          \"first_name\": \"John\",\n          \"last_name\": \"Doe\",\n          \"email\": \"whatever@whever.com\",\n          \"role\": \"CEO\",\n          \"phone\": \"123-456-7890\",\n          \"phone_extension\": \"1234\",\n          \"photo_url\": \"https://media.truva.com/path\",\n          \"company_logo_url\": \"https://media.truva.com/path\",\n          \"broker_licence_number\": \"RC #192017\"\n        }\n      ],\n      \"country_code\": \"US\",\n      \"description\": \"This is a building\",\n      \"images\": [\n        {\n          \"path\": \"https://media.truva.com/path\",\n          \"small_path\": \"https://media.truva.com/t_small_image/path\",\n          \"description\": \"Building Photo\"\n        },\n        {\n          \"path\": \"https://media.truva.com/path\",\n          \"small_path\": \"https://media.truva.com/t_small_image/path\",\n          \"description\": \"Building Photo\"\n        }\n      ],\n      \"latitude\": 40.7128,\n      \"listings\": [\n        {\n          \"id\": \"45b13e12-057c-4136-8dde-06a375613465\",\n          \"area\": {\n            \"magnitude\": 1000,\n            \"unit\": \"sf\",\n            \"unit_components\": {\n              \"area\": \"sm\"\n            },\n            \"type\": \"area\"\n          },\n          \"asking_rent\": {\n            \"magnitude\": 10000,\n            \"type\": \"area\",\n            \"units\": {\n              \"area\": \"SquareFoot\",\n              \"currency\": \"USD\",\n              \"period\": \"month\"\n            }\n          },\n          \"available\": true,\n          \"available_date\": \"2021-01-01\",\n          \"condition\": \"white_box\",\n          \"floor\": \"7\",\n          \"floor_plan\": {\n            \"path\": \"https://media.truva.com/path\",\n            \"small_path\": \"https://media.truva.com/t_small_image/path\",\n            \"description\": \"Building Photo\"\n          },\n          \"hero_image\": {\n            \"path\": \"https://media.truva.com/path\",\n            \"small_path\": \"https://media.truva.com/t_small_image/path\",\n            \"description\": \"Building Photo\"\n          },\n          \"lease_type\": \"direct\",\n          \"listing_name\": \"7th Floor, Room 204\",\n          \"suite\": \"204\",\n          \"suite_type\": \"room\"\n        },\n        {\n          \"id\": \"45b13e12-057c-4136-8dde-06a375613465\",\n          \"area\": {\n            \"magnitude\": 1000,\n            \"unit\": \"sf\",\n            \"unit_components\": {\n              \"area\": \"sm\"\n            },\n            \"type\": \"area\"\n          },\n          \"asking_rent\": {\n            \"magnitude\": 10000,\n            \"type\": \"area\",\n            \"units\": {\n              \"area\": \"SquareFoot\",\n              \"currency\": \"USD\",\n              \"period\": \"month\"\n            }\n          },\n          \"available\": true,\n          \"available_date\": \"2021-01-01\",\n          \"condition\": \"white_box\",\n          \"floor\": \"7\",\n          \"floor_plan\": {\n            \"path\": \"https://media.truva.com/path\",\n            \"small_path\": \"https://media.truva.com/t_small_image/path\",\n            \"description\": \"Building Photo\"\n          },\n          \"hero_image\": {\n            \"path\": \"https://media.truva.com/path\",\n            \"small_path\": \"https://media.truva.com/t_small_image/path\",\n            \"description\": \"Building Photo\"\n          },\n          \"lease_type\": \"direct\",\n          \"listing_name\": \"7th Floor, Room 204\",\n          \"suite\": \"204\",\n          \"suite_type\": \"room\"\n        }\n      ],\n      \"locality\": \"New York\",\n      \"logo\": {\n        \"path\": \"https://media.truva.com/path\",\n        \"small_path\": \"https://media.truva.com/t_small_image/path\",\n        \"description\": \"Building Photo\"\n      },\n      \"longitude\": -74.006,\n      \"marketplace_url\": \"https://marketplace.vts.com/market_buildings/id\",\n      \"notable_tenants\": [\n        {\n          \"company_name\": \"Company\",\n          \"logo\": \"path\"\n        },\n        {\n          \"company_name\": \"Company\",\n          \"logo\": \"path\"\n        }\n      ],\n      \"postal_code\": \"10001\",\n      \"rentable_area\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sf\"\n        },\n        \"type\": \"area\"\n      },\n      \"status\": \"active\",\n      \"street_address\": \"123 Main St\",\n      \"submarket\": \"Bryant Park\",\n      \"video_url\": \"https://example.com\",\n      \"virtual_tour_url\": \"https://example.com\",\n      \"vts_property_id\": 100,\n      \"year_built\": 1920,\n      \"year_renovated\": 2020\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02cfd8e8-abb4-4af2-a212-e0f10713b3a4",
+              "name": "authenticated but does not have access to requested building",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "buildings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "caf62c73-6f39-4638-a8d4-815c85d4a76b",
+              "name": "Requested building does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "buildings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1bab762-671b-433d-be15-f2f9ec2571e1",
+          "name": "Fetches a specific listing",
+          "request": {
+            "name": "Fetches a specific listing",
+            "description": {
+              "content": "Part of the Leasing Availability API, this fetches a specific listing on VTS Market with information about the listing. Expected usage would be to make a webpage about the listing",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "listings",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e3ab8d54-71e5-4f8b-a7e9-370d824eaab6",
+              "name": "Returns requested listing if it exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "listings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"listings\",\n    \"id\": \"20be22bd-7d79-47f6-a267-fc3492c5d90b\",\n    \"attributes\": {\n      \"area\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sm\"\n        },\n        \"type\": \"area\"\n      },\n      \"asking_rent\": {\n        \"magnitude\": 10000,\n        \"type\": \"area\",\n        \"units\": {\n          \"area\": \"SquareFoot\",\n          \"currency\": \"USD\",\n          \"period\": \"month\"\n        }\n      },\n      \"amenities\": {\n        \"break_out_space\": true,\n        \"key_card_space_entry\": true,\n        \"phone_booths\": true,\n        \"private_outdoor_space\": true,\n        \"shared_pantry\": true,\n        \"passenger_elevator_count\": 1,\n        \"service_elevator_count\": 1,\n        \"furnished\": \"partial\"\n      },\n      \"condition\": \"white_box\",\n      \"contacts\": [\n        {\n          \"id\": 1,\n          \"first_name\": \"John\",\n          \"last_name\": \"Doe\",\n          \"email\": \"whatever@whever.com\",\n          \"role\": \"CEO\",\n          \"phone\": \"123-456-7890\",\n          \"phone_extension\": \"1234\",\n          \"photo_url\": \"https://media.truva.com/path\",\n          \"company_logo_url\": \"https://media.truva.com/path\",\n          \"broker_licence_number\": \"RC #192017\"\n        },\n        {\n          \"id\": 1,\n          \"first_name\": \"John\",\n          \"last_name\": \"Doe\",\n          \"email\": \"whatever@whever.com\",\n          \"role\": \"CEO\",\n          \"phone\": \"123-456-7890\",\n          \"phone_extension\": \"1234\",\n          \"photo_url\": \"https://media.truva.com/path\",\n          \"company_logo_url\": \"https://media.truva.com/path\",\n          \"broker_licence_number\": \"RC #192017\"\n        }\n      ],\n      \"images\": [\n        {\n          \"path\": \"https://media.truva.com/path\",\n          \"small_path\": \"https://media.truva.com/t_small_image/path\",\n          \"description\": \"Building Photo\"\n        },\n        {\n          \"path\": \"https://media.truva.com/path\",\n          \"small_path\": \"https://media.truva.com/t_small_image/path\",\n          \"description\": \"Building Photo\"\n        }\n      ],\n      \"available\": true,\n      \"available_date\": \"2021-01-01\",\n      \"listing_brochure\": {\n        \"name\": \"Brochure-name.pdf\",\n        \"url\": \"https://download.link/whatever.pdf\",\n        \"id\": 2\n      },\n      \"description\": \"This is a listing\",\n      \"floor\": \"1\",\n      \"floor_plan\": {\n        \"path\": \"https://media.truva.com/path\",\n        \"small_path\": \"https://media.truva.com/t_small_image/path\",\n        \"description\": \"Building Photo\"\n      },\n      \"marketplace_url\": \"https://marketplace.vts.com/market_listings/:id\",\n      \"listing_name\": \"1st Floor, Room 101\",\n      \"status\": \"on_market\",\n      \"suite\": \"101\",\n      \"suite_type\": \"room\",\n      \"video_url\": \"https://marketplace.vts.com/listing/abc/video\",\n      \"virtual_tour_url\": \"https://marketplace.vts.com/listing/abc/3dtour\",\n      \"area_maximum_contiguous\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sm\"\n        },\n        \"type\": \"area\"\n      },\n      \"area_minimum_divisible\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sm\"\n        },\n        \"type\": \"area\"\n      },\n      \"ceiling_height_finished\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sm\"\n        },\n        \"type\": \"area\"\n      },\n      \"ceiling_height_slab_to_slab\": {\n        \"magnitude\": 1000,\n        \"unit\": \"sf\",\n        \"unit_components\": {\n          \"area\": \"sm\"\n        },\n        \"type\": \"area\"\n      },\n      \"building_id\": \"20be22bd-7d79-47f6-a267-fc3492c5d90b\",\n      \"floor_composition\": \"entire\",\n      \"vts_space_id\": 1,\n      \"lease_type\": \"direct\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b485ab94-74ea-4fed-8a2d-ac6d5bc1e536",
+              "name": "authenticated but does not have access to requested listing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "listings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd92dceb-2a2a-44db-8b44-edd817e6d6a1",
+              "name": "Requested listing does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "listings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\"\n    },\n    {\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c3a5e2e0-85c1-4372-b157-f7907e61fb62",
+    "name": "VTS Lease Account Admin Leasing Availability API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.\n\nContact Support:\n Name: VTS API Support",
+      "type": "text/plain"
+    }
+  }
+}
