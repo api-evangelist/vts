@@ -1,0 +1,106 @@
+slug: vts
+provider: VTS
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Real Estate
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: Deals
+  spec_file: vts-deals-api-openapi.yml
+  capability_id: BC-4950
+  capability_id_l1: BC-4950
+  capability_name: Real Estate Leasing Management
+  confidence: 0.8
+  evidence: '''Fetches deals'' / ''Retrieves specific deal'' on the platform ''used by landlords, property
+    managers, and brokers to run their leasing pipeline'''
+  reason: Deals are the leasing pipeline objects of a CRE leasing platform — landlord-side leasing management;
+    the read-only deal entity does not name a single sub-capability.
+- tag: Broker
+  spec_file: vts-broker-api-openapi.yml
+  capability_id: BC-4960
+  capability_id_l1: BC-4960
+  capability_name: Real Estate Brokerage Management
+  confidence: 0.75
+  evidence: Fetches broker agent users; Fetches Broker Assets; Fetches Broker Availabilities
+  reason: A dedicated broker-facing surface exposing broker agents, broker assets and available space
+    clearly realises brokerage/agency intermediation. Left at L1 because the operations straddle agent
+    roster management and listing/availability data without enough detail to pick one L2.
+- tag: Deal Terms
+  spec_file: vts-deal-terms-api-openapi.yml
+  capability_id: BC-4950.50
+  capability_id_l1: BC-4950
+  capability_name: Lease Negotiation & Execution
+  confidence: 0.75
+  evidence: '''Retrieves specific deal term''; schemas base_rents, free_rents, rent_escalations, commissions,
+    reimbursable_expenses, percentage_rents'
+  reason: Deal terms carry the commercial economics being negotiated for a lease (base rent, free rent,
+    escalations, commissions) — landlord-side lease negotiation and term-sheet capture.
+- tag: Deal Tasks
+  spec_file: vts-deal-tasks-api-openapi.yml
+  capability_id: BC-4950
+  capability_id_l1: BC-4950
+  capability_name: Real Estate Leasing Management
+  confidence: 0.72
+  evidence: GET /api/v1/deals/{deal_id}/tasks — 'Fetches deal tasks for a Deal' on the 'commercial real
+    estate leasing ... deals, deal terms' surface
+  reason: Tasks attached to leasing deals in a landlord/broker leasing pipeline platform — this is workflow
+    within landlord-side leasing management. Which sub-capability (prospect handling vs negotiation) is
+    not determinable, so L1 only.
+- tag: Leases
+  spec_file: vts-leases-api-openapi.yml
+  capability_id: BC-4950.60
+  capability_id_l1: BC-4950
+  capability_name: Lease Administration (Landlord-Side)
+  confidence: 0.72
+  evidence: '''Gets leases'' / ''Retrieves specific lease'' on the ''commercial real estate leasing, asset
+    management, and portfolio data surface'''
+  reason: Lease records held by landlords/property managers — landlord-side lease administration. Could
+    also serve asset performance reporting, hence not higher.
+- tag: Leasing Availability
+  spec_file: vts-leasing-availability-api-openapi.yml
+  capability_id: BC-4950.20
+  capability_id_l1: BC-4950
+  capability_name: Vacancy Marketing & Listing
+  confidence: 0.72
+  evidence: tag 'Leasing Availability'; 'Fetches a specific listing'; 'Fetches a set of buildings'; schema
+    measure_area
+  reason: Exposes available space listings per building for syndication/marketing of vacancy — landlord-side
+    vacancy marketing and listing.
+- tag: Approvals
+  spec_file: vts-approvals-api-openapi.yml
+  capability_id: BC-4950
+  capability_id_l1: BC-4950
+  capability_name: Real Estate Leasing Management
+  confidence: 0.7
+  evidence: GET /api/v1/deals/{deal_id}/approvals  Fetches deal approvals
+  reason: Approvals here are attached to leasing deals in a landlord-side CRE leasing platform, so they
+    realise the internal authorisation step of the leasing deal lifecycle rather than a generic workflow
+    object. Kept at L1 because deal approval spans negotiation/execution governance without the evidence
+    naming a specific sub-step.
+- tag: Deal Tours
+  spec_file: vts-deal-tours-api-openapi.yml
+  capability_id: BC-4950
+  capability_id_l1: BC-4950
+  capability_name: Real Estate Leasing Management
+  confidence: 0.7
+  evidence: GET /api/v1/deals/{deal_id}/tours — 'Fetches deal tours'
+  reason: Tours of available space tied to a leasing deal sit within landlord-side leasing management;
+    single thin read operation does not pin down whether this is vacancy marketing/tours or prospect handling,
+    so L1 only.
+- tag: Lease Terms
+  spec_file: vts-lease-terms-api-openapi.yml
+  capability_id: BC-4950.60
+  capability_id_l1: BC-4950
+  capability_name: Lease Administration (Landlord-Side)
+  confidence: 0.7
+  evidence: '''Retrieves specific lease term''; schemas commissions, measure_money_area_period, measure_percentage'
+  reason: Executed lease term data (rents, periods, commissions) exposed to landlords is landlord-side
+    lease administration / lease abstract data.
