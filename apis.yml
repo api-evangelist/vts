@@ -85,6 +85,8 @@ apis:
   humanURL: https://readme.vts.com/
   baseURL: https://api.vts.com/api/connect/v1
   tags:
+  - Appraisal
+  tags_raw:
   - Appraisals
   properties:
   - type: OpenAPI
@@ -325,6 +327,8 @@ apis:
   humanURL: https://readme.vts.com/
   baseURL: https://api.vts.com/api/connect/v1
   tags:
+  - Financial
+  tags_raw:
   - Financials
   properties:
   - type: OpenAPI
@@ -437,6 +441,8 @@ apis:
   humanURL: https://readme.vts.com/
   baseURL: https://api.vts.com/api/connect/v1
   tags:
+  - Space
+  tags_raw:
   - Spaces
   properties:
   - type: OpenAPI
