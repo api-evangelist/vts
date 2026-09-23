@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Broker API
+  title: VTS Lease Broker API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -322,8 +322,9 @@ paths:
                               format: date-time
                               description: The created at date-time the current broker user
                             current_sign_in_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
                             is_account_user:
                               type: boolean
@@ -374,9 +375,10 @@ paths:
                                     type: string
                                     example: asset
                                   name:
-                                    type: string
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: A property name
-                                    nullable: true
                                   owner_name:
                                     type: string
                                     example: VTS Investments
@@ -387,9 +389,10 @@ paths:
                                     type: string
                                     example: United States
                                   account_id:
-                                    type: string
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: '123'
-                                    nullable: true
                   links:
                     type: object
                     properties:
@@ -467,8 +470,9 @@ paths:
                             format: date-time
                             description: The created at date-time the current broker user
                           current_sign_in_at:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             format: date-time
                           is_account_user:
                             type: boolean
@@ -519,9 +523,10 @@ paths:
                                   type: string
                                   example: asset
                                 name:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: A property name
-                                  nullable: true
                                 owner_name:
                                   type: string
                                   example: VTS Investments
@@ -532,9 +537,10 @@ paths:
                                   type: string
                                   example: United States
                                 account_id:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: '123'
-                                  nullable: true
         '401':
           description: Bad API Credentials
           content:
@@ -609,25 +615,29 @@ paths:
                               type: object
                               properties:
                                 name:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: VTS
                                   description: The name of the Account that owns this Asset
-                                  nullable: true
                                 id:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: '12345'
                                   description: The ID of the Account that owns this Asset
-                                  nullable: true
                             owner:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: OwnerCorp
                               description: The owning company for this Asset
-                              nullable: true
                             name:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: My Cool Property
                               description: The building name for this Asset
-                              nullable: true
                             address:
                               type: object
                               description: Geographic address information
@@ -661,20 +671,23 @@ paths:
                               description: Broker contact information
                               properties:
                                 name:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: Mary Jane Watson
                                   description: Broker Name
-                                  nullable: true
                                 title:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: Actor
                                   description: Broker Title
-                                  nullable: true
                                 email:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: mj@actorsequity.org
                                   description: Broker Email Address
-                                  nullable: true
                               deprecated: true
                             building_class:
                               type: string
@@ -694,20 +707,23 @@ paths:
                               type: boolean
                               description: Whether this Asset has industrial space
                             number_of_floors:
-                              type: number
+                              type:
+                              - number
+                              - 'null'
                               description: The number of floors this Asset has
-                              nullable: true
                             rentable_building_area:
                               $ref: '#/components/schemas/measure_size'
                             size:
                               $ref: '#/components/schemas/measure_size'
                             submarket:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The submarket in which this Asset is located
                             market:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The market in which this Asset is located
                             floors:
                               type: array
@@ -732,8 +748,9 @@ paths:
                                     type: string
                                     description: The email address for the Building Contact
                             multi_building_asset:
-                              type: object
-                              nullable: true
+                              type:
+                              - object
+                              - 'null'
                               properties:
                                 name:
                                   type: string
@@ -1015,25 +1032,29 @@ paths:
                             type: object
                             properties:
                               name:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 example: VTS
                                 description: The name of the Account that owns this Asset
-                                nullable: true
                               id:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 example: '12345'
                                 description: The ID of the Account that owns this Asset
-                                nullable: true
                           owner:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             example: OwnerCorp
                             description: The owning company for this Asset
-                            nullable: true
                           name:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             example: My Cool Property
                             description: The building name for this Asset
-                            nullable: true
                           address:
                             type: object
                             description: Geographic address information
@@ -1067,20 +1088,23 @@ paths:
                             description: Broker contact information
                             properties:
                               name:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 example: Mary Jane Watson
                                 description: Broker Name
-                                nullable: true
                               title:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 example: Actor
                                 description: Broker Title
-                                nullable: true
                               email:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 example: mj@actorsequity.org
                                 description: Broker Email Address
-                                nullable: true
                             deprecated: true
                           building_class:
                             type: string
@@ -1100,20 +1124,23 @@ paths:
                             type: boolean
                             description: Whether this Asset has industrial space
                           number_of_floors:
-                            type: number
+                            type:
+                            - number
+                            - 'null'
                             description: The number of floors this Asset has
-                            nullable: true
                           rentable_building_area:
                             $ref: '#/components/schemas/measure_size'
                           size:
                             $ref: '#/components/schemas/measure_size'
                           submarket:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The submarket in which this Asset is located
                           market:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The market in which this Asset is located
                           floors:
                             type: array
@@ -1138,8 +1165,9 @@ paths:
                                   type: string
                                   description: The email address for the Building Contact
                           multi_building_asset:
-                            type: object
-                            nullable: true
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               name:
                                 type: string
@@ -1442,8 +1470,9 @@ paths:
                                   example: '232'
                                   description: The Asset ID for this Space
                                 name:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: The Cool Building
                                   description: The Asset Name that this Space included in
                             suite:
@@ -1474,8 +1503,9 @@ paths:
                             current_size:
                               $ref: '#/components/schemas/measure_size'
                             space_type:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - office
                               - retail
@@ -1505,8 +1535,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1522,8 +1553,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1559,9 +1591,22 @@ paths:
       operationId: get_api-v1-broker-availabilities
 components:
   schemas:
-    measure_size:
+    errors_object:
       type: object
-      nullable: true
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
+    measure_size:
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -1584,17 +1629,6 @@ components:
           type: string
           pattern: area
           example: area
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                nullable: true
   securitySchemes:
     basic_auth:
       type: http

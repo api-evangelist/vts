@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Auth2.0 Access Token API
+  title: VTS Lease Auth2.0 Access Token API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -18,7 +18,6 @@ tags:
 paths:
   /oauth/v1/token:
     post:
-      description: Get access token
       tags:
       - Auth2.0 Access Token
       summary: Get access token
@@ -39,22 +38,6 @@ paths:
       operationId: post_oauth-v1-token-1
 components:
   schemas:
-    models_api.AuthResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-          description: 'Json Web Token. Use as ''authorization: Bearer <JWT>'' header'
-        scope:
-          type: string
-          description: application scope
-        expires_in:
-          type: integer
-          description: expiration duration
-        token_type:
-          type: string
-          description: token_type
-          default: Bearer
     models_api.AuthRequest:
       type: object
       properties:
@@ -74,6 +57,22 @@ components:
           description: grant_type
           example: client_credentials
           default: client_credentials
+    models_api.AuthResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: 'Json Web Token. Use as ''authorization: Bearer <JWT>'' header'
+        scope:
+          type: string
+          description: application scope
+        expires_in:
+          type: integer
+          description: expiration duration
+        token_type:
+          type: string
+          description: token_type
+          default: Bearer
   securitySchemes:
     basic_auth:
       type: http

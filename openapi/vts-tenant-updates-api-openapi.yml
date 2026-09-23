@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Tenant Updates API
+  title: VTS Lease Tenant Updates API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -82,22 +82,17 @@ paths:
                           properties:
                             created_at:
                               type: string
-                              nullable: false
                               format: date-time
                             updated_at:
                               type: string
-                              nullable: false
                               format: date-time
                             important:
                               type: boolean
-                              nullable: false
                             comment:
                               type: string
-                              nullable: false
                               example: This is a comment.
                             interaction_type:
                               type: string
-                              nullable: false
                               enum:
                               - email
                               - phone_call
@@ -114,8 +109,9 @@ paths:
                               example: '2021-03-01'
                               description: The date interaction took place
                             sentiment:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - negative
                               - neutral
@@ -128,8 +124,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -149,8 +146,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -170,8 +168,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -191,8 +190,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -215,8 +215,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -230,8 +231,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -290,13 +292,15 @@ paths:
                                 example: johndoe@example.com
                                 description: Email of the user
                               phone:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: '1234567890'
                                 description: Phone number of the user
                               phone_extension:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: '1234'
                                 description: Phone extension of the user
                       - type: object
@@ -328,8 +332,9 @@ components:
             type: object
             properties:
               detail:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http

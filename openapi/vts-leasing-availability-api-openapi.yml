@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Leasing Availability API
+  title: VTS Lease Leasing Availability API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -82,220 +82,274 @@ paths:
                               type: object
                               properties:
                                 bar_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 barbershop:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 bike_storage_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 cafe_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 car_wash:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 cctv:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 common_area_wifi:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 communal_lobby_space:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 communal_outdoor_space:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 communal_roof_access:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 conference_center:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 controlled_elevator_access:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 covered_parking:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 destination_dispatch_elevators:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 event_space:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 flex_space_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 food_service_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 general_store_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 gym_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 key_card_building_entry:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 loading_dock:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 lobby_attendant:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 lobby_beverage_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 lobby_food_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 locker_rooms:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 messenger_center:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 networking_events:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 option_to_add_internet_service_provider:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 parking_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 parking_garage:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 pets_allowed:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 pharmacy_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 property_manager_on_site:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 restaurant_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 showers:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 shuttle:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 spa_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 storage_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 tenant_lounge:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 tenant_portal_app:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 touch_free_elevator_access:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 touchless_turnstile_entry:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 transportation_accessible:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 turnstiles:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 twenty_four_seven_access:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 twenty_four_seven_security:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 urgent_care_doctor_onsite:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 valet_parking:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 yoga_studio_available:
-                                  type: boolean
-                                  nullable: true
+                                  type:
+                                  - boolean
+                                  - 'null'
                                   example: true
                                 electric_vehicle_charging_stations_count:
-                                  type: integer
-                                  nullable: true
+                                  type:
+                                  - integer
+                                  - 'null'
                                   example: 1
                                 passenger_elevator_count:
-                                  type: integer
-                                  nullable: true
+                                  type:
+                                  - integer
+                                  - 'null'
                                   example: 1
                                 service_elevator_count:
-                                  type: integer
-                                  nullable: true
+                                  type:
+                                  - integer
+                                  - 'null'
                                   example: 1
                                 leed_certification:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: Gold
                                 wired_certification:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: Platinum
                             asset_types:
                               type: array
@@ -303,7 +357,9 @@ paths:
                                 type: string
                                 example: industrial
                             banner_image:
-                              type: object
+                              type:
+                              - object
+                              - 'null'
                               properties:
                                 path:
                                   type: string
@@ -314,17 +370,18 @@ paths:
                                 description:
                                   type: string
                                   example: Building Photo
-                              nullable: true
                             building_brochure:
-                              type: object
-                              nullable: true
+                              type:
+                              - object
+                              - 'null'
                               example:
                                 name: Brochure-name.pdf
                                 url: https://download.link/whatever.pdf
                                 id: 2
                             building_name:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: Empire State Building
                             contacts:
                               type: array
@@ -338,42 +395,50 @@ paths:
                                     type: string
                                     example: John
                                   last_name:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: Doe
                                   email:
                                     type: string
                                     example: whatever@whever.com
                                   role:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: CEO
                                   phone:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: 123-456-7890
                                   phone_extension:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: '1234'
                                   photo_url:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: https://media.truva.com/path
                                   company_logo_url:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: https://media.truva.com/path
                                   broker_licence_number:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: 'RC #192017'
                             country_code:
                               type: string
                               example: US
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a building
                             images:
                               type: array
@@ -389,7 +454,6 @@ paths:
                                   description:
                                     type: string
                                     example: Building Photo
-                                nullable: false
                             latitude:
                               type: number
                               example: 40.7128
@@ -406,8 +470,9 @@ paths:
                                     - $ref: '#/components/schemas/measure_area'
                                     - description: Area of the space of the listing
                                   asking_rent:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       magnitude:
                                         type: number
@@ -431,19 +496,24 @@ paths:
                                     type: boolean
                                     example: true
                                   available_date:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: '2021-01-01'
                                   condition:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: white_box
                                   floor:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: '7'
                                   floor_plan:
-                                    type: object
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       path:
                                         type: string
@@ -454,7 +524,6 @@ paths:
                                       description:
                                         type: string
                                         example: Building Photo
-                                    nullable: true
                                   hero_image:
                                     type: object
                                     properties:
@@ -467,7 +536,6 @@ paths:
                                       description:
                                         type: string
                                         example: Building Photo
-                                    nullable: false
                                   lease_type:
                                     type: string
                                     example: direct
@@ -475,18 +543,22 @@ paths:
                                     type: string
                                     example: 7th Floor, Room 204
                                   suite:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: '204'
                                   suite_type:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: room
                             locality:
                               type: string
                               example: New York
                             logo:
-                              type: object
+                              type:
+                              - object
+                              - 'null'
                               properties:
                                 path:
                                   type: string
@@ -497,13 +569,13 @@ paths:
                                 description:
                                   type: string
                                   example: Building Photo
-                              nullable: true
                             longitude:
                               type: number
                               example: -74.006
                             marketplace_url:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: https://marketplace.vts.com/market_buildings/id
                             notable_tenants:
                               type: array
@@ -530,27 +602,32 @@ paths:
                               type: string
                               example: 123 Main St
                             submarket:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: Bryant Park
                             video_url:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: https://example.com
                             virtual_tour_url:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: https://example.com
                             vts_property_id:
                               type: integer
                               example: 100
                             year_built:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               example: 1920
                             year_renovated:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               example: 2020
                   links:
                     type: object
@@ -629,220 +706,274 @@ paths:
                             type: object
                             properties:
                               bar_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               barbershop:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               bike_storage_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               cafe_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               car_wash:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               cctv:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               common_area_wifi:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               communal_lobby_space:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               communal_outdoor_space:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               communal_roof_access:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               conference_center:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               controlled_elevator_access:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               covered_parking:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               destination_dispatch_elevators:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               event_space:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               flex_space_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               food_service_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               general_store_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               gym_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               key_card_building_entry:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               loading_dock:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               lobby_attendant:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               lobby_beverage_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               lobby_food_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               locker_rooms:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               messenger_center:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               networking_events:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               option_to_add_internet_service_provider:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               parking_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               parking_garage:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               pets_allowed:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               pharmacy_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               property_manager_on_site:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               restaurant_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               showers:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               shuttle:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               spa_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               storage_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               tenant_lounge:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               tenant_portal_app:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               touch_free_elevator_access:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               touchless_turnstile_entry:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               transportation_accessible:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               turnstiles:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               twenty_four_seven_access:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               twenty_four_seven_security:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               urgent_care_doctor_onsite:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               valet_parking:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               yoga_studio_available:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               electric_vehicle_charging_stations_count:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 example: 1
                               passenger_elevator_count:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 example: 1
                               service_elevator_count:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 example: 1
                               leed_certification:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Gold
                               wired_certification:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Platinum
                           asset_types:
                             type: array
@@ -850,7 +981,9 @@ paths:
                               type: string
                               example: industrial
                           banner_image:
-                            type: object
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               path:
                                 type: string
@@ -861,17 +994,18 @@ paths:
                               description:
                                 type: string
                                 example: Building Photo
-                            nullable: true
                           building_brochure:
-                            type: object
-                            nullable: true
+                            type:
+                            - object
+                            - 'null'
                             example:
                               name: Brochure-name.pdf
                               url: https://download.link/whatever.pdf
                               id: 2
                           building_name:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: Empire State Building
                           contacts:
                             type: array
@@ -885,42 +1019,50 @@ paths:
                                   type: string
                                   example: John
                                 last_name:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: Doe
                                 email:
                                   type: string
                                   example: whatever@whever.com
                                 role:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: CEO
                                 phone:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: 123-456-7890
                                 phone_extension:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: '1234'
                                 photo_url:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: https://media.truva.com/path
                                 company_logo_url:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: https://media.truva.com/path
                                 broker_licence_number:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: 'RC #192017'
                           country_code:
                             type: string
                             example: US
                           description:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: This is a building
                           images:
                             type: array
@@ -936,7 +1078,6 @@ paths:
                                 description:
                                   type: string
                                   example: Building Photo
-                              nullable: false
                           latitude:
                             type: number
                             example: 40.7128
@@ -953,8 +1094,9 @@ paths:
                                   - $ref: '#/components/schemas/measure_area'
                                   - description: Area of the space of the listing
                                 asking_rent:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     magnitude:
                                       type: number
@@ -978,19 +1120,24 @@ paths:
                                   type: boolean
                                   example: true
                                 available_date:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: '2021-01-01'
                                 condition:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: white_box
                                 floor:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: '7'
                                 floor_plan:
-                                  type: object
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     path:
                                       type: string
@@ -1001,7 +1148,6 @@ paths:
                                     description:
                                       type: string
                                       example: Building Photo
-                                  nullable: true
                                 hero_image:
                                   type: object
                                   properties:
@@ -1014,7 +1160,6 @@ paths:
                                     description:
                                       type: string
                                       example: Building Photo
-                                  nullable: false
                                 lease_type:
                                   type: string
                                   example: direct
@@ -1022,18 +1167,22 @@ paths:
                                   type: string
                                   example: 7th Floor, Room 204
                                 suite:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: '204'
                                 suite_type:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: room
                           locality:
                             type: string
                             example: New York
                           logo:
-                            type: object
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               path:
                                 type: string
@@ -1044,13 +1193,13 @@ paths:
                               description:
                                 type: string
                                 example: Building Photo
-                            nullable: true
                           longitude:
                             type: number
                             example: -74.006
                           marketplace_url:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: https://marketplace.vts.com/market_buildings/id
                           notable_tenants:
                             type: array
@@ -1077,27 +1226,32 @@ paths:
                             type: string
                             example: 123 Main St
                           submarket:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: Bryant Park
                           video_url:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: https://example.com
                           virtual_tour_url:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: https://example.com
                           vts_property_id:
                             type: integer
                             example: 100
                           year_built:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             example: 1920
                           year_renovated:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             example: 2020
         '403':
           description: authenticated but does not have access to requested building
@@ -1152,8 +1306,9 @@ paths:
                             - $ref: '#/components/schemas/measure_area'
                             - description: Area of the space of the listing
                           asking_rent:
-                            type: object
-                            nullable: true
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               magnitude:
                                 type: number
@@ -1177,40 +1332,49 @@ paths:
                             type: object
                             properties:
                               break_out_space:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               key_card_space_entry:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               phone_booths:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               private_outdoor_space:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               shared_pantry:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 example: true
                               passenger_elevator_count:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 example: 1
                               service_elevator_count:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 example: 1
                               furnished:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: partial
                           condition:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: white_box
                           contacts:
                             type: array
@@ -1224,35 +1388,42 @@ paths:
                                   type: string
                                   example: John
                                 last_name:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: Doe
                                 email:
                                   type: string
                                   example: whatever@whever.com
                                 role:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: CEO
                                 phone:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: 123-456-7890
                                 phone_extension:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: '1234'
                                 photo_url:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: https://media.truva.com/path
                                 company_logo_url:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: https://media.truva.com/path
                                 broker_licence_number:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: 'RC #192017'
                           images:
                             type: array
@@ -1268,13 +1439,13 @@ paths:
                                 description:
                                   type: string
                                   example: Building Photo
-                              nullable: false
                           available:
                             type: boolean
                             example: true
                           available_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: '2021-01-01'
                           listing_brochure:
                             type: object
@@ -1289,7 +1460,9 @@ paths:
                             type: string
                             example: '1'
                           floor_plan:
-                            type: object
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               path:
                                 type: string
@@ -1300,7 +1473,6 @@ paths:
                               description:
                                 type: string
                                 example: Building Photo
-                            nullable: true
                           marketplace_url:
                             type: string
                             example: https://marketplace.vts.com/market_listings/:id
@@ -1342,12 +1514,14 @@ paths:
                             type: string
                             example: 20be22bd-7d79-47f6-a267-fc3492c5d90b
                           floor_composition:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: entire
                           vts_space_id:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             example: 1
                           lease_type:
                             type: string
@@ -1367,9 +1541,22 @@ paths:
       operationId: get_api-v1-listings-id
 components:
   schemas:
-    measure_area:
+    errors_object:
       type: object
-      nullable: true
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
+    measure_area:
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -1394,17 +1581,6 @@ components:
           type: string
           pattern: area
           example: area
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                nullable: true
   securitySchemes:
     basic_auth:
       type: http

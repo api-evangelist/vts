@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Global Tenants API
+  title: VTS Lease Global Tenants API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -104,9 +104,10 @@ paths:
                               type: string
                               description: Location of Global Tenant
                             cap_iq_id:
-                              type: integer
+                              type:
+                              - integer
+                              - 'null'
                               description: ID of associated company from the S&P Capital IQ database
-                              nullable: true
                         relationships:
                           type: object
                           properties:
@@ -114,8 +115,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -186,9 +188,10 @@ paths:
                             type: string
                             description: Location of Global Tenant
                           cap_iq_id:
-                            type: integer
+                            type:
+                            - integer
+                            - 'null'
                             description: ID of associated company from the S&P Capital IQ database
-                            nullable: true
                       relationships:
                         type: object
                         properties:
@@ -196,8 +199,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -225,8 +229,9 @@ components:
             type: object
             properties:
               detail:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http

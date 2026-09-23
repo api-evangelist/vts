@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Deal Terms API
+  title: VTS Lease Deal Terms API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -137,10 +137,11 @@ paths:
                                   - $ref: '#/components/schemas/measure_money'
                                   - description: The present value of the net cash flow given the time value of money
                                 leasing_spread:
-                                  type: number
+                                  type:
+                                  - number
+                                  - 'null'
                                   format: float
                                   example: 1.5
-                                  nullable: true
                                   description: Only appears if you select a "Previous Lease" for comparison. The percentage change between theexpiring base rent rate of the previous lease to the starting base rent rate of your new proposalafter the first period of free rent
                                 total_net_rent:
                                   allOf:
@@ -162,15 +163,17 @@ paths:
                                             description: 'Possible values: ''mo'''
                                     description: Total cash received from base rent + escalation - free rent. Returned in money/area/month units
                                 internal_rate_of_return:
-                                  type: number
+                                  type:
+                                  - number
+                                  - 'null'
                                   format: float
                                   example: 1.5
-                                  nullable: true
                                   description: The return on money spent for the term of the lease
                                 payback:
-                                  type: number
+                                  type:
+                                  - number
+                                  - 'null'
                                   example: 2
-                                  nullable: true
                                   description: The number of months it takes for the landlord to earn back what they had to pay out as costs of the deal. Measured in months
                                 total_capital:
                                   allOf:
@@ -245,8 +248,9 @@ paths:
                             downtime:
                               allOf:
                               - $ref: '#/components/schemas/measure_period'
-                              - type: object
-                                nullable: true
+                              - type:
+                                - object
+                                - 'null'
                                 properties:
                                   magnitude:
                                     example: 2
@@ -262,18 +266,21 @@ paths:
                                     example: P2M
                                 description: Months from previous tenant move-out to commencement date of replacement tenant
                             entered_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               example: '2020-02-02'
                             execution_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               example: '2021-03-01'
                             expiration_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               example: '2021-12-31'
                             rentable_size:
@@ -281,8 +288,9 @@ paths:
                             tenant_buildout_period:
                               $ref: '#/components/schemas/measure_period'
                             tenant_possession_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               example: '2021-02-01'
                             tenant_risks:
@@ -298,8 +306,9 @@ paths:
                                     - guarantee
                                     - other
                                   description:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                   amount:
                                     $ref: '#/components/schemas/measure_money'
                             term_duration:
@@ -357,8 +366,9 @@ paths:
                               type: object
                               properties:
                                 description:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: My retail description.
                                 estimated_sales:
                                   $ref: '#/components/schemas/measure_money_period'
@@ -402,8 +412,9 @@ paths:
                               - description: Sum of commissions for a deal term
                               deprecated: true
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: Some text
                               description: The description of deal term
                             commissions:
@@ -446,8 +457,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -467,8 +479,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -490,8 +503,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -624,10 +638,11 @@ paths:
                                 - $ref: '#/components/schemas/measure_money'
                                 - description: The present value of the net cash flow given the time value of money
                               leasing_spread:
-                                type: number
+                                type:
+                                - number
+                                - 'null'
                                 format: float
                                 example: 1.5
-                                nullable: true
                                 description: Only appears if you select a "Previous Lease" for comparison. The percentage change between theexpiring base rent rate of the previous lease to the starting base rent rate of your new proposalafter the first period of free rent
                               total_net_rent:
                                 allOf:
@@ -649,15 +664,17 @@ paths:
                                           description: 'Possible values: ''mo'''
                                   description: Total cash received from base rent + escalation - free rent. Returned in money/area/month units
                               internal_rate_of_return:
-                                type: number
+                                type:
+                                - number
+                                - 'null'
                                 format: float
                                 example: 1.5
-                                nullable: true
                                 description: The return on money spent for the term of the lease
                               payback:
-                                type: number
+                                type:
+                                - number
+                                - 'null'
                                 example: 2
-                                nullable: true
                                 description: The number of months it takes for the landlord to earn back what they had to pay out as costs of the deal. Measured in months
                               total_capital:
                                 allOf:
@@ -732,8 +749,9 @@ paths:
                           downtime:
                             allOf:
                             - $ref: '#/components/schemas/measure_period'
-                            - type: object
-                              nullable: true
+                            - type:
+                              - object
+                              - 'null'
                               properties:
                                 magnitude:
                                   example: 2
@@ -749,18 +767,21 @@ paths:
                                   example: P2M
                               description: Months from previous tenant move-out to commencement date of replacement tenant
                           entered_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             format: date
                             example: '2020-02-02'
                           execution_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             format: date
                             example: '2021-03-01'
                           expiration_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             format: date
                             example: '2021-12-31'
                           rentable_size:
@@ -768,8 +789,9 @@ paths:
                           tenant_buildout_period:
                             $ref: '#/components/schemas/measure_period'
                           tenant_possession_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             format: date
                             example: '2021-02-01'
                           tenant_risks:
@@ -785,8 +807,9 @@ paths:
                                   - guarantee
                                   - other
                                 description:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                 amount:
                                   $ref: '#/components/schemas/measure_money'
                           term_duration:
@@ -844,8 +867,9 @@ paths:
                             type: object
                             properties:
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: My retail description.
                               estimated_sales:
                                 $ref: '#/components/schemas/measure_money_period'
@@ -889,8 +913,9 @@ paths:
                             - description: Sum of commissions for a deal term
                             deprecated: true
                           description:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: Some text
                             description: The description of deal term
                           commissions:
@@ -933,8 +958,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -954,8 +980,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -977,8 +1004,9 @@ paths:
                               data:
                                 type: array
                                 items:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1009,38 +1037,22 @@ paths:
       operationId: get_api-v1-deal-terms-id
 components:
   schemas:
-    percentage_rents:
-      type: array
-      items:
-        type: object
-        properties:
-          start_month:
-            type: number
-            example: 1
-            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
-          minimum_guarantee:
-            oneOf:
-            - $ref: '#/components/schemas/measure_money_area_period'
-            - $ref: '#/components/schemas/measure_money_period'
-          sales_overage_breakpoints_type:
-            type: string
-            enum:
-            - Natural
-            - Unnatural
-            example: Natural
-            description: Type of Sales Overage Breakpoints Natural/Unnatural
-          sales_overage_breakpoints:
-            type: array
-            items:
-              type: object
-              properties:
-                breakpoint:
-                  $ref: '#/components/schemas/measure_money_period'
-                percent_rent:
-                  $ref: '#/components/schemas/measure_percentage'
-    measure_money_area_period:
+    errors_object:
       type: object
-      nullable: true
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
+    measure_money_area_period:
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -1072,234 +1084,10 @@ components:
           type: string
           pattern: money/area/period
           example: money/area/period
-    measure_money:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '...'
-          description: ISO 4217 currency code
-          example: USD
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              example: USD
-        type:
-          type: string
-          pattern: money
-          example: money
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                nullable: true
-    costs:
-      type: array
-      items:
-        type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - tenant_improvement
-            - building_improvement
-            - lease_incentive
-            - other_fee
-            example: tenant_improvement
-            description: The type of the cost
-          occurrence_month:
-            type: number
-            example: 1
-            description: Tenant improvements occurrence month. Possible values are between 1 and the number of months in the term
-          amount:
-            oneOf:
-            - $ref: '#/components/schemas/measure_money'
-            - $ref: '#/components/schemas/measure_money_period'
-            description: The amount, with units, of the cost
-          description:
-            type: string
-            example: Description
-            description: The description of the cost
-    measure_percentage:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '%'
-          example: '%'
-        unit_components:
-          type: object
-          properties:
-            period:
-              type: string
-              pattern: '%'
-              example: '%'
-        type:
-          type: string
-          pattern: percentage
-          example: percentage
-    free_rents:
-      type: array
-      items:
-        type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - net
-            - gross
-            example: gross
-            description: 'net: percent of net base rent; gross: percent of gross base rent and recoveries.'
-          start_month:
-            type: number
-            example: 1
-            description: Month that rent step goes into effect, relative to lease commencement date
-          amount_free:
-            allOf:
-            - $ref: '#/components/schemas/measure_percentage'
-            - description: Discount as a percentage value of rent
-          duration_with_units:
-            allOf:
-            - $ref: '#/components/schemas/measure_period'
-            - description: The amount of time in which the free rent applies (including amount of time units)
-    rent_escalations:
-      type: array
-      items:
-        type: object
-        properties:
-          start_month:
-            type: number
-            example: 1
-            description: Month number in which to begin rent escalations
-          amount:
-            anyOf:
-            - $ref: '#/components/schemas/measure_percentage'
-            - $ref: '#/components/schemas/measure_money_area_period'
-            description: Value of the escalation
-          occurs:
-            type: string
-            enum:
-            - One Time
-            - Annual
-            example: One Time
-            description: How often escalations recurs
-    measure_size:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          enum:
-          - sf
-          - sm
-        unit_components:
-          type: object
-          properties:
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: area
-          example: area
-    measure_money_period:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          example: USD/yr
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            period:
-              type: string
-              enum:
-              - yr
-              - mo
-              - day
-        type:
-          type: string
-          pattern: money/period
-          example: money/period
-    measure_money_area:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          example: USD/sf
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: money/area
-          example: money/area
-    base_rents:
-      type: array
-      items:
-        type: object
-        properties:
-          start_month:
-            type: number
-            example: 1
-            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
-          amount:
-            oneOf:
-            - $ref: '#/components/schemas/measure_money_area_period'
-            - $ref: '#/components/schemas/measure_money_period'
     measure_period:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -1325,85 +1113,11 @@ components:
           pattern: period
           example: period
         iso8601:
-          type: string
+          type:
+          - string
+          - 'null'
           example: P2Y
           description: Period represented by ISO8601 format
-          nullable: true
-    commissions:
-      type: array
-      items:
-        type: object
-        properties:
-          created_at:
-            type: string
-            example: '2021-12-08T16:28:22.179486Z'
-            format: date-time
-            description: The timestamp when this budget commission was created
-            deprecated: true
-          updated_at:
-            type: string
-            example: '2021-12-08T16:28:22.187979Z'
-            description: The timestamp when this budget commission was last updated
-            deprecated: true
-          net_or_gross:
-            type: string
-            enum:
-            - gross
-            - net
-            example: gross
-            description: The calculation method of the commission amount.
-            nullable: true
-          broker:
-            type: string
-            example: VTS
-            description: Broker/Company name
-          commission_date:
-            type: string
-            example: '2021-12-08'
-            format: date
-            description: The start date when commissions will start counting for.
-          commission_type:
-            type: string
-            enum:
-            - landlord
-            - tenant_rep
-            example: landlord
-            description: Commissions Value paid to landlord or tenant brokers on the deal
-          description:
-            type: string
-            example: Description
-            description: The description of commission
-          free_rent:
-            type: string
-            enum:
-            - amortize_over_term
-            - occurs_in_month
-            - exclude_free_rent
-            example: amortize_over_term
-            description: How commission rent should handle free rent
-          periods:
-            type: array
-            items:
-              type: object
-              properties:
-                starts:
-                  type: object
-                  properties:
-                    date:
-                      type: string
-                      example: '2021-12-08'
-                      format: date
-                      description: The date of the commissions to be paid out. This doesn't impact any calculations.
-                    month:
-                      type: number
-                      example: 1
-                      description: The start month when commissions will start counting for.
-                amount:
-                  oneOf:
-                  - $ref: '#/components/schemas/measure_percentage'
-                  - $ref: '#/components/schemas/measure_money'
-                  - $ref: '#/components/schemas/measure_money_area'
-                  - $ref: '#/components/schemas/measure_money_period'
     reimbursable_expenses:
       type: array
       items:
@@ -1457,6 +1171,51 @@ components:
             type: string
             example: Description
             description: The description of reimbursable expense
+    measure_percentage:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '%'
+          example: '%'
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              pattern: '%'
+              example: '%'
+        type:
+          type: string
+          pattern: percentage
+          example: percentage
+    rent_escalations:
+      type: array
+      items:
+        type: object
+        properties:
+          start_month:
+            type: number
+            example: 1
+            description: Month number in which to begin rent escalations
+          amount:
+            anyOf:
+            - $ref: '#/components/schemas/measure_percentage'
+            - $ref: '#/components/schemas/measure_money_area_period'
+            description: Value of the escalation
+          occurs:
+            type: string
+            enum:
+            - One Time
+            - Annual
+            example: One Time
+            description: How often escalations recurs
     other_incomes:
       type: array
       items:
@@ -1487,6 +1246,285 @@ components:
             type: number
             example: 1
             description: The quantity of the entity providing income (only applies to parking)
+    measure_money_area:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: money/area
+          example: money/area
+    costs:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - tenant_improvement
+            - building_improvement
+            - lease_incentive
+            - other_fee
+            example: tenant_improvement
+            description: The type of the cost
+          occurrence_month:
+            type: number
+            example: 1
+            description: Tenant improvements occurrence month. Possible values are between 1 and the number of months in the term
+          amount:
+            oneOf:
+            - $ref: '#/components/schemas/measure_money'
+            - $ref: '#/components/schemas/measure_money_period'
+            description: The amount, with units, of the cost
+          description:
+            type: string
+            example: Description
+            description: The description of the cost
+    percentage_rents:
+      type: array
+      items:
+        type: object
+        properties:
+          start_month:
+            type: number
+            example: 1
+            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
+          minimum_guarantee:
+            oneOf:
+            - $ref: '#/components/schemas/measure_money_area_period'
+            - $ref: '#/components/schemas/measure_money_period'
+          sales_overage_breakpoints_type:
+            type: string
+            enum:
+            - Natural
+            - Unnatural
+            example: Natural
+            description: Type of Sales Overage Breakpoints Natural/Unnatural
+          sales_overage_breakpoints:
+            type: array
+            items:
+              type: object
+              properties:
+                breakpoint:
+                  $ref: '#/components/schemas/measure_money_period'
+                percent_rent:
+                  $ref: '#/components/schemas/measure_percentage'
+    commissions:
+      type: array
+      items:
+        type: object
+        properties:
+          created_at:
+            type: string
+            example: '2021-12-08T16:28:22.179486Z'
+            format: date-time
+            description: The timestamp when this budget commission was created
+            deprecated: true
+          updated_at:
+            type: string
+            example: '2021-12-08T16:28:22.187979Z'
+            description: The timestamp when this budget commission was last updated
+            deprecated: true
+          net_or_gross:
+            type:
+            - string
+            - 'null'
+            enum:
+            - gross
+            - net
+            example: gross
+            description: The calculation method of the commission amount.
+          broker:
+            type: string
+            example: VTS
+            description: Broker/Company name
+          commission_date:
+            type: string
+            example: '2021-12-08'
+            format: date
+            description: The start date when commissions will start counting for.
+          commission_type:
+            type: string
+            enum:
+            - landlord
+            - tenant_rep
+            example: landlord
+            description: Commissions Value paid to landlord or tenant brokers on the deal
+          description:
+            type: string
+            example: Description
+            description: The description of commission
+          free_rent:
+            type: string
+            enum:
+            - amortize_over_term
+            - occurs_in_month
+            - exclude_free_rent
+            example: amortize_over_term
+            description: How commission rent should handle free rent
+          periods:
+            type: array
+            items:
+              type: object
+              properties:
+                starts:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      example: '2021-12-08'
+                      format: date
+                      description: The date of the commissions to be paid out. This doesn't impact any calculations.
+                    month:
+                      type: number
+                      example: 1
+                      description: The start month when commissions will start counting for.
+                amount:
+                  oneOf:
+                  - $ref: '#/components/schemas/measure_percentage'
+                  - $ref: '#/components/schemas/measure_money'
+                  - $ref: '#/components/schemas/measure_money_area'
+                  - $ref: '#/components/schemas/measure_money_period'
+    measure_size:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
+    base_rents:
+      type: array
+      items:
+        type: object
+        properties:
+          start_month:
+            type: number
+            example: 1
+            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
+          amount:
+            oneOf:
+            - $ref: '#/components/schemas/measure_money_area_period'
+            - $ref: '#/components/schemas/measure_money_period'
+    measure_money:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
+    measure_money_period:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/period
+          example: money/period
+    free_rents:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - net
+            - gross
+            example: gross
+            description: 'net: percent of net base rent; gross: percent of gross base rent and recoveries.'
+          start_month:
+            type: number
+            example: 1
+            description: Month that rent step goes into effect, relative to lease commencement date
+          amount_free:
+            allOf:
+            - $ref: '#/components/schemas/measure_percentage'
+            - description: Discount as a percentage value of rent
+          duration_with_units:
+            allOf:
+            - $ref: '#/components/schemas/measure_period'
+            - description: The amount of time in which the free rent applies (including amount of time units)
   securitySchemes:
     basic_auth:
       type: http

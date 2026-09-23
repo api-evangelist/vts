@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Financials API
+  title: VTS Lease Financials API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -192,8 +192,9 @@ paths:
                                 format: date-time
                                 description: The timestamp when this free rent was last updated
                               structure:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - net
                                 - gross
@@ -273,8 +274,9 @@ paths:
                                 format: date-time
                                 description: The timestamp when this other revenue was last updated
                               revenue_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: other
                           relationships:
                             type: object
@@ -353,16 +355,19 @@ paths:
                                 type: object
                                 properties:
                                   start:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     example: 2009
                                   end:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     example: 2010
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: real estate tax
                               recovery_amount:
                                 anyOf:
@@ -385,15 +390,17 @@ paths:
                                 - Security
                                 - Utilities
                               reimbursed:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                               stop_amount:
                                 anyOf:
                                 - $ref: '#/components/schemas/measure_money_period'
                                 - $ref: '#/components/schemas/measure_money_area_period'
                               structure:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - gross
                                 - net
@@ -433,20 +440,24 @@ paths:
                             type: object
                             properties:
                               structure:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: gross
                               broker:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Ensemble
                               commission_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: '2020-01-01'
                               commission_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Tenant
                               created_at:
                                 type: string
@@ -471,13 +482,15 @@ paths:
                                       type: object
                                       properties:
                                         date:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           format: date
                                           example: '2020-01-01'
                                         month:
-                                          type: integer
-                                          nullable: true
+                                          type:
+                                          - integer
+                                          - 'null'
                                           example: 1
                                           minimum: 1
                           relationships:
@@ -579,8 +592,9 @@ paths:
                                 - type: object
                                   properties:
                                     date:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                 - type: object
                                   properties:
                                     duration:
@@ -643,12 +657,14 @@ paths:
                                 - $ref: '#/components/schemas/measure_money_area'
                                 - $ref: '#/components/schemas/measure_money'
                               occurrence_month:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 minimum: 0
-                                nullable: true
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               improvement_type:
                                 type: string
                                 enum:
@@ -701,12 +717,14 @@ paths:
                                 - $ref: '#/components/schemas/measure_money_area'
                                 - $ref: '#/components/schemas/measure_money'
                               occurrence_month:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 minimum: 0
-                                nullable: true
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               improvement_type:
                                 type: string
                                 enum:
@@ -757,12 +775,14 @@ paths:
                                 - $ref: '#/components/schemas/measure_money_period'
                                 - $ref: '#/components/schemas/measure_money_area_period'
                               occurrence_month:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 minimum: 0
-                                nullable: true
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               created_at:
                                 type: string
                                 format: date-time
@@ -990,8 +1010,9 @@ paths:
                                 format: date-time
                                 description: The timestamp when this free rent was last updated
                               structure:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - net
                                 - gross
@@ -1152,8 +1173,9 @@ paths:
                                 format: date-time
                                 description: The timestamp when this other revenue was last updated
                               revenue_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: other
                           relationships:
                             type: object
@@ -1194,12 +1216,14 @@ paths:
                                 - $ref: '#/components/schemas/measure_money_area'
                                 - $ref: '#/components/schemas/measure_money'
                               occurrence_month:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 minimum: 0
-                                nullable: true
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               improvement_type:
                                 type: string
                                 enum:
@@ -1252,12 +1276,14 @@ paths:
                                 - $ref: '#/components/schemas/measure_money_area'
                                 - $ref: '#/components/schemas/measure_money'
                               occurrence_month:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 minimum: 0
-                                nullable: true
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               improvement_type:
                                 type: string
                                 enum:
@@ -1308,12 +1334,14 @@ paths:
                                 - $ref: '#/components/schemas/measure_money_period'
                                 - $ref: '#/components/schemas/measure_money_area_period'
                               occurrence_month:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 minimum: 0
-                                nullable: true
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               created_at:
                                 type: string
                                 format: date-time
@@ -1399,16 +1427,19 @@ paths:
                                 type: object
                                 properties:
                                   start:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     example: 2009
                                   end:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     example: 2010
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: real estate tax
                               recovery_amount:
                                 anyOf:
@@ -1431,15 +1462,17 @@ paths:
                                 - Security
                                 - Utilities
                               reimbursed:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                               stop_amount:
                                 anyOf:
                                 - $ref: '#/components/schemas/measure_money_period'
                                 - $ref: '#/components/schemas/measure_money_area_period'
                               structure:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - gross
                                 - net
@@ -1479,20 +1512,24 @@ paths:
                             type: object
                             properties:
                               structure:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: gross
                               broker:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Ensemble
                               commission_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: '2020-01-01'
                               commission_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Tenant
                               created_at:
                                 type: string
@@ -1517,13 +1554,15 @@ paths:
                                       type: object
                                       properties:
                                         date:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           format: date
                                           example: '2020-01-01'
                                         month:
-                                          type: integer
-                                          nullable: true
+                                          type:
+                                          - integer
+                                          - 'null'
                                           example: 1
                                           minimum: 1
                           relationships:
@@ -1625,8 +1664,9 @@ paths:
                                 - type: object
                                   properties:
                                     date:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                 - type: object
                                   properties:
                                     duration:
@@ -1864,8 +1904,9 @@ paths:
                                 format: date-time
                                 description: The timestamp when this free rent was last updated
                               structure:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - net
                                 - gross
@@ -2026,8 +2067,9 @@ paths:
                                 format: date-time
                                 description: The timestamp when this other revenue was last updated
                               revenue_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: other
                           relationships:
                             type: object
@@ -2106,16 +2148,19 @@ paths:
                                 type: object
                                 properties:
                                   start:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     example: 2009
                                   end:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     example: 2010
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: real estate tax
                               recovery_amount:
                                 anyOf:
@@ -2138,15 +2183,17 @@ paths:
                                 - Security
                                 - Utilities
                               reimbursed:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                               stop_amount:
                                 anyOf:
                                 - $ref: '#/components/schemas/measure_money_period'
                                 - $ref: '#/components/schemas/measure_money_area_period'
                               structure:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - gross
                                 - net
@@ -2192,12 +2239,14 @@ paths:
                                 - $ref: '#/components/schemas/measure_money_area'
                                 - $ref: '#/components/schemas/measure_money'
                               occurrence_month:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 minimum: 0
-                                nullable: true
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               improvement_type:
                                 type: string
                                 enum:
@@ -2250,12 +2299,14 @@ paths:
                                 - $ref: '#/components/schemas/measure_money_area'
                                 - $ref: '#/components/schemas/measure_money'
                               occurrence_month:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 minimum: 0
-                                nullable: true
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               improvement_type:
                                 type: string
                                 enum:
@@ -2302,20 +2353,24 @@ paths:
                             type: object
                             properties:
                               structure:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: gross
                               broker:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Ensemble
                               commission_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: '2020-01-01'
                               commission_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Tenant
                               created_at:
                                 type: string
@@ -2340,13 +2395,15 @@ paths:
                                       type: object
                                       properties:
                                         date:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           format: date
                                           example: '2020-01-01'
                                         month:
-                                          type: integer
-                                          nullable: true
+                                          type:
+                                          - integer
+                                          - 'null'
                                           example: 1
                                           minimum: 1
                           relationships:
@@ -2386,12 +2443,14 @@ paths:
                                 - $ref: '#/components/schemas/measure_money_period'
                                 - $ref: '#/components/schemas/measure_money_area_period'
                               occurrence_month:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 minimum: 0
-                                nullable: true
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               created_at:
                                 type: string
                                 format: date-time
@@ -2440,9 +2499,22 @@ paths:
       operationId: get_api-v1-lease-terms-lease-term-id-financials
 components:
   schemas:
-    measure_money_area_period:
+    errors_object:
       type: object
-      nullable: true
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
+    measure_money_area_period:
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -2474,9 +2546,104 @@ components:
           type: string
           pattern: money/area/period
           example: money/area/period
+    measure_period:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 2
+        unit:
+          type: string
+          enum:
+          - yr
+          - mo
+          - day
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: period
+          example: period
+        iso8601:
+          type:
+          - string
+          - 'null'
+          example: P2Y
+          description: Period represented by ISO8601 format
+    measure_percentage:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '%'
+          example: '%'
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              pattern: '%'
+              example: '%'
+        type:
+          type: string
+          pattern: percentage
+          example: percentage
+    measure_money_area:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: money/area
+          example: money/area
+    month:
+      type:
+      - integer
+      - 'null'
+      minimum: 1
+      maximum: 12
+      example: 3
     measure_money:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -2498,43 +2665,10 @@ components:
           type: string
           pattern: money
           example: money
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                nullable: true
-    measure_percentage:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '%'
-          example: '%'
-        unit_components:
-          type: object
-          properties:
-            period:
-              type: string
-              pattern: '%'
-              example: '%'
-        type:
-          type: string
-          pattern: percentage
-          example: percentage
     measure_money_period:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -2561,72 +2695,6 @@ components:
           type: string
           pattern: money/period
           example: money/period
-    measure_money_area:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          example: USD/sf
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: money/area
-          example: money/area
-    measure_period:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 2
-        unit:
-          type: string
-          enum:
-          - yr
-          - mo
-          - day
-        unit_components:
-          type: object
-          properties:
-            period:
-              type: string
-              enum:
-              - yr
-              - mo
-              - day
-        type:
-          type: string
-          pattern: period
-          example: period
-        iso8601:
-          type: string
-          example: P2Y
-          description: Period represented by ISO8601 format
-          nullable: true
-    month:
-      type: integer
-      minimum: 1
-      maximum: 12
-      example: 3
-      nullable: true
   securitySchemes:
     basic_auth:
       type: http

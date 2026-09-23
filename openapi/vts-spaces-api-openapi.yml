@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Spaces API
+  title: VTS Lease Spaces API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -78,13 +78,15 @@ paths:
                             type: object
                             properties:
                               archived_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               availability_date:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 format: date
-                                nullable: true
                               availability_type:
                                 type: string
                                 example: arranged
@@ -96,31 +98,36 @@ paths:
                                 - specified
                                 description: 'The Availability Type for this Space. Possible Values: arranged, immediate, month to month, not available, specified'
                               created_at:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date-time
                               current_size:
                                 $ref: '#/components/schemas/measure_size'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               external_ids:
                                 type: array
                                 items:
                                   type: object
                                   properties:
                                     system_id:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                     system_name:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                               floor:
                                 type: object
                                 properties:
                                   composition:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                   name:
                                     type: string
                                   position:
@@ -134,8 +141,9 @@ paths:
                                 - renewal
                                 - sublease
                               listing_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               market_rent:
                                 $ref: '#/components/schemas/measure_money'
@@ -144,26 +152,30 @@ paths:
                               minimum_divisible_size:
                                 $ref: '#/components/schemas/measure_size'
                               occupancy_status:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               position:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                               price_is_negotiable:
                                 type: boolean
                               public:
                                 type: boolean
                               remeasured_space_available:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               rental_pay_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - amt_month
                                 - amt_year
                                 - psf_month
                                 - psf_year
-                                nullable: true
                               rental_rate_max:
                                 oneOf:
                                 - $ref: '#/components/schemas/measure_money_period'
@@ -175,10 +187,13 @@ paths:
                               sale_price:
                                 $ref: '#/components/schemas/measure_money'
                               sourceid:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               space_condition:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - 2nd generation
                                 - category a+
@@ -191,10 +206,10 @@ paths:
                                 - turnkey
                                 - under construction
                                 - white box
-                                nullable: true
                               space_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - office
                                 - retail
@@ -216,75 +231,96 @@ paths:
                                 - unspecified
                                 - null
                               subtitle:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               suite:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               term_duration:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               transaction_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - lease
                                 - sale
-                                nullable: true
                               updated_at:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               vacant_on_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               internal_notes:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Notes
                                 description: Internal notes visible only within the VTS platform for users with access to the Space.
                               clear_height:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               depth:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               dock_height:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               ground_level_doors:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               office_portion:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               trailer_parking:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               yard:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               ceiling_height:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               column_spacing:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               electrical:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               hvac:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               parking:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               roof:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               sprinklers:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                           relationships:
                             type: object
                             properties:
@@ -292,8 +328,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -313,8 +350,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -334,8 +372,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -355,8 +394,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -385,13 +425,15 @@ paths:
                             type: object
                             properties:
                               archived_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               availability_date:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 format: date
-                                nullable: true
                               availability_type:
                                 type: string
                                 example: arranged
@@ -403,31 +445,36 @@ paths:
                                 - specified
                                 description: 'The Availability Type for this Space. Possible Values: arranged, immediate, month to month, not available, specified'
                               created_at:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date-time
                               current_size:
                                 $ref: '#/components/schemas/measure_size'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               external_ids:
                                 type: array
                                 items:
                                   type: object
                                   properties:
                                     system_id:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                     system_name:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                               floor:
                                 type: object
                                 properties:
                                   composition:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                   name:
                                     type: string
                                   position:
@@ -441,8 +488,9 @@ paths:
                                 - renewal
                                 - sublease
                               listing_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               market_rent:
                                 $ref: '#/components/schemas/measure_money'
@@ -451,26 +499,30 @@ paths:
                               minimum_divisible_size:
                                 $ref: '#/components/schemas/measure_size'
                               occupancy_status:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               position:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                               price_is_negotiable:
                                 type: boolean
                               public:
                                 type: boolean
                               remeasured_space_available:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               rental_pay_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - amt_month
                                 - amt_year
                                 - psf_month
                                 - psf_year
-                                nullable: true
                               rental_rate_max:
                                 oneOf:
                                 - $ref: '#/components/schemas/measure_money_period'
@@ -482,10 +534,13 @@ paths:
                               sale_price:
                                 $ref: '#/components/schemas/measure_money'
                               sourceid:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               space_condition:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - 2nd generation
                                 - category a+
@@ -498,10 +553,10 @@ paths:
                                 - turnkey
                                 - under construction
                                 - white box
-                                nullable: true
                               space_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - office
                                 - retail
@@ -523,54 +578,68 @@ paths:
                                 - unspecified
                                 - null
                               subtitle:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               suite:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               term_duration:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               transaction_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - lease
                                 - sale
-                                nullable: true
                               updated_at:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               vacant_on_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               internal_notes:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Notes
                                 description: Internal notes visible only within the VTS platform for users with access to the Space.
                               ceiling_height:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               column_spacing:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               electrical:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               hvac:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               parking:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               roof:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               sprinklers:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                           relationships:
                             type: object
                             properties:
@@ -578,8 +647,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -599,8 +669,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -620,8 +691,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -641,8 +713,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -671,13 +744,15 @@ paths:
                             type: object
                             properties:
                               archived_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               availability_date:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 format: date
-                                nullable: true
                               availability_type:
                                 type: string
                                 example: arranged
@@ -689,31 +764,36 @@ paths:
                                 - specified
                                 description: 'The Availability Type for this Space. Possible Values: arranged, immediate, month to month, not available, specified'
                               created_at:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date-time
                               current_size:
                                 $ref: '#/components/schemas/measure_size'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               external_ids:
                                 type: array
                                 items:
                                   type: object
                                   properties:
                                     system_id:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                     system_name:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                               floor:
                                 type: object
                                 properties:
                                   composition:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                   name:
                                     type: string
                                   position:
@@ -727,8 +807,9 @@ paths:
                                 - renewal
                                 - sublease
                               listing_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               market_rent:
                                 $ref: '#/components/schemas/measure_money'
@@ -737,26 +818,30 @@ paths:
                               minimum_divisible_size:
                                 $ref: '#/components/schemas/measure_size'
                               occupancy_status:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               position:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                               price_is_negotiable:
                                 type: boolean
                               public:
                                 type: boolean
                               remeasured_space_available:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               rental_pay_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - amt_month
                                 - amt_year
                                 - psf_month
                                 - psf_year
-                                nullable: true
                               rental_rate_max:
                                 oneOf:
                                 - $ref: '#/components/schemas/measure_money_period'
@@ -768,10 +853,13 @@ paths:
                               sale_price:
                                 $ref: '#/components/schemas/measure_money'
                               sourceid:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               space_condition:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - 2nd generation
                                 - category a+
@@ -784,10 +872,10 @@ paths:
                                 - turnkey
                                 - under construction
                                 - white box
-                                nullable: true
                               space_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - office
                                 - retail
@@ -809,63 +897,80 @@ paths:
                                 - unspecified
                                 - null
                               subtitle:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               suite:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               term_duration:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               transaction_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - lease
                                 - sale
-                                nullable: true
                               updated_at:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               vacant_on_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               internal_notes:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Notes
                                 description: Internal notes visible only within the VTS platform for users with access to the Space.
                               depth:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               frontage:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                               retail_space_type:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                               ceiling_height:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               column_spacing:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               electrical:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               hvac:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               parking:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               roof:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               sprinklers:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                           relationships:
                             type: object
                             properties:
@@ -873,8 +978,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -894,8 +1000,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -915,8 +1022,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -936,8 +1044,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -966,13 +1075,15 @@ paths:
                             type: object
                             properties:
                               archived_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               availability_date:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 format: date
-                                nullable: true
                               availability_type:
                                 type: string
                                 example: arranged
@@ -984,31 +1095,36 @@ paths:
                                 - specified
                                 description: 'The Availability Type for this Space. Possible Values: arranged, immediate, month to month, not available, specified'
                               created_at:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date-time
                               current_size:
                                 $ref: '#/components/schemas/measure_size'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               external_ids:
                                 type: array
                                 items:
                                   type: object
                                   properties:
                                     system_id:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                     system_name:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                               floor:
                                 type: object
                                 properties:
                                   composition:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                   name:
                                     type: string
                                   position:
@@ -1022,8 +1138,9 @@ paths:
                                 - renewal
                                 - sublease
                               listing_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               market_rent:
                                 $ref: '#/components/schemas/measure_money'
@@ -1032,26 +1149,30 @@ paths:
                               minimum_divisible_size:
                                 $ref: '#/components/schemas/measure_size'
                               occupancy_status:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               position:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                               price_is_negotiable:
                                 type: boolean
                               public:
                                 type: boolean
                               remeasured_space_available:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               rental_pay_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - amt_month
                                 - amt_year
                                 - psf_month
                                 - psf_year
-                                nullable: true
                               rental_rate_max:
                                 oneOf:
                                 - $ref: '#/components/schemas/measure_money_period'
@@ -1063,10 +1184,13 @@ paths:
                               sale_price:
                                 $ref: '#/components/schemas/measure_money'
                               sourceid:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               space_condition:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - 2nd generation
                                 - category a+
@@ -1079,10 +1203,10 @@ paths:
                                 - turnkey
                                 - under construction
                                 - white box
-                                nullable: true
                               space_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - office
                                 - retail
@@ -1104,31 +1228,38 @@ paths:
                                 - unspecified
                                 - null
                               subtitle:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               suite:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               term_duration:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               transaction_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - lease
                                 - sale
-                                nullable: true
                               updated_at:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               vacant_on_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                               internal_notes:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: Notes
                                 description: Internal notes visible only within the VTS platform for users with access to the Space.
                           relationships:
@@ -1138,8 +1269,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1159,8 +1291,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1180,8 +1313,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1201,8 +1335,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1276,13 +1411,15 @@ paths:
                           type: object
                           properties:
                             archived_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             availability_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             availability_type:
                               type: string
                               example: arranged
@@ -1294,31 +1431,36 @@ paths:
                               - specified
                               description: 'The Availability Type for this Space. Possible Values: arranged, immediate, month to month, not available, specified'
                             created_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
                             current_size:
                               $ref: '#/components/schemas/measure_size'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             external_ids:
                               type: array
                               items:
                                 type: object
                                 properties:
                                   system_id:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                   system_name:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                             floor:
                               type: object
                               properties:
                                 composition:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                 name:
                                   type: string
                                 position:
@@ -1332,8 +1474,9 @@ paths:
                               - renewal
                               - sublease
                             listing_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             market_rent:
                               $ref: '#/components/schemas/measure_money'
@@ -1342,26 +1485,30 @@ paths:
                             minimum_divisible_size:
                               $ref: '#/components/schemas/measure_size'
                             occupancy_status:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             position:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                             price_is_negotiable:
                               type: boolean
                             public:
                               type: boolean
                             remeasured_space_available:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             rental_pay_type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - amt_month
                               - amt_year
                               - psf_month
                               - psf_year
-                              nullable: true
                             rental_rate_max:
                               oneOf:
                               - $ref: '#/components/schemas/measure_money_period'
@@ -1373,10 +1520,13 @@ paths:
                             sale_price:
                               $ref: '#/components/schemas/measure_money'
                             sourceid:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             space_condition:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - 2nd generation
                               - category a+
@@ -1389,10 +1539,10 @@ paths:
                               - turnkey
                               - under construction
                               - white box
-                              nullable: true
                             space_type:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - office
                               - retail
@@ -1414,75 +1564,96 @@ paths:
                               - unspecified
                               - null
                             subtitle:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             suite:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             term_duration:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             transaction_type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - lease
                               - sale
-                              nullable: true
                             updated_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             vacant_on_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             internal_notes:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: Notes
                               description: Internal notes visible only within the VTS platform for users with access to the Space.
                             clear_height:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             depth:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             dock_height:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             ground_level_doors:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             office_portion:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             trailer_parking:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             yard:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             ceiling_height:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             column_spacing:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             electrical:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             hvac:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             parking:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             roof:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             sprinklers:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                         relationships:
                           type: object
                           properties:
@@ -1490,8 +1661,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1511,8 +1683,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1532,8 +1705,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1553,8 +1727,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1583,13 +1758,15 @@ paths:
                           type: object
                           properties:
                             archived_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             availability_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             availability_type:
                               type: string
                               example: arranged
@@ -1601,31 +1778,36 @@ paths:
                               - specified
                               description: 'The Availability Type for this Space. Possible Values: arranged, immediate, month to month, not available, specified'
                             created_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
                             current_size:
                               $ref: '#/components/schemas/measure_size'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             external_ids:
                               type: array
                               items:
                                 type: object
                                 properties:
                                   system_id:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                   system_name:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                             floor:
                               type: object
                               properties:
                                 composition:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                 name:
                                   type: string
                                 position:
@@ -1639,8 +1821,9 @@ paths:
                               - renewal
                               - sublease
                             listing_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             market_rent:
                               $ref: '#/components/schemas/measure_money'
@@ -1649,26 +1832,30 @@ paths:
                             minimum_divisible_size:
                               $ref: '#/components/schemas/measure_size'
                             occupancy_status:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             position:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                             price_is_negotiable:
                               type: boolean
                             public:
                               type: boolean
                             remeasured_space_available:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             rental_pay_type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - amt_month
                               - amt_year
                               - psf_month
                               - psf_year
-                              nullable: true
                             rental_rate_max:
                               oneOf:
                               - $ref: '#/components/schemas/measure_money_period'
@@ -1680,10 +1867,13 @@ paths:
                             sale_price:
                               $ref: '#/components/schemas/measure_money'
                             sourceid:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             space_condition:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - 2nd generation
                               - category a+
@@ -1696,10 +1886,10 @@ paths:
                               - turnkey
                               - under construction
                               - white box
-                              nullable: true
                             space_type:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - office
                               - retail
@@ -1721,54 +1911,68 @@ paths:
                               - unspecified
                               - null
                             subtitle:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             suite:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             term_duration:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             transaction_type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - lease
                               - sale
-                              nullable: true
                             updated_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             vacant_on_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             internal_notes:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: Notes
                               description: Internal notes visible only within the VTS platform for users with access to the Space.
                             ceiling_height:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             column_spacing:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             electrical:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             hvac:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             parking:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             roof:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             sprinklers:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                         relationships:
                           type: object
                           properties:
@@ -1776,8 +1980,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1797,8 +2002,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1818,8 +2024,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1839,8 +2046,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1869,13 +2077,15 @@ paths:
                           type: object
                           properties:
                             archived_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             availability_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             availability_type:
                               type: string
                               example: arranged
@@ -1887,31 +2097,36 @@ paths:
                               - specified
                               description: 'The Availability Type for this Space. Possible Values: arranged, immediate, month to month, not available, specified'
                             created_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
                             current_size:
                               $ref: '#/components/schemas/measure_size'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             external_ids:
                               type: array
                               items:
                                 type: object
                                 properties:
                                   system_id:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                   system_name:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                             floor:
                               type: object
                               properties:
                                 composition:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                 name:
                                   type: string
                                 position:
@@ -1925,8 +2140,9 @@ paths:
                               - renewal
                               - sublease
                             listing_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             market_rent:
                               $ref: '#/components/schemas/measure_money'
@@ -1935,26 +2151,30 @@ paths:
                             minimum_divisible_size:
                               $ref: '#/components/schemas/measure_size'
                             occupancy_status:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             position:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                             price_is_negotiable:
                               type: boolean
                             public:
                               type: boolean
                             remeasured_space_available:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             rental_pay_type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - amt_month
                               - amt_year
                               - psf_month
                               - psf_year
-                              nullable: true
                             rental_rate_max:
                               oneOf:
                               - $ref: '#/components/schemas/measure_money_period'
@@ -1966,10 +2186,13 @@ paths:
                             sale_price:
                               $ref: '#/components/schemas/measure_money'
                             sourceid:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             space_condition:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - 2nd generation
                               - category a+
@@ -1982,10 +2205,10 @@ paths:
                               - turnkey
                               - under construction
                               - white box
-                              nullable: true
                             space_type:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - office
                               - retail
@@ -2007,63 +2230,80 @@ paths:
                               - unspecified
                               - null
                             subtitle:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             suite:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             term_duration:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             transaction_type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - lease
                               - sale
-                              nullable: true
                             updated_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             vacant_on_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             internal_notes:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: Notes
                               description: Internal notes visible only within the VTS platform for users with access to the Space.
                             depth:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             frontage:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                             retail_space_type:
-                              type: object
-                              nullable: true
+                              type:
+                              - object
+                              - 'null'
                             ceiling_height:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             column_spacing:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             electrical:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             hvac:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             parking:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             roof:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             sprinklers:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                         relationships:
                           type: object
                           properties:
@@ -2071,8 +2311,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -2092,8 +2333,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -2113,8 +2355,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -2134,8 +2377,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -2164,13 +2408,15 @@ paths:
                           type: object
                           properties:
                             archived_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             availability_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             availability_type:
                               type: string
                               example: arranged
@@ -2182,31 +2428,36 @@ paths:
                               - specified
                               description: 'The Availability Type for this Space. Possible Values: arranged, immediate, month to month, not available, specified'
                             created_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
                             current_size:
                               $ref: '#/components/schemas/measure_size'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             external_ids:
                               type: array
                               items:
                                 type: object
                                 properties:
                                   system_id:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                   system_name:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                             floor:
                               type: object
                               properties:
                                 composition:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                 name:
                                   type: string
                                 position:
@@ -2220,8 +2471,9 @@ paths:
                               - renewal
                               - sublease
                             listing_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             market_rent:
                               $ref: '#/components/schemas/measure_money'
@@ -2230,26 +2482,30 @@ paths:
                             minimum_divisible_size:
                               $ref: '#/components/schemas/measure_size'
                             occupancy_status:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             position:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                             price_is_negotiable:
                               type: boolean
                             public:
                               type: boolean
                             remeasured_space_available:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             rental_pay_type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - amt_month
                               - amt_year
                               - psf_month
                               - psf_year
-                              nullable: true
                             rental_rate_max:
                               oneOf:
                               - $ref: '#/components/schemas/measure_money_period'
@@ -2261,10 +2517,13 @@ paths:
                             sale_price:
                               $ref: '#/components/schemas/measure_money'
                             sourceid:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             space_condition:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - 2nd generation
                               - category a+
@@ -2277,10 +2536,10 @@ paths:
                               - turnkey
                               - under construction
                               - white box
-                              nullable: true
                             space_type:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - office
                               - retail
@@ -2302,31 +2561,38 @@ paths:
                               - unspecified
                               - null
                             subtitle:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             suite:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             term_duration:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             transaction_type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - lease
                               - sale
-                              nullable: true
                             updated_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             vacant_on_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             internal_notes:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: Notes
                               description: Internal notes visible only within the VTS platform for users with access to the Space.
                         relationships:
@@ -2336,8 +2602,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -2357,8 +2624,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -2378,8 +2646,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -2399,8 +2668,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -2431,9 +2701,22 @@ paths:
       operationId: get_api-v1-spaces-id
 components:
   schemas:
-    measure_money_area_period:
+    errors_object:
       type: object
-      nullable: true
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
+    measure_money_area_period:
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -2465,44 +2748,10 @@ components:
           type: string
           pattern: money/area/period
           example: money/area/period
-    measure_money:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '...'
-          description: ISO 4217 currency code
-          example: USD
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              example: USD
-        type:
-          type: string
-          pattern: money
-          example: money
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                nullable: true
     measure_size:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -2525,9 +2774,35 @@ components:
           type: string
           pattern: area
           example: area
+    measure_money:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
     measure_money_period:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number

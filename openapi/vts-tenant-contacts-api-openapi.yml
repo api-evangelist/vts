@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Tenant Contacts API
+  title: VTS Lease Tenant Contacts API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -83,13 +83,15 @@ paths:
                               example: Doe
                               description: Last name of the contact
                             phone:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: '1234567890'
                               description: Phone number of the contact
                             phone_extension:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: '1234'
                               description: Phone extension of the contact
                             email:
@@ -97,13 +99,15 @@ paths:
                               example: johndoe@example.com
                               description: Email of the contact
                             company_name:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: VTS
                               description: Name of the company the contact belongs to
                             title:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: Broker
                               description: The title of the contact
                             created_at:
@@ -115,11 +119,14 @@ paths:
                               format: date-time
                               description: The timestamp when this tenant contact was last updated
                             phone_type:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The type of phone number
                             type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: tenant
                               enum:
                               - tenant
@@ -129,10 +136,11 @@ paths:
                               - vendor
                               - colleague
                               - partner
-                              nullable: true
                               description: The type of tenant contact
                             role:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: admin
                               enum:
                               - c_suite
@@ -141,14 +149,14 @@ paths:
                               - admin
                               - construction
                               - sustainability
-                              nullable: true
                               description: The role of the tenant contact
                             is_decision_maker:
                               type: boolean
                               description: Whether the contact is a decision maker
                             note:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: A note about the contact
                         relationships:
                           type: object
@@ -157,8 +165,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -218,13 +227,15 @@ paths:
                             example: Doe
                             description: Last name of the contact
                           phone:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: '1234567890'
                             description: Phone number of the contact
                           phone_extension:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: '1234'
                             description: Phone extension of the contact
                           email:
@@ -232,13 +243,15 @@ paths:
                             example: johndoe@example.com
                             description: Email of the contact
                           company_name:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: VTS
                             description: Name of the company the contact belongs to
                           title:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: Broker
                             description: The title of the contact
                           created_at:
@@ -250,11 +263,14 @@ paths:
                             format: date-time
                             description: The timestamp when this tenant contact was last updated
                           phone_type:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The type of phone number
                           type:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             example: tenant
                             enum:
                             - tenant
@@ -264,10 +280,11 @@ paths:
                             - vendor
                             - colleague
                             - partner
-                            nullable: true
                             description: The type of tenant contact
                           role:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             example: admin
                             enum:
                             - c_suite
@@ -276,14 +293,14 @@ paths:
                             - admin
                             - construction
                             - sustainability
-                            nullable: true
                             description: The role of the tenant contact
                           is_decision_maker:
                             type: boolean
                             description: Whether the contact is a decision maker
                           note:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: A note about the contact
                       relationships:
                         type: object
@@ -292,8 +309,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -388,13 +406,15 @@ paths:
                               example: Doe
                               description: Last name of the contact
                             phone:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: '1234567890'
                               description: Phone number of the contact
                             phone_extension:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: '1234'
                               description: Phone extension of the contact
                             email:
@@ -402,13 +422,15 @@ paths:
                               example: johndoe@example.com
                               description: Email of the contact
                             company_name:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: VTS
                               description: Name of the company the contact belongs to
                             title:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: Broker
                               description: The title of the contact
                             created_at:
@@ -420,11 +442,14 @@ paths:
                               format: date-time
                               description: The timestamp when this tenant contact was last updated
                             phone_type:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The type of phone number
                             type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: tenant
                               enum:
                               - tenant
@@ -434,10 +459,11 @@ paths:
                               - vendor
                               - colleague
                               - partner
-                              nullable: true
                               description: The type of tenant contact
                             role:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: admin
                               enum:
                               - c_suite
@@ -446,14 +472,14 @@ paths:
                               - admin
                               - construction
                               - sustainability
-                              nullable: true
                               description: The role of the tenant contact
                             is_decision_maker:
                               type: boolean
                               description: Whether the contact is a decision maker
                             note:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: A note about the contact
                         relationships:
                           type: object
@@ -462,8 +488,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -497,8 +524,9 @@ components:
             type: object
             properties:
               detail:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http

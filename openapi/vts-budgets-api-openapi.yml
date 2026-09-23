@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Budgets API
+  title: VTS Lease Budgets API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -57,18 +57,21 @@ paths:
                     type: object
                     properties:
                       label:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         example: Budget for Fiscal Year 2022
                         description: The label assigned for the given Budget
                       budget_year:
-                        type: number
-                        nullable: true
+                        type:
+                        - number
+                        - 'null'
                         example: 2022
                         description: The year for the Budget
                       npv_discount_rate:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         example: '1.0'
                         description: Net Present Value discount rate
                       rentable_size:
@@ -98,8 +101,9 @@ paths:
                         example: '2021-12-08T16:28:22.187979Z'
                         description: The timestamp when this budget was last updated
                       commissions_months:
-                        type: number
-                        nullable: true
+                        type:
+                        - number
+                        - 'null'
                         example: 1
                         description: When commission percentage will be applied at a different rate during the term of the lease. The user can specify the start month that the percentage is applicable for. The percentage is applied between the start month and the next commission period start month
                       security_deposit:
@@ -144,8 +148,9 @@ paths:
                               example: 1
                               description: Tenant Improvements occurrence month. Possible values are between 1 and the number of months in the budget
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: Some text
                               description: Tenant Improvements description
                         deprecated: true
@@ -169,8 +174,9 @@ paths:
                               example: 1
                               description: Building Improvements occurrence month. Possible values are between 1 and the number of months in the budget
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: Some text
                               description: Building Improvements description
                         deprecated: true
@@ -179,8 +185,9 @@ paths:
                         example: '1'
                         description: When the deal term was entered
                       execution_date:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         example: '1'
                         description: Date lease was or will be executed by lawyers
                       rent_schedule:
@@ -243,8 +250,9 @@ paths:
                                   - yr
                                   description: 'Possible values: ''yr'''
                       description:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         example: Some text
                         description: A description of the budget
                       net_cash_flow:
@@ -275,8 +283,9 @@ paths:
                         example: 1
                         description: Month number for the breakeven point
                       internal_rate_of_return:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         example: '100.0'
                         description: The return on money spent for the term of the lease
                       gross_rent:
@@ -342,8 +351,9 @@ paths:
                               description: This attributes is deprecated. Please start using start_month attribute.
                               deprecated: true
                       tenant_risk_description:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         example: Some text
                         description: Description of money paid to landlord outside of lease cash flow to mitigate the risk of leasing to tenant
                       downtime:
@@ -364,8 +374,9 @@ paths:
                               example: P2M
                           description: Months from previous tenant move-out to commencement date of replacement tenant
                       lock_in_end_date:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         example: '2021-12-08'
                         description: The minimum duration of the lease that must be honored/paid by the tenant should they choose to terminate early in the future.
                       minimum_guarantee:
@@ -524,8 +535,9 @@ paths:
                         type: object
                         properties:
                           data:
-                            type: object
-                            nullable: true
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               id:
                                 type: string
@@ -546,8 +558,9 @@ paths:
                         type: object
                         properties:
                           data:
-                            type: object
-                            nullable: true
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               id:
                                 type: string
@@ -571,8 +584,9 @@ paths:
                         type: object
                         properties:
                           data:
-                            type: object
-                            nullable: true
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               id:
                                 type: string
@@ -623,18 +637,21 @@ paths:
                         type: object
                         properties:
                           label:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: Budget for Fiscal Year 2022
                             description: The label assigned for the given Budget
                           budget_year:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             example: 2022
                             description: The year for the Budget
                           npv_discount_rate:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: '1.0'
                             description: Net Present Value discount rate
                           rentable_size:
@@ -664,8 +681,9 @@ paths:
                             example: '2021-12-08T16:28:22.187979Z'
                             description: The timestamp when this budget was last updated
                           commissions_months:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             example: 1
                             description: When commission percentage will be applied at a different rate during the term of the lease. The user can specify the start month that the percentage is applicable for. The percentage is applied between the start month and the next commission period start month
                           security_deposit:
@@ -710,8 +728,9 @@ paths:
                                   example: 1
                                   description: Tenant Improvements occurrence month. Possible values are between 1 and the number of months in the budget
                                 description:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: Some text
                                   description: Tenant Improvements description
                             deprecated: true
@@ -735,8 +754,9 @@ paths:
                                   example: 1
                                   description: Building Improvements occurrence month. Possible values are between 1 and the number of months in the budget
                                 description:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: Some text
                                   description: Building Improvements description
                             deprecated: true
@@ -745,8 +765,9 @@ paths:
                             example: '1'
                             description: When the deal term was entered
                           execution_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: '1'
                             description: Date lease was or will be executed by lawyers
                           rent_schedule:
@@ -809,8 +830,9 @@ paths:
                                       - yr
                                       description: 'Possible values: ''yr'''
                           description:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: Some text
                             description: A description of the budget
                           net_cash_flow:
@@ -841,8 +863,9 @@ paths:
                             example: 1
                             description: Month number for the breakeven point
                           internal_rate_of_return:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: '100.0'
                             description: The return on money spent for the term of the lease
                           gross_rent:
@@ -908,8 +931,9 @@ paths:
                                   description: This attributes is deprecated. Please start using start_month attribute.
                                   deprecated: true
                           tenant_risk_description:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: Some text
                             description: Description of money paid to landlord outside of lease cash flow to mitigate the risk of leasing to tenant
                           downtime:
@@ -930,8 +954,9 @@ paths:
                                   example: P2M
                               description: Months from previous tenant move-out to commencement date of replacement tenant
                           lock_in_end_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: '2021-12-08'
                             description: The minimum duration of the lease that must be honored/paid by the tenant should they choose to terminate early in the future.
                           minimum_guarantee:
@@ -1090,8 +1115,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -1112,8 +1138,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -1137,8 +1164,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -1163,38 +1191,22 @@ paths:
       operationId: get_api-v1-budgets-id
 components:
   schemas:
-    percentage_rents:
-      type: array
-      items:
-        type: object
-        properties:
-          start_month:
-            type: number
-            example: 1
-            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
-          minimum_guarantee:
-            oneOf:
-            - $ref: '#/components/schemas/measure_money_area_period'
-            - $ref: '#/components/schemas/measure_money_period'
-          sales_overage_breakpoints_type:
-            type: string
-            enum:
-            - Natural
-            - Unnatural
-            example: Natural
-            description: Type of Sales Overage Breakpoints Natural/Unnatural
-          sales_overage_breakpoints:
-            type: array
-            items:
-              type: object
-              properties:
-                breakpoint:
-                  $ref: '#/components/schemas/measure_money_period'
-                percent_rent:
-                  $ref: '#/components/schemas/measure_percentage'
-    measure_money_area_period:
+    errors_object:
       type: object
-      nullable: true
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
+    measure_money_area_period:
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -1226,9 +1238,44 @@ components:
           type: string
           pattern: money/area/period
           example: money/area/period
-    measure_money:
-      type: object
-      nullable: true
+    measure_period:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 2
+        unit:
+          type: string
+          enum:
+          - yr
+          - mo
+          - day
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: period
+          example: period
+        iso8601:
+          type:
+          - string
+          - 'null'
+          example: P2Y
+          description: Period represented by ISO8601 format
+    measure_percentage:
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -1236,31 +1283,99 @@ components:
           example: 1000
         unit:
           type: string
-          pattern: '...'
-          description: ISO 4217 currency code
-          example: USD
+          pattern: '%'
+          example: '%'
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              pattern: '%'
+              example: '%'
+        type:
+          type: string
+          pattern: percentage
+          example: percentage
+    rent_escalations:
+      type: array
+      items:
+        type: object
+        properties:
+          start_month:
+            type: number
+            example: 1
+            description: Month number in which to begin rent escalations
+          amount:
+            anyOf:
+            - $ref: '#/components/schemas/measure_percentage'
+            - $ref: '#/components/schemas/measure_money_area_period'
+            description: Value of the escalation
+          occurs:
+            type: string
+            enum:
+            - One Time
+            - Annual
+            example: One Time
+            description: How often escalations recurs
+    other_incomes:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - parking
+            - storage
+            - signage
+            - fitout
+            - promotional_charges
+            - interest
+            - other
+            example: storage
+            description: The classification of the other income
+          start_month:
+            type: number
+            example: 1
+            description: Month number in which income begins to apply
+          amount:
+            oneOf:
+            - $ref: '#/components/schemas/measure_money_area_period'
+            - $ref: '#/components/schemas/measure_money_period'
+            description: Per unit amount paid to landlord
+          quantity:
+            type: number
+            example: 1
+            description: The quantity of the entity providing income (only applies to parking)
+    measure_money_area:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf
         unit_components:
           type: object
           properties:
             money:
               type: string
               pattern: '...'
+              description: ISO 4217 currency code
               example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
         type:
           type: string
-          pattern: money
-          example: money
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                nullable: true
+          pattern: money/area
+          example: money/area
     costs:
       type: array
       items:
@@ -1288,176 +1403,6 @@ components:
             type: string
             example: Description
             description: The description of the cost
-    measure_percentage:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '%'
-          example: '%'
-        unit_components:
-          type: object
-          properties:
-            period:
-              type: string
-              pattern: '%'
-              example: '%'
-        type:
-          type: string
-          pattern: percentage
-          example: percentage
-    free_rents:
-      type: array
-      items:
-        type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - net
-            - gross
-            example: gross
-            description: 'net: percent of net base rent; gross: percent of gross base rent and recoveries.'
-          start_month:
-            type: number
-            example: 1
-            description: Month that rent step goes into effect, relative to lease commencement date
-          amount_free:
-            allOf:
-            - $ref: '#/components/schemas/measure_percentage'
-            - description: Discount as a percentage value of rent
-          duration_with_units:
-            allOf:
-            - $ref: '#/components/schemas/measure_period'
-            - description: The amount of time in which the free rent applies (including amount of time units)
-    rent_escalations:
-      type: array
-      items:
-        type: object
-        properties:
-          start_month:
-            type: number
-            example: 1
-            description: Month number in which to begin rent escalations
-          amount:
-            anyOf:
-            - $ref: '#/components/schemas/measure_percentage'
-            - $ref: '#/components/schemas/measure_money_area_period'
-            description: Value of the escalation
-          occurs:
-            type: string
-            enum:
-            - One Time
-            - Annual
-            example: One Time
-            description: How often escalations recurs
-    measure_money_period:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          example: USD/yr
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            period:
-              type: string
-              enum:
-              - yr
-              - mo
-              - day
-        type:
-          type: string
-          pattern: money/period
-          example: money/period
-    measure_money_area:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          example: USD/sf
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: money/area
-          example: money/area
-    measure_period:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 2
-        unit:
-          type: string
-          enum:
-          - yr
-          - mo
-          - day
-        unit_components:
-          type: object
-          properties:
-            period:
-              type: string
-              enum:
-              - yr
-              - mo
-              - day
-        type:
-          type: string
-          pattern: period
-          example: period
-        iso8601:
-          type: string
-          example: P2Y
-          description: Period represented by ISO8601 format
-          nullable: true
-    base_rents:
-      type: array
-      items:
-        type: object
-        properties:
-          start_month:
-            type: number
-            example: 1
-            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
-          amount:
-            oneOf:
-            - $ref: '#/components/schemas/measure_money_area_period'
-            - $ref: '#/components/schemas/measure_money_period'
     commissions:
       type: array
       items:
@@ -1475,13 +1420,14 @@ components:
             description: The timestamp when this budget commission was last updated
             deprecated: true
           net_or_gross:
-            type: string
+            type:
+            - string
+            - 'null'
             enum:
             - gross
             - net
             example: gross
             description: The calculation method of the commission amount.
-            nullable: true
           broker:
             type: string
             example: VTS
@@ -1533,9 +1479,52 @@ components:
                   - $ref: '#/components/schemas/measure_money'
                   - $ref: '#/components/schemas/measure_money_area'
                   - $ref: '#/components/schemas/measure_money_period'
+    percentage_rents:
+      type: array
+      items:
+        type: object
+        properties:
+          start_month:
+            type: number
+            example: 1
+            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
+          minimum_guarantee:
+            oneOf:
+            - $ref: '#/components/schemas/measure_money_area_period'
+            - $ref: '#/components/schemas/measure_money_period'
+          sales_overage_breakpoints_type:
+            type: string
+            enum:
+            - Natural
+            - Unnatural
+            example: Natural
+            description: Type of Sales Overage Breakpoints Natural/Unnatural
+          sales_overage_breakpoints:
+            type: array
+            items:
+              type: object
+              properties:
+                breakpoint:
+                  $ref: '#/components/schemas/measure_money_period'
+                percent_rent:
+                  $ref: '#/components/schemas/measure_percentage'
+    base_rents:
+      type: array
+      items:
+        type: object
+        properties:
+          start_month:
+            type: number
+            example: 1
+            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
+          amount:
+            oneOf:
+            - $ref: '#/components/schemas/measure_money_area_period'
+            - $ref: '#/components/schemas/measure_money_period'
     measure_area:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -1560,7 +1549,62 @@ components:
           type: string
           pattern: area
           example: area
-    other_incomes:
+    measure_money:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
+    measure_money_period:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/period
+          example: money/period
+    free_rents:
       type: array
       items:
         type: object
@@ -1568,28 +1612,22 @@ components:
           type:
             type: string
             enum:
-            - parking
-            - storage
-            - signage
-            - fitout
-            - promotional_charges
-            - interest
-            - other
-            example: storage
-            description: The classification of the other income
+            - net
+            - gross
+            example: gross
+            description: 'net: percent of net base rent; gross: percent of gross base rent and recoveries.'
           start_month:
             type: number
             example: 1
-            description: Month number in which income begins to apply
-          amount:
-            oneOf:
-            - $ref: '#/components/schemas/measure_money_area_period'
-            - $ref: '#/components/schemas/measure_money_period'
-            description: Per unit amount paid to landlord
-          quantity:
-            type: number
-            example: 1
-            description: The quantity of the entity providing income (only applies to parking)
+            description: Month that rent step goes into effect, relative to lease commencement date
+          amount_free:
+            allOf:
+            - $ref: '#/components/schemas/measure_percentage'
+            - description: Discount as a percentage value of rent
+          duration_with_units:
+            allOf:
+            - $ref: '#/components/schemas/measure_period'
+            - description: The amount of time in which the free rent applies (including amount of time units)
   securitySchemes:
     basic_auth:
       type: http

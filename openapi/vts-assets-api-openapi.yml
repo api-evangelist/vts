@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Assets API
+  title: VTS Lease Assets API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -140,44 +140,51 @@ paths:
                               type: string
                               example: West 41st Tower
                             notes:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             number_of_floors:
                               type: integer
                               minimum: 0
                               example: 22
                             photo_url:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: http://images.vts.com/image/upload/photo.jpg
                             owner:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             owning_company:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The owning company of the property
                             rentable_building_area:
                               $ref: '#/components/schemas/measure_size'
                             sourceid:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: '000004353'
                             space_available:
                               $ref: '#/components/schemas/measure_size'
                             submarket:
                               type: string
                             building_region:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: New York
-                              nullable: true
                               description: The region a building is located in. Specifically, this returns the free-form text field "Region" in the Location section of Buildings.
                             updated_at:
                               type: string
                               format: date-time
                             video_thumbnail:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: http://images.vts.com/image/upload/thumbnail.jpg
                             year_built:
                               type: integer
@@ -213,16 +220,18 @@ paths:
                             size:
                               $ref: '#/components/schemas/measure_area'
                             legal_entity:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: Avenue Holdings
                               description: The name of legal entity belonging to the employer of the account hitting the API
-                              nullable: true
                             asset_managers:
                               type: array
                               items:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 description: The name of the asset manager
-                                nullable: true
                               example:
                               - John Stephens
                               - Mary Smith
@@ -230,9 +239,10 @@ paths:
                             jv_partners:
                               type: array
                               items:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 description: The name of the jv partners
-                                nullable: true
                               example:
                               - XYZ Partners
                               - ABC Global Development
@@ -240,9 +250,10 @@ paths:
                             clients:
                               type: array
                               items:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 description: The name of the clients
-                                nullable: true
                               example:
                               - ABC Partners
                               - XYZ Partners
@@ -254,8 +265,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -307,8 +319,9 @@ paths:
                                     type: string
                                     example: '12345'
                                   system_name:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: ExternalSystem
                                 required:
                                 - system_id
@@ -354,77 +367,87 @@ paths:
                         type: object
                         properties:
                           terms:
-                            type: object
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               lease_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: triple net
                               discount_rate:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: '5.0'
                               periods:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: rsf/month
-                            nullable: true
                           rent_schedule:
-                            type: object
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               rent_schedule_display_in_unit:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 example: psf/mo
-                                nullable: true
-                            nullable: true
                           expenses_and_recoveries:
-                            type: array
+                            type:
+                            - array
+                            - 'null'
                             items:
                               type: object
                               properties:
                                 type:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: ReimbursableExpenseLandscaping
                                 expense_amount:
                                   allOf:
                                   - $ref: '#/components/schemas/measure_money_area_period'
                                   - description: The amount of the reimbursable expense
-                                  nullable: true
                                 recovery_amount:
                                   allOf:
                                   - $ref: '#/components/schemas/measure_money_area_period'
                                   - description: The amount of reimbursable expense that will be paid to landlord by the tenant with recovery type modified_gross
-                                  nullable: true
                                 expense_growth_rate:
                                   allOf:
                                   - $ref: '#/components/schemas/measure_percentage'
                                   - description: The expenses will grow by this rate every 12 months after the lease commencement date.
-                                  nullable: true
                                 recovery_method:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: gross
                                   description: The calculation method of the recovery amount for the reimbursable expense
-                                  nullable: true
-                            nullable: true
                           commissions:
                             type: array
                             items:
-                              type: object
+                              type:
+                              - object
+                              - 'null'
                               properties:
                                 broker:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: VTS
                                   description: Broker/Company name
-                                  nullable: true
                                 commission_type:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   enum:
                                   - landlord
                                   - tenant_rep
                                   example: landlord
                                   description: Commissions Value paid to landlord or tenant brokers on the deal
-                                  nullable: true
                                 periods:
                                   type: array
                                   items:
@@ -434,7 +457,6 @@ paths:
                                         allOf:
                                         - $ref: '#/components/schemas/measure_money_area_period'
                                         - description: Commission Amount for the new added commission
-                                        nullable: true
                                       starts:
                                         type: object
                                         properties:
@@ -443,16 +465,17 @@ paths:
                                             example: 1
                                             description: The start month when commissions will start counting for.
                                 free_rent:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: amortize_over_term
                                   description: How commission rent should handle free rent
-                                  nullable: true
                                 net_or_gross:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: gross
                                   description: The calculation method of the commission amount.
-                                  nullable: true
-                              nullable: true
         '403':
           description: API not authorized for use
           content:
@@ -565,44 +588,51 @@ paths:
                             type: string
                             example: West 41st Tower
                           notes:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                           number_of_floors:
                             type: integer
                             minimum: 0
                             example: 22
                           photo_url:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: http://images.vts.com/image/upload/photo.jpg
                           owner:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                           owning_company:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The owning company of the property
                           rentable_building_area:
                             $ref: '#/components/schemas/measure_size'
                           sourceid:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: '000004353'
                           space_available:
                             $ref: '#/components/schemas/measure_size'
                           submarket:
                             type: string
                           building_region:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             example: New York
-                            nullable: true
                             description: The region a building is located in. Specifically, this returns the free-form text field "Region" in the Location section of Buildings.
                           updated_at:
                             type: string
                             format: date-time
                           video_thumbnail:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: http://images.vts.com/image/upload/thumbnail.jpg
                           year_built:
                             type: integer
@@ -638,16 +668,18 @@ paths:
                           size:
                             $ref: '#/components/schemas/measure_area'
                           legal_entity:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             example: Avenue Holdings
                             description: The name of legal entity belonging to the employer of the account hitting the API
-                            nullable: true
                           asset_managers:
                             type: array
                             items:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               description: The name of the asset manager
-                              nullable: true
                             example:
                             - John Stephens
                             - Mary Smith
@@ -655,9 +687,10 @@ paths:
                           jv_partners:
                             type: array
                             items:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               description: The name of the jv partners
-                              nullable: true
                             example:
                             - XYZ Partners
                             - ABC Global Development
@@ -665,9 +698,10 @@ paths:
                           clients:
                             type: array
                             items:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               description: The name of the clients
-                              nullable: true
                             example:
                             - ABC Partners
                             - XYZ Partners
@@ -679,8 +713,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -718,8 +753,9 @@ paths:
                                     type: string
                                     example: '12345'
                                   system_name:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: ExternalSystem
                                 required:
                                 - system_id
@@ -739,9 +775,22 @@ paths:
       operationId: get_api-v1-assets-id
 components:
   schemas:
-    measure_money_area_period:
+    errors_object:
       type: object
-      nullable: true
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
+    measure_money_area_period:
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -773,20 +822,10 @@ components:
           type: string
           pattern: money/area/period
           example: money/area/period
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                nullable: true
     measure_percentage:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -808,8 +847,9 @@ components:
           pattern: percentage
           example: percentage
     measure_size:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -833,8 +873,9 @@ components:
           pattern: area
           example: area
     measure_area:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number

@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Tenants API
+  title: VTS Lease Tenants API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -85,8 +85,9 @@ paths:
                               example: ACME
                               description: The reported name of the tenant
                             global_tenant_name:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: ACME Corporation
                               description: The name of the global tenant or null if it doesn't exist
                             created_at:
@@ -138,7 +139,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     type:
                                       type: string
@@ -146,7 +149,6 @@ paths:
                                     id:
                                       type: string
                                       example: 19dbe413-442a-4fd1-afe4-9b12dc2c02ce
-                                  nullable: true
                                 links:
                                   type: object
                                   properties:
@@ -159,7 +161,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       type:
                                         type: string
@@ -167,7 +171,6 @@ paths:
                                       id:
                                         type: string
                                         example: 1
-                                    nullable: true
                                 links:
                                   type: object
                                   properties:
@@ -247,8 +250,9 @@ paths:
                             example: ACME
                             description: The reported name of the tenant
                           global_tenant_name:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: ACME Corporation
                             description: The name of the global tenant or null if it doesn't exist
                           created_at:
@@ -300,7 +304,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   type:
                                     type: string
@@ -308,7 +314,6 @@ paths:
                                   id:
                                     type: string
                                     example: 19dbe413-442a-4fd1-afe4-9b12dc2c02ce
-                                nullable: true
                               links:
                                 type: object
                                 properties:
@@ -321,7 +326,9 @@ paths:
                               data:
                                 type: array
                                 items:
-                                  type: object
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     type:
                                       type: string
@@ -329,7 +336,6 @@ paths:
                                     id:
                                       type: string
                                       example: 1
-                                  nullable: true
                               links:
                                 type: object
                                 properties:
@@ -377,8 +383,9 @@ components:
             type: object
             properties:
               detail:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http

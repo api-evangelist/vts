@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Lease Terms API
+  title: VTS Lease Lease Terms API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -122,9 +122,10 @@ paths:
                               type: string
                               format: date-time
                             term_type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: Renewal
-                              nullable: true
                               description: The purpose of the deal (new, renewal, expansion)
                             entered_date:
                               type: string
@@ -166,14 +167,16 @@ paths:
                               - break
                               - fixed_option
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a lease term.
                             downtime:
                               allOf:
                               - $ref: '#/components/schemas/measure_period'
-                              - type: object
-                                nullable: true
+                              - type:
+                                - object
+                                - 'null'
                                 properties:
                                   magnitude:
                                     example: 2
@@ -199,29 +202,34 @@ paths:
                               type: string
                               example: full service
                             move_out_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             possession_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             rent_commencement_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             rentable_size:
                               $ref: '#/components/schemas/measure_size'
                             lock_in_end_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             retail:
                               type: object
                               properties:
                                 description:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                 growth_rate:
                                   type: number
                                 percent_rent:
@@ -254,8 +262,9 @@ paths:
                                     description: The amount of the percentage rent revenue
                                 description: Amount of the tenant's sales that must be paid as rent to the landlord
                             sourceid:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: '000004353'
                             tenant_buildout_period:
                               $ref: '#/components/schemas/measure_period'
@@ -281,9 +290,10 @@ paths:
                                     - other
                                     description: The type of the lease info
                                   description:
-                                    type: string
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: My description
-                                    nullable: true
                                     description: Lease info description
                             other_incomes:
                               type: array
@@ -318,9 +328,10 @@ paths:
                                     example: '1'
                                     description: The quantity of parking
                                   description:
-                                    type: string
+                                    type:
+                                    - string
+                                    - 'null'
                                     example: My description
-                                    nullable: true
                                     description: Other income description
                             free_rents:
                               type: array
@@ -391,8 +402,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -414,8 +426,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -532,9 +545,10 @@ paths:
                             type: string
                             format: date-time
                           term_type:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             example: Renewal
-                            nullable: true
                             description: The purpose of the deal (new, renewal, expansion)
                           entered_date:
                             type: string
@@ -576,14 +590,16 @@ paths:
                             - break
                             - fixed_option
                           description:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: This is a lease term.
                           downtime:
                             allOf:
                             - $ref: '#/components/schemas/measure_period'
-                            - type: object
-                              nullable: true
+                            - type:
+                              - object
+                              - 'null'
                               properties:
                                 magnitude:
                                   example: 2
@@ -609,29 +625,34 @@ paths:
                             type: string
                             example: full service
                           move_out_date:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             format: date
-                            nullable: true
                           possession_date:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             format: date
-                            nullable: true
                           rent_commencement_date:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             format: date
-                            nullable: true
                           rentable_size:
                             $ref: '#/components/schemas/measure_size'
                           lock_in_end_date:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             format: date
-                            nullable: true
                           retail:
                             type: object
                             properties:
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               growth_rate:
                                 type: number
                               percent_rent:
@@ -664,8 +685,9 @@ paths:
                                   description: The amount of the percentage rent revenue
                               description: Amount of the tenant's sales that must be paid as rent to the landlord
                           sourceid:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: '000004353'
                           tenant_buildout_period:
                             $ref: '#/components/schemas/measure_period'
@@ -691,9 +713,10 @@ paths:
                                   - other
                                   description: The type of the lease info
                                 description:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: My description
-                                  nullable: true
                                   description: Lease info description
                           other_incomes:
                             type: array
@@ -728,9 +751,10 @@ paths:
                                   example: '1'
                                   description: The quantity of parking
                                 description:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: My description
-                                  nullable: true
                                   description: Other income description
                           free_rents:
                             type: array
@@ -801,8 +825,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -824,8 +849,9 @@ paths:
                               data:
                                 type: array
                                 items:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -850,9 +876,22 @@ paths:
       operationId: get_api-v1-lease-terms-id
 components:
   schemas:
-    measure_money_area_period:
+    errors_object:
       type: object
-      nullable: true
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
+    measure_money_area_period:
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -884,149 +923,10 @@ components:
           type: string
           pattern: money/area/period
           example: money/area/period
-    measure_money:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '...'
-          description: ISO 4217 currency code
-          example: USD
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              example: USD
-        type:
-          type: string
-          pattern: money
-          example: money
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                nullable: true
-    measure_percentage:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '%'
-          example: '%'
-        unit_components:
-          type: object
-          properties:
-            period:
-              type: string
-              pattern: '%'
-              example: '%'
-        type:
-          type: string
-          pattern: percentage
-          example: percentage
-    measure_size:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          enum:
-          - sf
-          - sm
-        unit_components:
-          type: object
-          properties:
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: area
-          example: area
-    measure_money_period:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          example: USD/yr
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            period:
-              type: string
-              enum:
-              - yr
-              - mo
-              - day
-        type:
-          type: string
-          pattern: money/period
-          example: money/period
-    measure_money_area:
-      type: object
-      nullable: true
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          example: USD/sf
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: money/area
-          example: money/area
     measure_period:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -1052,10 +952,90 @@ components:
           pattern: period
           example: period
         iso8601:
-          type: string
+          type:
+          - string
+          - 'null'
           example: P2Y
           description: Period represented by ISO8601 format
-          nullable: true
+    measure_percentage:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '%'
+          example: '%'
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              pattern: '%'
+              example: '%'
+        type:
+          type: string
+          pattern: percentage
+          example: percentage
+    measure_money_area:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: money/area
+          example: money/area
+    measure_size:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
     commissions:
       type: array
       items:
@@ -1073,13 +1053,14 @@ components:
             description: The timestamp when this budget commission was last updated
             deprecated: true
           net_or_gross:
-            type: string
+            type:
+            - string
+            - 'null'
             enum:
             - gross
             - net
             example: gross
             description: The calculation method of the commission amount.
-            nullable: true
           broker:
             type: string
             example: VTS
@@ -1131,6 +1112,61 @@ components:
                   - $ref: '#/components/schemas/measure_money'
                   - $ref: '#/components/schemas/measure_money_area'
                   - $ref: '#/components/schemas/measure_money_period'
+    measure_money:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
+    measure_money_period:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/period
+          example: money/period
   securitySchemes:
     basic_auth:
       type: http

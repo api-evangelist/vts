@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Tenant Industries API
+  title: VTS Lease Tenant Industries API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -74,8 +74,9 @@ paths:
                               type: string
                               example: apparel & accessories
                             sector:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: retail
                   links:
                     type: object
@@ -138,8 +139,9 @@ paths:
                             type: string
                             example: apparel & accessories
                           sector:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: retail
         '404':
           description: Requested tenant_industry does not exist
@@ -159,8 +161,9 @@ components:
             type: object
             properties:
               detail:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http

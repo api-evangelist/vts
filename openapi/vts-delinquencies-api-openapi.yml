@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Delinquencies API
+  title: VTS Lease Delinquencies API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -91,8 +91,9 @@ paths:
                               type: string
                               example: late
                             payment_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             created_at:
                               type: string
@@ -108,8 +109,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -176,8 +178,9 @@ paths:
                             type: string
                             example: late
                           payment_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             format: date
                           created_at:
                             type: string
@@ -193,8 +196,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -251,8 +255,9 @@ paths:
                           type: string
                           example: late
                         payment_date:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           format: date
         required: true
       operationId: patch_api-v1-delinquencies-id
@@ -306,8 +311,9 @@ paths:
                             type: string
                             example: late
                           payment_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             format: date
                           created_at:
                             type: string
@@ -323,8 +329,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -386,8 +393,9 @@ paths:
                           type: string
                           example: late
                         payment_date:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           format: date
         required: true
       operationId: post_api-v1-leases-lease-id-delinquencies
@@ -470,8 +478,9 @@ paths:
                               type: string
                               example: late
                             payment_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                             created_at:
                               type: string
@@ -487,8 +496,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -566,8 +576,9 @@ paths:
                             type: string
                             example: late
                           payment_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             format: date
                           created_at:
                             type: string
@@ -583,8 +594,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -641,8 +653,9 @@ paths:
                           type: string
                           example: late
                         payment_date:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           format: date
         required: true
       operationId: patch_api-v1-leases-lease-id-delinquencies-id
@@ -657,8 +670,9 @@ components:
             type: object
             properties:
               detail:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http

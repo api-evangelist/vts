@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Users API
+  title: VTS Lease Users API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -85,8 +85,9 @@ paths:
                               type: string
                               example: johndoe@example.com
                             current_sign_in_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
                             is_account_user:
                               type: boolean
@@ -166,11 +167,13 @@ paths:
                           last_name:
                             type: string
                           current_sign_in_at:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                           disabled:
-                            type: boolean
-                            nullable: true
+                            type:
+                            - boolean
+                            - 'null'
                           is_account_user:
                             type: boolean
                           is_company_admin:
@@ -209,8 +212,9 @@ components:
             type: object
             properties:
               detail:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http

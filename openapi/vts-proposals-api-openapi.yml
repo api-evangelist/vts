@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Proposals API
+  title: VTS Lease Proposals API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -82,9 +82,10 @@ paths:
                           type: object
                           properties:
                             proposal_label:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: Proposal Name
-                              nullable: true
                               description: The name of the proposal
                             calculated_metrics:
                               type: object
@@ -135,13 +136,15 @@ paths:
                                             description: 'Possible values: ''mo'''
                                     description: The NER in light of a downtime included in the proposal. Returned in money/area/month units
                                 ner_vs_budget:
-                                  type: number
-                                  nullable: true
+                                  type:
+                                  - number
+                                  - 'null'
                                   example: 1
                                   description: Net Effective Rent as a percent of NER of budget
                                 ner_to_termination_vs_budget:
-                                  type: number
-                                  nullable: true
+                                  type:
+                                  - number
+                                  - 'null'
                                   example: 1
                                   description: '"NER to termination" as a percent of NER of the budget'
                                 net_present_value:
@@ -192,12 +195,14 @@ paths:
                             latest:
                               type: boolean
                             discount_rate:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                               example: 0.08
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a proposal.
                             proposal_date:
                               type: string
@@ -212,8 +217,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -235,8 +241,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -252,8 +259,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -340,9 +348,10 @@ paths:
                           type: object
                           properties:
                             proposal_label:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: Proposal Name
-                              nullable: true
                               description: The name of the proposal
                             calculated_metrics:
                               type: object
@@ -393,13 +402,15 @@ paths:
                                             description: 'Possible values: ''mo'''
                                     description: The NER in light of a downtime included in the proposal. Returned in money/area/month units
                                 ner_vs_budget:
-                                  type: number
-                                  nullable: true
+                                  type:
+                                  - number
+                                  - 'null'
                                   example: 1
                                   description: Net Effective Rent as a percent of NER of budget
                                 ner_to_termination_vs_budget:
-                                  type: number
-                                  nullable: true
+                                  type:
+                                  - number
+                                  - 'null'
                                   example: 1
                                   description: '"NER to termination" as a percent of NER of the budget'
                                 net_present_value:
@@ -450,12 +461,14 @@ paths:
                             latest:
                               type: boolean
                             discount_rate:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                               example: 0.08
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a proposal.
                             proposal_date:
                               type: string
@@ -470,8 +483,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -493,8 +507,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -516,8 +531,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -578,9 +594,10 @@ paths:
                         type: object
                         properties:
                           proposal_label:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             example: Proposal Name
-                            nullable: true
                             description: The name of the proposal
                           calculated_metrics:
                             type: object
@@ -631,13 +648,15 @@ paths:
                                           description: 'Possible values: ''mo'''
                                   description: The NER in light of a downtime included in the proposal. Returned in money/area/month units
                               ner_vs_budget:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                                 example: 1
                                 description: Net Effective Rent as a percent of NER of budget
                               ner_to_termination_vs_budget:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                                 example: 1
                                 description: '"NER to termination" as a percent of NER of the budget'
                               net_present_value:
@@ -688,12 +707,14 @@ paths:
                           latest:
                             type: boolean
                           discount_rate:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             example: 0.08
                           description:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: This is a proposal.
                           proposal_date:
                             type: string
@@ -708,8 +729,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -731,8 +753,9 @@ paths:
                               data:
                                 type: array
                                 items:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -754,8 +777,9 @@ paths:
                               data:
                                 type: array
                                 items:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -789,9 +813,22 @@ paths:
       operationId: get_api-v1-proposals-id
 components:
   schemas:
-    measure_money_area_period:
+    errors_object:
       type: object
-      nullable: true
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
+    measure_money_area_period:
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -824,8 +861,9 @@ components:
           pattern: money/area/period
           example: money/area/period
     measure_money:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -847,17 +885,6 @@ components:
           type: string
           pattern: money
           example: money
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                nullable: true
   securitySchemes:
     basic_auth:
       type: http

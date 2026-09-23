@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Approvals API
+  title: VTS Lease Approvals API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -99,8 +99,9 @@ paths:
                               format: date-time
                               description: The timestamp when this approval was last updated
                             recommendation:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Any suggestions for handling the approval request
                             approvers:
                               description: Information about the specific approval step requested
@@ -125,9 +126,10 @@ paths:
                                     - revision_requested
                                     description: 'The status of the approval step. Possible values: pending, approved, rejected, revision_requested'
                                   reviewed_at:
-                                    type: string
+                                    type:
+                                    - string
+                                    - 'null'
                                     format: date-time
-                                    nullable: true
                                     description: The date-time the approval step was reviewed at - null if not reviewed yet
                                   comment:
                                     type: string
@@ -145,8 +147,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -160,8 +163,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -181,8 +185,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -198,8 +203,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -312,8 +318,9 @@ paths:
                             format: date-time
                             description: The timestamp when this approval was last updated
                           recommendation:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: Any suggestions for handling the approval request
                           approvers:
                             description: Information about the specific approval step requested
@@ -338,9 +345,10 @@ paths:
                                   - revision_requested
                                   description: 'The status of the approval step. Possible values: pending, approved, rejected, revision_requested'
                                 reviewed_at:
-                                  type: string
+                                  type:
+                                  - string
+                                  - 'null'
                                   format: date-time
-                                  nullable: true
                                   description: The date-time the approval step was reviewed at - null if not reviewed yet
                                 comment:
                                   type: string
@@ -358,8 +366,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -373,8 +382,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -394,8 +404,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -411,8 +422,9 @@ paths:
                               data:
                                 type: array
                                 items:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -546,9 +558,10 @@ paths:
                                     - revision_requested
                                     description: 'The status of the approval step. Possible values: pending, approved, rejected, revision_requested'
                                   reviewed_at:
-                                    type: string
+                                    type:
+                                    - string
+                                    - 'null'
                                     format: date-time
-                                    nullable: true
                                     description: The date-time the approval step was reviewed at - null if not reviewed yet
                                   comment:
                                     type: string
@@ -566,8 +579,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -581,8 +595,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -602,8 +617,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -619,8 +635,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -690,8 +707,9 @@ components:
             type: object
             properties:
               detail:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http

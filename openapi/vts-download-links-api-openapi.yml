@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Download Links API
+  title: VTS Lease Download Links API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -93,12 +93,6 @@ paths:
       operationId: get_-1
 components:
   schemas:
-    models_api.ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: error description
     models_api.DataEntity:
       type: object
       properties:
@@ -110,6 +104,17 @@ components:
         type:
           type: string
           example: download_link
+    models_api.ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: error description
+    models_api.DownloadLinksResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/models_api.DataEntity'
     models_api.UriEntity:
       type: object
       properties:
@@ -119,11 +124,6 @@ components:
         uri:
           type: string
           example: https://example.vts.com
-    models_api.DownloadLinksResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/models_api.DataEntity'
   securitySchemes:
     basic_auth:
       type: http

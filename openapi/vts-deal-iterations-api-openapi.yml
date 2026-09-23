@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Deal Iterations API
+  title: VTS Lease Deal Iterations API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -88,7 +88,9 @@ paths:
                               example: proposal
                               description: 'The current stage of the associated deal.Possible values: tenants_in_the_market, initial_inquiry, preview, tour, proposal, loi, legal, lease_outidle, dead_deal, lease_executed'
                             reason:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - adjacent_stores
                               - cannibalization_risk
@@ -124,7 +126,6 @@ paths:
                               - tenant_non_responsive
                               - null
                               example: space_leased
-                              nullable: true
                               description: 'Why the deal was moved to its current stage. Only applies to a deal in the dead deal stage. Possible values: adjacent_stores, cannibalization_risk, ceiling_height, foot_traffic, image, lobby, location, location_on_floor, other, parking_ratio, price, renewal, requirement_dead, security, size, space_condition, space_configuration, space_leased, storefront, timing, transportation, views, global_crisis, duplicate_deal, requirement_changed, decided_to_sublease, unknown, amenities, walkability, tenant_covenant, landlord_decision, tenant_non_responsive, null'
                             occurred_at:
                               type: string
@@ -139,10 +140,11 @@ paths:
                               format: date-time
                               description: The timestamp when this deal iteration was last updated
                             ended_at:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The timestamp when the deal iteration ended
-                              nullable: true
                             duration_in_days:
                               type: integer
                               example: 1
@@ -154,8 +156,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -175,8 +178,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -268,7 +272,9 @@ paths:
                             example: proposal
                             description: 'The current stage of the associated deal.Possible values: tenants_in_the_market, initial_inquiry, preview, tour, proposal, loi, legal, lease_outidle, dead_deal, lease_executed'
                           reason:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             enum:
                             - adjacent_stores
                             - cannibalization_risk
@@ -304,7 +310,6 @@ paths:
                             - tenant_non_responsive
                             - null
                             example: space_leased
-                            nullable: true
                             description: 'Why the deal was moved to its current stage. Only applies to a deal in the dead deal stage. Possible values: adjacent_stores, cannibalization_risk, ceiling_height, foot_traffic, image, lobby, location, location_on_floor, other, parking_ratio, price, renewal, requirement_dead, security, size, space_condition, space_configuration, space_leased, storefront, timing, transportation, views, global_crisis, duplicate_deal, requirement_changed, decided_to_sublease, unknown, amenities, walkability, tenant_covenant, landlord_decision, tenant_non_responsive, null'
                           occurred_at:
                             type: string
@@ -319,10 +324,11 @@ paths:
                             format: date-time
                             description: The timestamp when this deal iteration was last updated
                           ended_at:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             format: date
                             description: The timestamp when the deal iteration ended
-                            nullable: true
                           duration_in_days:
                             type: integer
                             example: 1
@@ -334,8 +340,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -355,8 +362,9 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
@@ -462,7 +470,9 @@ paths:
                               example: proposal
                               description: 'The current stage of the associated deal. Possible values: tenants_in_the_market, initial_inquiry, preview, tour, proposal, loi, legal, lease_out, idle, dead_deal, lease_executed'
                             reason:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - adjacent_stores
                               - cannibalization_risk
@@ -498,7 +508,6 @@ paths:
                               - tenant_non_responsive
                               - null
                               example: space_leased
-                              nullable: true
                               description: 'Why the deal was moved to its current stage. Only applies to a deal in the dead deal stage. Possible values: adjacent_stores, cannibalization_risk, ceiling_height, foot_traffic, image, lobby, location, location_on_floor, other, parking_ratio, price, renewal, requirement_dead, security, size, space_condition, space_configuration, space_leased, storefront, timing, transportation, views, global_crisis, duplicate_deal, requirement_changed, decided_to_sublease, unknown, amenities, walkability, tenant_covenant, landlord_decision, tenant_non_responsive, null'
                             occurred_at:
                               type: string
@@ -513,10 +522,11 @@ paths:
                               format: date-time
                               description: The timestamp when this deal iteration was last updated
                             ended_at:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The date when a deal will be marked as ended.
-                              nullable: true
                             duration_in_days:
                               type: integer
                               example: 1
@@ -528,8 +538,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -549,8 +560,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -601,8 +613,9 @@ components:
             type: object
             properties:
               detail:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http

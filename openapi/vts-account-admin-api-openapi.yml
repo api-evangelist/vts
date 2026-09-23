@@ -1,4 +1,4 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
   title: VTS Lease Account Admin API
   version: v1
@@ -275,7 +275,9 @@ paths:
                               - or
                               example: and
                             threshold:
-                              type: object
+                              type:
+                              - object
+                              - 'null'
                               properties:
                                 value:
                                   type: number
@@ -283,9 +285,10 @@ paths:
                                 unit:
                                   type: string
                                   example: '%'
-                              nullable: true
                             right_types:
-                              type: array
+                              type:
+                              - array
+                              - 'null'
                               items:
                                 type: string
                                 example: audit rights
@@ -321,9 +324,10 @@ paths:
                                 - rofo
                                 - rofr
                                 description: The type of the right
-                              nullable: true
                             lease_info_types:
-                              type: array
+                              type:
+                              - array
+                              - 'null'
                               items:
                                 type: string
                                 example: guarantor
@@ -335,7 +339,6 @@ paths:
                                 - development impact
                                 - other
                                 description: The type of the lease info
-                              nullable: true
                         relationships:
                           description: The objects linked to a approver rules
                           type: object
@@ -1129,7 +1132,9 @@ paths:
                           type: object
                           properties:
                             assignee:
-                              type: object
+                              type:
+                              - object
+                              - 'null'
                               properties:
                                 links:
                                   type: object
@@ -1146,7 +1151,6 @@ paths:
                                     id:
                                       type: string
                                       example: '1'
-                              nullable: true
                             task_setting:
                               type: object
                               properties:
@@ -1251,8 +1255,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1270,8 +1275,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1364,8 +1370,9 @@ paths:
                               type: string
                               example: 123 Park Avenue
                             suite_name:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                         relationships:
                           type: object
                           properties:
@@ -1373,8 +1380,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1392,8 +1400,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1411,8 +1420,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -1458,8 +1468,9 @@ components:
             type: object
             properties:
               detail:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Options API
+  title: VTS Lease Options API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -99,8 +99,9 @@ paths:
                                 - use
                                 description: 'The type of option. Possible values: audit rights, cap on rates, generator rights, go dark, landlord & tenant act 1954, make good, must lease, other, parking, radius, relocation, set off rights, signage, special provisions, storage, sublease, use.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                           relationships:
@@ -112,8 +113,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -133,8 +135,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -154,8 +157,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -189,25 +193,28 @@ paths:
                                 example: co-tenancy
                                 description: 'The type of option. Possible values: co-tenancy'
                               co_tenancy_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - named
                                 - occupied
                                 - null
-                                nullable: true
                                 description: 'The type of co-tenancy option. Possible values: named, occupied, null'
                               who_can_exercise:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - tenant
                                 - landlord
                                 - mutual
                                 - null
-                                nullable: true
                                 description: 'Who is allowed to exercise the co-tenancy option. Possible values: tenant, landlord, mutual, null'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                           relationships:
@@ -219,8 +226,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -240,8 +248,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -261,8 +270,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -296,8 +306,9 @@ paths:
                                 example: contraction
                                 description: 'The type of option. Possible values: contraction.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               minimum_size:
@@ -305,28 +316,32 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: The minimum (smallest) size down to which the right-holder can contract the space
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - tenant
                                 - landlord
                                 - mutual
                                 - null
-                                nullable: true
                                 description: Identifies who is holding the right - who owns and benefits from the contraction right
                               fee:
                                 allOf:
@@ -341,8 +356,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -362,8 +378,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -383,8 +400,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -420,8 +438,9 @@ paths:
                                 - rofr
                                 description: 'The type of option. Possible values: rofo, rofn, rofr'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               minimum_size:
@@ -429,31 +448,36 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: The minimum size of the space under the purview of the ROFO clause
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               rate_note:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: Free text field to further explain the nature of the rate type
                               rate_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - variable
                                 - fixed
                                 - null
-                                nullable: true
                                 description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                           relationships:
                             type: object
@@ -464,8 +488,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -485,8 +510,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -506,8 +532,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -541,17 +568,20 @@ paths:
                                 example: exclusive use
                                 description: 'The type of option. Possible values: exclusive use'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               trigger_details:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: A custom message detailing the nature of this tenant's exclusive use right that will appear elsewhere in VTS
                               remedy_details:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: A custom message detailing how a new tenant might be able to negotiate or remedy potentially breaking an existing tenant's exclusive use right in VTS
                           relationships:
                             type: object
@@ -562,8 +592,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -583,8 +614,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -604,8 +636,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -639,23 +672,27 @@ paths:
                                 example: purchase
                                 description: 'The type of option. Possible values: purchase'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                           relationships:
@@ -667,8 +704,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -688,8 +726,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -709,8 +748,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -744,18 +784,21 @@ paths:
                                 example: rent review
                                 description: 'The type of option. Possible values: rent review.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                           relationships:
@@ -767,8 +810,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -788,8 +832,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -809,8 +854,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -844,13 +890,15 @@ paths:
                                 example: renewal
                                 description: 'The type of option. Possible values: renewal.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               minimum_size:
@@ -862,27 +910,32 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: Number of months
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               number_of_options:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 example: 1
                                 description: Number of renewal options available
                               rate_note:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: Free text field to further explain the nature of the rate type
                               rate_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                           relationships:
                             type: object
@@ -893,8 +946,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -914,8 +968,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -935,8 +990,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -970,13 +1026,15 @@ paths:
                                 example: expansion
                                 description: 'The type of option. Possible values: expansion'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               maximum_size:
@@ -988,22 +1046,26 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: The minimum size to which the tenant can expand per the clause
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               rate_note:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: Free text field to further explain the nature of the rate type
                               rate_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                               tenant_improvements:
                                 allOf:
@@ -1018,8 +1080,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -1039,8 +1102,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1060,8 +1124,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1097,8 +1162,9 @@ paths:
                                 - rights to terminate
                                 description: 'The type of option. Possible values: break, kick out, rights to terminate'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               termination_fee:
@@ -1106,28 +1172,32 @@ paths:
                                 - $ref: '#/components/schemas/measure_money'
                                 - description: The fee associated with exercising the early termination
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               rights_holder:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - tenant
                                 - landlord
                                 - mutual
                                 - null
-                                nullable: true
                                 description: 'Possible values: tenant, landlord, mutual'
                           relationships:
                             type: object
@@ -1138,8 +1208,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -1159,8 +1230,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1180,8 +1252,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1298,8 +1371,9 @@ paths:
                                 - use
                                 description: 'The type of option. Possible values: audit rights, cap on rates, generator rights, go dark, landlord & tenant act 1954, make good, must lease, other, parking, radius, relocation, set off rights, signage, special provisions, storage, sublease, use.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                           relationships:
@@ -1311,8 +1385,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -1332,8 +1407,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1353,8 +1429,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1388,25 +1465,28 @@ paths:
                                 example: co-tenancy
                                 description: 'The type of option. Possible values: co-tenancy'
                               co_tenancy_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - named
                                 - occupied
                                 - null
-                                nullable: true
                                 description: 'The type of co-tenancy option. Possible values: named, occupied, null'
                               who_can_exercise:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - tenant
                                 - landlord
                                 - mutual
                                 - null
-                                nullable: true
                                 description: 'Who is allowed to exercise the co-tenancy option. Possible values: tenant, landlord, mutual, null'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                           relationships:
@@ -1418,8 +1498,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -1439,8 +1520,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1460,8 +1542,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1495,8 +1578,9 @@ paths:
                                 example: contraction
                                 description: 'The type of option. Possible values: contraction.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               minimum_size:
@@ -1504,28 +1588,32 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: The minimum (smallest) size down to which the right-holder can contract the space
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - tenant
                                 - landlord
                                 - mutual
                                 - null
-                                nullable: true
                                 description: Identifies who is holding the right - who owns and benefits from the contraction right
                               fee:
                                 allOf:
@@ -1540,8 +1628,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -1561,8 +1650,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1582,8 +1672,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1619,8 +1710,9 @@ paths:
                                 - rofr
                                 description: 'The type of option. Possible values: rofo, rofn, rofr'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               minimum_size:
@@ -1628,31 +1720,36 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: The minimum size of the space under the purview of the ROFO clause
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               rate_note:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: Free text field to further explain the nature of the rate type
                               rate_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - variable
                                 - fixed
                                 - null
-                                nullable: true
                                 description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                           relationships:
                             type: object
@@ -1663,8 +1760,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -1684,8 +1782,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1705,8 +1804,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1740,17 +1840,20 @@ paths:
                                 example: exclusive use
                                 description: 'The type of option. Possible values: exclusive use'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               trigger_details:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: A custom message detailing the nature of this tenant's exclusive use right that will appear elsewhere in VTS
                               remedy_details:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: A custom message detailing how a new tenant might be able to negotiate or remedy potentially breaking an existing tenant's exclusive use right in VTS
                           relationships:
                             type: object
@@ -1761,8 +1864,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -1782,8 +1886,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1803,8 +1908,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1838,23 +1944,27 @@ paths:
                                 example: purchase
                                 description: 'The type of option. Possible values: purchase'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                           relationships:
@@ -1866,8 +1976,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -1887,8 +1998,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1908,8 +2020,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -1943,18 +2056,21 @@ paths:
                                 example: rent review
                                 description: 'The type of option. Possible values: rent review.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                           relationships:
@@ -1966,8 +2082,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -1987,8 +2104,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2008,8 +2126,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2043,13 +2162,15 @@ paths:
                                 example: renewal
                                 description: 'The type of option. Possible values: renewal.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               minimum_size:
@@ -2061,27 +2182,32 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: Number of months
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               number_of_options:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 example: 1
                                 description: Number of renewal options available
                               rate_note:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: Free text field to further explain the nature of the rate type
                               rate_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                           relationships:
                             type: object
@@ -2092,8 +2218,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -2113,8 +2240,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2134,8 +2262,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2169,13 +2298,15 @@ paths:
                                 example: expansion
                                 description: 'The type of option. Possible values: expansion'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               maximum_size:
@@ -2187,22 +2318,26 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: The minimum size to which the tenant can expand per the clause
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               rate_note:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: Free text field to further explain the nature of the rate type
                               rate_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                               tenant_improvements:
                                 allOf:
@@ -2217,8 +2352,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -2238,8 +2374,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2259,8 +2396,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2296,8 +2434,9 @@ paths:
                                 - rights to terminate
                                 description: 'The type of option. Possible values: break, kick out, rights to terminate'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               termination_fee:
@@ -2305,28 +2444,32 @@ paths:
                                 - $ref: '#/components/schemas/measure_money'
                                 - description: The fee associated with exercising the early termination
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               rights_holder:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - tenant
                                 - landlord
                                 - mutual
                                 - null
-                                nullable: true
                                 description: 'Possible values: tenant, landlord, mutual'
                           relationships:
                             type: object
@@ -2337,8 +2480,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -2358,8 +2502,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2379,8 +2524,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2507,8 +2653,9 @@ paths:
                                 - use
                                 description: 'The type of option. Possible values: audit rights, cap on rates, generator rights, go dark, landlord & tenant act 1954, make good, must lease, other, parking, radius, relocation, set off rights, signage, special provisions, storage, sublease, use.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                           relationships:
@@ -2520,8 +2667,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -2541,8 +2689,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2562,8 +2711,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2605,25 +2755,28 @@ paths:
                                 example: co-tenancy
                                 description: 'The type of option. Possible values: co-tenancy'
                               co_tenancy_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - named
                                 - occupied
                                 - null
-                                nullable: true
                                 description: 'The type of co-tenancy option. Possible values: named, occupied, null'
                               who_can_exercise:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - tenant
                                 - landlord
                                 - mutual
                                 - null
-                                nullable: true
                                 description: 'Who is allowed to exercise the co-tenancy option. Possible values: tenant, landlord, mutual, null'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                           relationships:
@@ -2635,8 +2788,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -2656,8 +2810,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2677,8 +2832,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2720,8 +2876,9 @@ paths:
                                 example: contraction
                                 description: 'The type of option. Possible values: contraction.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               minimum_size:
@@ -2729,28 +2886,32 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: The minimum (smallest) size down to which the right-holder can contract the space
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - tenant
                                 - landlord
                                 - mutual
                                 - null
-                                nullable: true
                                 description: Identifies who is holding the right - who owns and benefits from the contraction right
                               fee:
                                 allOf:
@@ -2765,8 +2926,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -2786,8 +2948,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2807,8 +2970,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2852,8 +3016,9 @@ paths:
                                 - rofr
                                 description: 'The type of option. Possible values: rofo, rofn, rofr'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               minimum_size:
@@ -2861,31 +3026,36 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: The minimum size of the space under the purview of the ROFO clause
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               rate_note:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: Free text field to further explain the nature of the rate type
                               rate_type:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - variable
                                 - fixed
                                 - null
-                                nullable: true
                                 description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                           relationships:
                             type: object
@@ -2896,8 +3066,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -2917,8 +3088,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2938,8 +3110,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -2981,17 +3154,20 @@ paths:
                                 example: exclusive use
                                 description: 'The type of option. Possible values: exclusive use'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               trigger_details:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: A custom message detailing the nature of this tenant's exclusive use right that will appear elsewhere in VTS
                               remedy_details:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: A custom message detailing how a new tenant might be able to negotiate or remedy potentially breaking an existing tenant's exclusive use right in VTS
                           relationships:
                             type: object
@@ -3002,8 +3178,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -3023,8 +3200,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3044,8 +3222,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3087,23 +3266,27 @@ paths:
                                 example: purchase
                                 description: 'The type of option. Possible values: purchase'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                           relationships:
@@ -3115,8 +3298,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -3136,8 +3320,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3157,8 +3342,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3200,18 +3386,21 @@ paths:
                                 example: rent review
                                 description: 'The type of option. Possible values: rent review.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                           relationships:
@@ -3223,8 +3412,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -3244,8 +3434,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3265,8 +3456,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3308,13 +3500,15 @@ paths:
                                 example: renewal
                                 description: 'The type of option. Possible values: renewal.'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               minimum_size:
@@ -3326,27 +3520,32 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: Number of months
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               number_of_options:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 example: 1
                                 description: Number of renewal options available
                               rate_note:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: Free text field to further explain the nature of the rate type
                               rate_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                           relationships:
                             type: object
@@ -3357,8 +3556,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -3378,8 +3578,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3399,8 +3600,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3442,13 +3644,15 @@ paths:
                                 example: expansion
                                 description: 'The type of option. Possible values: expansion'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               maximum_size:
@@ -3460,22 +3664,26 @@ paths:
                                 - $ref: '#/components/schemas/measure_size'
                                 - description: The minimum size to which the tenant can expand per the clause
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               rate_note:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: Free text field to further explain the nature of the rate type
                               rate_type:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                               tenant_improvements:
                                 allOf:
@@ -3490,8 +3698,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -3511,8 +3720,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3532,8 +3742,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3577,8 +3788,9 @@ paths:
                                 - rights to terminate
                                 description: 'The type of option. Possible values: break, kick out, rights to terminate'
                               description:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 example: This is a description.
                                 description: A description of the option
                               termination_fee:
@@ -3586,28 +3798,32 @@ paths:
                                 - $ref: '#/components/schemas/measure_money'
                                 - description: The fee associated with exercising the early termination
                               effective_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The date on which the right-holder chooses to exercise the right
                               notice_start_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The earliest date upon which the right-holder can exercise the right
                               notice_end_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 format: date
                                 description: The latest date on which the right-holder can exercise the right
                               rights_holder:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 enum:
                                 - tenant
                                 - landlord
                                 - mutual
                                 - null
-                                nullable: true
                                 description: 'Possible values: tenant, landlord, mutual'
                           relationships:
                             type: object
@@ -3618,8 +3834,9 @@ paths:
                                   data:
                                     type: array
                                     items:
-                                      type: object
-                                      nullable: true
+                                      type:
+                                      - object
+                                      - 'null'
                                       properties:
                                         id:
                                           type: string
@@ -3639,8 +3856,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3660,8 +3878,9 @@ paths:
                                 type: object
                                 properties:
                                   data:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3761,8 +3980,9 @@ paths:
                               - use
                               description: 'The type of option. Possible values: audit rights, cap on rates, generator rights, go dark, landlord & tenant act 1954, make good, must lease, other, parking, radius, relocation, set off rights, signage, special provisions, storage, sublease, use.'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a description.
                               description: A description of the option
                         relationships:
@@ -3774,8 +3994,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3795,8 +4016,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -3816,8 +4038,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -3859,25 +4082,28 @@ paths:
                               example: co-tenancy
                               description: 'The type of option. Possible values: co-tenancy'
                             co_tenancy_type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - named
                               - occupied
                               - null
-                              nullable: true
                               description: 'The type of co-tenancy option. Possible values: named, occupied, null'
                             who_can_exercise:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - tenant
                               - landlord
                               - mutual
                               - null
-                              nullable: true
                               description: 'Who is allowed to exercise the co-tenancy option. Possible values: tenant, landlord, mutual, null'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a description.
                               description: A description of the option
                         relationships:
@@ -3889,8 +4115,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -3910,8 +4137,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -3931,8 +4159,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -3974,8 +4203,9 @@ paths:
                               example: contraction
                               description: 'The type of option. Possible values: contraction.'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a description.
                               description: A description of the option
                             minimum_size:
@@ -3983,28 +4213,32 @@ paths:
                               - $ref: '#/components/schemas/measure_size'
                               - description: The minimum (smallest) size down to which the right-holder can contract the space
                             effective_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The date on which the right-holder chooses to exercise the right
                             notice_start_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The earliest date upon which the right-holder can exercise the right
                             notice_end_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The latest date on which the right-holder can exercise the right
                             type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - tenant
                               - landlord
                               - mutual
                               - null
-                              nullable: true
                               description: Identifies who is holding the right - who owns and benefits from the contraction right
                             fee:
                               allOf:
@@ -4019,8 +4253,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -4040,8 +4275,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4061,8 +4297,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4106,8 +4343,9 @@ paths:
                               - rofr
                               description: 'The type of option. Possible values: rofo, rofn, rofr'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a description.
                               description: A description of the option
                             minimum_size:
@@ -4115,31 +4353,36 @@ paths:
                               - $ref: '#/components/schemas/measure_size'
                               - description: The minimum size of the space under the purview of the ROFO clause
                             effective_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The date on which the right-holder chooses to exercise the right
                             notice_start_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The earliest date upon which the right-holder can exercise the right
                             notice_end_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The latest date on which the right-holder can exercise the right
                             rate_note:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Free text field to further explain the nature of the rate type
                             rate_type:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - variable
                               - fixed
                               - null
-                              nullable: true
                               description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                         relationships:
                           type: object
@@ -4150,8 +4393,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -4171,8 +4415,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4192,8 +4437,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4235,17 +4481,20 @@ paths:
                               example: exclusive use
                               description: 'The type of option. Possible values: exclusive use'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a description.
                               description: A description of the option
                             trigger_details:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: A custom message detailing the nature of this tenant's exclusive use right that will appear elsewhere in VTS
                             remedy_details:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: A custom message detailing how a new tenant might be able to negotiate or remedy potentially breaking an existing tenant's exclusive use right in VTS
                         relationships:
                           type: object
@@ -4256,8 +4505,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -4277,8 +4527,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4298,8 +4549,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4341,23 +4593,27 @@ paths:
                               example: purchase
                               description: 'The type of option. Possible values: purchase'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a description.
                               description: A description of the option
                             effective_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The date on which the right-holder chooses to exercise the right
                             notice_start_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The earliest date upon which the right-holder can exercise the right
                             notice_end_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The latest date on which the right-holder can exercise the right
                         relationships:
@@ -4369,8 +4625,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -4390,8 +4647,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4411,8 +4669,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4454,18 +4713,21 @@ paths:
                               example: rent review
                               description: 'The type of option. Possible values: rent review.'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a description.
                               description: A description of the option
                             effective_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The date on which the right-holder chooses to exercise the right
                             notice_end_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The latest date on which the right-holder can exercise the right
                         relationships:
@@ -4477,8 +4739,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -4498,8 +4761,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4519,8 +4783,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4562,13 +4827,15 @@ paths:
                               example: renewal
                               description: 'The type of option. Possible values: renewal.'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a description.
                               description: A description of the option
                             effective_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The date on which the right-holder chooses to exercise the right
                             minimum_size:
@@ -4580,27 +4847,32 @@ paths:
                               - $ref: '#/components/schemas/measure_size'
                               - description: Number of months
                             notice_end_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The latest date on which the right-holder can exercise the right
                             notice_start_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The earliest date upon which the right-holder can exercise the right
                             number_of_options:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               example: 1
                               description: Number of renewal options available
                             rate_note:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Free text field to further explain the nature of the rate type
                             rate_type:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                         relationships:
                           type: object
@@ -4611,8 +4883,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -4632,8 +4905,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4653,8 +4927,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4696,13 +4971,15 @@ paths:
                               example: expansion
                               description: 'The type of option. Possible values: expansion'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a description.
                               description: A description of the option
                             effective_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The date on which the right-holder chooses to exercise the right
                             maximum_size:
@@ -4714,22 +4991,26 @@ paths:
                               - $ref: '#/components/schemas/measure_size'
                               - description: The minimum size to which the tenant can expand per the clause
                             notice_end_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The latest date on which the right-holder can exercise the right
                             notice_start_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The earliest date upon which the right-holder can exercise the right
                             rate_note:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Free text field to further explain the nature of the rate type
                             rate_type:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: 'Describes the unit/rate for the cost of the next term. Possible values: variable, fixed'
                             tenant_improvements:
                               allOf:
@@ -4744,8 +5025,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -4765,8 +5047,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4786,8 +5069,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4831,8 +5115,9 @@ paths:
                               - rights to terminate
                               description: 'The type of option. Possible values: break, kick out, rights to terminate'
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               example: This is a description.
                               description: A description of the option
                             termination_fee:
@@ -4840,28 +5125,32 @@ paths:
                               - $ref: '#/components/schemas/measure_money'
                               - description: The fee associated with exercising the early termination
                             effective_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The date on which the right-holder chooses to exercise the right
                             notice_start_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The earliest date upon which the right-holder can exercise the right
                             notice_end_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               format: date
                               description: The latest date on which the right-holder can exercise the right
                             rights_holder:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               enum:
                               - tenant
                               - landlord
                               - mutual
                               - null
-                              nullable: true
                               description: 'Possible values: tenant, landlord, mutual'
                         relationships:
                           type: object
@@ -4872,8 +5161,9 @@ paths:
                                 data:
                                   type: array
                                   items:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -4893,8 +5183,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4914,8 +5205,9 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
@@ -4946,33 +5238,22 @@ paths:
       operationId: get_api-v1-options-id
 components:
   schemas:
-    measure_money:
+    errors_object:
       type: object
-      nullable: true
       properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '...'
-          description: ISO 4217 currency code
-          example: USD
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              example: USD
-        type:
-          type: string
-          pattern: money
-          example: money
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
     measure_money_area:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -4999,8 +5280,9 @@ components:
           pattern: money/area
           example: money/area
     measure_size:
-      type: object
-      nullable: true
+      type:
+      - object
+      - 'null'
       properties:
         magnitude:
           type: number
@@ -5023,17 +5305,31 @@ components:
           type: string
           pattern: area
           example: area
-    errors_object:
-      type: object
+    measure_money:
+      type:
+      - object
+      - 'null'
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                nullable: true
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
   securitySchemes:
     basic_auth:
       type: http

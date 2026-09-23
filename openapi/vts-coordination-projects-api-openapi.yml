@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: VTS Lease Account Admin Coordination Projects API
+  title: VTS Lease Coordination Projects API
   version: v1
   description: VTS Lease REST API — the commercial real estate leasing, asset management, and portfolio data surface of the VTS platform. Resources include assets, spaces, leases, deals, deal terms, lease terms, financials, budgets, tenants, buildings, listings, and the Leasing Availability API. Harvested verbatim from the VTS developer portal (readme.vts.com) per-operation OpenAPI fragments.
   contact:
@@ -69,24 +69,29 @@ paths:
                           type: object
                           properties:
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             completed_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             target_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             notes:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             created_at:
                               type: string
                             updated_at:
                               type: string
                             category_description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                         relationships:
                           type: object
                           properties:
@@ -94,13 +99,14 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
                                     type:
                                       type: string
-                                  nullable: true
                                 links:
                                   type: object
                                   properties:
@@ -184,24 +190,29 @@ paths:
                         type: object
                         properties:
                           description:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                           completed_at:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                           target_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                           notes:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                           created_at:
                             type: string
                           updated_at:
                             type: string
                           category_description:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                       relationships:
                         type: object
                         properties:
@@ -209,13 +220,14 @@ paths:
                             type: object
                             properties:
                               data:
-                                type: object
+                                type:
+                                - object
+                                - 'null'
                                 properties:
                                   id:
                                     type: string
                                   type:
                                     type: string
-                                nullable: true
                               links:
                                 type: object
                                 properties:
@@ -289,13 +301,15 @@ paths:
                           type: object
                           properties:
                             target_rent_commencement_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             current_rent_commencement_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             created_at:
                               type: string
                               format: date-time
@@ -303,9 +317,10 @@ paths:
                               type: string
                               format: date-time
                             status:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: on_track
-                              nullable: true
                         relationships:
                           type: object
                           properties:
@@ -358,7 +373,9 @@ paths:
                               - type: object
                                 properties:
                                   data:
-                                    type: object
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -366,7 +383,6 @@ paths:
                                       type:
                                         type: string
                                         example: coordination_milestones
-                                    nullable: true
                   links:
                     type: object
                     properties:
@@ -425,13 +441,15 @@ paths:
                           type: object
                           properties:
                             target_rent_commencement_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             current_rent_commencement_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             created_at:
                               type: string
                               format: date-time
@@ -439,9 +457,10 @@ paths:
                               type: string
                               format: date-time
                             status:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: on_track
-                              nullable: true
                         relationships:
                           type: object
                           properties:
@@ -494,7 +513,9 @@ paths:
                               - type: object
                                 properties:
                                   data:
-                                    type: object
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -502,7 +523,6 @@ paths:
                                       type:
                                         type: string
                                         example: coordination_milestones
-                                    nullable: true
                   links:
                     type: object
                     properties:
@@ -587,24 +607,29 @@ paths:
                           type: object
                           properties:
                             description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             completed_at:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             target_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             notes:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                             created_at:
                               type: string
                             updated_at:
                               type: string
                             category_description:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                         relationships:
                           type: object
                           properties:
@@ -612,13 +637,14 @@ paths:
                               type: object
                               properties:
                                 data:
-                                  type: object
+                                  type:
+                                  - object
+                                  - 'null'
                                   properties:
                                     id:
                                       type: string
                                     type:
                                       type: string
-                                  nullable: true
                                 links:
                                   type: object
                                   properties:
@@ -721,13 +747,15 @@ paths:
                           type: object
                           properties:
                             target_rent_commencement_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             current_rent_commencement_date:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date
-                              nullable: true
                             created_at:
                               type: string
                               format: date-time
@@ -735,9 +763,10 @@ paths:
                               type: string
                               format: date-time
                             status:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               example: on_track
-                              nullable: true
                         relationships:
                           type: object
                           properties:
@@ -790,7 +819,9 @@ paths:
                               - type: object
                                 properties:
                                   data:
-                                    type: object
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: string
@@ -798,7 +829,6 @@ paths:
                                       type:
                                         type: string
                                         example: coordination_milestones
-                                    nullable: true
                   links:
                     type: object
                     properties:
@@ -830,8 +860,9 @@ components:
             type: object
             properties:
               detail:
-                type: string
-                nullable: true
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http
