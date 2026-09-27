@@ -775,6 +775,30 @@ paths:
       operationId: get_api-v1-assets-id
 components:
   schemas:
+    measure_percentage:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '%'
+          example: '%'
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              pattern: '%'
+              example: '%'
+        type:
+          type: string
+          pattern: percentage
+          example: percentage
     errors_object:
       type: object
       properties:
@@ -787,6 +811,32 @@ components:
                 type:
                 - string
                 - 'null'
+    measure_size:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
     measure_money_area_period:
       type:
       - object
@@ -822,56 +872,6 @@ components:
           type: string
           pattern: money/area/period
           example: money/area/period
-    measure_percentage:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '%'
-          example: '%'
-        unit_components:
-          type: object
-          properties:
-            period:
-              type: string
-              pattern: '%'
-              example: '%'
-        type:
-          type: string
-          pattern: percentage
-          example: percentage
-    measure_size:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          enum:
-          - sf
-          - sm
-        unit_components:
-          type: object
-          properties:
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: area
-          example: area
     measure_area:
       type:
       - object

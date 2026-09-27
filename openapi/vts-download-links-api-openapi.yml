@@ -93,6 +93,15 @@ paths:
       operationId: get_-1
 components:
   schemas:
+    models_api.UriEntity:
+      type: object
+      properties:
+        error:
+          type: string
+          example: explanation of the error
+        uri:
+          type: string
+          example: https://example.vts.com
     models_api.DataEntity:
       type: object
       properties:
@@ -115,15 +124,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/models_api.DataEntity'
-    models_api.UriEntity:
-      type: object
-      properties:
-        error:
-          type: string
-          example: explanation of the error
-        uri:
-          type: string
-          example: https://example.vts.com
   securitySchemes:
     basic_auth:
       type: http

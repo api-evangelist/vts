@@ -1591,18 +1591,6 @@ paths:
       operationId: get_api-v1-broker-availabilities
 components:
   schemas:
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type:
-                - string
-                - 'null'
     measure_size:
       type:
       - object
@@ -1629,6 +1617,18 @@ components:
           type: string
           pattern: area
           example: area
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http

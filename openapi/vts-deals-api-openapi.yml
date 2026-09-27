@@ -1126,18 +1126,31 @@ paths:
       operationId: get_api-v1-deals-id
 components:
   schemas:
-    errors_object:
-      type: object
+    measure_money:
+      type:
+      - object
+      - 'null'
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type:
-                - string
-                - 'null'
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
     measure_size:
       type:
       - object
@@ -1164,31 +1177,18 @@ components:
           type: string
           pattern: area
           example: area
-    measure_money:
-      type:
-      - object
-      - 'null'
+    errors_object:
+      type: object
       properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '...'
-          description: ISO 4217 currency code
-          example: USD
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              example: USD
-        type:
-          type: string
-          pattern: money
-          example: money
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
   securitySchemes:
     basic_auth:
       type: http
