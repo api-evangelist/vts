@@ -1037,20 +1037,7 @@ paths:
       operationId: get_api-v1-deal-terms-id
 components:
   schemas:
-    base_rents:
-      type: array
-      items:
-        type: object
-        properties:
-          start_month:
-            type: number
-            example: 1
-            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
-          amount:
-            oneOf:
-            - $ref: '#/components/schemas/measure_money_area_period'
-            - $ref: '#/components/schemas/measure_money_period'
-    measure_money_area:
+    measure_period:
       type:
       - object
       - 'null'
@@ -1058,51 +1045,32 @@ components:
         magnitude:
           type: number
           format: float
-          example: 1000
+          example: 2
         unit:
           type: string
-          example: USD/sf
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: money/area
-          example: money/area
-    measure_percentage:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '%'
-          example: '%'
+          enum:
+          - yr
+          - mo
+          - day
         unit_components:
           type: object
           properties:
             period:
               type: string
-              pattern: '%'
-              example: '%'
+              enum:
+              - yr
+              - mo
+              - day
         type:
           type: string
-          pattern: percentage
-          example: percentage
+          pattern: period
+          example: period
+        iso8601:
+          type:
+          - string
+          - 'null'
+          example: P2Y
+          description: Period represented by ISO8601 format
     free_rents:
       type: array
       items:
@@ -1127,18 +1095,71 @@ components:
             allOf:
             - $ref: '#/components/schemas/measure_period'
             - description: The amount of time in which the free rent applies (including amount of time units)
-    errors_object:
-      type: object
+    measure_money_period:
+      type:
+      - object
+      - 'null'
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type:
-                - string
-                - 'null'
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/period
+          example: money/period
+    measure_money_area_period:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/area/period
+          example: money/area/period
     percentage_rents:
       type: array
       items:
@@ -1168,6 +1189,182 @@ components:
                   $ref: '#/components/schemas/measure_money_period'
                 percent_rent:
                   $ref: '#/components/schemas/measure_percentage'
+    reimbursable_expenses:
+      type: array
+      items:
+        type: object
+        properties:
+          expense_type:
+            type: string
+            example: OperationalExpense
+            enum:
+            - OperationalExpense
+            - RealEstateTax
+            - ReimbursableExpenseCleaning
+            - ReimbursableExpenseInsurance
+            - ReimbursableExpenseMarketing
+            - ReimbursableExpenseOm
+            - ReimbursableExpenseOther
+            - ReimbursableExpenseRepairsAndMaintenance
+            - ReimbursableExpenseSecurity
+            - ReimbursableExpenseUtility
+            - ReimbursableExpenseCam
+            - ReimbursableExpenseElectric
+            - ReimbursableExpenseLandscaping
+            - ReimbursableExpenseManagementFee
+            description: The type of the reimbursable expense
+          recovery_method:
+            type: string
+            example: gross
+            enum:
+            - gross
+            - net
+            - amount
+            - modified_gross
+            description: The calculation method of the recovery amount for the reimbursable expense
+          expense_growth_rate:
+            allOf:
+            - $ref: '#/components/schemas/measure_percentage'
+            - description: The expenses will grow by this rate every 12 months after the lease commencement date.
+          expense_amount_with_units:
+            allOf:
+            - $ref: '#/components/schemas/measure_money_area_period'
+            - description: The amount of the reimbursable expense
+          recovery_amount_with_units:
+            allOf:
+            - $ref: '#/components/schemas/measure_money_area_period'
+            - description: The amount of reimbursable expense that will be paid to landlord by the tenant with recovery type modified_gross
+          expense_stop:
+            allOf:
+            - $ref: '#/components/schemas/measure_money_area_period'
+            - description: The expense stop of the reimbursable expense. Only applies for expenses with recovery type modified_gross
+          description:
+            type: string
+            example: Description
+            description: The description of reimbursable expense
+    costs:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - tenant_improvement
+            - building_improvement
+            - lease_incentive
+            - other_fee
+            example: tenant_improvement
+            description: The type of the cost
+          occurrence_month:
+            type: number
+            example: 1
+            description: Tenant improvements occurrence month. Possible values are between 1 and the number of months in the term
+          amount:
+            oneOf:
+            - $ref: '#/components/schemas/measure_money'
+            - $ref: '#/components/schemas/measure_money_period'
+            description: The amount, with units, of the cost
+          description:
+            type: string
+            example: Description
+            description: The description of the cost
+    base_rents:
+      type: array
+      items:
+        type: object
+        properties:
+          start_month:
+            type: number
+            example: 1
+            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
+          amount:
+            oneOf:
+            - $ref: '#/components/schemas/measure_money_area_period'
+            - $ref: '#/components/schemas/measure_money_period'
+    rent_escalations:
+      type: array
+      items:
+        type: object
+        properties:
+          start_month:
+            type: number
+            example: 1
+            description: Month number in which to begin rent escalations
+          amount:
+            anyOf:
+            - $ref: '#/components/schemas/measure_percentage'
+            - $ref: '#/components/schemas/measure_money_area_period'
+            description: Value of the escalation
+          occurs:
+            type: string
+            enum:
+            - One Time
+            - Annual
+            example: One Time
+            description: How often escalations recurs
+    measure_size:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
+    measure_percentage:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '%'
+          example: '%'
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              pattern: '%'
+              example: '%'
+        type:
+          type: string
+          pattern: percentage
+          example: percentage
     commissions:
       type: array
       items:
@@ -1244,94 +1441,6 @@ components:
                   - $ref: '#/components/schemas/measure_money'
                   - $ref: '#/components/schemas/measure_money_area'
                   - $ref: '#/components/schemas/measure_money_period'
-    measure_size:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          enum:
-          - sf
-          - sm
-        unit_components:
-          type: object
-          properties:
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: area
-          example: area
-    measure_money_area_period:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          example: USD/sf/yr
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-            period:
-              type: string
-              enum:
-              - yr
-              - mo
-              - day
-        type:
-          type: string
-          pattern: money/area/period
-          example: money/area/period
-    costs:
-      type: array
-      items:
-        type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - tenant_improvement
-            - building_improvement
-            - lease_incentive
-            - other_fee
-            example: tenant_improvement
-            description: The type of the cost
-          occurrence_month:
-            type: number
-            example: 1
-            description: Tenant improvements occurrence month. Possible values are between 1 and the number of months in the term
-          amount:
-            oneOf:
-            - $ref: '#/components/schemas/measure_money'
-            - $ref: '#/components/schemas/measure_money_period'
-            description: The amount, with units, of the cost
-          description:
-            type: string
-            example: Description
-            description: The description of the cost
     measure_money:
       type:
       - object
@@ -1357,28 +1466,7 @@ components:
           type: string
           pattern: money
           example: money
-    rent_escalations:
-      type: array
-      items:
-        type: object
-        properties:
-          start_month:
-            type: number
-            example: 1
-            description: Month number in which to begin rent escalations
-          amount:
-            anyOf:
-            - $ref: '#/components/schemas/measure_percentage'
-            - $ref: '#/components/schemas/measure_money_area_period'
-            description: Value of the escalation
-          occurs:
-            type: string
-            enum:
-            - One Time
-            - Annual
-            example: One Time
-            description: How often escalations recurs
-    measure_money_period:
+    measure_money_area:
       type:
       - object
       - 'null'
@@ -1389,7 +1477,7 @@ components:
           example: 1000
         unit:
           type: string
-          example: USD/yr
+          example: USD/sf
         unit_components:
           type: object
           properties:
@@ -1398,103 +1486,15 @@ components:
               pattern: '...'
               description: ISO 4217 currency code
               example: USD
-            period:
+            area:
               type: string
               enum:
-              - yr
-              - mo
-              - day
+              - sf
+              - sm
         type:
           type: string
-          pattern: money/period
-          example: money/period
-    measure_period:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 2
-        unit:
-          type: string
-          enum:
-          - yr
-          - mo
-          - day
-        unit_components:
-          type: object
-          properties:
-            period:
-              type: string
-              enum:
-              - yr
-              - mo
-              - day
-        type:
-          type: string
-          pattern: period
-          example: period
-        iso8601:
-          type:
-          - string
-          - 'null'
-          example: P2Y
-          description: Period represented by ISO8601 format
-    reimbursable_expenses:
-      type: array
-      items:
-        type: object
-        properties:
-          expense_type:
-            type: string
-            example: OperationalExpense
-            enum:
-            - OperationalExpense
-            - RealEstateTax
-            - ReimbursableExpenseCleaning
-            - ReimbursableExpenseInsurance
-            - ReimbursableExpenseMarketing
-            - ReimbursableExpenseOm
-            - ReimbursableExpenseOther
-            - ReimbursableExpenseRepairsAndMaintenance
-            - ReimbursableExpenseSecurity
-            - ReimbursableExpenseUtility
-            - ReimbursableExpenseCam
-            - ReimbursableExpenseElectric
-            - ReimbursableExpenseLandscaping
-            - ReimbursableExpenseManagementFee
-            description: The type of the reimbursable expense
-          recovery_method:
-            type: string
-            example: gross
-            enum:
-            - gross
-            - net
-            - amount
-            - modified_gross
-            description: The calculation method of the recovery amount for the reimbursable expense
-          expense_growth_rate:
-            allOf:
-            - $ref: '#/components/schemas/measure_percentage'
-            - description: The expenses will grow by this rate every 12 months after the lease commencement date.
-          expense_amount_with_units:
-            allOf:
-            - $ref: '#/components/schemas/measure_money_area_period'
-            - description: The amount of the reimbursable expense
-          recovery_amount_with_units:
-            allOf:
-            - $ref: '#/components/schemas/measure_money_area_period'
-            - description: The amount of reimbursable expense that will be paid to landlord by the tenant with recovery type modified_gross
-          expense_stop:
-            allOf:
-            - $ref: '#/components/schemas/measure_money_area_period'
-            - description: The expense stop of the reimbursable expense. Only applies for expenses with recovery type modified_gross
-          description:
-            type: string
-            example: Description
-            description: The description of reimbursable expense
+          pattern: money/area
+          example: money/area
     other_incomes:
       type: array
       items:

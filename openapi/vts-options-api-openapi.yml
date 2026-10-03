@@ -5238,6 +5238,57 @@ paths:
       operationId: get_api-v1-options-id
 components:
   schemas:
+    measure_size:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
+    measure_money:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
     measure_money_area:
       type:
       - object
@@ -5267,57 +5318,6 @@ components:
           type: string
           pattern: money/area
           example: money/area
-    measure_money:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '...'
-          description: ISO 4217 currency code
-          example: USD
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              example: USD
-        type:
-          type: string
-          pattern: money
-          example: money
-    measure_size:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          enum:
-          - sf
-          - sm
-        unit_components:
-          type: object
-          properties:
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: area
-          example: area
     errors_object:
       type: object
       properties:

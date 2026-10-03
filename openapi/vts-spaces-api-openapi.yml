@@ -2701,19 +2701,7 @@ paths:
       operationId: get_api-v1-spaces-id
 components:
   schemas:
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type:
-                - string
-                - 'null'
-    measure_size:
+    measure_money_period:
       type:
       - object
       - 'null'
@@ -2724,21 +2712,25 @@ components:
           example: 1000
         unit:
           type: string
-          enum:
-          - sf
-          - sm
+          example: USD/yr
         unit_components:
           type: object
           properties:
-            area:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            period:
               type: string
               enum:
-              - sf
-              - sm
+              - yr
+              - mo
+              - day
         type:
           type: string
-          pattern: area
-          example: area
+          pattern: money/period
+          example: money/period
     measure_money_area_period:
       type:
       - object
@@ -2774,6 +2766,44 @@ components:
           type: string
           pattern: money/area/period
           example: money/area/period
+    measure_size:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
     measure_money:
       type:
       - object
@@ -2799,36 +2829,6 @@ components:
           type: string
           pattern: money
           example: money
-    measure_money_period:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          example: USD/yr
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            period:
-              type: string
-              enum:
-              - yr
-              - mo
-              - day
-        type:
-          type: string
-          pattern: money/period
-          example: money/period
   securitySchemes:
     basic_auth:
       type: http

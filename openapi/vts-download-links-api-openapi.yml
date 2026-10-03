@@ -93,15 +93,6 @@ paths:
       operationId: get_-1
 components:
   schemas:
-    models_api.UriEntity:
-      type: object
-      properties:
-        error:
-          type: string
-          example: explanation of the error
-        uri:
-          type: string
-          example: https://example.vts.com
     models_api.DataEntity:
       type: object
       properties:
@@ -113,17 +104,26 @@ components:
         type:
           type: string
           example: download_link
+    models_api.DownloadLinksResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/models_api.DataEntity'
     models_api.ErrorResponse:
       type: object
       properties:
         error:
           type: string
           example: error description
-    models_api.DownloadLinksResponse:
+    models_api.UriEntity:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/models_api.DataEntity'
+        error:
+          type: string
+          example: explanation of the error
+        uri:
+          type: string
+          example: https://example.vts.com
   securitySchemes:
     basic_auth:
       type: http

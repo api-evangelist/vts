@@ -422,47 +422,6 @@ paths:
       operationId: get_api-v1-blended-budgets-id
 components:
   schemas:
-    measure_money_area:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          example: USD/sf
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: money/area
-          example: money/area
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type:
-                - string
-                - 'null'
     measure_money_area_period:
       type:
       - object
@@ -498,6 +457,18 @@ components:
           type: string
           pattern: money/area/period
           example: money/area/period
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
     measure_money:
       type:
       - object
@@ -523,6 +494,35 @@ components:
           type: string
           pattern: money
           example: money
+    measure_money_area:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: money/area
+          example: money/area
     measure_area:
       type:
       - object

@@ -38,6 +38,22 @@ paths:
       operationId: post_oauth-v1-token-1
 components:
   schemas:
+    models_api.AuthResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: 'Json Web Token. Use as ''authorization: Bearer <JWT>'' header'
+        scope:
+          type: string
+          description: application scope
+        expires_in:
+          type: integer
+          description: expiration duration
+        token_type:
+          type: string
+          description: token_type
+          default: Bearer
     models_api.AuthRequest:
       type: object
       properties:
@@ -57,22 +73,6 @@ components:
           description: grant_type
           example: client_credentials
           default: client_credentials
-    models_api.AuthResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-          description: 'Json Web Token. Use as ''authorization: Bearer <JWT>'' header'
-        scope:
-          type: string
-          description: application scope
-        expires_in:
-          type: integer
-          description: expiration duration
-        token_type:
-          type: string
-          description: token_type
-          default: Bearer
   securitySchemes:
     basic_auth:
       type: http

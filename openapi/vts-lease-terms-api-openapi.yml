@@ -876,7 +876,41 @@ paths:
       operationId: get_api-v1-lease-terms-id
 components:
   schemas:
-    measure_money_area:
+    measure_period:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 2
+        unit:
+          type: string
+          enum:
+          - yr
+          - mo
+          - day
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: period
+          example: period
+        iso8601:
+          type:
+          - string
+          - 'null'
+          example: P2Y
+          description: Period represented by ISO8601 format
+    measure_money_period:
       type:
       - object
       - 'null'
@@ -887,7 +921,37 @@ components:
           example: 1000
         unit:
           type: string
-          example: USD/sf
+          example: USD/yr
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
+        type:
+          type: string
+          pattern: money/period
+          example: money/period
+    measure_money_area_period:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf/yr
         unit_components:
           type: object
           properties:
@@ -901,10 +965,54 @@ components:
               enum:
               - sf
               - sm
+            period:
+              type: string
+              enum:
+              - yr
+              - mo
+              - day
         type:
           type: string
-          pattern: money/area
-          example: money/area
+          pattern: money/area/period
+          example: money/area/period
+    measure_size:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
     measure_percentage:
       type:
       - object
@@ -929,18 +1037,6 @@ components:
           type: string
           pattern: percentage
           example: percentage
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type:
-                - string
-                - 'null'
     commissions:
       type: array
       items:
@@ -1017,67 +1113,6 @@ components:
                   - $ref: '#/components/schemas/measure_money'
                   - $ref: '#/components/schemas/measure_money_area'
                   - $ref: '#/components/schemas/measure_money_period'
-    measure_size:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          enum:
-          - sf
-          - sm
-        unit_components:
-          type: object
-          properties:
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: area
-          example: area
-    measure_money_area_period:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          example: USD/sf/yr
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-            period:
-              type: string
-              enum:
-              - yr
-              - mo
-              - day
-        type:
-          type: string
-          pattern: money/area/period
-          example: money/area/period
     measure_money:
       type:
       - object
@@ -1103,7 +1138,7 @@ components:
           type: string
           pattern: money
           example: money
-    measure_money_period:
+    measure_money_area:
       type:
       - object
       - 'null'
@@ -1114,7 +1149,7 @@ components:
           example: 1000
         unit:
           type: string
-          example: USD/yr
+          example: USD/sf
         unit_components:
           type: object
           properties:
@@ -1123,50 +1158,15 @@ components:
               pattern: '...'
               description: ISO 4217 currency code
               example: USD
-            period:
+            area:
               type: string
               enum:
-              - yr
-              - mo
-              - day
+              - sf
+              - sm
         type:
           type: string
-          pattern: money/period
-          example: money/period
-    measure_period:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 2
-        unit:
-          type: string
-          enum:
-          - yr
-          - mo
-          - day
-        unit_components:
-          type: object
-          properties:
-            period:
-              type: string
-              enum:
-              - yr
-              - mo
-              - day
-        type:
-          type: string
-          pattern: period
-          example: period
-        iso8601:
-          type:
-          - string
-          - 'null'
-          example: P2Y
-          description: Period represented by ISO8601 format
+          pattern: money/area
+          example: money/area
   securitySchemes:
     basic_auth:
       type: http
