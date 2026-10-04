@@ -5289,6 +5289,18 @@ components:
           type: string
           pattern: money
           example: money
+    errors_object:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type:
+                - string
+                - 'null'
     measure_money_area:
       type:
       - object
@@ -5318,18 +5330,6 @@ components:
           type: string
           pattern: money/area
           example: money/area
-    errors_object:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type:
-                - string
-                - 'null'
   securitySchemes:
     basic_auth:
       type: http
