@@ -55,6 +55,8 @@ tags:
 - Asset Management
 - Property Management
 - Tenant Experience
+- Vertical Software
+- Software-as-a-Service
 tags_raw:
 - Company
 - Commercial Real Estate
@@ -65,6 +67,8 @@ tags_raw:
 - Property Management
 - Tenant Experience
 - Real-Estate
+- Vertical Software
+- Software-as-a-Service
 apis:
 - aid: vts:vts-account-admin-api
   name: VTS Account Admin API
