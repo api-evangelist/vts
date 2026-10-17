@@ -747,58 +747,20 @@ paths:
       operationId: get_api-v1-appraisals-id
 components:
   schemas:
-    other_incomes:
+    base_rents:
       type: array
       items:
         type: object
         properties:
-          type:
-            type: string
-            enum:
-            - parking
-            - storage
-            - signage
-            - fitout
-            - promotional_charges
-            - interest
-            - other
-            example: storage
-            description: The classification of the other income
           start_month:
             type: number
             example: 1
-            description: Month number in which income begins to apply
+            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
           amount:
             oneOf:
             - $ref: '#/components/schemas/measure_money_area_period'
             - $ref: '#/components/schemas/measure_money_period'
-            description: Per unit amount paid to landlord
-          quantity:
-            type: number
-            example: 1
-            description: The quantity of the entity providing income (only applies to parking)
-    rent_escalations:
-      type: array
-      items:
-        type: object
-        properties:
-          start_month:
-            type: number
-            example: 1
-            description: Month number in which to begin rent escalations
-          amount:
-            anyOf:
-            - $ref: '#/components/schemas/measure_percentage'
-            - $ref: '#/components/schemas/measure_money_area_period'
-            description: Value of the escalation
-          occurs:
-            type: string
-            enum:
-            - One Time
-            - Annual
-            example: One Time
-            description: How often escalations recurs
-    measure_money_area:
+    measure_area:
       type:
       - object
       - 'null'
@@ -809,15 +771,14 @@ components:
           example: 1000
         unit:
           type: string
-          example: USD/sf
+          enum:
+          - sf
+          - sm
+          example: sf
+          description: 'Possible values: ''sf'' for square feet, ''sm'' for square meters'
         unit_components:
           type: object
           properties:
-            money:
-              type: string
-              pattern: '...'
-              description: ISO 4217 currency code
-              example: USD
             area:
               type: string
               enum:
@@ -825,8 +786,8 @@ components:
               - sm
         type:
           type: string
-          pattern: money/area
-          example: money/area
+          pattern: area
+          example: area
     costs:
       type: array
       items:
@@ -854,6 +815,30 @@ components:
             type: string
             example: Description
             description: The description of the cost
+    measure_percentage:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '%'
+          example: '%'
+        unit_components:
+          type: object
+          properties:
+            period:
+              type: string
+              pattern: '%'
+              example: '%'
+        type:
+          type: string
+          pattern: percentage
+          example: percentage
     measure_money_area_period:
       type:
       - object
@@ -889,6 +874,35 @@ components:
           type: string
           pattern: money/area/period
           example: money/area/period
+    measure_money_area:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          example: USD/sf
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              description: ISO 4217 currency code
+              example: USD
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: money/area
+          example: money/area
     errors_object:
       type: object
       properties:
@@ -925,19 +939,31 @@ components:
             allOf:
             - $ref: '#/components/schemas/measure_period'
             - description: The amount of time in which the free rent applies (including amount of time units)
-    base_rents:
-      type: array
-      items:
-        type: object
-        properties:
-          start_month:
-            type: number
-            example: 1
-            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
-          amount:
-            oneOf:
-            - $ref: '#/components/schemas/measure_money_area_period'
-            - $ref: '#/components/schemas/measure_money_period'
+    measure_money:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          pattern: '...'
+          description: ISO 4217 currency code
+          example: USD
+        unit_components:
+          type: object
+          properties:
+            money:
+              type: string
+              pattern: '...'
+              example: USD
+        type:
+          type: string
+          pattern: money
+          example: money
     measure_period:
       type:
       - object
@@ -972,31 +998,35 @@ components:
           - 'null'
           example: P2Y
           description: Period represented by ISO8601 format
-    measure_money:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '...'
-          description: ISO 4217 currency code
-          example: USD
-        unit_components:
-          type: object
-          properties:
-            money:
-              type: string
-              pattern: '...'
-              example: USD
-        type:
-          type: string
-          pattern: money
-          example: money
+    percentage_rents:
+      type: array
+      items:
+        type: object
+        properties:
+          start_month:
+            type: number
+            example: 1
+            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
+          minimum_guarantee:
+            oneOf:
+            - $ref: '#/components/schemas/measure_money_area_period'
+            - $ref: '#/components/schemas/measure_money_period'
+          sales_overage_breakpoints_type:
+            type: string
+            enum:
+            - Natural
+            - Unnatural
+            example: Natural
+            description: Type of Sales Overage Breakpoints Natural/Unnatural
+          sales_overage_breakpoints:
+            type: array
+            items:
+              type: object
+              properties:
+                breakpoint:
+                  $ref: '#/components/schemas/measure_money_period'
+                percent_rent:
+                  $ref: '#/components/schemas/measure_percentage'
     measure_money_period:
       type:
       - object
@@ -1027,31 +1057,7 @@ components:
           type: string
           pattern: money/period
           example: money/period
-    measure_percentage:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          pattern: '%'
-          example: '%'
-        unit_components:
-          type: object
-          properties:
-            period:
-              type: string
-              pattern: '%'
-              example: '%'
-        type:
-          type: string
-          pattern: percentage
-          example: percentage
-    percentage_rents:
+    rent_escalations:
       type: array
       items:
         type: object
@@ -1059,55 +1065,19 @@ components:
           start_month:
             type: number
             example: 1
-            description: The numeric month in which the base rent starts (i.e. base rent begins in month 4)
-          minimum_guarantee:
-            oneOf:
+            description: Month number in which to begin rent escalations
+          amount:
+            anyOf:
+            - $ref: '#/components/schemas/measure_percentage'
             - $ref: '#/components/schemas/measure_money_area_period'
-            - $ref: '#/components/schemas/measure_money_period'
-          sales_overage_breakpoints_type:
+            description: Value of the escalation
+          occurs:
             type: string
             enum:
-            - Natural
-            - Unnatural
-            example: Natural
-            description: Type of Sales Overage Breakpoints Natural/Unnatural
-          sales_overage_breakpoints:
-            type: array
-            items:
-              type: object
-              properties:
-                breakpoint:
-                  $ref: '#/components/schemas/measure_money_period'
-                percent_rent:
-                  $ref: '#/components/schemas/measure_percentage'
-    measure_area:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          enum:
-          - sf
-          - sm
-          example: sf
-          description: 'Possible values: ''sf'' for square feet, ''sm'' for square meters'
-        unit_components:
-          type: object
-          properties:
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: area
-          example: area
+            - One Time
+            - Annual
+            example: One Time
+            description: How often escalations recurs
     commissions:
       type: array
       items:
@@ -1184,6 +1154,36 @@ components:
                   - $ref: '#/components/schemas/measure_money'
                   - $ref: '#/components/schemas/measure_money_area'
                   - $ref: '#/components/schemas/measure_money_period'
+    other_incomes:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - parking
+            - storage
+            - signage
+            - fitout
+            - promotional_charges
+            - interest
+            - other
+            example: storage
+            description: The classification of the other income
+          start_month:
+            type: number
+            example: 1
+            description: Month number in which income begins to apply
+          amount:
+            oneOf:
+            - $ref: '#/components/schemas/measure_money_area_period'
+            - $ref: '#/components/schemas/measure_money_period'
+            description: Per unit amount paid to landlord
+          quantity:
+            type: number
+            example: 1
+            description: The quantity of the entity providing income (only applies to parking)
   securitySchemes:
     basic_auth:
       type: http

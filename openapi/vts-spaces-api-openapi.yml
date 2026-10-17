@@ -2701,6 +2701,32 @@ paths:
       operationId: get_api-v1-spaces-id
 components:
   schemas:
+    measure_size:
+      type:
+      - object
+      - 'null'
+      properties:
+        magnitude:
+          type: number
+          format: float
+          example: 1000
+        unit:
+          type: string
+          enum:
+          - sf
+          - sm
+        unit_components:
+          type: object
+          properties:
+            area:
+              type: string
+              enum:
+              - sf
+              - sm
+        type:
+          type: string
+          pattern: area
+          example: area
     measure_money_area_period:
       type:
       - object
@@ -2803,32 +2829,6 @@ components:
           type: string
           pattern: money/period
           example: money/period
-    measure_size:
-      type:
-      - object
-      - 'null'
-      properties:
-        magnitude:
-          type: number
-          format: float
-          example: 1000
-        unit:
-          type: string
-          enum:
-          - sf
-          - sm
-        unit_components:
-          type: object
-          properties:
-            area:
-              type: string
-              enum:
-              - sf
-              - sm
-        type:
-          type: string
-          pattern: area
-          example: area
   securitySchemes:
     basic_auth:
       type: http
