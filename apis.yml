@@ -162,9 +162,10 @@ apis:
   humanURL: https://readme.vts.com/
   baseURL: https://api.vts.com/api/connect/v1
   tags:
-  - Brokers
+  - Brokerage
   tags_raw:
   - Broker
+  - Brokers
   properties:
   - type: OpenAPI
     url: openapi/vts-broker-api-openapi.yml
